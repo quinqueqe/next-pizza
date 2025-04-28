@@ -6,7 +6,7 @@ export const Sort = () => {
 		<div className='sort flex items-center gap-2.5'>
 			<ArrowDownUp size={16} />
 			<h3>Сортировка:</h3>
-			<span></span>
+			<span>рейтингу</span>
 		</div>
 	)
 }

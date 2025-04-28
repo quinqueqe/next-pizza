@@ -5,7 +5,7 @@ const Home = () => {
 		<>
 			<Container className='pt-10 h-3000'>
 				<Title text='Все пиццы' size='lg' className='font-extrabold' />
-				
+				<Filter />
 			</Container>
 		</>
 	)

@@ -43,5 +43,12 @@
 		color: #202020;
 	}
 
-	
+	span {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 16px;
+		text-align: center;
+		color: #fe5f00;
+		cursor: pointer;
+	}
 }
