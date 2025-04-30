@@ -1,28 +1,29 @@
-import React from 'react'
+'use client'
+
+import { useCategory } from '../store'
 
 export const Categories = () => {
 	const cats = [
-		'Пиццы',
-		'Комбо',
-		'Закуски',
-		'Коктейли',
-		'Кофе',
-		'Напитки',
-		'Десерты',
+		{ id: 0, name: 'Пиццы' },
+		{ id: 1, name: 'Комбо' },
+		{ id: 2, name: 'Закуски' },
+		{ id: 3, name: 'Коктейли' },
+		{ id: 4, name: 'Кофе' },
+		{ id: 5, name: 'Напитки' },
+		{ id: 6, name: 'Десерты' },
 	]
-	const activeCat = 0
+	const { activeId, setAcitveId } = useCategory(state => state)
 	return (
 		<div className='categories'>
 			<ul className='flex gap-1.5'>
-				{cats.map((item, i) => (
+				{cats.map(({name, id}, i) => (
 					<li key={i}>
-						<button
-							className={
-								activeCat === i ? 'cat-btn-active' : 'cat-btn'
-							}
+						<a href={`/#${name}`}
+							onClick={() => setAcitveId(i)}
+							className={activeId === id ? 'cat-btn-active' : 'cat-btn'}
 						>
-							{item}
-						</button>
+							{name}
+						</a>
 					</li>
 				))}
 			</ul>
