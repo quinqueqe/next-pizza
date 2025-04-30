@@ -1,54 +1,17 @@
-// categories
-.cat-btn {
-	padding: 10px 16px;
-	font-family: var(--font-family);
-	font-weight: 500;
-	font-size: 16px;
-	text-align: center;
-	color: #202020;
-	font-weight: 700;
-	box-shadow: 0 4px 4px 0 rgba(139, 139, 139, 0.096);
-	border-radius: 15px;
-
-
-	&-active {
-		padding: 10px 16px;
-		font-family: var(--font-family);
-		font-weight: 500;
-		font-size: 16px;
-		text-align: center;
-		border-radius: 15px;
-		color: #fe5f00;
-		box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.192);
-		background: #fff;
-		font-weight: 700;
-	}
-}
-
-
-
-
-
-// sort
-.sort {
-	padding: 20px 22px;
-	border-radius: 15px;
-	background: #fafafa;
-
+.filter {
 	h3 {
 		font-family: var(--font-family);
 		font-weight: 700;
-		font-size: 16px;
-		text-align: center;
-		color: #202020;
+		font-size: 22px;
+		color: #000;
+		padding-bottom: 30px;
 	}
 
-	span {
+	h4 {
 		font-family: var(--font-family);
 		font-weight: 700;
 		font-size: 16px;
-		text-align: center;
-		color: #fe5f00;
-		cursor: pointer;
+		color: #000;
+		padding-bottom: 15px;
 	}
 }

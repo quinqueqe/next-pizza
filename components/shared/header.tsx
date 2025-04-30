@@ -4,10 +4,8 @@ import Image from 'next/image'
 import { Button } from '../ui'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
 
-interface Props {
-	className?: string
-}
-export const Header: React.FC<Props> = () => {
+
+export const Header = () => {
 	return (
 		<header className='border border-b'>
 			<Container className='flex justify-between items-center py-8'>
