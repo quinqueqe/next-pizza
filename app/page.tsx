@@ -6,6 +6,7 @@ import {
 	ProductsGroupList,
 } from '@/components/shared'
 
+
 const Home = () => {
 	const pizzas = [
 		{

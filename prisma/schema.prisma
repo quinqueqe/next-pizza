@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "./prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement()) // уникальный id
+
+  fullName String
+  email    String   @unique
+  password String   
+  role     UserRole @default(USER)
+
+  // # auth
+  provider   String? // будет записано какая соц. сеть привязана к пользователю, если будет по логину или паролю, у него не будет provider
+  providerId String?
+
+  // # связи
+  cart             Cart? // добавили 1  уникальную корзину для каждого пользователя
+  orders           Order[]
+  verifivationCode VerifivationCode?
+
+  // # даты создания, изменения
+  createdAt          DateTime @default(now()) // дата создания
+  updatedAt          DateTime @updatedAt // дата изменения
+  verifivationCodeId Int
+}
+
+model Category {
+  id   Int    @id @default(autoincrement()) // уникальный id
+  name String @unique
+
+  // # связи
+  products Product[] // добавили одну категорию для разных продуктов
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения
+}
+
+model Product {
+  id       Int    @id @default(autoincrement()) // уникальный id
+  name     String
+  imageUrl String
+
+  // # связи
+  category    Category      @relation(fields: [categoryId], references: [id]) // добавили 1 категорию для разных продуктов
+  categoryId  Int
+  ingredients Ingredients[] // добавили разные ингредиенты для 1 продукта
+  variantions Variantion[] // добавили разные варианты для 1 продукта
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения
+}
+
+model Variantion {
+  id        Int  @id @default(autoincrement()) // уникальный id
+  price     Int
+  size      Int? // теперь это свойство не обязательно и его можно пропустить
+  pizzaType Int? // (тонкое, толстое тесто)
+
+  // # связи
+  product   Product    @relation(fields: [productId], references: [id]) // добавили варианты для 1 продукта
+  productId Int
+  cartItems CartItem[]
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения
+}
+
+model Ingredients {
+  id       Int    @id @default(autoincrement()) // уникальный id
+  name     String
+  price    Int
+  imageUrl String
+
+  // # связи
+  products  Product[] // добавили разные продукты для 1 варианта 
+  cartItems CartItem[]
+
+  // # даты создания, изменения
+  createdAt  DateTime @default(now()) // дата создания
+  updatedAt  DateTime @updatedAt // дата изменения
+  cartItemId Int?
+}
+
+model Cart {
+  id          Int @id @default(autoincrement()) // уникальный id
+  totalAmount Int @default(0)
+
+  // # функционал для пользователя который не зарегестрирован
+  token String
+
+  // # связи
+  user   User?      @relation(fields: [userId], references: [id]) // добавили 1  уникальную корзину для каждого пользователя
+  userId Int        @unique
+  items  CartItem[]
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения 
+}
+
+model CartItem {
+  id       Int @id @default(autoincrement()) // уникальный id
+  quantity Int
+
+  // # связи
+  productItem   Variantion    @relation(fields: [productItemId], references: [id])
+  productItemId Int
+  cart          Cart          @relation(fields: [cartId], references: [id])
+  cartId        Int
+  ingredients   Ingredients[]
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения 
+}
+
+model Order {
+  id          Int         @id @default(autoincrement()) // уникальный id
+  token       String
+  totalAmount Int
+  status      OrderStatus // ENUM
+  paymentId   String?
+  items       Json
+
+  // # user info
+  fullName String
+  address  String
+  email    String
+  phone    String
+  comment  String?
+
+  // # связи
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения 
+}
+
+model VerifivationCode {
+  id   Int    @id @default(autoincrement()) // уникальный id
+  code String
+
+  // # связи
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  @@unique([userId, code]) // если userId и code будут не уникальными, VerifivationCode не будет создаваться
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+}
+
+enum OrderStatus {
+  PENDING // создал заказ, но не сделал оплату (ожидание)
+  SUCCEEDED // создал закал, и была сделана оплата (успешно)
+  CANCELLED // создал заказ, и у него не хватило денег (отмена)
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
