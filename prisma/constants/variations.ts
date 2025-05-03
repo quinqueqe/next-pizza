@@ -9,7 +9,7 @@ type generatePizzaType = {
 	price: number
 }
 
-const generateProduct = ({
+export const generateProduct = ({
 	productId,
 	pizzaType,
 	size,

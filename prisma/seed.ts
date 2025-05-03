@@ -64,13 +64,42 @@ async function up() {
 			...chorizeFreshVariations(chorizeFreshPizza.id),
 		],
 	})
+
+	await prisma.cart.createMany({
+		data: [
+			{
+				userId: 1,
+				totalAmount: 999,
+				token: '111',
+			},
+			{
+				userId: 2,
+				totalAmount: 0,
+				token: '222',
+			},
+		],
+	})
+
+	await prisma.cartItem.create({
+		data: {
+			cartId: 1, // к корзине 1 будет привязан этот товар
+			quantity: 2, // кол-во (count)
+			productItemId: 1, // вариация продукта
+			ingredients: {
+				connect: [{ id: 1 }, { id: 2 }, { id: 3 }], // обрщается уже к сохраненным данным в ingredients и добавляет их сюда по id
+			},
+		},
+	})
 }
 async function down() {
 	// await prisma.$executeRaw`TRUNCATE "User" RESTART IDENTITY CASCADE;` // SQL
 	await prisma.user.deleteMany() // вместо raw-запроса
-	await prisma.category.deleteMany() // вместо raw-запроса
-	await prisma.variantion.deleteMany() // вместо raw-запроса
+	await prisma.cart.deleteMany() // вместо raw-запроса
+	await prisma.cartItem.deleteMany() // вместо raw-запроса
+	await prisma.ingredients.deleteMany() // вместо raw-запроса
 	await prisma.product.deleteMany() // вместо raw-запроса
+	await prisma.variantion.deleteMany() // вместо raw-запроса
+	await prisma.category.deleteMany() // вместо raw-запроса
 }
 
 async function main() {
