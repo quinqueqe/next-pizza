@@ -114,20 +114,20 @@ const Home = () => {
 			<TopBar />
 
 			<Container>
-				<div className='flex gap-[80px] pt-10'>
+				<div className='flex justify-between pt-10'>
 					<Filter />
 					<div className='flex flex-col gap-20'>
 						<ProductsGroupList
 							title='Пиццы'
 							products={pizzas}
 							className=''
-							categoryId={0}
+							categoryId={1}
 						/>
 						<ProductsGroupList
 							title='Комбо'
 							products={tovars}
 							className=''
-							categoryId={1}
+							categoryId={2}
 						/>
 					</div>
 				</div>

@@ -6,6 +6,6 @@ type CategoryType = {
 }
 
 export const useCategory = create<CategoryType>()(set => ({
-	activeId: 0,
-	setAcitveId: value => set({ activeId: value }),
+	activeId: 1,
+	setAcitveId: value => set({ activeId: value + 1 }),
 }))

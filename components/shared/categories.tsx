@@ -4,13 +4,13 @@ import { useCategory } from '../store'
 
 export const Categories = () => {
 	const cats = [
-		{ id: 0, name: 'Пиццы' },
-		{ id: 1, name: 'Комбо' },
-		{ id: 2, name: 'Закуски' },
-		{ id: 3, name: 'Коктейли' },
-		{ id: 4, name: 'Кофе' },
-		{ id: 5, name: 'Напитки' },
-		{ id: 6, name: 'Десерты' },
+		{ id: 1, name: 'Пиццы' },
+		{ id: 2, name: 'Комбо' },
+		{ id: 3, name: 'Закуски' },
+		{ id: 4, name: 'Коктейли' },
+		{ id: 5, name: 'Кофе' },
+		{ id: 6, name: 'Напитки' },
+		{ id: 7, name: 'Десерты' },
 	]
 	const { activeId, setAcitveId } = useCategory(state => state)
 	return (
