@@ -20,10 +20,13 @@ export const SearchInput = () => {
 	// -------------------------------------
 
 	useDebounce(
-		() => {
-			Api.products.search(searchQ).then(products => {
-				setProducts(products)
-			})
+		async () => {
+			try {
+				const res = await Api.products.search(searchQ)
+				setProducts(res)
+			} catch (error) {
+				console.log(error)
+			}
 		},
 		150, // задержка при поиске продукта
 		[searchQ]

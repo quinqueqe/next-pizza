@@ -3,11 +3,11 @@
 import { Checkbox } from '@/components/ui/checkbox'
 
 type Props = {
-	text: string
+	name: string
 	value: string
 }
 
-export function FilterCheckbox({ text, value }: Props) {
+export function FilterCheckbox({ name, value }: Props) {
 	return (
 		<div className='flex items-center space-x-2'>
 			<Checkbox
@@ -19,7 +19,7 @@ export function FilterCheckbox({ text, value }: Props) {
 				htmlFor={`checkbox-${String(value)}`}
 				className='leading-none cursor-pointer flex-1'
 			>
-				{text}
+				{name}
 			</label>
 		</div>
 	)
