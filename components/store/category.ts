@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type CategoryType = {
+interface CategoryType {
 	activeId: number
 	setAcitveId: (value: number) => void
 }

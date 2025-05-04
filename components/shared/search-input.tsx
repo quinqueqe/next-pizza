@@ -7,12 +7,11 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Api } from '@/services/api-client'
-import { Product } from '@prisma/client'
+import { useSearch } from '../store/search'
 
 export const SearchInput = () => {
-	const [focus, setFocus] = React.useState(false)
-	const [searchQ, setSearchQ] = React.useState('')
-	const [products, setProducts] = React.useState<Product[]>([])
+	const { focus, setFocus, searchQ, setSearchQ, products, setProducts } =
+		useSearch(state => state)
 	// закрытие окна по клику в пустую область
 	const ref = React.useRef<null>(null)
 	useClickAway(ref, () => {
@@ -29,6 +28,12 @@ export const SearchInput = () => {
 		150, // задержка при поиске продукта
 		[searchQ]
 	)
+
+	const onClickProduct = () => {
+		setFocus(false)
+		setSearchQ('')
+		setProducts([])
+	}
 	return (
 		<>
 			{focus && (
@@ -56,7 +61,7 @@ export const SearchInput = () => {
 						)}
 					>
 						{products.map(({ name, id, price, imageUrl }, i) => (
-							<div key={i}>
+							<div onClick={() => onClickProduct()} key={i}>
 								<Link href={`/product/${id}`}>
 									<div className='px-3 flex items-center gap-4 py-2 hover:bg-primary/10'>
 										<Image src={imageUrl} width={30} height={30} alt='img' />
