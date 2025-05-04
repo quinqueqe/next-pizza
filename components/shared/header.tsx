@@ -1,15 +1,15 @@
 import React from 'react'
-import { Container } from './container'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '../ui'
+import { Container, SearchInput } from './'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
-
 
 export const Header = () => {
 	return (
 		<header className='border border-b'>
 			<Container className='flex justify-between items-center py-8'>
-				<div className='flex gap-4 items-center'>
+				<Link href='/' className='flex gap-4 items-center'>
 					<Image src={'/logo.png'} alt='img' width={35} height={35} />
 					<div>
 						<h1 className='text-2xl uppercae font-black'>Next Pizza</h1>
@@ -17,7 +17,9 @@ export const Header = () => {
 							вкусней уже некуда
 						</p>
 					</div>
-				</div>
+				</Link>
+
+				<SearchInput/>
 
 				<div className='flex items-center gap-4'>
 					<Button variant={'outline'} className='flex items-center gap-1'>
