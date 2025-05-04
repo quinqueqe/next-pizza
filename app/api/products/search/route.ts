@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
 				mode: 'insensitive', // чувствительность к регистру (теперь не важно с какой буквы)
 			},
 		},
-		take: 5, // будет полученно не более 5 продуктов
+		take: 8, // по умолчанию вернуться первые 5 объектов
 	})
 
 	return NextResponse.json(products)
