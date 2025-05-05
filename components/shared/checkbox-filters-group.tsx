@@ -3,6 +3,7 @@
 import React from 'react'
 import { FilterCheckbox } from './filter-checkbox'
 import { Input, Skeleton } from '../ui'
+import { useSet } from 'react-use'
 
 type Props = {
 	items: {
@@ -12,6 +13,7 @@ type Props = {
 	title: string
 	limit: number
 	loading: boolean
+	// onClickCheckBox: (id: string) => void
 }
 
 export const CheckboxFiltersGroup = ({
@@ -19,9 +21,12 @@ export const CheckboxFiltersGroup = ({
 	title,
 	limit,
 	loading,
-}: Props) => {
+}: // onClickCheckBox,
+Props) => {
 	const [inputValue, setInputValue] = React.useState<string>('')
 	const [showList, setShowList] = React.useState<boolean>(false)
+	const [selectedIds, { toggle }] = useSet(new Set<string>([]))
+	console.log(selectedIds)
 
 	const filterItems = items.filter(item =>
 		item.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -56,11 +61,17 @@ export const CheckboxFiltersGroup = ({
 					</>
 				) : (
 					filterItems.map((item, i) => (
-						<FilterCheckbox key={i} value={String(item.id)} name={item.name} />
+						<FilterCheckbox
+							checked={selectedIds?.has(String(item.id))}
+							onCheckedChange={() => toggle(String(item.id))}
+							key={i}
+							value={String(item.id)}
+							name={item.name}
+						/>
 					))
 				)}
 			</div>
-			{/* {items.length > limit && (  проверка сколько элементов в db*/} 
+			{/* {items.length > limit && (  проверка сколько элементов в db  */}
 			<button
 				onClick={() => setShowList(!showList)}
 				className='text-[16px] font-normal text-orange-500 pt-4'

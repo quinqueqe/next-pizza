@@ -19,9 +19,14 @@ export const FilterIngredients = () => {
 			}
 		}
 		fetchIngredients()
-	}, [ingredients])
+	}, [])
 
 	return (
-		<CheckboxFiltersGroup title='Ингредиенты:' loading={loading} items={ingredients} limit={6} />
+		<CheckboxFiltersGroup
+			title='Ингредиенты:'
+			loading={loading}
+			items={ingredients}
+			limit={6}
+		/>
 	)
 }

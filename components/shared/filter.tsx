@@ -1,7 +1,5 @@
 import React from 'react'
-import { FilterCheckbox, FilterIngredients } from './'
-import { Input } from '../ui'
-import { RangeSlider } from './range-slider'
+import { FilterCheckbox, FilterIngredients, FilterRange } from './'
 
 export const Filter = () => {
 	return (
@@ -13,20 +11,10 @@ export const Filter = () => {
 			</div>
 
 			<h4>Цена от и до:</h4>
-			<div className='flex gap-4 pb-7'>
-				<Input type='number' defaultValue={0} min={0} max={1000} />
-				<Input type='number' defaultValue={500} min={100} max={1000} />
-			</div>
-			<RangeSlider
-				className='pb-7'
-				min={0}
-				max={5000}
-				step={10}
-				value={[0, 5000]}
-			/>
+			<FilterRange />
 
 			<div>
-				<FilterIngredients/>
+				<FilterIngredients />
 			</div>
 		</div>
 	)
