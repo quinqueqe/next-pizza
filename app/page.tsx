@@ -1,105 +1,24 @@
 import {
 	Container,
-	Filter,
+	ProductsGroupList,
+	// Filter,
 	Title,
 	TopBar,
-	ProductsGroupList,
 } from '@/components/shared'
+import prisma from '@/prisma/prisma'
 
 
-const Home = () => {
-	const pizzas = [
-		{
-			id: 0,
-			imageUrl:
-				'https://i.postimg.cc/ydwm5Gd9/11ee7d610e8bbb248f31270be742b4bd.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
+const Home = async () => {
+	const categories = await prisma?.category.findMany({
+		include: {
+			products: {
+				include: {
+					ingredients: true,
+				},
+			},
 		},
-		{
-			id: 1,
-			imageUrl:
-				'https://i.postimg.cc/ydwm5Gd9/11ee7d610e8bbb248f31270be742b4bd.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 449,
-		},
-		{
-			id: 2,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 399,
-		},
-		{
-			id: 3,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-		{
-			id: 332,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-		{
-			id: 332,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-	]
-	const tovars = [
-		{
-			id: 0,
-			imageUrl:
-				'https://i.postimg.cc/ydwm5Gd9/11ee7d610e8bbb248f31270be742b4bd.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-		{
-			id: 1,
-			imageUrl:
-				'https://i.postimg.cc/ydwm5Gd9/11ee7d610e8bbb248f31270be742b4bd.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 449,
-		},
-		{
-			id: 2,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 399,
-		},
-		{
-			id: 3,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-		{
-			id: 332,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-		{
-			id: 332,
-			imageUrl: 'https://i.postimg.cc/x1STsh4q/image.avif',
-			name: 'Сырный цыпленок',
-			desc: 'Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок',
-			price: 395,
-		},
-	]
+	})
+
 	return (
 		<>
 			<div className='bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]'>
@@ -111,24 +30,25 @@ const Home = () => {
 					/>
 				</Container>
 			</div>
-			<TopBar />
+			<TopBar data={categories}/>
 
 			<Container>
-				<div className='flex justify-between pt-10'>
-					<Filter />
-					<div className='flex flex-col gap-20'>
-						<ProductsGroupList
-							title='Пиццы'
-							products={pizzas}
-							className=''
-							categoryId={1}
-						/>
-						<ProductsGroupList
-							title='Комбо'
-							products={tovars}
-							className=''
-							categoryId={2}
-						/>
+				{/* <div className='flex justify-between pt-10'> */}
+				<div className='pt-10'>
+					{/* <Filter /> */}
+					<div className='flex flex-col gap-5'>
+						{categories?.map(
+							(category, i) =>
+								category.products.length > 0 && (
+									<ProductsGroupList
+										key={i}
+										title={category.name}
+										products={category.products}
+										className=''
+										categoryId={category.id}
+									/>
+								)
+						)}
 					</div>
 				</div>
 			</Container>

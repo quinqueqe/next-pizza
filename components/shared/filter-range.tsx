@@ -18,6 +18,7 @@ export const FilterRange = () => {
 	}
 	return (
 		<>
+			<h4>Цена от и до:</h4>
 			<div className='flex gap-4 pb-7'>
 				<Input
 					type='number'

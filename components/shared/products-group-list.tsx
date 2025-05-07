@@ -17,8 +17,8 @@ export const ProductsGroupList = ({
 	products,
 	title,
 	className,
-	// categoryId,
-}: Props) => {
+}: // categoryId,
+Props) => {
 	// const setCategoryId = useCategory(state => state.setAcitveId)
 	// const intersectionRef = React.useRef<HTMLDivElement>(null!)
 	// const intersection = useIntersection(intersectionRef, {
@@ -31,12 +31,13 @@ export const ProductsGroupList = ({
 	// 	}
 	// }, [intersection?.isIntersecting, categoryId, title])
 	return (
-		<div className={className} id={title} >
-			<Title text={title} size='lg' className='font-extrabold pb-5' />
-			<div className='grid grid-cols-3 gap-[50px] pb-10'>
-				{products.map((product, i) => (
-					<ProductCard {...product} key={i} />
-				))}
+		<div className={className} id={title}>
+			<Title text={title} size='xl' className='font-extrabold pb-8' />
+			<div className='grid grid-cols-4 gap-[50px] pb-10'>
+				{products?.map(
+					(product: Product, i: number) =>
+						<ProductCard {...product} key={i} />
+				)}
 			</div>
 		</div>
 	)

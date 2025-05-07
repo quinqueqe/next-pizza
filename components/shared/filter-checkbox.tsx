@@ -5,14 +5,14 @@ import { Checkbox } from '@/components/ui/checkbox'
 type Props = {
 	name: string
 	value: string
-	onCheckedChange?: (checked: string) => void
+	onClickCheckbox?: (checked: string) => void
 	checked?: boolean
 }
 
 export function FilterCheckbox({
 	name,
 	value,
-	onCheckedChange,
+	onClickCheckbox,
 	checked,
 }: Props) {
 	return (
@@ -21,7 +21,7 @@ export function FilterCheckbox({
 				id={`checkbox-${String(value)}`}
 				checked={checked}
 				value={value}
-				onCheckedChange={onCheckedChange}
+				onCheckedChange={onClickCheckbox}
 				className='rounded-[8px] w-6 h-6'
 			/>
 			<label

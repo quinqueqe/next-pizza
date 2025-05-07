@@ -54,6 +54,7 @@ model Product {
   name     String
   price Int?
   imageUrl String
+  desc String?
 
   // # связи
   category    Category      @relation(fields: [categoryId], references: [id]) // добавили 1 категорию для разных продуктов

@@ -3,7 +3,6 @@
 import React from 'react'
 import { FilterCheckbox } from './filter-checkbox'
 import { Input, Skeleton } from '../ui'
-import { useSet } from 'react-use'
 
 type Props = {
 	items: {
@@ -13,7 +12,7 @@ type Props = {
 	title: string
 	limit: number
 	loading: boolean
-	// onClickCheckBox: (id: string) => void
+	onClickCheckbox?: (id: string) => void
 }
 
 export const CheckboxFiltersGroup = ({
@@ -21,12 +20,10 @@ export const CheckboxFiltersGroup = ({
 	title,
 	limit,
 	loading,
-}: // onClickCheckBox,
-Props) => {
+	onClickCheckbox,
+}: Props) => {
 	const [inputValue, setInputValue] = React.useState<string>('')
 	const [showList, setShowList] = React.useState<boolean>(false)
-	const [selectedIds, { toggle }] = useSet(new Set<string>([]))
-	console.log(selectedIds)
 
 	const filterItems = items.filter(item =>
 		item.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -62,10 +59,9 @@ Props) => {
 				) : (
 					filterItems.map((item, i) => (
 						<FilterCheckbox
-							checked={selectedIds?.has(String(item.id))}
-							onCheckedChange={() => toggle(String(item.id))}
 							key={i}
 							value={String(item.id)}
+							onClickCheckbox={() => onClickCheckbox?.(String(item.id))}
 							name={item.name}
 						/>
 					))
