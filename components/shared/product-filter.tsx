@@ -5,9 +5,16 @@ import { cn } from '@/lib/utils'
 
 type Props = {
 	className?: string
+	active?: number
+	disabledSize?: number
+	disabledType?: number
 }
 
-export const ProductFilter = ({ className }: Props) => {
+export const ProductFilter = ({
+	className,
+	disabledSize,
+	disabledType,
+}: Props) => {
 	const sizes = ['25', '30', '35']
 	const types = ['традиционное', 'тонкое']
 
@@ -24,8 +31,10 @@ export const ProductFilter = ({ className }: Props) => {
 					<div key={i} className='p-1'>
 						<button
 							className={cn(
-								'text-[#000] text-center py-[5px] w-[138px] rounded-4xl',
-								activeSize === i && 'bg-white'
+								'text-[#000] text-center py-[5px] w-[138px] rounded-4xl select-none transition-all duration-400',
+								activeSize === i && 'bg-white',
+								disabledSize === i &&
+									'text-gray-500 opacity-50 pointer-events-none'
 							)}
 							onClick={() => setActiveSize(i)}
 						>
@@ -39,8 +48,10 @@ export const ProductFilter = ({ className }: Props) => {
 					<div key={i} className='p-1'>
 						<button
 							className={cn(
-								'text-[#000] text-center py-[5px] w-[207px] rounded-4xl',
-								activeType === i && 'bg-white'
+								'text-[#000] text-center py-[5px] w-[207px] rounded-4xl select-none transition-all duration-400',
+								activeType === i && 'bg-white',
+								disabledType === i &&
+									'text-gray-500 opacity-50 pointer-events-none'
 							)}
 							onClick={() => setActiveType(i)}
 						>

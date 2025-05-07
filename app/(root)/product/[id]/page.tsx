@@ -7,12 +7,14 @@ import {
 } from '@/components/shared'
 import { notFound } from 'next/navigation'
 import prisma from '@/prisma/prisma'
+import Link from 'next/link'
 
 type Props = {
 	params: {
 		id: string
 	}
 }
+
 
 const ProductId = async ({ params: { id } }: Props) => {
 	const product = await prisma?.product.findUnique({
@@ -29,16 +31,26 @@ const ProductId = async ({ params: { id } }: Props) => {
 
 	return (
 		<Container className='flex flex-col pt-10'>
-			<div className='pb-10'>Главная / Пиццы / Пепперони фреш</div>
+			<div className='pb-10 flex gap-1.5'>
+				<Link href='/' className='text-[#373737]'>
+					Главная
+				</Link>
+				<span className='text-[#e0e0e0]'>/</span>
+				<Link href='/#Пиццы' className='text-[#373737]'>
+					Пиццы
+				</Link>
+				<span className='text-[#e0e0e0]'>/</span>
+				<p className='text-gray-600 opacity-60'>{product.name}</p>
+			</div>
 			<div className='flex gap-10 items-center'>
 				<div>
-					<ProductImage />
+					<ProductImage imageUrl={product.imageUrl} />
 				</div>
 				<div>
 					<h4 className='font-extrabold text-[#373737] text-4xl pb-3.5'>
 						{product.name}
 					</h4>
-					<ProductFilter />
+					<ProductFilter disabledType={1} />
 					<div>
 						<h5 className='text-[#000] text-[18px] font-semibold pb-4'>
 							Ингредиенты

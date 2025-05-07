@@ -23,18 +23,20 @@ export const ProductIngredient = ({
 		<li
 			key={key}
 			className={cn(
-				'p-2.5 rounded-2xl bg-[#fff] flex items-center flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer border-[#fe5f00]',
+				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer border-[#fe5f00]',
 				className
 			)}
 		>
-			<Image
-				src={imageUrl}
-				alt='img'
-				width={110}
-				height={110}
-				className='mb-1.5'
-			/>
-			<h4 className='text-center pb-2'>{name}</h4>
+			<div>
+				<Image
+					src={imageUrl}
+					alt='img'
+					width={110}
+					height={110}
+					className='mb-1.5'
+				/>
+				<h4 className='text-center pb-2'>{name}</h4>
+			</div>
 			<p className='font-semibold'>{price} ₽</p>
 		</li>
 	)
