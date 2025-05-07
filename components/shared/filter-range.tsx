@@ -3,6 +3,7 @@
 import React from 'react'
 import { Input } from '../ui'
 import { RangeSlider } from './range-slider'
+import { useFilter } from '../store'
 
 // type PriceProps = {
 // 	priceFrom: number
@@ -10,8 +11,9 @@ import { RangeSlider } from './range-slider'
 // }
 
 export const FilterRange = () => {
-	const [priceFrom, setPriceFrom] = React.useState<number>(0)
-	const [priceTo, setPriceTo] = React.useState<number>(1000)
+	const { priceFrom, setPriceFrom, priceTo, setPriceTo } = useFilter(
+		state => state
+	)
 
 	const updatePrice = (value: number, set: (value: number) => void) => {
 		set(value)

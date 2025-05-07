@@ -3,6 +3,7 @@
 import React from 'react'
 import { FilterCheckbox } from './filter-checkbox'
 import { Input, Skeleton } from '../ui'
+import { useFilter } from '../store'
 
 type Props = {
 	items: {
@@ -22,8 +23,9 @@ export const CheckboxFiltersGroup = ({
 	loading,
 	onClickCheckbox,
 }: Props) => {
-	const [inputValue, setInputValue] = React.useState<string>('')
-	const [showList, setShowList] = React.useState<boolean>(false)
+	const { inputValue, setInputValue, showList, setShowList } = useFilter(
+		state => state
+	)
 
 	const filterItems = items.filter(item =>
 		item.name.toLowerCase().includes(inputValue.toLowerCase())

@@ -3,14 +3,16 @@
 import React from 'react'
 import { CheckboxFiltersGroup } from './checkbox-filters-group'
 import { Api } from '@/services/api-client'
-import { Ingredients } from '@prisma/client'
+// import { Ingredients } from '@prisma/client'
 
 import { FilterCheckbox, FilterRange } from './'
+import { useFilter } from '../store'
 // import { useSet } from 'react-use'
 
 export const Filter = () => {
-	const [ingredients, setIngredients] = React.useState<Ingredients[]>([])
-	const [loading, setLoading] = React.useState<boolean>(true)
+	const { ingredients, setIngredients, loading, setLoading } = useFilter(
+		state => state
+	)
 	// const [set, { toggle }] = useSet(new Set<string>([]));
 	React.useEffect(() => {
 		async function fetchIngredients() {
@@ -40,7 +42,7 @@ export const Filter = () => {
 					loading={loading}
 					items={ingredients}
 					limit={6}
-					onClickCheckbox={(id) => console.log(id)}
+					onClickCheckbox={id => console.log(id)}
 				/>
 			</div>
 		</div>

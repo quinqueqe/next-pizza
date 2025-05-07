@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Api } from '@/services/api-client'
-import { useSearch } from '../store/search'
+import { useSearch } from '../store'
 
 export const SearchInput = () => {
 	const { focus, setFocus, searchQ, setSearchQ, products, setProducts } =
