@@ -9,7 +9,7 @@ type Props = {
 
 export const ProductImage = ({ className }: Props) => {
 	return (
-		<div className={cn('p-9 bg-[#fff7ee] rounded-3xl', className)}>
+		<div className={cn('p-9 bg-[#fff7ee] rounded-3xl w-[520px]', className)}>
 			<Image
 				src='/assets/images/pizza-test.png'
 				alt='img'
