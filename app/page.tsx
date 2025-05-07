@@ -30,7 +30,7 @@ const Home = async () => {
 					/>
 				</Container>
 			</div>
-			<TopBar data={categories}/>
+			<TopBar data={categories.filter((cat) => cat.products.length > 0)}/> 
 
 			<Container>
 				{/* <div className='flex justify-between pt-10'> */}
