@@ -3,7 +3,7 @@
 import React from 'react'
 import { FilterCheckbox } from './filter-checkbox'
 import { Input, Skeleton } from '../ui'
-import { useFilter } from '../store'
+import { useFilter } from '../../store'
 
 type Props = {
 	items: {

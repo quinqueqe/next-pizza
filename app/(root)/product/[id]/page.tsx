@@ -4,7 +4,7 @@ import {
 	ProductFilter,
 	PizzaImage,
 	ProductIngredient,
-} from '@/components/shared'
+} from '@/shared/components/shared'
 import { notFound } from 'next/navigation'
 import prisma from '@/prisma/prisma'
 import Link from 'next/link'

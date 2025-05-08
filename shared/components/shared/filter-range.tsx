@@ -3,7 +3,7 @@
 import React from 'react'
 import { Input } from '../ui'
 import { RangeSlider } from './range-slider'
-import { useFilter } from '../store'
+import { useFilter } from '../../store'
 
 // type PriceProps = {
 // 	priceFrom: number

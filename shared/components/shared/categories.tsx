@@ -1,7 +1,7 @@
 'use client'
 
 import { Category } from '@prisma/client'
-import { useCategory } from '../store'
+import { useCategory } from '../../store'
 
 interface Props {
 	categories: Category[]

@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn } from '../../../lib/utils'
 import { Dialog, DialogContent } from '../../ui'
 import { useRouter } from 'next/navigation'
 import { ChoosePizzaForm, ChooseProductForm } from '../'
@@ -30,7 +30,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 						<ChoosePizzaForm
 							imageUrl={product.imageUrl}
 							name={product.name}
-							ingredients={[]}
+							ingredients={product.ingredients}
 							price={product.price}
 							desc={product.desc}
 						/>

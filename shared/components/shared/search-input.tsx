@@ -3,11 +3,11 @@
 import React from 'react'
 import { Search } from 'lucide-react'
 import { useClickAway, useDebounce } from 'react-use'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Api } from '@/services/api-client'
-import { useSearch } from '../store'
+import { Api } from '../../services/api-client'
+import { useSearch } from '../../store'
 
 export const SearchInput = () => {
 	const { focus, setFocus, searchQ, setSearchQ, products, setProducts } =

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { CheckboxFiltersGroup } from './checkbox-filters-group'
-import { Api } from '@/services/api-client'
+import { Api } from '../../services/api-client'
 // import { Ingredients } from '@prisma/client'
 
 import { FilterCheckbox, FilterRange } from './'
-import { useFilter } from '../store'
+import { useFilter } from '../../store'
 // import { useSet } from 'react-use'
 
 export const Filter = () => {

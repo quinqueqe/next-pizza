@@ -1,6 +1,5 @@
 'use client'
 
-import {} from '@/components/shared'
 import { Ingredients } from '@prisma/client'
 import Image from 'next/image'
 

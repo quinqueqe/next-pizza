@@ -1,7 +1,7 @@
 'use client'
 
-import { PizzaImage } from '@/components/shared'
-import { Ingredients } from '@prisma/client'
+import { PizzaImage, ProductIngredient } from '../../components/shared'
+import { Ingredients, Variation } from '@prisma/client'
 
 type Props = {
 	imageUrl: string
@@ -10,14 +10,16 @@ type Props = {
 	price: number | null
 	className?: string
 	desc: string | null
+	variation?: Variation[]
 }
 
 export const ChoosePizzaForm = ({
 	imageUrl,
 	name,
-	// ingredients,
+	ingredients,
 	price,
 	desc,
+	variation
 }: Props) => {
 	const details = '25 см, традиционное тесто 25, 380 г'
 	const totalPrice = price
@@ -40,13 +42,13 @@ export const ChoosePizzaForm = ({
 
 						<ul className='flex flex-wrap gap-3.5 pb-[60px]'>
 							{/* {ingredients.map((ing, i) => (
-							<ProductIngredient
-								key={i}
-								imageUrl={ing.imageUrl}
-								name={ing.name}
-								price={ing.price}
-							/>
-						))} */}
+								<ProductIngredient
+									key={i}
+									imageUrl={ing.imageUrl}
+									name={ing.name}
+									price={ing.price}
+								/>
+							))} */}
 						</ul>
 						<div>
 							<button className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00]'>

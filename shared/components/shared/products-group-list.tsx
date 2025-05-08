@@ -4,7 +4,7 @@ import React from 'react'
 import { ProductCard, Product } from './product-card'
 import { Title } from './title'
 import { useIntersection } from 'react-use'
-import { useCategory } from '../store'
+import { useCategory } from '../../store'
 
 type Props = {
 	products: Product[]
