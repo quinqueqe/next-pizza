@@ -57,7 +57,7 @@ async function up() {
 		data: chorizeFresh,
 	})
 
-	await prisma.variantion.createMany({
+	await prisma.variation.createMany({
 		data: [
 			...pepperoniFreshVariations(pepperoniFreshPizza.id),
 			...cheesePizzaVariations(cheesePizza.id),
@@ -98,7 +98,7 @@ async function down() {
 	await prisma.cartItem.deleteMany() // вместо raw-запроса
 	await prisma.ingredients.deleteMany() // вместо raw-запроса
 	await prisma.product.deleteMany() // вместо raw-запроса
-	await prisma.variantion.deleteMany() // вместо raw-запроса
+	await prisma.variation.deleteMany() // вместо raw-запроса
 	await prisma.category.deleteMany() // вместо raw-запроса
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	Container,
 	ProductFilter,
-	ProductImage,
+	PizzaImage,
 	ProductIngredient,
 } from '@/components/shared'
 import { notFound } from 'next/navigation'
@@ -14,7 +14,6 @@ type Props = {
 		id: string
 	}
 }
-
 
 const ProductId = async ({ params }: Props) => {
 	const product = await prisma?.product.findUnique({
@@ -28,7 +27,8 @@ const ProductId = async ({ params }: Props) => {
 		return notFound()
 	}
 	// const activeIngredient = 0
-
+	const details = '25 см, традиционное тесто 25, 380 г'
+	const totalPrice = product.price
 	return (
 		<Container className='flex flex-col pt-10'>
 			<div className='pb-10 flex gap-1.5'>
@@ -44,16 +44,17 @@ const ProductId = async ({ params }: Props) => {
 			</div>
 			<div className='flex gap-10 items-center'>
 				<div>
-					<ProductImage imageUrl={product.imageUrl} />
+					<PizzaImage imageUrl={product.imageUrl} />
 				</div>
 				<div>
 					<h4 className='font-extrabold text-[#373737] text-4xl pb-3.5'>
 						{product.name}
 					</h4>
+					<p className='text-[#373737] opacity-60 pb-6'>{details}</p>
 					<ProductFilter disabledType={1} />
 					<div>
 						<h5 className='text-[#000] text-[18px] font-semibold pb-4'>
-							Ингредиенты
+							Добавить по вкусу
 						</h5>
 
 						<ul className='flex flex-wrap gap-3.5 pb-[60px]'>
@@ -68,7 +69,7 @@ const ProductId = async ({ params }: Props) => {
 						</ul>
 						<div>
 							<button className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00]'>
-								Добавить в корзину за {product.price}₽
+								В корзину за {totalPrice}₽
 							</button>
 						</div>
 					</div>

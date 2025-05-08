@@ -15,16 +15,18 @@ const Modal = async ({ params: { id } }: Props) => {
 		},
 		include: {
 			ingredients: true, // включил в product все его ингредиенты
-			variantions: true, // включил в product все его вариации
+			variations: true, // включил в product все его вариации
 		},
 	})
 
 	if (!product) {
+		// если не найдется продукт, то будет редирект на страницу notFound
 		return notFound()
 	}
+	console.log(product.ingredients)
 	return (
 		<div>
-			<ChooseProductModal product={product}/>
+			<ChooseProductModal product={product} />
 		</div>
 	)
 }

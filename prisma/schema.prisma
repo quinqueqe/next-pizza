@@ -60,14 +60,14 @@ model Product {
   category    Category      @relation(fields: [categoryId], references: [id]) // добавили 1 категорию для разных продуктов
   categoryId  Int
   ingredients Ingredients[] // добавили разные ингредиенты для 1 продукта
-  variantions Variantion[] // добавили разные варианты для 1 продукта
+  variations Variation[] // добавили разные варианты для 1 продукта
 
   // # даты создания, изменения
   createdAt DateTime @default(now()) // дата создания
   updatedAt DateTime @updatedAt // дата изменения
 }
 
-model Variantion {
+model Variation {
   id        Int  @id @default(autoincrement()) // уникальный id
   price     Int
   size      Int? // теперь это свойство не обязательно и его можно пропустить
@@ -121,7 +121,7 @@ model CartItem {
   quantity Int
 
   // # связи
-  productItem   Variantion    @relation(fields: [productItemId], references: [id])
+  productItem   Variation    @relation(fields: [productItemId], references: [id])
   productItemId Int
   cart          Cart          @relation(fields: [cartId], references: [id])
   cartId        Int

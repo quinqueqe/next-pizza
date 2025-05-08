@@ -22,10 +22,6 @@ export const ProductFilter = ({
 	const [activeType, setActiveType] = React.useState(0)
 	return (
 		<div className={className}>
-			<p className='text-[#373737] opacity-60 pb-6'>
-				{sizes[activeSize]} см, {types[activeType]} тесто {sizes[activeSize]},
-				380 г
-			</p>
 			<div className='rounded-[30px] bg-[#ececec] pb-5 w-100% max-w-[438px] h-[42px] flex mb-5'>
 				{sizes.map((size, i) => (
 					<div key={i} className='p-1'>
