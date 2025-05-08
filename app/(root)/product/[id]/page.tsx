@@ -16,9 +16,9 @@ type Props = {
 }
 
 
-const ProductId = async ({ params: { id } }: Props) => {
+const ProductId = async ({ params }: Props) => {
 	const product = await prisma?.product.findUnique({
-		where: { id: Number(id) },
+		where: { id: Number(params.id) },
 	}) // поиск продукта по айди
 
 	const ingredients = await prisma.ingredients.findMany({ take: 4 })
