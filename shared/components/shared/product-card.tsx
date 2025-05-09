@@ -21,9 +21,7 @@ export const ProductCard = ({ id, imageUrl, name, desc, price }: Product) => {
 				</div>
 			</Link>
 			<h4 className='pt-[15px] pb-2 text-[20px] font-bold '>{name}</h4>
-			<p className='pb-4 text-[14px] text-[#b1b1b1] '>
-					{desc}
-				</p>
+			<p className='pb-4 text-[14px] text-[#b1b1b1] '>{desc}</p>
 			<div className='flex justify-between items-center'>
 				<p className='text-[20px]'>
 					от <span className='text-[20px] font-bold'>{price} ₽</span>

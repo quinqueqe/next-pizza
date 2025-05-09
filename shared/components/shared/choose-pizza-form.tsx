@@ -1,7 +1,14 @@
 'use client'
 
-import { PizzaImage, ProductIngredient } from '../../components/shared'
+import React from 'react'
+import {
+	PizzaImage,
+	ProductFilter,
+	ProductIngredient,
+} from '../../components/shared'
 import { Ingredients, Variation } from '@prisma/client'
+import { useSet } from 'react-use'
+import { sizes, types } from '@/shared/constants/pizza'
 
 type Props = {
 	imageUrl: string
@@ -9,7 +16,7 @@ type Props = {
 	ingredients: Ingredients[]
 	price: number | null
 	className?: string
-	desc: string | null
+	desc?: string | null
 	variation?: Variation[]
 }
 
@@ -18,37 +25,58 @@ export const ChoosePizzaForm = ({
 	name,
 	ingredients,
 	price,
-	desc,
-	variation
-}: Props) => {
-	const details = '25 см, традиционное тесто 25, 380 г'
+}: // desc,
+// variation,
+Props) => {
 	const totalPrice = price
+	const [activeSize, setActiveSize] = React.useState(1)
+	const [activeType, setActiveType] = React.useState(0)
+	const [selectedIds, { add, remove }] = useSet(new Set<number>())
+	const details = `${sizes[activeSize].size} см, ${types[activeType]} тесто ${sizes[activeSize].size}` // , 380 г
 	return (
-		<div className=''>
+		<div>
 			<div className='flex justify-between items-center'>
-				<div className='pl-20 flex items-center justify-center'>
-					<PizzaImage imageUrl={imageUrl} />
+				<div>
+					<PizzaImage
+						className='w-[550px] h-[500px] flex justify-center items-center'
+						imageUrl={imageUrl}
+						size={Number(sizes[activeSize].size)}
+					/>
 				</div>
 				<div className='bg-[#F4F1EE] w-[490px] h-[610px] p-10 flex flex-col justify-center'>
 					<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
 						{name}
 					</h4>
 					<p className='text-[#373737] opacity-60 pb-3'>{details}</p>
-					<p className='pb-6'>{desc}</p>
+					<ProductFilter
+						active={{ activeSize, activeType }}
+						onClick={{ setActiveSize, setActiveType }}
+						sizes={sizes}
+						types={types}
+					/>
+					{/* <p className='pb-6'>{desc}</p> */}
 					<div>
-						<h5 className='text-[#000] text-[18px] font-semibold pb-4'>
+						<h5 className='text-[#000] text-[18px] font-semibold pb-2'>
 							Добавить по вкусу
 						</h5>
 
-						<ul className='flex flex-wrap gap-3.5 pb-[60px]'>
-							{/* {ingredients.map((ing, i) => (
+						<ul className='grid grid-cols-3 gap-2 h-[220px] overflow-auto scroll-auto  mb-[20px]'>
+							{ingredients.map((ing, i) => (
 								<ProductIngredient
 									key={i}
 									imageUrl={ing.imageUrl}
 									name={ing.name}
 									price={ing.price}
+									active={selectedIds.has(ing.id)}
+									onClick={() => {
+										if (selectedIds.has(ing.id)) {
+											remove(ing.id)
+										} else {
+											add(ing.id)
+										}
+									}} // Используем add, remove вместо toggle
 								/>
-							))} */}
+							))}
 						</ul>
 						<div>
 							<button className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00]'>

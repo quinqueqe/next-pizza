@@ -23,7 +23,7 @@ const Modal = async ({ params: { id } }: Props) => {
 		// если не найдется продукт, то будет редирект на страницу notFound
 		return notFound()
 	}
-	console.log(product.ingredients)
+
 	return (
 		<div>
 			<ChooseProductModal product={product} />

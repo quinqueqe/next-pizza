@@ -49,6 +49,7 @@ function DialogOverlay({
 function DialogContent({
   className,
   children,
+  
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content>) {
   return (

@@ -14,8 +14,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<Header />
 			<main className='min-h-screen'>
+			<Header />
 				{modal}
 				{children}
 			</main>

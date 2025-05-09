@@ -10,6 +10,8 @@ type Props = {
 	imageUrl: string
 	name: string
 	price: number
+	active?: boolean
+	onClick?: () => void
 }
 
 export const ProductIngredient = ({
@@ -18,14 +20,18 @@ export const ProductIngredient = ({
 	imageUrl,
 	name,
 	price,
+	active,
+	onClick,
 }: Props) => {
 	return (
 		<li
 			key={key}
 			className={cn(
-				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer border-[#fe5f00]',
+				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer',
+				active && 'border-primary',
 				className
 			)}
+			onClick={onClick}
 		>
 			<div>
 				<Image
