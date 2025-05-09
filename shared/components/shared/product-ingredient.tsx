@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '../../lib/utils'
+import { CircleCheck } from 'lucide-react'
 
 type Props = {
 	className?: string
@@ -27,12 +28,15 @@ export const ProductIngredient = ({
 		<li
 			key={key}
 			className={cn(
-				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer',
+				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer relative',
 				active && 'border-primary',
 				className
 			)}
 			onClick={onClick}
 		>
+			{active && (
+				<CircleCheck className="absolute top-2 right-2 text-primary" />
+			)}
 			<div>
 				<Image
 					src={imageUrl}

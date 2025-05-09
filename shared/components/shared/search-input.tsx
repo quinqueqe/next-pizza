@@ -49,7 +49,7 @@ export const SearchInput = () => {
 					</div>
 					<input
 						type='text'
-						placeholder='Поиск пиццы...'
+						placeholder='Поиск...'
 						className='placeholder:text-[#c0c0c0] pl-3 w-[764px] max-w-[764px]'
 						onFocus={() => setFocus(true)}
 						value={searchQ}

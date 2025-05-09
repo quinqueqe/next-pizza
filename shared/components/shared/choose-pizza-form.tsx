@@ -34,6 +34,8 @@ export const ChoosePizzaForm = ({
 	)
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const details = `${sizes[activeSize].size} см, ${types[activeType]} тесто ${sizes[activeSize].size}` // , 380 г
+
+
 	const pizzaPrice =
 		variations?.find(
 			item =>
@@ -44,6 +46,10 @@ export const ChoosePizzaForm = ({
 		.filter(ing => selectedIds.has(ing.id))
 		.reduce((acc, ing) => acc + ing.price, 0)
 	const totalPrice = pizzaPrice + ingredientsPrice
+
+	// const handleClickAdd = () => {
+		
+	// }
 	return (
 		<div>
 			<div className='flex justify-between items-center'>

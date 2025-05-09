@@ -1,11 +1,23 @@
 import { hashSync } from 'bcrypt'
 import {
+	// pizzas
 	categories,
 	ingredients,
 	products,
 	pepperoniFresh,
 	cheese,
 	chorizeFresh,
+	hamAndMushrooms,
+	doubleChicken,
+	hamAndCheese,
+	shrimpWithSweetChili,
+	beefStroganoff,
+	barbecueSausages,
+	carbonara,
+	burgerPizza,
+	barbecueChicken,
+
+	// variants
 	pepperoniFreshVariations,
 	cheesePizzaVariations,
 	chorizeFreshVariations,
@@ -57,11 +69,51 @@ async function up() {
 		data: chorizeFresh,
 	})
 
+	const hamAndMushroomsPizza = await prisma.product.create({
+		data: hamAndMushrooms,
+	})
+
+	const doubleChickenPizza = await prisma.product.create({
+		data: doubleChicken,
+	})
+	const hamAndCheesePizza = await prisma.product.create({
+		data: hamAndCheese,
+	})
+	const shrimpWithSweetChiliPizza = await prisma.product.create({
+		data: shrimpWithSweetChili,
+	})
+	const beefStroganoffPizza = await prisma.product.create({
+		data: beefStroganoff,
+	})
+	const barbecueSausagesPizza = await prisma.product.create({
+		data: barbecueSausages,
+	})
+	const carbonaraPizza = await prisma.product.create({
+		data: carbonara,
+	})
+	const burgerPizzaPizza = await prisma.product.create({
+		data: burgerPizza,
+	})
+	const barbecueChickenPizza = await prisma.product.create({
+		data: barbecueChicken,
+	})
+
 	await prisma.variation.createMany({
 		data: [
 			...pepperoniFreshVariations(pepperoniFreshPizza.id),
 			...cheesePizzaVariations(cheesePizza.id),
 			...chorizeFreshVariations(chorizeFreshPizza.id),
+
+			// set variants after
+			...chorizeFreshVariations(hamAndMushroomsPizza.id),
+			...chorizeFreshVariations(doubleChickenPizza.id),
+			...chorizeFreshVariations(hamAndCheesePizza.id),
+			...chorizeFreshVariations(shrimpWithSweetChiliPizza.id),
+			...chorizeFreshVariations(beefStroganoffPizza.id),
+			...chorizeFreshVariations(barbecueSausagesPizza.id),
+			...chorizeFreshVariations(carbonaraPizza.id),
+			...chorizeFreshVariations(burgerPizzaPizza.id),
+			...chorizeFreshVariations(barbecueChickenPizza.id),
 		],
 	})
 
