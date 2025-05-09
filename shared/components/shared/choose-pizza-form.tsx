@@ -16,10 +16,10 @@ type Props = {
 	imageUrl: string
 	name: string
 	ingredients: Ingredients[]
-	price: number | null
+	price: number 
 	className?: string
 	desc?: string | null
-	variation?: Variation[]
+	variations?: Variation[]
 }
 
 export const ChoosePizzaForm = ({
@@ -27,15 +27,23 @@ export const ChoosePizzaForm = ({
 	name,
 	ingredients,
 	price,
-}: // desc,
-// variation,
-Props) => {
-	const totalPrice = price
+	variations,
+}: Props) => {
 	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(
 		state => state
 	)
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const details = `${sizes[activeSize].size} см, ${types[activeType]} тесто ${sizes[activeSize].size}` // , 380 г
+	const pizzaPrice =
+		variations?.find(
+			item =>
+				item.pizzaType === activeType + 1 &&
+				item.size === sizes[activeSize].size
+		)?.price ?? price
+	const ingredientsPrice = ingredients
+		.filter(ing => selectedIds.has(ing.id))
+		.reduce((acc, ing) => acc + ing.price, 0)
+	const totalPrice = pizzaPrice + ingredientsPrice
 	return (
 		<div>
 			<div className='flex justify-between items-center'>
@@ -43,7 +51,7 @@ Props) => {
 					<PizzaImage
 						className='w-[550px] h-[500px] flex justify-center items-center'
 						imageUrl={imageUrl}
-						size={Number(sizes[activeSize].size)}
+						size={sizes[activeSize].size}
 					/>
 				</div>
 				<div className='bg-[#F4F1EE] w-[500px] h-[610px] p-10 flex flex-col justify-center'>
@@ -56,6 +64,7 @@ Props) => {
 						onClick={{ setActiveSize, setActiveType }}
 						sizes={sizes}
 						types={types}
+						// disabledType={1}
 					/>
 					{/* <p className='pb-6'>{desc}</p> */}
 					<div>

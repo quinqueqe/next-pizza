@@ -7,7 +7,7 @@ type Props = {
 	imageUrl: string
 	name: string
 	ingredients: Ingredients[]
-	price: number | null
+	price: number 
 	className?: string
 	desc: string | null
 }

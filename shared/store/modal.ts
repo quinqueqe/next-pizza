@@ -8,7 +8,7 @@ interface ModalType {
 }
 
 export const useModal = create<ModalType>()(set => ({
-	activeSize: 1,
+	activeSize: 0,
 	activeType: 0,
 	setActiveSize: value => set({ activeSize: value }),
 	setActiveType: value => set({ activeType: value }),

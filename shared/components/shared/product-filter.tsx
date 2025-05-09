@@ -16,7 +16,7 @@ type Props = {
 		setActiveType: (i: number) => void
 	}
 	sizes: {
-		size: string
+		size: number
 		value: string
 	}[]
 	types: string[]

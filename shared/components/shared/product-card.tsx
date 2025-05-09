@@ -8,7 +8,7 @@ export type Product = {
 	imageUrl: string
 	name: string
 	desc: string | null
-	price: number | null
+	price: number 
 }
 
 export const ProductCard = ({ id, imageUrl, name, desc, price }: Product) => {

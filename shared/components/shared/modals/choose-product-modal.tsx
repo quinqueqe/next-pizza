@@ -31,15 +31,16 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={product.ingredients}
-							price={product.price}
+							price={product.price as number}
 							desc={product.desc}
+							variations={product.variations}
 						/>
 					) : (
 						<ChooseProductForm
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={[]}
-							price={product.price}
+							price={product.price as number}
 							desc={product.desc}
 						/>
 					)}
