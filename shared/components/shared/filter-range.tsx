@@ -5,10 +5,6 @@ import { Input } from '../ui'
 import { RangeSlider } from './range-slider'
 import { useFilter } from '../../store'
 
-// type PriceProps = {
-// 	priceFrom: number
-// 	priceTo: number
-// }
 
 export const FilterRange = () => {
 	const { priceFrom, setPriceFrom, priceTo, setPriceTo } = useFilter(

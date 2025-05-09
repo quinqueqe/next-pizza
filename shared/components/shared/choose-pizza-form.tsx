@@ -9,6 +9,7 @@ import {
 import { Ingredients, Variation } from '@prisma/client'
 import { useSet } from 'react-use'
 import { sizes, types } from '@/shared/constants/pizza'
+import { useModal } from '@/shared/store'
 
 type Props = {
 	imageUrl: string
@@ -29,8 +30,7 @@ export const ChoosePizzaForm = ({
 // variation,
 Props) => {
 	const totalPrice = price
-	const [activeSize, setActiveSize] = React.useState(1)
-	const [activeType, setActiveType] = React.useState(0)
+	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(state => state)
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const details = `${sizes[activeSize].size} см, ${types[activeType]} тесто ${sizes[activeSize].size}` // , 380 г
 	return (

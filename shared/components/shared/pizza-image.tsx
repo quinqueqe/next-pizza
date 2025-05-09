@@ -4,7 +4,7 @@ import { cn } from '../../lib/utils'
 
 type Props = {
 	className?: string
-	size?: number
+	size: number
 	imageUrl: string
 }
 

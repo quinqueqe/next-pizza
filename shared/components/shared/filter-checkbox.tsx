@@ -5,8 +5,8 @@ import { Checkbox } from '../../components/ui'
 type Props = {
 	name: string
 	value: string
-	onClickCheckbox?: (checked: string) => void
-	checked?: boolean
+	onClickCheckbox: (checked: string) => void
+	checked: boolean
 }
 
 export function FilterCheckbox({
