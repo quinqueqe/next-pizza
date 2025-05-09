@@ -10,6 +10,7 @@ import { Ingredients, Variation } from '@prisma/client'
 import { useSet } from 'react-use'
 import { sizes, types } from '@/shared/constants/pizza'
 import { useModal } from '@/shared/store'
+import { Button } from '../ui'
 
 type Props = {
 	imageUrl: string
@@ -30,7 +31,9 @@ export const ChoosePizzaForm = ({
 // variation,
 Props) => {
 	const totalPrice = price
-	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(state => state)
+	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(
+		state => state
+	)
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const details = `${sizes[activeSize].size} см, ${types[activeType]} тесто ${sizes[activeSize].size}` // , 380 г
 	return (
@@ -43,7 +46,7 @@ Props) => {
 						size={Number(sizes[activeSize].size)}
 					/>
 				</div>
-				<div className='bg-[#F4F1EE] w-[490px] h-[610px] p-10 flex flex-col justify-center'>
+				<div className='bg-[#F4F1EE] w-[500px] h-[610px] p-10 flex flex-col justify-center'>
 					<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
 						{name}
 					</h4>
@@ -79,9 +82,12 @@ Props) => {
 							))}
 						</ul>
 						<div>
-							<button className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00]'>
+							<Button
+								variant={'outline'}
+								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
+							>
 								В корзину за {totalPrice}₽
-							</button>
+							</Button>
 						</div>
 					</div>
 				</div>
