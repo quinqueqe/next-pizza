@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '../../../lib/utils'
+import { cn } from '../../../lib'
 import { Dialog, DialogContent } from '../../ui'
 import { useRouter } from 'next/navigation'
 import { ChoosePizzaForm, ChooseProductForm } from '../'

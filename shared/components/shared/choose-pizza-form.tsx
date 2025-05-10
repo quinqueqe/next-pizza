@@ -7,10 +7,8 @@ import {
 	ProductIngredient,
 } from '../../components/shared'
 import { Ingredients, Variation } from '@prisma/client'
-import { useSet } from 'react-use'
-import { sizes, types } from '@/shared/constants/pizza'
-import { useModal } from '@/shared/store'
 import { Button } from '../ui'
+import { usePizzaOptions } from '@/shared/hooks'
 
 type Props = {
 	imageUrl: string
@@ -29,37 +27,20 @@ export const ChoosePizzaForm = ({
 	// price,
 	variations,
 }: Props) => {
-	// states------------------------------------------------------------------
-	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(
-		state => state
-	)
-	const [selectedIds, { add, remove }] = useSet(new Set<number>())
-	//--------------------------------------------------------------------------
-
-	// consts-------------------------------------------------------------------
-	const size = sizes[activeSize].value
-	const detailsType = types[activeType - 1].name
-	const details = `${size} см, ${detailsType} тесто ${size}` // , 380 г
-	// -------------------------------------------------------------------------
-
-	// фильтр смены цены при ререндере size or type------------------------
-	const pizzaPrice = variations?.find(
-		item => item.pizzaType === activeType && item.size === size
-	)!.price
-	const ingredientsPrice = ingredients
-		.filter(ing => selectedIds.has(ing.id))
-		.reduce((acc, ing) => acc + ing.price, 0)
-
-	const totalPrice = pizzaPrice! + ingredientsPrice
-
-	// Фильтр вариаций на каждый тип----------------------------
-	const pizzaVariations = variations?.filter(
-		item => item.pizzaType === types[activeType - 1].value
-	)
-
-	console.log(activeType)
-	console.log(pizzaVariations)
-	//-----------------------------------------------------------
+	const {
+		activeSize,
+		activeType,
+		setActiveSize,
+		setActiveType,
+		selectedIds,
+		add,
+		remove,
+		size,
+		details,
+		totalPrice,
+		sizes,
+		types,
+	} = usePizzaOptions(variations!, ingredients)
 
 	const handleClickAdd = () => {
 		console.log(types[activeType].value)

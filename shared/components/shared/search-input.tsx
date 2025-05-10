@@ -3,7 +3,7 @@
 import React from 'react'
 import { Search } from 'lucide-react'
 import { useClickAway, useDebounce } from 'react-use'
-import { cn } from '../../lib/utils'
+import { cn } from '../../lib'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Api } from '../../services/api-client'
