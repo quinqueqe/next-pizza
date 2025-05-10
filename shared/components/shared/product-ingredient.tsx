@@ -7,7 +7,6 @@ import { CircleCheck } from 'lucide-react'
 
 type Props = {
 	className?: string
-	key: number
 	imageUrl: string
 	name: string
 	price: number
@@ -17,7 +16,6 @@ type Props = {
 
 export const ProductIngredient = ({
 	className,
-	key,
 	imageUrl,
 	name,
 	price,
@@ -26,7 +24,6 @@ export const ProductIngredient = ({
 }: Props) => {
 	return (
 		<li
-			key={key}
 			className={cn(
 				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer relative',
 				active && 'border-primary',

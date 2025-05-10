@@ -1,57 +1,115 @@
 'use client'
 
-import { Ingredients } from '@prisma/client'
-import Image from 'next/image'
+import React from 'react'
+import {
+	PizzaImage,
+	ProductFilter,
+	ProductIngredient,
+} from '../../components/shared'
+import { Ingredients, Variation } from '@prisma/client'
+import { useSet } from 'react-use'
+import { sizes, types } from '@/shared/constants/pizza'
+import { useModal } from '@/shared/store'
+import { Button } from '../ui'
 
 type Props = {
 	imageUrl: string
 	name: string
 	ingredients: Ingredients[]
-	price: number 
+	price: number
 	className?: string
-	desc: string | null
+	desc?: string | null
+	variations?: Variation[]
 }
 
 export const ChooseProductForm = ({
 	imageUrl,
 	name,
-	// ingredients,
+	ingredients,
 	price,
-	desc,
+	variations,
 }: Props) => {
-	const details = '0.4 л, 330 г'
-	const totalPrice = price
-	return (
-		<div className=''>
-			<div className='flex justify-between items-center'>
-				<div className='pl-20 flex items-center justify-center'>
-					<Image src={imageUrl} alt='img' width={400} height={400} />
-				</div>
-				<div className='bg-[#F4F1EE] w-[490px] h-[610px] p-10 flex flex-col justify-center'>
-					<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
-						{name}
-					</h4>
-					<p className='text-[#373737] opacity-60 pb-3'>{details}</p>
-					<p className='pb-6'>{desc}</p>
-					<div>
-						<h5 className='text-[#000] text-[18px] font-semibold pb-4'>
-							Добавить по вкусу
-						</h5>
+	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(
+		state => state
+	)
+	const [selectedIds, { add, remove }] = useSet(new Set<number>())
+	const details = `0.4 л, 380 г` // , 380 г
 
-						<ul className='flex flex-wrap gap-3.5 pb-[60px]'>
-							{/* {ingredients.map((ing, i) => (
-							<ProductIngredient
-								key={i}
-								imageUrl={ing.imageUrl}
-								name={ing.name}
-								price={ing.price}
-							/>
-						))} */}
-						</ul>
+	const pizzaPrice =
+		variations?.find(
+			item =>
+				item.pizzaType === activeType + 1 &&
+				item.size === sizes[activeSize].size
+		)?.price ?? price
+	const ingredientsPrice = ingredients
+		.filter(ing => selectedIds.has(ing.id))
+		.reduce((acc, ing) => acc + ing.price, 0)
+	const totalPrice = pizzaPrice + ingredientsPrice
+
+	// const handleClickAdd = () => {
+
+	// }
+	return (
+		<div>
+			<div className='flex justify-between items-center'>
+				<div>
+					<PizzaImage
+						className='w-[550px] h-[500px] flex justify-center items-center'
+						imageUrl={imageUrl}
+						size={sizes[activeSize].size}
+					/>
+				</div>
+				<div className='bg-[#F4F1EE] w-[500px] h-[610px] p-10 flex flex-col justify-between'>
+					<div>
+						<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
+							{name}
+						</h4>
+						<p className='text-[#373737] opacity-60 pb-3'>{details}</p>
+						<ProductFilter
+						classNameTypes='hidden'
+							active={{ activeSize, activeType }}
+							onClick={{ setActiveSize, setActiveType }}
+							sizes={sizes}
+							types={types}
+							// disabledType={1}
+						/>
+					</div>
+					{/* <p className='pb-6'>{desc}</p> */}
+					<div>
+						{ingredients.length > 0 && (
+							<>
+								<h5 className='text-[#000] text-[18px] font-semibold pb-2'>
+									Добавить по вкусу
+								</h5>
+
+								<ul className='grid grid-cols-3 gap-2 h-[220px] overflow-auto scroll-auto  mb-[20px]'>
+									{ingredients.map((ing, i) => (
+										<div key={i}>
+											<ProductIngredient
+												imageUrl={ing.imageUrl}
+												name={ing.name}
+												price={ing.price}
+												active={selectedIds.has(ing.id)}
+												onClick={() => {
+													if (selectedIds.has(ing.id)) {
+														remove(ing.id)
+													} else {
+														add(ing.id)
+													}
+												}} // Используем add, remove вместо toggle
+											/>
+										</div>
+									))}
+								</ul>
+							</>
+						)}
 						<div>
-							<button className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00]'>
+							<Button
+								variant={'outline'}
+								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
+							>
 								В корзину за {totalPrice}₽
-							</button>
+							</Button>
 						</div>
 					</div>
 				</div>

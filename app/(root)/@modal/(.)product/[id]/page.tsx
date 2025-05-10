@@ -8,10 +8,10 @@ type Props = {
 	}
 }
 
-const Modal = async ({ params: { id } }: Props) => {
+export default async function Modal({ params }: Props) {
 	const product = await prisma?.product.findFirst({
 		where: {
-			id: Number(id),
+			id: Number(params.id),
 		},
 		include: {
 			ingredients: true, // включил в product все его ингредиенты
@@ -30,5 +30,3 @@ const Modal = async ({ params: { id } }: Props) => {
 		</div>
 	)
 }
-
-export default Modal

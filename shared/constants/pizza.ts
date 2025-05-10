@@ -1,15 +1,24 @@
 export const sizes = [
 	{
-		size: 25,
-		value: 'Маленькая',
+		value: 25,
+		name: 'Маленькая',
 	},
 	{
-		size: 30,
-		value: 'Средняя',
+		value: 30,
+		name: 'Средняя',
 	},
 	{
-		size: 35,
-		value: 'Большая',
+		value: 35,
+		name: 'Большая',
 	},
 ]
-export const types = ['Традиционное', 'Тонкое']
+export const types = [
+	{
+		value: 1,
+		name: 'Традиционное',
+	},
+	{
+		value: 2,
+		name: 'Тонкое',
+	},
+]
