@@ -26,7 +26,7 @@ export const ChoosePizzaForm = ({
 	imageUrl,
 	name,
 	ingredients,
-	price,
+	// price,
 	variations,
 }: Props) => {
 	// states------------------------------------------------------------------
@@ -43,21 +43,21 @@ export const ChoosePizzaForm = ({
 	// -------------------------------------------------------------------------
 
 	// фильтр смены цены при ререндере size or type------------------------
-	const pizzaPrice =
-		variations?.find(
-			item => item.pizzaType === activeType + 1 && item.size === size
-		)?.price ?? price
+	const pizzaPrice = variations?.find(
+		item => item.pizzaType === activeType && item.size === size
+	)!.price
 	const ingredientsPrice = ingredients
 		.filter(ing => selectedIds.has(ing.id))
 		.reduce((acc, ing) => acc + ing.price, 0)
 
-	const totalPrice = pizzaPrice + ingredientsPrice
+	const totalPrice = pizzaPrice! + ingredientsPrice
 
 	// Фильтр вариаций на каждый тип----------------------------
 	const pizzaVariations = variations?.filter(
 		item => item.pizzaType === types[activeType - 1].value
 	)
 
+	console.log(activeType)
 	console.log(pizzaVariations)
 	//-----------------------------------------------------------
 
