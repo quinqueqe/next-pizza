@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import { usePizzaOptions } from '@/shared/hooks'
+import { Ingredients, Variation } from '@prisma/client'
 import {
 	PizzaImage,
 	PizzaSelector,
 	ProductIngredient,
 } from '../../components/shared'
-import { Ingredients, Variation } from '@prisma/client'
 import { Button } from '../ui'
-import { usePizzaOptions } from '@/shared/hooks'
+import { getPizzaDetails } from '@/shared/lib'
 
 type Props = {
 	imageUrl: string
@@ -36,11 +36,18 @@ export const ChoosePizzaForm = ({
 		add,
 		remove,
 		size,
-		details,
-		totalPrice,
 		sizes,
 		types,
-	} = usePizzaOptions(variations!, ingredients)
+	} = usePizzaOptions(variations!)
+
+	const { details, totalPrice } = getPizzaDetails(
+		variations!,
+		ingredients,
+		selectedIds,
+		types,
+		activeType,
+		size
+	)
 
 	const handleClickAdd = () => {
 		console.log(types[activeType].value)
