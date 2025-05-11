@@ -4,10 +4,8 @@ import {
 	// Filter,
 	Title,
 	TopBar,
-	CartDrawer
 } from '@/shared/components/shared'
 import prisma from '@/prisma/prisma'
-
 
 const Home = async () => {
 	const categories = await prisma?.category.findMany({
@@ -31,7 +29,7 @@ const Home = async () => {
 					/>
 				</Container>
 			</div>
-			<TopBar data={categories.filter((cat) => cat.products.length > 0)}/> 
+			<TopBar data={categories.filter(cat => cat.products.length > 0)} />
 
 			<Container>
 				{/* <div className='flex justify-between pt-10'> */}
@@ -52,8 +50,6 @@ const Home = async () => {
 						)}
 					</div>
 				</div>
-
-				<CartDrawer/>
 			</Container>
 		</>
 	)
