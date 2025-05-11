@@ -31,7 +31,7 @@ export const CartDrawer = ({ children }: Props) => {
 						</SheetTitle>
 					</SheetHeader>
 
-					<ul className='flex flex-col gap-[10px]'>
+					<ul className='flex flex-col gap-[10px] overflow-auto'>
 						<CartDrawerItem
 							imageUrl='http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia.dodostatic.net%2Fimage%2Fr%3A233x233%2F11EE7D61304FAF5A98A6958F2BB2D260.webp&w=384&q=75'
 							name='Пепперони фреш'
