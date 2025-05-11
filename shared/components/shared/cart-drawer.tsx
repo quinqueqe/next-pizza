@@ -1,0 +1,83 @@
+import React from 'react'
+
+import {
+	Sheet,
+	SheetContent,
+	SheetFooter,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from '../ui/sheet'
+import { Button } from '../ui'
+import { ChevronRight } from 'lucide-react'
+import { CartItem } from './cart-item'
+
+type Props = {
+	children?: React.ReactNode
+}
+
+export const CartDrawer = ({ children }: Props) => {
+	return (
+		<>
+			<Sheet>
+				<SheetTrigger>{children}</SheetTrigger>
+				<SheetContent className='ml-0 pl-0 mr-0 pr-0 w-[450px]'>
+					<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
+						<SheetTitle className='flex'>
+							<p className='text-[22px] font-normal'>
+								11 товаров на
+								<span className='font-bold text-[22px]'> 2245 ₽ </span>
+							</p>
+						</SheetTitle>
+					</SheetHeader>
+
+					<ul className='flex flex-col gap-[10px]'>
+						<CartItem />
+						<CartItem />
+						<CartItem />
+					</ul>
+
+					<SheetFooter className='ml-0 pl-0 mr-0 pr-0  pb-0 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] bg-white'>
+						<div className='p-[20px]'>
+							<div className='pb-2 relative'>
+								<input
+									type='text'
+									className='border-b-[1px] border-solid border-[#a1a1a1] w-[100%] pb-3 text-[18px] placeholder:text-[#a1a1a1]'
+									placeholder='Введите промокод'
+								/>
+
+								{/* <p className='text-[12px] text-red-700 absolute left-0 top-[45%]'>
+									Промокод не найден. Попробуйте другой
+								</p> */}
+								{/* <button className='absolute right-0 top-0 text-primary text-[14px]'>
+									Применить
+								</button> */}
+							</div>
+							<div className='pb-3 border-b-[1px] border-solid border-[#dad8d8] flex flex-col gap-1'>
+								<div className='flex justify-between items-center '>
+									<p className='font-bold text-[14px]'>11 товаров</p>
+									<p className='font-medium text-[16px]'>2245 ₽</p>
+								</div>
+								<div className='flex justify-between items-center'>
+									<p className='font-bold text-[14px]'>Налог 5%:</p>
+									<p className='font-medium text-[16px]'>112 ₽</p>
+								</div>
+							</div>
+							<div className='flex justify-between items-center py-3'>
+								<p className='font-bold text-[14px]'>Сумма заказа</p>
+								<p className='font-medium text-[16px]'>2400 ₽</p>
+							</div>
+							<Button
+								type='submit'
+								className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
+							>
+								К оформлению заказа
+								<ChevronRight className='absolute right-[10px]' />
+							</Button>
+						</div>
+					</SheetFooter>
+				</SheetContent>
+			</Sheet>
+		</>
+	)
+}

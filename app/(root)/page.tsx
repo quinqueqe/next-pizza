@@ -4,6 +4,7 @@ import {
 	// Filter,
 	Title,
 	TopBar,
+	CartDrawer
 } from '@/shared/components/shared'
 import prisma from '@/prisma/prisma'
 
@@ -51,6 +52,8 @@ const Home = async () => {
 						)}
 					</div>
 				</div>
+
+				<CartDrawer/>
 			</Container>
 		</>
 	)
