@@ -15,6 +15,7 @@ interface CartType {
 	totalAmount: number
 	fetchCartItems: () => void
 	updateItemQuantity: (id: number, quantity: number) => void
+	deleteItemCart: (id:number) => void
 }
 
 export const useCart = create<CartType>()(set => ({
@@ -38,7 +39,19 @@ export const useCart = create<CartType>()(set => ({
 	updateItemQuantity: async (id, quantity) => {
 		try {
 			set({ items: [], status: Status.LOADING })
-			const data = await Api.cart.updateItemQuantity(id, quantity)
+			const data = await Api.cart.updateQuantityItem(id, quantity)
+			set(getCartDetails(data))
+			set({ status: Status.SUCCESS })
+			console.log(data)
+		} catch (error) {
+			set({ items: [], status: Status.ERROR })
+			console.error(error)
+		}
+	},
+	deleteItemCart: async (id) => {
+		try {
+			set({ items: [], status: Status.LOADING })
+			const data = await Api.cart.removeCartItem(id)
 			set(getCartDetails(data))
 			set({ status: Status.SUCCESS })
 			console.log(data)

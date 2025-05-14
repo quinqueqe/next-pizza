@@ -32,7 +32,7 @@ export async function GET(
  * Это PATCH-запрос обновляет количество определенного пункта корзины
  * на основе переданного идентификатора пункта и нового количества.
  * Он также обновляет общую сумму корзины пользователя.
- * 
+ *
  * Шаги:
  * 1. Извлечь идентификатор пункта из параметров запроса и новое
  *    количество из тела запроса.
@@ -81,6 +81,45 @@ export async function PATCH(
 		console.log('[CART_PATCH] Server error', error)
 		return NextResponse.json(
 			{ message: 'Не удалось обновить корзину' },
+			{ status: 500 }
+		)
+	}
+}
+
+export async function DELETE(
+	req: NextRequest,
+	{ params }: { params: { id: string } }
+) {
+	try {
+		const token = req.cookies.get('cartToken')?.value
+
+		if (!token) {
+			return NextResponse.json({ error: 'Cart token not found' })
+		}
+
+		const cartItem = await prisma.cartItem.findFirst({
+			where: {
+				id: Number(params.id),
+			},
+		})
+
+		if (!cartItem) {
+			return NextResponse.json({ error: 'Cart item not found' })
+		}
+
+		await prisma.cartItem.delete({
+			where: {
+				id: Number(params.id),
+			},
+		})
+
+		const updatedUserCart = await updateCartTotalAmount(token)
+
+		return NextResponse.json(updatedUserCart)
+	} catch (error) {
+		console.log('[CART_DELETE] Server error', error)
+		return NextResponse.json(
+			{ message: 'Не удалось удалить корзину' },
 			{ status: 500 }
 		)
 	}

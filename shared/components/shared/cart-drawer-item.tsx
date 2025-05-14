@@ -6,6 +6,7 @@ import {
 	CartItemDetailsInfo,
 	CartItemDetailsPrice,
 } from './cart-item-details'
+import { X } from 'lucide-react'
 
 type Props = {
 	imageUrl: string
@@ -17,6 +18,7 @@ type Props = {
 	quantity: number
 	onClickMinus?: () => void
 	onClickPlus?: () => void
+	onClickDelete?: () => void
 }
 
 export const CartDrawerItem = ({
@@ -29,9 +31,10 @@ export const CartDrawerItem = ({
 	quantity,
 	onClickMinus,
 	onClickPlus,
+	onClickDelete,
 }: Props) => {
 	return (
-		<li className='p-4 flex flex-col gap-4 bg-white'>
+		<li className='p-4 flex flex-col gap-4 bg-white relative'>
 			<div className='flex items-start gap-6 pb-3 border-b-[1px] border-solid border-[#a1a1a1]'>
 				<CartItemDetailsImage imageUrl={imageUrl} />
 				<div className='flex flex-col'>
@@ -51,6 +54,9 @@ export const CartDrawerItem = ({
 					onClickPlus={onClickPlus}
 				/>
 			</div>
+			<button onClick={onClickDelete} className='absolute top-4 right-4'>
+				<X size={18}/>
+			</button>
 		</li>
 	)
 }
