@@ -24,10 +24,11 @@ export const CartDrawer = ({ children }: Props) => {
 	const fetchCartItems = useCart(state => state.fetchCartItems)
 	const items = useCart(state => state.items)
 	const totalAmount = useCart(state => state.totalAmount)
+	const updateItemQuantity = useCart(state => state.updateItemQuantity)
 
 	// налог
 	const totalTax = Math.floor(totalAmount * 0.05)
-	const totalPrice = totalAmount - totalTax
+	const totalPrice = totalAmount + totalTax
 
 	// promo
 	const { inputValue, promo, setInputValue, setPromo } = usePromo(
@@ -40,10 +41,17 @@ export const CartDrawer = ({ children }: Props) => {
 		setPromo('error')
 	}
 
+
+	// count 
+	const onClickCountBtn = (id: number, quantity: number) => {
+		updateItemQuantity(id, quantity)
+	}
+
 	React.useEffect(() => {
 		fetchCartItems()
 		// console.log(items)
 	}, [])
+	
 	return (
 		<>
 			<Sheet>
@@ -69,6 +77,8 @@ export const CartDrawer = ({ children }: Props) => {
 								ingredients={item.ingredients}
 								price={item.price}
 								quantity={item.quantity}
+								onClickMinus={() => onClickCountBtn(item.id, item.quantity - 1)}
+								onClickPlus={() => onClickCountBtn(item.id, item.quantity + 1)}
 							/>
 						))}
 					</ul>

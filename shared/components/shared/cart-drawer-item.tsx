@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import {
 	CartItemDetailsImage,
@@ -25,8 +27,8 @@ export const CartDrawerItem = ({
 	ingredients,
 	price,
 	quantity,
-	// onClickMinus,
-	// onClickPlus,
+	onClickMinus,
+	onClickPlus,
 }: Props) => {
 	return (
 		<li className='p-4 flex flex-col gap-4 bg-white'>
@@ -45,8 +47,8 @@ export const CartDrawerItem = ({
 				<CartItemDetailsPrice
 					price={price}
 					quantity={quantity}
-					// onClickMinus={onClickMinus}
-					// onClickPlus={onClickPlus}
+					onClickMinus={onClickMinus}
+					onClickPlus={onClickPlus}
 				/>
 			</div>
 		</li>
