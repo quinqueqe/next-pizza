@@ -41,6 +41,7 @@ export const CartDrawer = ({ children }: Props) => {
 						</SheetTitle>
 					</SheetHeader>
 
+<<<<<<< HEAD
 					<ul className='flex flex-col gap-[10px]'>
 						{items.map((item) => (<CartDrawerItem key={item.id}
 							imageUrl={item.imageUrl}
@@ -51,6 +52,41 @@ export const CartDrawer = ({ children }: Props) => {
 							price={item.price}
 							quantity={item.quantity}
 						/>))}
+=======
+					<ul className='flex flex-col gap-[10px] overflow-auto'>
+						<CartDrawerItem
+							imageUrl='http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia.dodostatic.net%2Fimage%2Fr%3A233x233%2F11EE7D61304FAF5A98A6958F2BB2D260.webp&w=384&q=75'
+							name='Пепперони фреш'
+							size={30}
+							type='Трационное'
+							ingredients={[
+								{
+									name: 'моцарелла',
+								},
+								{
+									name: 'шампиньоны',
+								},
+							]}
+							price={666}
+							quantity={1}
+						/>
+						<CartDrawerItem
+							imageUrl='http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia.dodostatic.net%2Fimage%2Fr%3A233x233%2F11EE7D610CF7E265B7C72BE5AE757CA7.webp&w=384&q=75'
+							name='Чизбургер-пицца'
+							size={25}
+							type='Тонкое'
+							ingredients={[
+								{
+									name: 'краб',
+								},
+								{
+									name: 'да',
+								},
+							]}
+							price={555}
+							quantity={33}
+						/>
+>>>>>>> ddbe41e855890ee9245eb41715d18640f9c3c0eb
 					</ul>
 
 					<SheetFooter className='ml-0 pl-0 mr-0 pr-0  pb-0 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] bg-white'>
