@@ -4,18 +4,17 @@ import {
 	CartItemDetailsInfo,
 	CartItemDetailsPrice,
 } from './cart-item-details'
-import { Ingredients } from '@prisma/client'
 
 type Props = {
-	imageUrl: string,
+	imageUrl: string
 	name: string
 	size: number
-	type: string
-	ingredients: Ingredients[]
+	type: number
+	ingredients: { name: string; price: number }[]
 	price: number
 	quantity: number
-	onClickMinus: () => void
-	onClickPlus: () => void
+	onClickMinus?: () => void
+	onClickPlus?: () => void
 }
 
 export const CartDrawerItem = ({
@@ -26,8 +25,8 @@ export const CartDrawerItem = ({
 	ingredients,
 	price,
 	quantity,
-	onClickMinus,
-	onClickPlus,
+	// onClickMinus,
+	// onClickPlus,
 }: Props) => {
 	return (
 		<li className='p-4 flex flex-col gap-4 bg-white'>
@@ -46,8 +45,8 @@ export const CartDrawerItem = ({
 				<CartItemDetailsPrice
 					price={price}
 					quantity={quantity}
-					onClickMinus={onClickMinus}
-					onClickPlus={onClickPlus}
+					// onClickMinus={onClickMinus}
+					// onClickPlus={onClickPlus}
 				/>
 			</div>
 		</li>

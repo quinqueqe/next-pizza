@@ -1,23 +1,15 @@
-import prisma from '@/prisma/prisma'
 import { NextRequest, NextResponse } from 'next/server'
+import prisma from '@/prisma/prisma'
 
-export async function GET(req: NextRequest) {
-	const userId = 1
-	// const token = req.cookies.get('cartToken')?.value
+export async function GET(
+	req: NextRequest,
+	{ params }: { params: { id: string } }
+) {
+	const userId = Number(params.id)
 
-	// if (!token) {
-	// 	return NextResponse.json({ totalAmount: 0, items: [] })
-	// }
 	const userCart = await prisma?.cart.findFirst({
 		where: {
-			OR: [
-				{
-					userId,
-				},
-				// {
-				// 	token,
-				// },
-			],
+			userId,
 		},
 		include: {
 			items: {

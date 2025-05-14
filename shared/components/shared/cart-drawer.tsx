@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import { ChevronRight } from 'lucide-react'
@@ -11,17 +13,25 @@ import {
 	SheetTrigger,
 } from '../ui/sheet'
 import { CartDrawerItem } from './cart-drawer-item'
+import { useCart } from '@/shared/store'
 
 type Props = {
 	children?: React.ReactNode
 }
 
 export const CartDrawer = ({ children }: Props) => {
+	const fetchCartItems = useCart(state => state.fetchCartItems)
+	const { items, totalAmount } = useCart(state => state)
+
+	React.useEffect(() => {
+		fetchCartItems()
+		// console.log(items)
+	}, [])
 	return (
 		<>
 			<Sheet>
 				<SheetTrigger>{children}</SheetTrigger>
-				<SheetContent className='ml-0 pl-0 mr-0 pr-0 w-[450px]'>
+				<SheetContent className='ml-0 pl-0 mr-0 pr-0 w-[450px ]'>
 					<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
 						<SheetTitle className='flex'>
 							<p className='text-[22px] font-normal'>
@@ -32,38 +42,15 @@ export const CartDrawer = ({ children }: Props) => {
 					</SheetHeader>
 
 					<ul className='flex flex-col gap-[10px]'>
-						<CartDrawerItem
-							imageUrl='http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia.dodostatic.net%2Fimage%2Fr%3A233x233%2F11EE7D61304FAF5A98A6958F2BB2D260.webp&w=384&q=75'
-							name='Пепперони фреш'
-							size={30}
-							type='Трационное'
-							ingredients={[
-								{
-									name: 'моцарелла',
-								},
-								{
-									name: 'шампиньоны',
-								},
-							]}
-							price={666}
-							quantity={1}
-						/>
-						<CartDrawerItem
-							imageUrl='http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia.dodostatic.net%2Fimage%2Fr%3A233x233%2F11EE7D610CF7E265B7C72BE5AE757CA7.webp&w=384&q=75'
-							name='Чизбургер-пицца'
-							size={25}
-							type='Тонкое'
-							ingredients={[
-								{
-									name: 'краб',
-								},
-								{
-									name: 'да',
-								},
-							]}
-							price={555}
-							quantity={33}
-						/>
+						{items.map((item) => (<CartDrawerItem key={item.id}
+							imageUrl={item.imageUrl}
+							name={item.name}
+							size={item.pizzaSize as number}
+							type={item.pizzaType as number}
+							ingredients={item.ingredients}
+							price={item.price}
+							quantity={item.quantity}
+						/>))}
 					</ul>
 
 					<SheetFooter className='ml-0 pl-0 mr-0 pr-0  pb-0 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] bg-white'>
@@ -94,7 +81,7 @@ export const CartDrawer = ({ children }: Props) => {
 							</div>
 							<div className='flex justify-between items-center py-3'>
 								<p className='font-bold text-[14px]'>Сумма заказа</p>
-								<p className='font-medium text-[16px]'>2400 ₽</p>
+								<p className='font-medium text-[16px]'>{totalAmount} ₽</p>
 							</div>
 							<Button
 								type='submit'

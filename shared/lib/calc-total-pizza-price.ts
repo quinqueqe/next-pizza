@@ -1,16 +1,5 @@
 import { Ingredients, Variation } from '@prisma/client'
 
-/**
- * Вычисляет общую стоимость пиццы на основе выбранных вариаций и ингредиентов.
- * 
- * @param variations - Список доступных вариаций пиццы.
- * @param activeType - Тип пиццы, выбранный пользователем.
- * @param size - Размер пиццы, выбранный пользователем.
- * @param ingredients - Список всех возможных ингредиентов пиццы.
- * @param selectedIds - Множество ID ингредиентов, выбранных пользователем.
- * @returns Общая стоимость пиццы, включая выбранные ингредиенты.
- */
-
 export const calcTotalPizzaPrice = (
 	variations: Variation[],
 	activeType: number,
