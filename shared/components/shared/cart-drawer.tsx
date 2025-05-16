@@ -67,7 +67,7 @@ export const CartDrawer = ({ children }: Props) => {
 						</SheetTitle>
 					</SheetHeader>
 
-					<ul className='flex flex-col gap-[10px]'>
+					<ul className='flex flex-col gap-[10px] overflow-auto'>
 						{items.map(item => (
 							<CartDrawerItem
 								key={item.id}

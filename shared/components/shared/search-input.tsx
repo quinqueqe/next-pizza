@@ -16,6 +16,7 @@ export const SearchInput = () => {
 	const ref = React.useRef<null>(null)
 	useClickAway(ref, () => {
 		setFocus(false)
+		setSearchQ('')
 	})
 	// -------------------------------------
 

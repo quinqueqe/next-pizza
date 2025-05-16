@@ -14,7 +14,8 @@ export const CartItemDetailsInfo = ({
 	type,
 	ingredients,
 }: Props) => {
-	const pizzaType = types[type].name
+	// const pizzaType = types[type].name
+	const pizzaType = 'традиционное'
 	return (
 		<div>
 			<h4 className='pb-1 text-[16px] font-bold'>{name}</h4>

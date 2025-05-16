@@ -50,17 +50,17 @@ model Category {
 }
 
 model Product {
-  id       Int    @id @default(autoincrement()) // уникальный id
+  id       Int     @id @default(autoincrement()) // уникальный id
   name     String
-  price Int
+  price    Int
   imageUrl String
-  desc String?
+  desc     String?
 
   // # связи
   category    Category      @relation(fields: [categoryId], references: [id]) // добавили 1 категорию для разных продуктов
   categoryId  Int
   ingredients Ingredients[] // добавили разные ингредиенты для 1 продукта
-  variations Variation[] // добавили разные варианты для 1 продукта
+  variations  Variation[] // добавили разные варианты для 1 продукта
 
   // # даты создания, изменения
   createdAt DateTime @default(now()) // дата создания
@@ -100,30 +100,30 @@ model Ingredients {
 }
 
 model Cart {
-  id          Int @id @default(autoincrement()) // уникальный id
+  id          Int @id @default(autoincrement())
   totalAmount Int @default(0)
 
   // # функционал для пользователя который не зарегестрирован
   token String
 
   // # связи
-  user   User?      @relation(fields: [userId], references: [id]) // добавили 1  уникальную корзину для каждого пользователя
-  userId Int        @unique
+  user   User?      @relation(fields: [userId], references: [id])
+  userId Int?        @unique  // Убедитесь, что здесь стоит знак вопроса (?)
   items  CartItem[]
 
   // # даты создания, изменения
-  createdAt DateTime @default(now()) // дата создания
-  updatedAt DateTime @updatedAt // дата изменения 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CartItem {
   id       Int @id @default(autoincrement()) // уникальный id
-  quantity Int
+  quantity Int @default(1)
 
   // # связи
-  productItem   Variation    @relation(fields: [productItemId], references: [id])
+  productItem   Variation     @relation(fields: [productItemId], references: [id])
   productItemId Int
-  cart          Cart          @relation(fields: [cartId], references: [id])
+  cart          Cart         @relation(fields: [cartId], references: [id])
   cartId        Int
   ingredients   Ingredients[]
 
