@@ -42,8 +42,7 @@ export const CartDrawer = ({ children }: Props) => {
 		setPromo('error')
 	}
 
-
-	// count 
+	// count
 	const onClickCountBtn = (id: number, quantity: number) => {
 		updateItemQuantity(id, quantity)
 	}
@@ -52,7 +51,7 @@ export const CartDrawer = ({ children }: Props) => {
 		fetchCartItems()
 		// console.log(items)
 	}, [])
-	
+
 	return (
 		<>
 			<Sheet>
@@ -70,6 +69,7 @@ export const CartDrawer = ({ children }: Props) => {
 					<ul className='flex flex-col gap-[10px] overflow-auto'>
 						{items.map(item => (
 							<CartDrawerItem
+								item={item}
 								key={item.id}
 								imageUrl={item.imageUrl}
 								name={item.name}
@@ -106,7 +106,6 @@ export const CartDrawer = ({ children }: Props) => {
 										Промокод был успешно применен
 									</p>
 								)}
-
 
 								{inputValue.length > 0 && (
 									<button

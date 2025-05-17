@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import {
 	CartItemDetailsImage,
@@ -7,8 +5,10 @@ import {
 	CartItemDetailsPrice,
 } from './cart-item-details'
 import { X } from 'lucide-react'
+import { CartStateItem } from '@/shared/lib/get-cart-details'
 
 type Props = {
+	item: CartStateItem
 	imageUrl: string
 	name: string
 	size: number
@@ -22,6 +22,7 @@ type Props = {
 }
 
 export const CartDrawerItem = ({
+	item,
 	imageUrl,
 	name,
 	size,
@@ -39,6 +40,7 @@ export const CartDrawerItem = ({
 				<CartItemDetailsImage imageUrl={imageUrl} />
 				<div className='flex flex-col'>
 					<CartItemDetailsInfo
+						item={item}
 						name={name}
 						size={size}
 						type={type}
@@ -55,7 +57,7 @@ export const CartDrawerItem = ({
 				/>
 			</div>
 			<button onClick={onClickDelete} className='absolute top-4 right-4'>
-				<X size={18}/>
+				<X size={18} />
 			</button>
 		</li>
 	)
