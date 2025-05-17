@@ -22,6 +22,7 @@ import {
 	cheesePizzaVariations,
 	chorizeFreshVariations,
 	generateProduct,
+	promoCodes,
 } from './constants'
 import prisma from './prisma'
 
@@ -152,6 +153,10 @@ async function up() {
 				connect: [{ id: 1 }, { id: 2 }, { id: 3 }], // обрщается уже к сохраненным данным в ingredients и добавляет их сюда по id
 			},
 		},
+	})
+
+	await prisma.promo.createMany({
+		data: promoCodes,
 	})
 }
 async function down() {

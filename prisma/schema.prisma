@@ -61,7 +61,7 @@ model Product {
   categoryId  Int
   ingredients Ingredients[] // добавили разные ингредиенты для 1 продукта
   variations  Variation[] // добавили разные варианты для 1 продукта
-  whProduct Int?
+  whProduct   Int?
 
   // # даты создания, изменения
   createdAt DateTime @default(now()) // дата создания
@@ -169,6 +169,16 @@ model VerifiсationCode {
   createdAt DateTime @default(now()) // дата создания
 
   @@unique([userId, code]) // если userId и code будут не уникальными, VerifivationCode не будет создаваться
+}
+
+model Promo {
+  id       Int    @id @default(autoincrement()) // уникальный id
+  name     String
+  discount Int
+
+  // # даты создания, изменения
+  createdAt DateTime @default(now()) // дата создания
+  updatedAt DateTime @updatedAt // дата изменения 
 }
 
 enum OrderStatus {
