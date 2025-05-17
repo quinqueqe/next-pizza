@@ -17,17 +17,17 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 	const closeModal = () => {
 		router.back()
 	}
-	const isPizzaForm = Boolean(product.variations[0]?.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
+	const firstItem = product.variations[0]
+	const isPizzaForm = Boolean(firstItem.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
 
-	// const firstItem = product.variations[0]
 	const addCartItem = useCart(state => state.addCartItem)
 
-	// const onClickAddProduct = () => {
-	// 	addCartItem({
-	// 		productItemId: firstItem.productId,
-	// 	})
-	// 	closeModal()
-	// }
+	const onClickAddProduct = () => {
+		addCartItem({
+			productItemId: firstItem.id!,
+		})
+		closeModal()
+	}
 	const onClickAddPizza = (productItemId: number, ingredients: number[]) => {
 		addCartItem({
 			productItemId,
@@ -56,6 +56,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 						/>
 					) : (
 						<ChooseProductForm
+							onClickAdd={() => onClickAddProduct()}
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={product.ingredients}

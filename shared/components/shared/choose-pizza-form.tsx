@@ -54,8 +54,8 @@ export const ChoosePizzaForm = ({
 
 	const handleClickAdd = () => {
 		onClickAdd(productItemId, Array.from(selectedIds))
-		console.log(types[activeType].value)
-		console.log({ size, ingredients: selectedIds })
+		// console.log(types[activeType].value)
+		// console.log({ size, ingredients: selectedIds })
 	}
 	return (
 		<div>

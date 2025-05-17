@@ -4,9 +4,9 @@
 
 type generatePizzaType = {
 	productId: number
-	pizzaType: 1 | 2
-	size: 25 | 30 | 35
-	price: number
+	pizzaType?: 1 | 2 | null
+	size?: 25 | 30 | 35 | null
+	price?: number
 }
 
 export const generateProduct = ({
@@ -22,6 +22,7 @@ export const generateProduct = ({
 		size,
 	}
 }
+
 
 export const pepperoniFreshVariations = (productId: number) => [
 	generateProduct({

@@ -21,6 +21,7 @@ import {
 	pepperoniFreshVariations,
 	cheesePizzaVariations,
 	chorizeFreshVariations,
+	generateProduct,
 } from './constants'
 import prisma from './prisma'
 
@@ -114,6 +115,16 @@ async function up() {
 			...chorizeFreshVariations(carbonaraPizza.id),
 			...chorizeFreshVariations(burgerPizzaPizza.id),
 			...chorizeFreshVariations(barbecueChickenPizza.id),
+
+			// set all Products (coffee, .....)
+			...products.map((product, i) =>
+				generateProduct({
+					productId: i + 1,
+					pizzaType: null,
+					size: null,
+					price: product.price,
+				})
+			),
 		],
 	})
 
