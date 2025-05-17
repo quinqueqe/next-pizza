@@ -16,6 +16,7 @@ export const usePizzaOptions = (variations: Variation[]) => {
 	)
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const size = sizes[activeSize].value
+	const productItemId = variations.find((item) => item.pizzaType === activeType && item.size === size)?.id ?? 0
 	filteredPizzasByType(variations!, types, activeType)
 
 	return {
@@ -29,5 +30,6 @@ export const usePizzaOptions = (variations: Variation[]) => {
 		size,
 		sizes,
 		types,
+		productItemId
 	}
 }

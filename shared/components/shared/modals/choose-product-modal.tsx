@@ -5,6 +5,7 @@ import { Dialog, DialogContent } from '../../ui'
 import { useRouter } from 'next/navigation'
 import { ChoosePizzaForm, ChooseProductForm } from '../'
 import { IProduct } from '@/@types/prisma'
+import { useCart } from '@/shared/store'
 
 type Props = {
 	className?: string
@@ -17,6 +18,23 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 		router.back()
 	}
 	const isPizzaForm = Boolean(product.variations[0]?.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
+
+	// const firstItem = product.variations[0]
+	const addCartItem = useCart(state => state.addCartItem)
+
+	// const onClickAddProduct = () => {
+	// 	addCartItem({
+	// 		productItemId: firstItem.productId,
+	// 	})
+	// 	closeModal()
+	// }
+	const onClickAddPizza = (productItemId: number, ingredients: number[]) => {
+		addCartItem({
+			productItemId,
+			ingredients,
+		})
+		closeModal()
+	}
 	return (
 		<>
 			<Dialog open={Boolean(product)} onOpenChange={() => closeModal()}>
@@ -28,6 +46,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 				>
 					{isPizzaForm ? (
 						<ChoosePizzaForm
+							onClickAdd={onClickAddPizza}
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={product.ingredients}

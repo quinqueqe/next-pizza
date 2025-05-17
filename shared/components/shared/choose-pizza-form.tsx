@@ -18,6 +18,7 @@ type Props = {
 	className?: string
 	desc?: string | null
 	variations?: Variation[]
+	onClickAdd: (productItemId: number, ingredients: number[]) => void
 }
 
 export const ChoosePizzaForm = ({
@@ -26,6 +27,7 @@ export const ChoosePizzaForm = ({
 	ingredients,
 	// price,
 	variations,
+	onClickAdd,
 }: Props) => {
 	const {
 		activeSize,
@@ -38,6 +40,7 @@ export const ChoosePizzaForm = ({
 		size,
 		sizes,
 		types,
+		productItemId
 	} = usePizzaOptions(variations!)
 
 	const { details, totalPrice } = getPizzaDetails(
@@ -50,6 +53,7 @@ export const ChoosePizzaForm = ({
 	)
 
 	const handleClickAdd = () => {
+		onClickAdd(productItemId, Array.from(selectedIds))
 		console.log(types[activeType].value)
 		console.log({ size, ingredients: selectedIds })
 	}
