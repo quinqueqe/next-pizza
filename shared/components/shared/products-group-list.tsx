@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react'
-import { ProductCard, Product } from './product-card'
+import { ProductCard } from './product-card'
 import { Title } from './title'
 import { useIntersection } from 'react-use'
 import { useCategory } from '../../store'
+import { Product } from '@prisma/client'
 
 type Props = {
 	products: Product[]
@@ -18,8 +19,7 @@ export const ProductsGroupList = ({
 	title,
 	className,
 	categoryId,
-}: 
-Props) => {
+}: Props) => {
 	const setCategoryId = useCategory(state => state.setAcitveId)
 	const intersectionRef = React.useRef<HTMLDivElement>(null!)
 	const intersection = useIntersection(intersectionRef, {
@@ -28,17 +28,24 @@ Props) => {
 
 	React.useEffect(() => {
 		if (intersection?.isIntersecting) {
-			setCategoryId(categoryId-1)
+			setCategoryId(categoryId - 1)
 		}
 	}, [intersection?.isIntersecting, categoryId, title])
 	return (
 		<div className={className} id={title} ref={intersectionRef}>
 			<Title text={title} size='md' className='font-extrabold pb-8' />
 			<div className='grid grid-cols-4 gap-[50px] pb-10'>
-				{products?.map(
-					(product: Product, i: number) =>
-						<ProductCard {...product} key={i} />
-				)}
+				{products?.map((product: Product, i: number) => (
+					<ProductCard
+						product={product}
+						id={product.id}
+						imageUrl={product.imageUrl}
+						name={product.name}
+						desc={product.desc}
+						price={product.price}
+						key={i}
+					/>
+				))}
 			</div>
 		</div>
 	)

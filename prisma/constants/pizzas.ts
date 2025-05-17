@@ -10,6 +10,7 @@ export const pepperoniFresh = {
 	ingredients: {
 		connect: ingredients.slice(0, 5), // привязка к этому продукту, первых пяти ингредиентов
 	},
+	whProduct: 1,
 }
 
 export const cheese = {
@@ -22,6 +23,7 @@ export const cheese = {
 	ingredients: {
 		connect: ingredients.slice(5, 10), // привязка к этому продукту, 5-10 ингредиентов
 	},
+	whProduct: 1,
 }
 
 export const chorizeFresh = {
@@ -34,6 +36,7 @@ export const chorizeFresh = {
 	ingredients: {
 		connect: ingredients.slice(10, 40), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 
 export const hamAndMushrooms = {
@@ -46,6 +49,7 @@ export const hamAndMushrooms = {
 	ingredients: {
 		connect: ingredients.slice(5, 9), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const doubleChicken = {
 	name: 'Двойной цыпленок 👶',
@@ -57,6 +61,7 @@ export const doubleChicken = {
 	ingredients: {
 		connect: ingredients.slice(7, 12), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const hamAndCheese = {
 	name: 'Ветчина и сыр',
@@ -68,6 +73,7 @@ export const hamAndCheese = {
 	ingredients: {
 		connect: ingredients.slice(7, 12), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const shrimpWithSweetChili = {
 	name: 'Креветки со сладким чили',
@@ -79,6 +85,7 @@ export const shrimpWithSweetChili = {
 	ingredients: {
 		connect: ingredients.slice(9, 14), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const beefStroganoff = {
 	name: 'Бефстроганов',
@@ -90,6 +97,7 @@ export const beefStroganoff = {
 	ingredients: {
 		connect: ingredients.slice(10, 15), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const barbecueSausages = {
 	name: 'Колбаски барбекю',
@@ -101,6 +109,7 @@ export const barbecueSausages = {
 	ingredients: {
 		connect: ingredients.slice(13, 20), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const carbonara = {
 	name: 'Карбонара',
@@ -112,6 +121,7 @@ export const carbonara = {
 	ingredients: {
 		connect: ingredients.slice(10, 15), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const burgerPizza = {
 	name: 'Бургер-пицца',
@@ -123,6 +133,7 @@ export const burgerPizza = {
 	ingredients: {
 		connect: ingredients.slice(11, 16), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }
 export const barbecueChicken = {
 	name: 'Цыпленок барбекю',
@@ -134,4 +145,5 @@ export const barbecueChicken = {
 	ingredients: {
 		connect: ingredients.slice(12, 17), // привязка к этому продукту, с 10-40 ингредиентов
 	},
+	whProduct: 1,
 }

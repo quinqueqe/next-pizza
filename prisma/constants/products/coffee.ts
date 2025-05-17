@@ -6,6 +6,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Освежающий холодный кофе с порцией эспрессо и пломбиром',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Карамельный капучино',
@@ -14,6 +15,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Классический капучино с молочной пенкой и карамельным сиропом',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Кокосовый латте',
@@ -22,6 +24,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Горячий латте с кокосовым сиропом',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Американо',
@@ -30,6 +33,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 139,
 		desc: 'Горячий кофе для ценителей чистого вкуса',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Латте',
@@ -38,6 +42,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Идеально сбалансированное сочетание кофе, увеличенной порции молока и нежнейшей пенки',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Капучино',
@@ -46,6 +51,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Легендарный рецепт кофе: эспрессо, горячее молоко и плотная молочная пенка',
+		whProduct: 2,
 	},
 	{
 		name: 'Кофе Ореховый латте',
@@ -54,6 +60,7 @@ export const Coffee = [
 		categoryId: 5,
 		price: 179,
 		desc: 'Горячий латте с сиропом со вкусом фундука',
+		whProduct: 2,
 	},
 	{
 		name: 'Капучино Яблочный пирог',
@@ -62,5 +69,6 @@ export const Coffee = [
 		categoryId: 5,
 		price: 169,
 		desc: 'Классический капучино с молочной пенкой и ярким сиропом — напоминает по вкусу домашнюю шарлотку',
+		whProduct: 2,
 	},
 ]

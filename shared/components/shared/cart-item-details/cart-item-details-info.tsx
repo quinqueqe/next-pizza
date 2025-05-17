@@ -10,6 +10,7 @@ type Props = {
 	ingredients: { name: string; price: number }[]
 }
 
+
 export const CartItemDetailsInfo = ({
 	item,
 	name,
