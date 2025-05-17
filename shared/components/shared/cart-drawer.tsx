@@ -14,6 +14,8 @@ import {
 } from '../ui/sheet'
 import { CartDrawerItem } from './cart-drawer-item'
 import { useCart, usePromo } from '@/shared/store'
+import { calcCartTotalPriceToTax } from '@/shared/lib'
+import { usePromoCodes } from '@/shared/hooks'
 
 type Props = {
 	children?: React.ReactNode
@@ -27,20 +29,42 @@ export const CartDrawer = ({ children }: Props) => {
 	const updateItemQuantity = useCart(state => state.updateItemQuantity)
 	const deleteItemCart = useCart(state => state.deleteItemCart)
 
-	// налог
-	const totalTax = Math.floor(totalAmount * 0.05)
-	const totalPrice = totalAmount + totalTax
+	// цены
+	const { totalTax, totalPrice } = calcCartTotalPriceToTax(totalAmount)
 
 	// promo
-	const { inputValue, promo, setInputValue, setPromo } = usePromo(
-		state => state
-	)
+	const {
+		inputValue,
+		promoCodes,
+		promoStatus,
+		discount,
+		setInputValue,
+		setPromo,
+		setDiscount,
+		fetchGetPromoCodes,
+	} = usePromo(state => state)
 
 	const onClickPromoBtn = () => {
+		const matchedPromo = promoCodes.find(
+			promo => promo.name.toLowerCase() === inputValue.toLowerCase()
+		)
+
 		setInputValue('')
-		// setPromo('success')
-		setPromo('error')
+
+		if (matchedPromo) {
+			setPromo('success')
+			setDiscount(matchedPromo.discount)
+			// console.log(matchedPromo.name)
+			// console.log(matchedPromo.discount)
+		} else {
+			setPromo('error')
+		}
 	}
+
+	
+	React.useEffect(() => {
+		fetchGetPromoCodes()
+	}, [inputValue])
 
 	// count
 	const onClickCountBtn = (id: number, quantity: number) => {
@@ -49,7 +73,6 @@ export const CartDrawer = ({ children }: Props) => {
 
 	React.useEffect(() => {
 		fetchCartItems()
-		// console.log(items)
 	}, [])
 
 	return (
@@ -96,12 +119,12 @@ export const CartDrawer = ({ children }: Props) => {
 									placeholder='Введите промокод'
 								/>
 
-								{promo === 'error' && (
+								{promoStatus === 'error' && (
 									<p className='text-[12px] text-red-700 absolute left-0 top-[45%]'>
 										Промокод не найден. Попробуйте другой
 									</p>
 								)}
-								{promo === 'success' && (
+								{promoStatus === 'success' && (
 									<p className='text-[12px] text-green-700 absolute left-0 top-[45%]'>
 										Промокод был успешно применен
 									</p>
@@ -127,6 +150,12 @@ export const CartDrawer = ({ children }: Props) => {
 									<p className='font-bold text-[14px]'>Налог 5%:</p>
 									<p className='font-medium text-[16px]'>{totalTax} ₽</p>
 								</div>
+								{promoStatus === 'success' && (
+									<div className='flex justify-between items-center'>
+										<p className='font-bold text-[14px]'>Скидка:</p>
+										<p className='font-medium text-[16px]'>{discount}%</p>
+									</div>
+								)}
 							</div>
 							<div className='flex justify-between items-center py-3'>
 								<p className='font-bold text-[14px]'>Сумма заказа</p>

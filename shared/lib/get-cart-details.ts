@@ -1,6 +1,15 @@
 import { CartDTO } from '../services/dto/cart.dto'
 import { calcCartItemTotalPrice } from './calc-cart-item-total-price'
 
+/**
+ * Функция getCartDetails принимает объект data типа CartDTO,
+ * который содержит информацию о корзине, и возвращает объект
+ * со свойствами items (массив объектов типа CartStateItem) и
+ * totalAmount (общая стоимость корзины).
+ *
+ * @param data - объект типа CartDTO, содержащий информацию о корзине
+ * @returns - объект со свойствами items (массив объектов типа CartStateItem) и totalAmount (общая стоимость корзины)
+ */
 export type CartStateItem = {
 	id: number
 	quantity: number
@@ -37,3 +46,4 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
 		totalAmount: data.totalAmount,
 	}
 }
+

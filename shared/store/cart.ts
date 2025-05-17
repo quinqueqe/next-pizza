@@ -31,7 +31,7 @@ export const useCart = create<CartType>()(set => ({
 			const data = await Api.cart.getCart()
 			set(getCartDetails(data))
 			set({ status: Status.SUCCESS })
-			console.log(data)
+			// console.log(data)
 		} catch (error) {
 			set({ items: [], status: Status.ERROR })
 			console.error(error)
@@ -44,7 +44,7 @@ export const useCart = create<CartType>()(set => ({
 			const data = await Api.cart.updateQuantityItem(id, quantity)
 			set(getCartDetails(data))
 			set({ status: Status.SUCCESS })
-			console.log(data)
+			// console.log(data)
 		} catch (error) {
 			set({ items: [], status: Status.ERROR })
 			console.error(error)
@@ -56,7 +56,7 @@ export const useCart = create<CartType>()(set => ({
 			const data = await Api.cart.removeCartItem(id)
 			set(getCartDetails(data))
 			set({ status: Status.SUCCESS })
-			console.log(data)
+			// console.log(data)
 		} catch (error) {
 			set({ items: [], status: Status.ERROR })
 			console.error(error)
@@ -68,7 +68,7 @@ export const useCart = create<CartType>()(set => ({
 			const data = await Api.cart.addCartItem(values)
 			set(getCartDetails(data))
 			set({ status: Status.SUCCESS })
-			console.log(data)
+			// console.log(data)
 		} catch (error) {
 			set({ items: [], status: Status.ERROR })
 			console.error(error)

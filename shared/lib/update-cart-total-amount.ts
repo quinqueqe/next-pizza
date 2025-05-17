@@ -1,6 +1,14 @@
 import prisma from '@/prisma/prisma'
 import { calcCartItemTotalPrice } from './calc-cart-item-total-price'
 
+/**
+ * Функция обновляет общую сумму корзины, используя переданный токен.
+ * Она находит корзину, используя переданный токен, извлекает из нее
+ * все пункты, вычисляет общую сумму, используя функцию
+ * calcCartItemTotalPrice, и обновляет общую сумму в найденной корзине.
+ * @param token - токен, используемый для поиска корзины
+ * @returns обновленную корзину (Cart)
+ */
 export const updateCartTotalAmount = async (token: string) => {
 	const userCart = await prisma?.cart.findFirst({
 		where: {
