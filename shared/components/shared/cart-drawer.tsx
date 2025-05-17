@@ -4,6 +4,7 @@ import React from 'react'
 
 import { ChevronRight } from 'lucide-react'
 import { Button } from '../ui'
+import { CartDrawerInfo, CartDrawerItem, CartDrawerPromo } from './'
 import {
 	Sheet,
 	SheetContent,
@@ -12,68 +13,47 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '../ui/sheet'
-import { CartDrawerItem } from './cart-drawer-item'
-import { useCart, usePromo } from '@/shared/store'
-import { calcCartTotalPriceToTax } from '@/shared/lib'
-import { usePromoCodes } from '@/shared/hooks'
+import { useCartFinalPrice, usePromoCodes } from '@/shared/hooks'
 
 type Props = {
 	children?: React.ReactNode
 }
 
 export const CartDrawer = ({ children }: Props) => {
-	// states
-	const fetchCartItems = useCart(state => state.fetchCartItems)
-	const items = useCart(state => state.items)
-	const totalAmount = useCart(state => state.totalAmount)
-	const updateItemQuantity = useCart(state => state.updateItemQuantity)
-	const deleteItemCart = useCart(state => state.deleteItemCart)
-
-	// цены
-	const { totalTax, totalPrice } = calcCartTotalPriceToTax(totalAmount)
-
-	// promo
 	const {
-		inputValue,
-		promoCodes,
+		onClickPromoBtn,
 		promoStatus,
 		discount,
 		setInputValue,
-		setPromo,
-		setDiscount,
 		fetchGetPromoCodes,
-	} = usePromo(state => state)
+		inputValue,
+	} = usePromoCodes()
 
-	const onClickPromoBtn = () => {
-		const matchedPromo = promoCodes.find(
-			promo => promo.name.toLowerCase() === inputValue.toLowerCase()
-		)
-
-		setInputValue('')
-
-		if (matchedPromo) {
-			setPromo('success')
-			setDiscount(matchedPromo.discount)
-			// console.log(matchedPromo.name)
-			// console.log(matchedPromo.discount)
-		} else {
-			setPromo('error')
-		}
-	}
-
-	
 	React.useEffect(() => {
 		fetchGetPromoCodes()
 	}, [inputValue])
+
+	const {
+		// states
+		fetchCartItems,
+		items,
+		totalAmount,
+		updateItemQuantity,
+		deleteItemCart,
+
+		// price
+		totalTax,
+		totalPrice,
+	} = useCartFinalPrice(discount)
+
+	React.useEffect(() => {
+		fetchCartItems()
+	}, [])
 
 	// count
 	const onClickCountBtn = (id: number, quantity: number) => {
 		updateItemQuantity(id, quantity)
 	}
-
-	React.useEffect(() => {
-		fetchCartItems()
-	}, [])
 
 	return (
 		<>
@@ -84,7 +64,7 @@ export const CartDrawer = ({ children }: Props) => {
 						<SheetTitle className='flex'>
 							<p className='text-[22px] font-normal'>
 								{items.length} товаров на
-								<span className='font-bold text-[22px]'> {totalAmount} ₽ </span>
+								<span className='font-bold text-[22px]'> {totalPrice} ₽ </span>
 							</p>
 						</SheetTitle>
 					</SheetHeader>
@@ -110,57 +90,20 @@ export const CartDrawer = ({ children }: Props) => {
 
 					<SheetFooter className='ml-0 pl-0 mr-0 pr-0  pb-0 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] bg-white'>
 						<div className='p-[20px]'>
-							<div className='pb-2 relative'>
-								<input
-									type='text'
-									value={inputValue}
-									onChange={e => setInputValue(e.target.value)}
-									className='border-b-[1px] border-solid border-[#a1a1a1] w-[100%] pb-5 text-[18px] placeholder:text-[#a1a1a1]'
-									placeholder='Введите промокод'
-								/>
-
-								{promoStatus === 'error' && (
-									<p className='text-[12px] text-red-700 absolute left-0 top-[45%]'>
-										Промокод не найден. Попробуйте другой
-									</p>
-								)}
-								{promoStatus === 'success' && (
-									<p className='text-[12px] text-green-700 absolute left-0 top-[45%]'>
-										Промокод был успешно применен
-									</p>
-								)}
-
-								{inputValue.length > 0 && (
-									<button
-										onClick={() => onClickPromoBtn()}
-										className='absolute right-0 top-0 text-primary text-[14px]'
-									>
-										Применить
-									</button>
-								)}
-							</div>
-							<div className='pb-3 border-b-[1px] border-solid border-[#dad8d8] flex flex-col gap-1'>
-								<div className='flex justify-between items-center '>
-									<p className='font-bold text-[14px]'>
-										{items.length} товаров
-									</p>
-									<p className='font-medium text-[16px]'>{totalAmount} ₽</p>
-								</div>
-								<div className='flex justify-between items-center'>
-									<p className='font-bold text-[14px]'>Налог 5%:</p>
-									<p className='font-medium text-[16px]'>{totalTax} ₽</p>
-								</div>
-								{promoStatus === 'success' && (
-									<div className='flex justify-between items-center'>
-										<p className='font-bold text-[14px]'>Скидка:</p>
-										<p className='font-medium text-[16px]'>{discount}%</p>
-									</div>
-								)}
-							</div>
-							<div className='flex justify-between items-center py-3'>
-								<p className='font-bold text-[14px]'>Сумма заказа</p>
-								<p className='font-medium text-[16px]'>{totalPrice} ₽</p>
-							</div>
+							<CartDrawerPromo
+								promoStatus={promoStatus}
+								inputValue={inputValue}
+								setInputValue={(value: string) => setInputValue(value)}
+								onClickPromoBtn={() => onClickPromoBtn()}
+							/>
+							<CartDrawerInfo
+								items={items}
+								totalAmount={totalAmount}
+								totalTax={totalTax}
+								promoStatus={promoStatus}
+								discount={discount}
+								totalPrice={totalPrice}
+							/>
 							<Button
 								type='submit'
 								className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
