@@ -22,7 +22,7 @@ export const CartItemDetailsInfo = ({
 	const pizzaType = 'традиционное'
 	return (
 		<div>
-			<h4 className='pb-1 text-[14px] font-bold'>{name}</h4>
+			<h4 className='pb-1 text-[14px] font-bold max-w-[220px]'>{name}</h4>
 			{item.pizzaType && (
 				<>
 					<p className='text-[#a1a1a1] text-[12px] '>
