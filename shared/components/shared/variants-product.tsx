@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
 import toast from 'react-hot-toast'
-import { IProduct } from '@/@types/prisma'
+import { ProductWithRelations } from '@/@types/prisma'
 import { useCart, useModal } from '@/shared/store'
 import { sizes } from '@/shared/constants/pizza'
 import { ChoosePizzaForm, ChooseProductForm } from './'
 
 type Props = {
-	product: IProduct
+	product: ProductWithRelations
 	onCloseModal?: () => void
 }
 
@@ -26,7 +26,7 @@ export const VariantsProduct = ({ product, onCloseModal }: Props) => {
 				ingredients,
 			})
 			toast.success(
-				`Добавлено: ${product.name} ${
+				`Добавлено: ${product.name}${
 					firstItem.pizzaType ? `, ${sizes[activeSize].value} см` : ''
 				} `
 			)
