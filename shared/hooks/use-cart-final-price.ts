@@ -1,4 +1,3 @@
-import { use } from 'react'
 import { calcCartTotalPriceToTax } from '../lib'
 import { useCart } from '../store'
 
@@ -28,6 +27,18 @@ export const useCartFinalPrice = (discount: number) => {
 		discount
 	)
 
+	// Склоняемость 'Товаров'
+	const goods =
+		items.length === 1
+			? 'товар'
+			: items.length === 2
+			? 'товара'
+			: items.length === 3
+			? 'товара'
+			: items.length === 4
+			? 'товара'
+			: 'товаров'
+
 	return {
 		// states
 		fetchCartItems,
@@ -40,5 +51,8 @@ export const useCartFinalPrice = (discount: number) => {
 		// price
 		totalTax,
 		totalPrice,
+
+		// Склоняемость 'товаров'
+		goods,
 	}
 }

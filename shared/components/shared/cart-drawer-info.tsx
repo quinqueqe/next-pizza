@@ -8,6 +8,7 @@ type Props = {
 	promoStatus: string | boolean
 	discount: number
 	totalPrice: number
+	goods: string
 }
 
 export const CartDrawerInfo = ({
@@ -17,12 +18,15 @@ export const CartDrawerInfo = ({
 	promoStatus,
 	discount,
 	totalPrice,
+	goods,
 }: Props) => {
 	return (
 		<>
 			<div className='pb-3 border-b-[1px] border-solid border-[#dad8d8] flex flex-col gap-1'>
 				<div className='flex justify-between items-center '>
-					<p className='font-bold text-[14px]'>{items.length} товаров</p>
+					<p className='font-bold text-[14px]'>
+						{items.length} {goods}
+					</p>
 					<p className='font-medium text-[16px]'>{totalAmount} ₽</p>
 				</div>
 				<div className='flex justify-between items-center'>

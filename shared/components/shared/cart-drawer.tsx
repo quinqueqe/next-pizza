@@ -50,6 +50,9 @@ export const CartDrawer = ({ children }: Props) => {
 		// price
 		totalTax,
 		totalPrice,
+
+		// Склоняемость 'Товаров'
+		goods,
 	} = useCartFinalPrice(discount)
 
 	React.useEffect(() => {
@@ -72,7 +75,7 @@ export const CartDrawer = ({ children }: Props) => {
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
 							<SheetTitle className='flex'>
 								<p className='text-[22px] font-normal'>
-									{items.length} товаров на{' '}
+									{items.length} {goods} на{' '}
 									<span className='font-bold text-[22px]'>
 										{totalAmount + totalTax} ₽
 									</span>
@@ -119,8 +122,10 @@ export const CartDrawer = ({ children }: Props) => {
 										promoStatus={promoStatus}
 										discount={discount}
 										totalPrice={totalPrice}
+										goods={goods}
 									/>
 									<Button
+										status={status}
 										type='submit'
 										className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
 									>
