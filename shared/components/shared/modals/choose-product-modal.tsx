@@ -5,7 +5,9 @@ import { Dialog, DialogContent } from '../../ui'
 import { useRouter } from 'next/navigation'
 import { ChoosePizzaForm, ChooseProductForm } from '../'
 import { IProduct } from '@/@types/prisma'
-import { useCart } from '@/shared/store'
+import { useCart, useModal } from '@/shared/store'
+import toast from 'react-hot-toast'
+import { sizes } from '@/shared/constants/pizza'
 
 type Props = {
 	className?: string
@@ -14,30 +16,40 @@ type Props = {
 
 export const ChooseProductModal = ({ className, product }: Props) => {
 	const router = useRouter()
-	const closeModal = () => {
-		router.back()
-	}
 	const firstItem = product.variations[0]
 	const isPizzaForm = Boolean(firstItem.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
 
-	const addCartItem = useCart(state => state.addCartItem)
+	const { addCartItem, status } = useCart(state => state)
+	const activeSize = useModal(state => state.activeSize)
 
 	const onClickAddProduct = () => {
-		addCartItem({
-			productItemId: firstItem.id!,
-		})
-		closeModal()
+		try {
+			addCartItem({
+				productItemId: firstItem.id!,
+			})
+			router.back()
+			toast.success(`Добавлено: ${product.name}`)
+		} catch (error) {
+			toast.error('Что-то пошло не так')
+			console.error(error)
+		}
 	}
-	const onClickAddPizza = (productItemId: number, ingredients: number[]) => {
-		addCartItem({
-			productItemId,
-			ingredients,
-		})
-		closeModal()
+	const onClickAddPizza = async (productItemId: number, ingredients: number[]) => {
+		try {
+			await addCartItem({
+				productItemId,
+				ingredients,
+			})
+			toast.success(`Добавлено: ${product.name}, ${sizes[activeSize].value} см`)
+			router.back()
+		} catch (error) {
+			toast.error('Что-то пошло не так')
+			console.error(error)
+		}
 	}
 	return (
 		<>
-			<Dialog open={Boolean(product)} onOpenChange={() => closeModal()}>
+			<Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
 				<DialogContent
 					className={cn(
 						'p-0 w-[1060px] min-w-[1060px] h-[610px] min-h-[610px] bg-white overflow-hidden rounded-4xl',
@@ -53,6 +65,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 							price={product.price as number}
 							desc={product.desc}
 							variations={product.variations}
+							status={status}
 						/>
 					) : (
 						<ChooseProductForm
@@ -63,6 +76,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 							price={product.price as number}
 							desc={product.desc}
 							variations={product.variations}
+							// status={status}
 						/>
 					)}
 				</DialogContent>

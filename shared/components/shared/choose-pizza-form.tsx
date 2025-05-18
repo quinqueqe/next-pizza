@@ -19,6 +19,7 @@ type Props = {
 	desc?: string | null
 	variations?: Variation[]
 	onClickAdd: (productItemId: number, ingredients: number[]) => void
+	status: string | boolean
 }
 
 export const ChoosePizzaForm = ({
@@ -28,6 +29,7 @@ export const ChoosePizzaForm = ({
 	// price,
 	variations,
 	onClickAdd,
+	status,
 }: Props) => {
 	const {
 		activeSize,
@@ -40,7 +42,7 @@ export const ChoosePizzaForm = ({
 		size,
 		sizes,
 		types,
-		productItemId
+		productItemId,
 	} = usePizzaOptions(variations!)
 
 	const { details, totalPrice } = getPizzaDetails(
@@ -109,6 +111,7 @@ export const ChoosePizzaForm = ({
 						</ul>
 						<div>
 							<Button
+								status={status}
 								onClick={() => handleClickAdd()}
 								variant={'outline'}
 								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'

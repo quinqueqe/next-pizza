@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Toaster } from 'react-hot-toast'
 import { Header } from '@/shared/components/shared/header'
 
 export const metadata: Metadata = {
@@ -15,10 +16,11 @@ export default function RootLayout({
 	return (
 		<>
 			<main className='min-h-screen'>
-			<Header />
+				<Header />
 				{modal}
 				{children}
 			</main>
+			<Toaster />
 		</>
 	)
 }
