@@ -22,25 +22,18 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 	const { addCartItem, status } = useCart(state => state)
 	const activeSize = useModal(state => state.activeSize)
 
-	const onClickAddProduct = () => {
+	const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
 		try {
-			addCartItem({
-				productItemId: firstItem.id!,
-			})
-			router.back()
-			toast.success(`Добавлено: ${product.name}`)
-		} catch (error) {
-			toast.error('Что-то пошло не так')
-			console.error(error)
-		}
-	}
-	const onClickAddPizza = async (productItemId: number, ingredients: number[]) => {
-		try {
+			const itemId = productItemId ?? firstItem.id
 			await addCartItem({
-				productItemId,
+				productItemId: itemId,
 				ingredients,
 			})
-			toast.success(`Добавлено: ${product.name}, ${sizes[activeSize].value} см`)
+			toast.success(
+				`Добавлено: ${product.name} ${
+					firstItem.pizzaType ? `, ${sizes[activeSize].value} см` : ''
+				} `
+			)
 			router.back()
 		} catch (error) {
 			toast.error('Что-то пошло не так')
@@ -58,25 +51,25 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 				>
 					{isPizzaForm ? (
 						<ChoosePizzaForm
-							onClickAdd={onClickAddPizza}
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={product.ingredients}
 							price={product.price as number}
 							desc={product.desc}
 							variations={product.variations}
+							onClickAdd={onSubmit}
 							status={status}
 						/>
 					) : (
 						<ChooseProductForm
-							onClickAdd={() => onClickAddProduct()}
 							imageUrl={product.imageUrl}
 							name={product.name}
 							ingredients={product.ingredients}
 							price={product.price as number}
 							desc={product.desc}
 							variations={product.variations}
-							// status={status}
+							onClickAdd={onSubmit}
+							status={status}
 						/>
 					)}
 				</DialogContent>

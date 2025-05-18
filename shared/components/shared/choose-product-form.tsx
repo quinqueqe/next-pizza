@@ -12,7 +12,8 @@ type Props = {
 	desc?: string | null
 
 	productItemId?: number | undefined
-	onClickAdd: () => void
+	onClickAdd: VoidFunction
+	status: string | boolean
 
 	ingredients: Ingredients[]
 	className?: string
@@ -26,6 +27,7 @@ export const ChooseProductForm = ({
 	desc,
 	// productItemId,
 	onClickAdd,
+	status,
 }: Props) => {
 	const totalPrice = price
 	// const details = `0.4 л, 380 г` // , 380 г
@@ -51,7 +53,8 @@ export const ChooseProductForm = ({
 					<div>
 						<div>
 							<Button
-								onClick={onClickAdd}
+								status={status}
+								onClick={() => onClickAdd()}
 								variant={'outline'}
 								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
 							>

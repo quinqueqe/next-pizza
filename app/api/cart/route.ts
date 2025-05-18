@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
 					id: findCartItem.id,
 				},
 				data: {
-					quantity: findCartItem.quantity + 1, // + 1
+					quantity: findCartItem.quantity, // + 1
 				},
 			})
 		}
