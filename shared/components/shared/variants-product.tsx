@@ -9,9 +9,14 @@ import { ChoosePizzaForm, ChooseProductForm } from './'
 type Props = {
 	product: ProductWithRelations
 	onCloseModal?: () => void
+	rightBlockClassName?: string
 }
 
-export const VariantsProduct = ({ product, onCloseModal }: Props) => {
+export const VariantsProduct = ({
+	product,
+	onCloseModal,
+	rightBlockClassName,
+}: Props) => {
 	const firstItem = product.variations[0]
 	const isPizzaForm = Boolean(firstItem.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
 
@@ -40,6 +45,7 @@ export const VariantsProduct = ({ product, onCloseModal }: Props) => {
 	if (isPizzaForm) {
 		return (
 			<ChoosePizzaForm
+				rightBlockClassName={rightBlockClassName}
 				imageUrl={product.imageUrl}
 				name={product.name}
 				ingredients={product.ingredients}
@@ -53,6 +59,7 @@ export const VariantsProduct = ({ product, onCloseModal }: Props) => {
 	} else {
 		return (
 			<ChooseProductForm
+				rightBlockClassName={rightBlockClassName}
 				imageUrl={product.imageUrl}
 				name={product.name}
 				ingredients={product.ingredients}

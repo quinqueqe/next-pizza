@@ -25,16 +25,16 @@ export const ProductIngredient = ({
 	return (
 		<li
 			className={cn(
-				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% max-w-[150px] border-2 border-solid border-white cursor-pointer relative',
+				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% border-2 border-solid border-white cursor-pointer relative',
 				active && 'border-primary',
 				className
 			)}
 			onClick={onClick}
 		>
 			{active && (
-				<CircleCheck className="absolute top-2 right-2 text-primary" />
+				<CircleCheck className='absolute top-2 right-2 text-primary' />
 			)}
-			<div>
+			<div className='flex flex-col items-center justify-center'>
 				<Image
 					src={imageUrl}
 					alt='img'

@@ -4,6 +4,7 @@ import React from 'react'
 import { PizzaImage } from '../../components/shared'
 import { Ingredients, Variation } from '@prisma/client'
 import { Button } from '../ui'
+import { cn } from '@/shared/lib'
 
 type Props = {
 	imageUrl: string
@@ -18,6 +19,7 @@ type Props = {
 	ingredients: Ingredients[]
 	className?: string
 	variations?: Variation[]
+	rightBlockClassName?: string
 }
 
 export const ChooseProductForm = ({
@@ -28,6 +30,7 @@ export const ChooseProductForm = ({
 	// productItemId,
 	onClickAdd,
 	status,
+	rightBlockClassName,
 }: Props) => {
 	const totalPrice = price
 	// const details = `0.4 л, 380 г` // , 380 г
@@ -42,7 +45,12 @@ export const ChooseProductForm = ({
 						size={30}
 					/>
 				</div>
-				<div className='bg-[#F4F1EE] w-[500px] h-[610px] p-10 flex flex-col justify-between'>
+				<div
+					className={cn(
+						'bg-[#F4F1EE] h-[610px] p-10 flex flex-col justify-between',
+						rightBlockClassName
+					)}
+				>
 					<div>
 						<h4 className='font-extrabold text-[#373737] text-4xl pb-3'>
 							{name}

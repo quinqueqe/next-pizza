@@ -8,7 +8,7 @@ import {
 	ProductIngredient,
 } from '../../components/shared'
 import { Button } from '../ui'
-import { getPizzaDetails } from '@/shared/lib'
+import { cn, getPizzaDetails } from '@/shared/lib'
 
 type Props = {
 	imageUrl: string
@@ -20,6 +20,7 @@ type Props = {
 	variations?: Variation[]
 	onClickAdd: (productItemId: number, ingredients: number[]) => void
 	status: string | boolean
+	rightBlockClassName?: string
 }
 
 export const ChoosePizzaForm = ({
@@ -30,6 +31,7 @@ export const ChoosePizzaForm = ({
 	variations,
 	onClickAdd,
 	status,
+	rightBlockClassName,
 }: Props) => {
 	const {
 		activeSize,
@@ -69,7 +71,7 @@ export const ChoosePizzaForm = ({
 						size={size}
 					/>
 				</div>
-				<div className='bg-[#F4F1EE] w-[500px] h-[610px] p-10 flex flex-col justify-center'>
+				<div className={cn('bg-[#F4F1EE] h-[610px] p-10 flex flex-col justify-center', rightBlockClassName)}>
 					<div>
 						<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
 							{name}
@@ -91,7 +93,7 @@ export const ChoosePizzaForm = ({
 							Добавить по вкусу
 						</h5>
 
-						<ul className='grid grid-cols-3 gap-2 h-[220px] overflow-auto scroll-auto  mb-[20px]'>
+						<ul className='grid grid-cols-3 gap-2 h-[245px] overflow-auto scroll-auto  mb-[20px]'>
 							{ingredients.map((ing, i) => (
 								<ProductIngredient
 									key={i}
