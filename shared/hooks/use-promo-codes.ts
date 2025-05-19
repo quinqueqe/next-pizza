@@ -24,9 +24,13 @@ export const usePromoCodes = () => {
 		promoCodes,
 		promoStatus,
 		discount,
+		iHavePromo,
+		promoCheckout,
 		setInputValue,
-		setPromo,
+		setPromoStatus,
 		setDiscount,
+		setIHavePromo,
+		setPromoCheckout,
 		fetchGetPromoCodes,
 	} = usePromo(state => state)
 
@@ -40,16 +44,25 @@ export const usePromoCodes = () => {
 		)
 
 		if (matchedPromo) {
-			setPromo('success')
+			setPromoStatus('success')
 			setDiscount(matchedPromo.discount)
+			setPromoCheckout(inputValue)
 			// console.log(matchedPromo.name)
 			// console.log(matchedPromo.discount)
 		} else {
-			setPromo('error')
+			setPromoStatus('error')
 			setInputValue('')
 		}
 	}
 
-	return { onClickPromoBtn, promoStatus, discount, setInputValue,  inputValue}
+	return {
+		onClickPromoBtn,
+		promoStatus,
+		discount,
+		iHavePromo,
+		promoCheckout,
+		setInputValue,
+		inputValue,
+		setIHavePromo,
+	}
 }
-

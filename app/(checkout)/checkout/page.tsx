@@ -9,29 +9,12 @@ import {
 	CheckoutPersonalForm,
 	CheckoutTotalForm,
 } from '@/shared/components/shared/checkout'
-import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 
 type Props = {
 	className?: string
 }
 
 export default function CheckoutPage({ className }: Props) {
-	const { onClickPromoBtn, promoStatus, discount, setInputValue, inputValue } =
-		usePromoCodes()
-
-	const {
-		status,
-		items,
-		totalAmount,
-		updateItemQuantity,
-		deleteItemCart,
-		disabled,
-
-		// price
-		totalTax,
-		totalPrice,
-	} = useCartInfo(discount)
-
 	return (
 		<div className={cn('', className)}>
 			<Container>
@@ -42,11 +25,7 @@ export default function CheckoutPage({ className }: Props) {
 						<CheckoutPersonalForm />
 						<CheckoutAddressForm />
 					</div>
-					<CheckoutTotalForm
-						totalPrice={totalPrice}
-						totalAmount={totalAmount}
-						totalTax={totalTax}
-					/>
+					<CheckoutTotalForm />
 				</div>
 			</Container>
 		</div>

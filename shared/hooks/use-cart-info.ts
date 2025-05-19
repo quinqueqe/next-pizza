@@ -29,7 +29,6 @@ export const useCartInfo = (discount: number) => {
 		discount
 	)
 
-
 	React.useEffect(() => {
 		fetchCartItems()
 	}, [])
@@ -46,6 +45,10 @@ export const useCartInfo = (discount: number) => {
 			? 'товара'
 			: 'товаров'
 
+	const deliveryPrice = Math.round(totalPrice / 30)
+
+	const fullPriceWithDelivery = Math.round(totalPrice + deliveryPrice)
+
 	return {
 		// states
 		status,
@@ -58,6 +61,10 @@ export const useCartInfo = (discount: number) => {
 		// price
 		totalTax,
 		totalPrice,
+
+		// price delivery
+		deliveryPrice,
+		fullPriceWithDelivery,
 
 		// Склоняемость 'товаров'
 		goods,

@@ -26,7 +26,7 @@ export const CartDrawerPromo = ({
 				value={inputValue}
 				onChange={e => setInputValue(e.target.value)}
 				className={cn(
-					'border-b-[1px] border-solid border-[#a1a1a1] w-[100%] pb-5 text-[18px] placeholder:text-[#a1a1a1]',
+					'border-b-[1px] border-solid border-[#d6d6d6] w-[100%] pb-5 text-[18px] placeholder:text-[#a1a1a1]',
 					promoStatus === 'success' && 'cursor-not-allowed pointer-events-none'
 				)}
 				placeholder='Введите промокод'

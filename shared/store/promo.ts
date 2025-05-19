@@ -14,9 +14,13 @@ type PromoType = {
 	promoCodes: Promo[]
 	promoStatus: string | boolean
 	discount: number
+	iHavePromo: boolean
+	promoCheckout: string
 	setInputValue: (value: string) => void
-	setPromo: (value: string) => void
+	setPromoStatus: (value: string) => void
 	setDiscount: (value: number) => void
+	setIHavePromo: (value: boolean) => void
+	setPromoCheckout: (value: string) => void
 	fetchGetPromoCodes: () => void
 }
 
@@ -26,9 +30,13 @@ export const usePromo = create<PromoType>()(
 		promoCodes: [],
 		promoStatus: PromoStatus.WAITING,
 		discount: 0,
+		iHavePromo: true,
+		promoCheckout: '',
 		setInputValue: value => set({ inputValue: value }),
-		setPromo: value => set({ promoStatus: value }),
+		setPromoStatus: value => set({ promoStatus: value }),
 		setDiscount: value => set({ discount: value }),
+		setIHavePromo: value => set({ iHavePromo: value }),
+		setPromoCheckout: value => set({ promoCheckout: value }),
 		fetchGetPromoCodes: async () => {
 			try {
 				const data = await Api.promoCodes.getPromoCodes()
