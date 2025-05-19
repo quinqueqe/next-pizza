@@ -1,6 +1,4 @@
-
-
-import { CartItemDetailsBtn } from './cart-item-details-btn'
+import { CartItemDetailsQuantity } from './'
 
 type Props = {
 	price: number
@@ -19,16 +17,10 @@ export const CartItemDetailsPrice = ({
 		<>
 			<p className='font-bold text-[16px]'>{price} ₽ </p>
 			<div className='flex gap-2 items-center'>
-				<CartItemDetailsBtn
-					type='minus'
-					onClick={onClickMinus}
-					classNameBtn={quantity <= 1 && 'cursor-not-allowed border-[2px] border-solid border-[#a1a1a1] pointer-events-none'}
-					classNameMinus={quantity <= 1 && 'cursor-not-allowed text-[#a1a1a1] pointer-events-none'}
-				/>
-				<p className='font-bold text-[16px]'>{quantity}</p>
-				<CartItemDetailsBtn
-					type='plus'
-					onClick={onClickPlus}
+				<CartItemDetailsQuantity
+					quantity={quantity}
+					onClickMinus={onClickMinus}
+					onClickPlus={onClickPlus}
 				/>
 			</div>
 		</>

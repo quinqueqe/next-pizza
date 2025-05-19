@@ -32,7 +32,7 @@ export const CartItemDetailsInfo = ({
 						{item.ingredients.length > 1 && (
 							<p className='text-[#a1a1a1] text-[12px]'>
 								<span className='pr-1'>+</span>
-								{ingredients?.map(item => item.name).join(', ')}
+								{ingredients?.map(item => item.name).join(', ').toLowerCase()}
 							</p>
 						)}
 					</div>

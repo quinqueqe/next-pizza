@@ -4,10 +4,21 @@ import Link from 'next/link'
 import { Button } from '../ui'
 import { Container, SearchInput, CartButton } from './'
 import { User } from 'lucide-react'
+import { cn } from '@/shared/lib'
 
-export const Header = () => {
+type Props = {
+	hasSearch?: boolean
+	hasCart?: boolean
+	className?: string
+}
+
+export const Header = ({
+	hasSearch = true,
+	hasCart = true,
+	className,
+}: Props) => {
 	return (
-		<header className='border border-b'>
+		<header className={cn('border border-b', className)}>
 			<Container className='flex justify-between items-center py-8'>
 				<Link href='/' className='flex gap-4 items-center'>
 					<Image src={'/logo.png'} alt='img' width={35} height={35} />
@@ -19,7 +30,7 @@ export const Header = () => {
 					</div>
 				</Link>
 
-				<SearchInput />
+				{hasSearch && <SearchInput />}
 
 				<div className='flex items-center gap-4'>
 					<Button variant={'outline'} className='flex items-center gap-1'>
@@ -27,9 +38,7 @@ export const Header = () => {
 						Войти
 					</Button>
 
-					<div>
-						<CartButton />
-					</div>
+					{hasCart && <CartButton />}
 				</div>
 			</Container>
 		</header>

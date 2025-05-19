@@ -1,10 +1,10 @@
 import React from 'react'
 import {
+	CartItemDelete,
 	CartItemDetailsImage,
 	CartItemDetailsInfo,
 	CartItemDetailsPrice,
 } from './cart-item-details'
-import { X } from 'lucide-react'
 import { CartStateItem } from '@/shared/lib/get-cart-details'
 import { cn } from '@/shared/lib'
 
@@ -64,9 +64,7 @@ export const CartDrawerItem = ({
 					onClickPlus={onClickPlus}
 				/>
 			</div>
-			<button onClick={onClickDelete} className='absolute top-4 right-4'>
-				<X size={18} />
-			</button>
+			<CartItemDelete onClickDelete={onClickDelete} />
 		</li>
 	)
 }

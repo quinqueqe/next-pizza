@@ -194,3 +194,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.646 0.222 41.116);
 }
+
+.sheet-content-no-close-button [data-radix-collection-item] {
+  display: none !important;
+}

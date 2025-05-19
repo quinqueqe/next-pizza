@@ -7,7 +7,7 @@ import {
 } from '@/shared/components/shared'
 import prisma from '@/prisma/prisma'
 
-const Home = async () => {
+const HomePage = async () => {
 	const categories = await prisma?.category.findMany({
 		include: {
 			products: {
@@ -55,4 +55,4 @@ const Home = async () => {
 	)
 }
 
-export default Home
+export default HomePage
