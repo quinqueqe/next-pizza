@@ -1,3 +1,4 @@
+import React from 'react'
 import { usePromo } from '../store'
 
 /**
@@ -29,12 +30,14 @@ export const usePromoCodes = () => {
 		fetchGetPromoCodes,
 	} = usePromo(state => state)
 
+	React.useEffect(() => {
+		fetchGetPromoCodes()
+	}, [])
+
 	const onClickPromoBtn = () => {
 		const matchedPromo = promoCodes.find(
 			promo => promo.name.toLowerCase() === inputValue.toLowerCase()
 		)
-
-		setInputValue('')
 
 		if (matchedPromo) {
 			setPromo('success')
@@ -43,9 +46,10 @@ export const usePromoCodes = () => {
 			// console.log(matchedPromo.discount)
 		} else {
 			setPromo('error')
+			setInputValue('')
 		}
 	}
 
-	return { onClickPromoBtn, promoStatus, discount, setInputValue, fetchGetPromoCodes,  inputValue}
+	return { onClickPromoBtn, promoStatus, discount, setInputValue,  inputValue}
 }
 

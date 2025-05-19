@@ -4,13 +4,13 @@ import React from 'react'
 import { Button } from '../ui'
 import { ArrowRight } from 'lucide-react'
 import { CartDrawer } from './cart-drawer'
-import { useCartFinalPrice, usePromoCodes } from '@/shared/hooks'
+import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 import { useCart } from '@/shared/store'
 import { cn } from '@/shared/lib'
 
 export const CartButton = () => {
 	const { discount } = usePromoCodes()
-	const { items } = useCartFinalPrice(discount)
+	const { items } = useCartInfo(discount)
 	const quantityProducts = items.length
 
 	const { status } = useCart(state => state)

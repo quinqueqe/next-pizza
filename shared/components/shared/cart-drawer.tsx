@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { ChevronRight} from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { Button } from '../ui'
 import {
 	CartDrawerEmpty,
@@ -19,8 +19,9 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '../ui/sheet'
-import { useCartFinalPrice, usePromoCodes } from '@/shared/hooks'
+import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 import { cn } from '@/shared/lib'
+import Link from 'next/link'
 
 type Props = {
 	children?: React.ReactNode
@@ -32,17 +33,11 @@ export const CartDrawer = ({ children }: Props) => {
 		promoStatus,
 		discount,
 		setInputValue,
-		fetchGetPromoCodes,
 		inputValue,
 	} = usePromoCodes()
 
-	React.useEffect(() => {
-		fetchGetPromoCodes()
-	}, [inputValue])
-
 	const {
 		// states
-		fetchCartItems,
 		status,
 		items,
 		totalAmount,
@@ -56,11 +51,7 @@ export const CartDrawer = ({ children }: Props) => {
 
 		// Склоняемость 'Товаров'
 		goods,
-	} = useCartFinalPrice(discount)
-
-	React.useEffect(() => {
-		fetchCartItems()
-	}, [])
+	} = useCartInfo(discount)
 
 	// count
 	const onClickCountBtn = (id: number, quantity: number) => {
@@ -74,8 +65,7 @@ export const CartDrawer = ({ children }: Props) => {
 					{children}
 				</SheetTrigger>
 				{items.length > 0 ? (
-					<SheetContent
-						className='ml-0 pl-0 mr-0 pr-0 w-[450px]'					>
+					<SheetContent className='ml-0 pl-0 mr-0 pr-0 w-[450px]'>
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
 							<SheetTitle className='flex'>
 								<p className='text-[22px] font-normal'>
@@ -134,14 +124,16 @@ export const CartDrawer = ({ children }: Props) => {
 									totalPrice={totalPrice}
 									goods={goods}
 								/>
-								<Button
-									status={status}
-									type='submit'
-									className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
-								>
-									К оформлению заказа
-									<ChevronRight className='absolute right-[10px]' />
-								</Button>
+								<Link href='/checkout'>
+									<Button
+										status={status}
+										type='submit'
+										className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
+									>
+										К оформлению заказа
+										<ChevronRight className='absolute right-[10px]' />
+									</Button>
+								</Link>
 							</div>
 						</SheetFooter>
 					</SheetContent>

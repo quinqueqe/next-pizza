@@ -25,6 +25,8 @@ export { VariantsProduct } from './variants-product'
 
 export { CheckoutWhiteBlock } from './chechout-white-block'
 export { CheckoutProduct } from './checkout-product'
+export { CheckoutInputBlock } from './checkout-input-block'
+export { CheckoutTotalDetails } from './checkout-total-details'
 
 
 export * from './modals'
