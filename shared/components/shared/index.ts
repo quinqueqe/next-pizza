@@ -23,7 +23,7 @@ export { CartDrawerInfo } from './cart-drawer-info'
 export { CartDrawerEmpty } from './cart-drawer-empty'
 export { VariantsProduct } from './variants-product'
 
-export { CheckoutWhiteBlock } from './chechout-white-block'
+export { CheckoutWhiteBlock } from './checkout-white-block'
 export { CheckoutProduct } from './checkout-product'
 export { CheckoutInputBlock } from './checkout-input-block'
 export { CheckoutTotalDetails } from './checkout-total-details'

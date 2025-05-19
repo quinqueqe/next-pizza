@@ -31,17 +31,22 @@ export default function CheckoutPage({ className }: Props) {
 		totalTax,
 		totalPrice,
 	} = useCartInfo(discount)
+
 	return (
 		<div className={cn('', className)}>
 			<Container>
 				<h3 className='py-13 font-extrabold text-[36px]'>Оформление заказа</h3>
 				<div className='flex justify-between items-start pb-[180px]'>
 					<div className='flex flex-col gap-13'>
-						<CheckoutCartForm items={items} />
+						<CheckoutCartForm />
 						<CheckoutPersonalForm />
 						<CheckoutAddressForm />
 					</div>
-					<CheckoutTotalForm />
+					<CheckoutTotalForm
+						totalPrice={totalPrice}
+						totalAmount={totalAmount}
+						totalTax={totalTax}
+					/>
 				</div>
 			</Container>
 		</div>

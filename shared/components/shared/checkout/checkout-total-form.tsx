@@ -4,7 +4,17 @@ import { Button } from '../../ui'
 import { CheckoutTotalDetails } from '../checkout-total-details'
 import { Package, Percent, Truck } from 'lucide-react'
 
-export const CheckoutTotalForm = () => {
+type Props = {
+	totalPrice: number
+	totalAmount: number
+	totalTax: number
+}
+
+export const CheckoutTotalForm = ({
+	totalPrice,
+	totalAmount,
+	totalTax,
+}: Props) => {
 	return (
 		<div
 			className={cn(
@@ -14,18 +24,18 @@ export const CheckoutTotalForm = () => {
 		>
 			<p className='text-[22px] pb-1'>Итого:</p>
 			<h4 className='text-[34px] font-extrabold pb-7 border-b-2 border-[#f3f3f3]'>
-				2365 ₽
+				{totalPrice} ₽
 			</h4>
 			<div className='flex flex-col gap-[15px] py-[30px] border-b-2 border-[#f3f3f3]'>
 				<CheckoutTotalDetails
 					icon={<Package className='text-[#B9B9B9]' />}
 					name='Стоимость товаров:'
-					price={2005}
+					price={totalAmount}
 				/>
 				<CheckoutTotalDetails
 					icon={<Percent className='text-[#B9B9B9]' />}
 					name='Налоги:'
-					price={240}
+					price={totalTax}
 				/>
 				<CheckoutTotalDetails
 					icon={<Truck className='text-[#B9B9B9]' />}
