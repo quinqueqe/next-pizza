@@ -20,6 +20,7 @@ export const useCartFinalPrice = (discount: number) => {
 	const totalAmount = useCart(state => state.totalAmount)
 	const updateItemQuantity = useCart(state => state.updateItemQuantity)
 	const deleteItemCart = useCart(state => state.deleteItemCart)
+	const disabled = useCart(state => state.disabled)
 
 	// price
 	const { totalTax, totalPrice } = calcCartTotalPriceToTax(
@@ -47,6 +48,7 @@ export const useCartFinalPrice = (discount: number) => {
 		totalAmount,
 		updateItemQuantity,
 		deleteItemCart,
+		disabled,
 
 		// price
 		totalTax,

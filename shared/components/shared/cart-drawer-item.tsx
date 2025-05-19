@@ -6,6 +6,7 @@ import {
 } from './cart-item-details'
 import { X } from 'lucide-react'
 import { CartStateItem } from '@/shared/lib/get-cart-details'
+import { cn } from '@/shared/lib'
 
 type Props = {
 	item: CartStateItem
@@ -19,6 +20,7 @@ type Props = {
 	onClickMinus?: () => void
 	onClickPlus?: () => void
 	onClickDelete?: () => void
+	disabled: boolean
 }
 
 export const CartDrawerItem = ({
@@ -33,9 +35,15 @@ export const CartDrawerItem = ({
 	onClickMinus,
 	onClickPlus,
 	onClickDelete,
+	disabled,
 }: Props) => {
 	return (
-		<li className='p-4 flex flex-col gap-4 bg-white relative'>
+		<li
+			className={cn(
+				'p-4 flex flex-col gap-4 bg-white relative',
+				disabled === true && 'opacity-40 cursor-not-allowed pointer-events-none'
+			)}
+		>
 			<div className='flex items-start gap-6 pb-3 border-b-[1px] border-solid border-[#a1a1a1]'>
 				<CartItemDetailsImage imageUrl={imageUrl} />
 				<div className='flex flex-col'>

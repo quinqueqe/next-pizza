@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
 import { Api } from '../services/api-client'
 import { CartStateItem } from '../lib/get-cart-details'
 import { getCartDetails } from '../lib/get-cart-details'
@@ -18,60 +19,70 @@ interface CartType {
 	updateItemQuantity: (id: number, quantity: number) => void
 	deleteItemCart: (id: number) => void
 	addCartItem: (values: CreateCartItemValues) => void
+	disabled: boolean
+	setDisabled: (value: boolean) => void
 }
 
-export const useCart = create<CartType>()(set => ({
-	items: [],
-	status: Status.LOADING,
-	totalAmount: 666,
+export const useCart = create<CartType>()(
+	devtools(set => ({
+		items: [],
+		status: Status.LOADING,
+		totalAmount: 0,
+		disabled: false,
+		setDisabled: value => set({ disabled: value }),
 
-	fetchCartItems: async () => {
-		try {
-			set({ items: [], status: Status.LOADING })
-			const data = await Api.cart.getCart()
-			set(getCartDetails(data))
-			set({ status: Status.SUCCESS })
-			// console.log(data)
-		} catch (error) {
-			set({ items: [], status: Status.ERROR })
-			console.error(error)
-		}
-	},
+		fetchCartItems: async () => {
+			try {
+				set({ status: Status.LOADING })
+				const data = await Api.cart.getCart()
+				set(getCartDetails(data))
+				set({ status: Status.SUCCESS })
+				// console.log(data)
+			} catch (error) {
+				set({ items: [], status: Status.ERROR })
+				console.error(error)
+			}
+		},
 
-	updateItemQuantity: async (id, quantity) => {
-		try {
-			set({ items: [], status: Status.LOADING })
-			const data = await Api.cart.updateQuantityItem(id, quantity)
-			set(getCartDetails(data))
-			set({ status: Status.SUCCESS })
-			// console.log(data)
-		} catch (error) {
-			set({ items: [], status: Status.ERROR })
-			console.error(error)
-		}
-	},
-	deleteItemCart: async id => {
-		try {
-			set({ items: [], status: Status.LOADING })
-			const data = await Api.cart.removeCartItem(id)
-			set(getCartDetails(data))
-			set({ status: Status.SUCCESS })
-			// console.log(data)
-		} catch (error) {
-			set({ items: [], status: Status.ERROR })
-			console.error(error)
-		}
-	},
-	addCartItem: async (values: CreateCartItemValues) => {
-		try {
-			set({ items: [], status: Status.LOADING })
-			const data = await Api.cart.addCartItem(values)
-			set(getCartDetails(data))
-			set({ status: Status.SUCCESS })
-			// console.log(data)
-		} catch (error) {
-			set({ items: [], status: Status.ERROR })
-			console.error(error)
-		}
-	},
-}))
+		updateItemQuantity: async (id, quantity) => {
+			try {
+				set({ status: Status.LOADING, disabled: true })
+				const data = await Api.cart.updateQuantityItem(id, quantity)
+				set(getCartDetails(data))
+				set({ status: Status.SUCCESS, disabled: true })
+				// console.log(data)
+			} catch (error) {
+				set({ items: [], status: Status.ERROR, disabled: false })
+				console.error(error)
+			} finally {
+				set({ disabled: false })
+			}
+		},
+		deleteItemCart: async id => {
+			try {
+				set({ status: Status.LOADING, disabled: true })
+				const data = await Api.cart.removeCartItem(id)
+				set(getCartDetails(data))
+				set({ status: Status.SUCCESS, disabled: true })
+				// console.log(data)
+			} catch (error) {
+				set({ items: [], status: Status.ERROR, disabled: false })
+				console.error(error)
+			} finally {
+				set({ disabled: false })
+			}
+		},
+		addCartItem: async (values: CreateCartItemValues) => {
+			try {
+				set({ status: Status.LOADING })
+				const data = await Api.cart.addCartItem(values)
+				set(getCartDetails(data))
+				set({ status: Status.SUCCESS })
+				// console.log(data)
+			} catch (error) {
+				set({ items: [], status: Status.ERROR })
+				console.error(error)
+			}
+		},
+	}))
+)
