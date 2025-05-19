@@ -49,7 +49,7 @@ export const CheckoutTotalForm = () => {
 			</div>
 
 			{/* // promo-start-------------------------------------------- */}
-			{iHavePromo === true && (
+			{iHavePromo === true && promoCheckout.length === 0 && (
 				<button
 					onClick={() => setIHavePromo(false)}
 					className='text-[18px] text-[#777]'
