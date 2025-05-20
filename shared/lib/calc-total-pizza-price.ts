@@ -15,7 +15,7 @@ export const calcTotalPizzaPrice = (
 	size: number,
 	ingredients: Ingredients[],
 	selectedIds: Set<number>
-): number => {
+) => {
 	const pizzaPrice = variations?.find(
 		item => item.pizzaType === activeType && item.size === size
 	)!.price
@@ -23,6 +23,9 @@ export const calcTotalPizzaPrice = (
 		.filter(ing => selectedIds.has(ing.id))
 		.reduce((acc, ing) => acc + ing.price, 0)
 
-	return pizzaPrice + ingredientsPrice
+	if (pizzaPrice) {
+		return pizzaPrice + ingredientsPrice
+	} else {
+		console.log('[CALC_TOTAL_PIZZA_PRICE, ERROR, пицца не найдена')
+	}
 }
-

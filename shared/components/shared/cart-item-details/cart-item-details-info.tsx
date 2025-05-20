@@ -10,7 +10,6 @@ type Props = {
 	ingredients: { name: string; price: number }[]
 }
 
-
 export const CartItemDetailsInfo = ({
 	item,
 	name,
@@ -18,12 +17,11 @@ export const CartItemDetailsInfo = ({
 	type,
 	ingredients,
 }: Props) => {
-	// const pizzaType = types[type].name
-	const pizzaType = 'традиционное'
+	const pizzaType = type ? types[type - 1].name : null
 	return (
 		<div>
 			<h4 className='pb-1 text-[14px] font-bold max-w-[220px]'>{name}</h4>
-			{item.pizzaType && (
+			{item.pizzaType !== null && (
 				<>
 					<p className='text-[#a1a1a1] text-[12px] '>
 						{size} см, {pizzaType} тесто {size}
@@ -32,7 +30,10 @@ export const CartItemDetailsInfo = ({
 						{item.ingredients.length > 1 && (
 							<p className='text-[#a1a1a1] text-[12px]'>
 								<span className='pr-1'>+</span>
-								{ingredients?.map(item => item.name).join(', ').toLowerCase()}
+								{ingredients
+									?.map(item => item.name)
+									.join(', ')
+									.toLowerCase()}
 							</p>
 						)}
 					</div>
