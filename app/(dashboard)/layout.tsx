@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Next Pizza | Dashboard',
+	title: 'Dashboard | Next Pizza',
 }
 
 export default function DashboardLayout({

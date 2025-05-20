@@ -2,7 +2,7 @@ import { Header } from '@/shared/components/shared'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Next Pizza | Checkout',
+	title: 'Оформление заказа | Next Pizza',
 }
 
 export default function CheckoutLayout({

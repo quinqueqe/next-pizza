@@ -4,6 +4,34 @@ import { VariantsProduct } from '@/shared/components/shared'
 import { notFound } from 'next/navigation'
 import { Container } from '../../../../shared/components/shared'
 
+export const generateMetadata = async ({ params }: Props) => {
+	const id = Number(params.id)
+
+	const product = await prisma.product.findFirst({
+		where: {
+			id,
+		},
+	})
+
+	const name = product?.name
+	if (name) {
+		if (product.whProduct === 1) {
+			return {
+				title: `Пицца ${name} | Next Pizza`,
+			}
+		}
+		if (product.whProduct === 2) {
+			return {
+				title: `${name} | Next Pizza`,
+			}
+		}
+	} else {
+		return {
+			title: `Продукт не найден | Next Pizza`,
+		}
+	}
+}
+
 type Props = {
 	params: {
 		id: string
@@ -33,9 +61,12 @@ export default async function ProductId({ params }: Props) {
 
 	if (!product) return notFound()
 	return (
-		<Container >
+		<Container>
 			<div>
-				<VariantsProduct product={product} rightBlockClassName='w-[700px] rounded-4xl'/>
+				<VariantsProduct
+					product={product}
+					rightBlockClassName='w-[700px] rounded-4xl'
+				/>
 			</div>
 		</Container>
 	)
