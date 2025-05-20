@@ -3,6 +3,7 @@ import prisma from '@/prisma/prisma'
 import { VariantsProduct } from '@/shared/components/shared'
 import { notFound } from 'next/navigation'
 import { Container } from '../../../../shared/components/shared'
+import Link from 'next/link'
 
 export const generateMetadata = async ({ params }: Props) => {
 	const id = Number(params.id)
@@ -63,10 +64,30 @@ export default async function ProductId({ params }: Props) {
 	return (
 		<Container>
 			<div>
-				<VariantsProduct
-					product={product}
-					rightBlockClassName='w-[700px] rounded-4xl'
-				/>
+				<div className='pb-20'>
+					<div className='pt-10'>
+						<p className='flex gap-[6px] text-[16px]'>
+							<Link href='/' className='text-[#252525]'>
+								Главная
+							</Link>
+							<span className='text-[#bbbbbb]'>/</span>
+							<Link
+								href={`/#${product.category.name}`}
+								className='text-[#252525]'
+							>
+								{product.category.name}
+							</Link>
+							<span className='text-[#bbbbbb]'>/</span>
+							<span className='text-[#bbbbbb]'>{product.name}</span>
+						</p>
+						<div className='pt-10'>
+							<VariantsProduct
+								product={product}
+								rightBlockClassName='w-[700px] rounded-4xl'
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 		</Container>
 	)
