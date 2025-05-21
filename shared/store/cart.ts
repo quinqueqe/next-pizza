@@ -46,7 +46,7 @@ export const useCart = create<CartType>()(
 
 		updateItemQuantity: async (id, quantity) => {
 			try {
-				set({ status: Status.LOADING, disabled: true })
+				set({ disabled: true })
 				const data = await Api.cart.updateQuantityItem(id, quantity)
 				set(getCartDetails(data))
 				set({ status: Status.SUCCESS, disabled: true })
@@ -60,7 +60,7 @@ export const useCart = create<CartType>()(
 		},
 		deleteItemCart: async id => {
 			try {
-				set({ status: Status.LOADING, disabled: true })
+				set({ disabled: true })
 				const data = await Api.cart.removeCartItem(id)
 				set(getCartDetails(data))
 				set({ status: Status.SUCCESS, disabled: true })

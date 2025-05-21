@@ -1,11 +1,8 @@
 'use client'
 
-import React from 'react'
 import { cn } from '@/shared/lib'
-import { Button } from '../../ui'
-import { CheckoutTotalDetails } from '../checkout-total-details'
 import { Package, Percent, Truck } from 'lucide-react'
-import { CartDrawerPromo } from '../cart-drawer-promo'
+import { Button, Skeleton, CartDrawerPromo, CheckoutTotalDetails } from '../../'
 import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 
 export const CheckoutTotalForm = () => {
@@ -20,14 +17,20 @@ export const CheckoutTotalForm = () => {
 		setIHavePromo,
 	} = usePromoCodes()
 
-	const { totalAmount, totalTax, deliveryPrice, fullPriceWithDelivery } =
-		useCartInfo(discount)
+	const {
+		totalAmount,
+		totalTax,
+		deliveryPrice,
+		fullPriceWithDelivery,
+		status,
+	} = useCartInfo(discount)
 
 	return (
 		<div
 			className={cn(
-				'w-[450px] rounded-4xl bg-white p-[40px] sticky top-4 z-10'
-				// 'w-[100%] max-w-[752px]'
+				'w-[450px] rounded-4xl bg-white p-[40px] sticky top-4 z-10',
+				// 'w-[100%] max-w-[752px]',
+				status === 'loading' ? 'opacity-40 pointer-events-none' : ''
 			)}
 		>
 			<div className='flex flex-col gap-[15px] pb-[20px]'>
@@ -35,16 +38,20 @@ export const CheckoutTotalForm = () => {
 					icon={<Package className='text-[#B9B9B9]' />}
 					name='Стоимость товаров:'
 					price={totalAmount}
+					status={status}
+					className='w-[70px]'
 				/>
 				<CheckoutTotalDetails
 					icon={<Percent className='text-[#B9B9B9]' />}
 					name='Налоги:'
 					price={totalTax}
+					status={status}
 				/>
 				<CheckoutTotalDetails
 					icon={<Truck className='text-[#B9B9B9]' />}
 					name='Доставка:'
 					price={deliveryPrice}
+					status={status}
 				/>
 			</div>
 
@@ -76,13 +83,17 @@ export const CheckoutTotalForm = () => {
 					</p>
 				</div>
 			)}
+			{/* // promo-end------------------------------------------- */}
 			<div className='flex justify-between items-center pt-4 pb-5 border-b-[1px] border-solid border-[#a1a1a1]'>
 				<p className='text-[22px] font-bold pb-1'>Итого:</p>
-				<h4 className='text-[24px] font-extrabold '>
-					{fullPriceWithDelivery} ₽
-				</h4>
+				{status === 'success' ? (
+					<h4 className='text-[24px] font-extrabold '>
+						{fullPriceWithDelivery} ₽
+					</h4>
+				) : (
+					<Skeleton className='w-[93px] h-[36px] rounded-[10px]' />
+				)}
 			</div>
-			{/* // promo-end------------------------------------------- */}
 
 			<div className='pt-7'>
 				<Button

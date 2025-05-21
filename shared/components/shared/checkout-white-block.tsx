@@ -26,7 +26,7 @@ export const CheckoutWhiteBlock = ({
 			<div className='flex justify-between items-center pb-6 border-b-2 border-[#f6f6f6] '>
 				<h4 className='text-[24px] font-bold'>{title}</h4>
 				{hasClearCartBtn && (
-					<button className='text-[16px] flex items-center gap-2 text-[#b8b8b8] hover:text-[#414141] transition duration-300'>
+					<button type='button' className='text-[16px] flex items-center gap-2 text-[#b8b8b8] hover:text-[#414141] transition duration-300'>
 						<Trash2 size={16} />
 						Очистить корзину
 					</button>

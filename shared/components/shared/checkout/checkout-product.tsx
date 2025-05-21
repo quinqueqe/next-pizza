@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/shared/lib'
-import { CartItemDetailsQuantity } from './cart-item-details'
+import { CartItemDetailsQuantity } from '../../'
 import { X } from 'lucide-react'
 import { types } from '@/shared/constants/pizza'
 

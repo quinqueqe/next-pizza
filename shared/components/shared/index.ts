@@ -24,10 +24,10 @@ export { TopBar } from './top-bar'
 export { VariantsProduct } from './variants-product'
 
 export { CheckoutFormInput } from './checkout-form/checkout-form-input'
-export { CheckoutProduct } from './checkout-product'
 export { CheckoutTotalDetails } from './checkout-total-details'
 export { CheckoutWhiteBlock } from './checkout-white-block'
 
+export * from './cart-item-details'
 export * from './checkout'
 export * from './checkout-form'
 export * from './modals'

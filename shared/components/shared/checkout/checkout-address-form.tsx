@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import {
 	CheckoutAddressInput,
@@ -6,12 +8,18 @@ import {
 	CheckoutWhiteBlock,
 } from '@/shared/components'
 import { Controller, useFormContext } from 'react-hook-form'
+import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 
 export const CheckoutAddressForm = () => {
 	const { control } = useFormContext()
+	const { discount } = usePromoCodes()
+	const { status } = useCartInfo(discount)
 	return (
 		<>
-			<CheckoutWhiteBlock title='Адрес доставки'>
+			<CheckoutWhiteBlock
+				title='Адрес доставки'
+				className={status === 'loading' ? 'opacity-40 pointer-events-none' : ''}
+			>
 				<div className='flex flex-col gap-6 pb-10'>
 					<div>
 						<Controller

@@ -12,12 +12,14 @@ import { cn } from '@/shared/lib'
 import { CheckoutSchema, CheckoutSchemaType } from '@/shared/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
+import { redirect } from "next/navigation";
 
 type Props = {
 	className?: string
 }
 
 export default function CheckoutPage({ className }: Props) {
+	// redirect("/")
 	const form = useForm<CheckoutSchemaType>({
 		resolver: zodResolver(CheckoutSchema),
 		defaultValues: {
