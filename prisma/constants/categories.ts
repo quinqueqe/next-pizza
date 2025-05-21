@@ -17,4 +17,7 @@ export const categories = [
 	{
 		name: 'Напитки',
 	},
+	{
+		name: 'Десерты',
+	},
 ]

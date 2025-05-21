@@ -1,5 +1,41 @@
 export const Appetizers = [
 	{
+		name: 'Куриный рулет',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/019595f503e27410ab6e179c05347231.avif',
+		categoryId: 3,
+		price: 199,
+		desc: 'Холодная закуска для легкого перекуса: ролл с цыпленком, свежим салатом, томатами, чеддером и пармезаном с соусом ранч',
+		whProduct: 2,
+	},
+	{
+		name: 'Паста с креветками и песто',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/019591e99f2e77e79cd59ac531ef5522.avif',
+		categoryId: 3,
+		price: 409,
+		desc: 'Паста из печи с соусом песто, креветками, томатами, моцареллой и фирменным соусом альфредо',
+		whProduct: 2,
+	},
+	{
+		name: 'Салат Овощной микс',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/01959842dc40728595599a0918e5593a.avif',
+		categoryId: 3,
+		price: 280,
+		desc: 'Хрустящий салат айсберг, сочные томаты черри, перец, кубики брынзы, соус бальзамик и итальянские травы',
+		whProduct: 2,
+	},
+	{
+		name: 'Додстер Чилл Гриль',
+		imageUrl:
+			'https://media.dodostatic.net/image/r:292x292/019591cc0d0971eaa6f4f81bde8983fb.avif',
+		categoryId: 3,
+		price: 219,
+		desc: 'Горячая закуска с цыпленком и соусом гриль с луком, маринованными огурчиками и моцареллой в тонкой пшеничной лепешке',
+		whProduct: 2,
+	},
+	{
 		name: 'Дэнвич ветчина и сыр',
 		imageUrl:
 			'https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.webp',

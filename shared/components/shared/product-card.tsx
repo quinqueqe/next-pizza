@@ -28,7 +28,9 @@ export const ProductCard = ({
 					<Image src={imageUrl} alt={name} width={292} height={292} />
 				</div>
 				<h4 className='pt-[15px] pb-2 text-[20px] font-bold '>{name}</h4>
-				<p className='text-[14px] text-[#b1b1b1] pb-5 h-[100px]'>{desc}</p>
+				{desc && (
+					<p className='text-[14px] text-[#b1b1b1] pb-5 h-[100px]'>{desc}</p>
+				)}
 				<div className='flex justify-between items-center'>
 					<p className='text-[20px]'>
 						{product.whProduct === 1 ? (

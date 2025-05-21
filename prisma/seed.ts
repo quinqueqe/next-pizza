@@ -1,9 +1,10 @@
 import { hashSync } from 'bcrypt'
 import {
-	// pizzas
 	categories,
 	ingredients,
 	products,
+
+	// pizzas
 	pepperoniFresh,
 	cheese,
 	chorizeFresh,
