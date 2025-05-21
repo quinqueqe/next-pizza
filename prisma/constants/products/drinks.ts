@@ -97,6 +97,14 @@ export const Drinks = [
 		whProduct: 2,
 	},
 	{
+		name: 'Нектар Добрый апельсин',
+		imageUrl: 'https://media.dodostatic.net/image/r:292x292/01956b8708a970de8471f9e3cf23b1f5.avif',
+		categoryId: 6,
+		price: 249,
+		desc: '',
+		whProduct: 2,
+	},
+	{
 		name: 'Морс Клюква 👶',
 		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11eecf75072bd81390b9c29dd01666c3.avif',
 		categoryId: 6,
@@ -118,14 +126,6 @@ export const Drinks = [
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной спелой вишни. В меру сладкий и с приятной кислинкой Дизайн товара может отличаться',
-		whProduct: 2,
-	},
-	{
-		name: 'Какао',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/0195922c4ad07090a7e2a0d20844639f.avif',
-		categoryId: 6,
-		price: 139,
-		desc: 'Насыщенное, плотное и такое знакомое какао с молоком',
 		whProduct: 2,
 	},
 ]

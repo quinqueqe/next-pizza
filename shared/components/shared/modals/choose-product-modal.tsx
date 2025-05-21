@@ -3,8 +3,10 @@
 import { cn } from '../../../lib'
 import { Dialog, DialogContent } from '../../ui'
 import { useRouter } from 'next/navigation'
+// import { useRouter, redirect } from 'next/navigation'
 import { VariantsProduct } from '../'
 import { IProduct } from '@/@types/prisma'
+// import { useCategory } from '@/shared/store'
 
 type Props = {
 	className?: string
@@ -13,6 +15,11 @@ type Props = {
 
 export const ChooseProductModal = ({ className, product }: Props) => {
 	const router = useRouter()
+	// const setAcitveId = useCategory(state => state.setAcitveId)
+	// const onCloseModal = async () => {
+	// 	await setAcitveId(0)
+	// 	redirect('/')
+	// }
 	return (
 		<>
 			<Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
