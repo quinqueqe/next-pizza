@@ -86,6 +86,7 @@ export const CheckoutTotalForm = () => {
 
 			<div className='pt-7'>
 				<Button
+					type='submit'
 					variant={'outline'}
 					className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
 				>

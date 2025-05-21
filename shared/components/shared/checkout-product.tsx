@@ -50,16 +50,16 @@ export const CheckoutProduct = ({
 			)}
 		>
 			<Image src={imageUrl} alt='img' width={65} height={65} />
-			<div className='flex flex-col gap-1 w-[300px]'>
-				<h5 className='font-bold text-[16px]'>{name}</h5>
+			<div className='flex flex-col gap-1 w-[350px]'>
+				<h5 className='font-bold text-[17px]'>{name}</h5>
 				<div>
 					{pizzaSize && pizzaType && (
-						<p className='text-[#a1a1a1]'>
+						<p className='text-[#a1a1a1] text-[14px]'>
 							{pizzaSize} см, {types[pizzaType - 1].name} тесто
 						</p>
 					)}
 					{ingredients.length > 1 && (
-						<p className='text-[#a1a1a1]'>
+						<p className='text-[#a1a1a1] text-[14px]'>
 							+{' '}
 							{ingredients
 								?.map(item => item.name)
@@ -76,6 +76,7 @@ export const CheckoutProduct = ({
 				onClickPlus={onClickPlus}
 			>
 				<button
+					type='button'
 					onClick={onClickDelete}
 					className='pl-1 text-[#b8b8b8] hover:text-[#505050] transition duration-300'
 				>

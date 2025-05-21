@@ -1,6 +1,8 @@
-import React from 'react'
+'use client'
+
 import {
-	CheckoutInputBlock,
+	CheckoutFormInput,
+	// CheckoutInputBlock
 	CheckoutWhiteBlock,
 } from '@/shared/components/shared'
 
@@ -9,21 +11,10 @@ export const CheckoutPersonalForm = () => {
 		<>
 			<CheckoutWhiteBlock title='Персональная информация'>
 				<div className='grid grid-cols-2 gap-6 pb-10 pt-[30px]'>
-					<CheckoutInputBlock label='Имя' placeholder='Введите ваше имя' />
-					<CheckoutInputBlock
-						label='Фамилия'
-						placeholder='Введите вашу фамилию'
-					/>
-					<CheckoutInputBlock
-						label='E-Mail'
-						placeholder='Введите вашу почту'
-						type='email'
-					/>
-					<CheckoutInputBlock
-						label='Номер телефона'
-						placeholder='Введите ваш номер телефона'
-						type='tel'
-					/>
+					<CheckoutFormInput placeholder='Имя' name='firstName' />
+					<CheckoutFormInput placeholder='Фамилия' name='lastName' />
+					<CheckoutFormInput placeholder='E-Mail' name='email' />
+					<CheckoutFormInput placeholder='Телефон' name='phone' />
 				</div>
 			</CheckoutWhiteBlock>
 		</>
