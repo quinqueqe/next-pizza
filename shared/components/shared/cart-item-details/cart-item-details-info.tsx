@@ -17,6 +17,7 @@ export const CartItemDetailsInfo = ({
 	size,
 	type,
 	ingredients,
+	details,
 }: Props) => {
 	const pizzaType = type ? types[type - 1].name : null
 	return (
@@ -40,6 +41,7 @@ export const CartItemDetailsInfo = ({
 					</div>
 				</>
 			)}
+			{details && <p className='text-[#a1a1a1] text-[12px]'>{details}</p>}
 		</div>
 	)
 }

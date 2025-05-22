@@ -41,6 +41,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
 			name: ing.name,
 			price: ing.price,
 		})),
+		details: item.productItem.product.details,
 	}))
 	return {
 		items,

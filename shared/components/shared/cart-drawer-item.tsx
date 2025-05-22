@@ -37,6 +37,7 @@ export const CartDrawerItem = ({
 	onClickPlus,
 	onClickDelete,
 	disabled,
+	details,
 }: Props) => {
 	return (
 		<li
@@ -54,6 +55,7 @@ export const CartDrawerItem = ({
 						size={size}
 						type={type}
 						ingredients={ingredients}
+						details={details}
 					/>
 				</div>
 			</div>
