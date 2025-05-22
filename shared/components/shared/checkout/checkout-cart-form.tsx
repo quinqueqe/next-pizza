@@ -43,6 +43,7 @@ export const CheckoutCartForm = () => {
 								onClickPlus={() => onClickCountBtn(item.id, item.quantity + 1)}
 								onClickDelete={() => deleteItemCart(item.id)}
 								disabled={disabled}
+								details={item.details}
 							/>
 					  ))
 					: productSkeleton}

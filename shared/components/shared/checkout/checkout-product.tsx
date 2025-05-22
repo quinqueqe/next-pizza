@@ -23,6 +23,7 @@ type Props = {
 	onClickPlus: () => void
 	onClickDelete: () => void
 	disabled: boolean
+	details: string | null
 }
 
 export const CheckoutProduct = ({
@@ -39,6 +40,7 @@ export const CheckoutProduct = ({
 	onClickPlus,
 	onClickDelete,
 	disabled,
+	details,
 }: Props) => {
 	return (
 		<div
@@ -58,6 +60,7 @@ export const CheckoutProduct = ({
 							{pizzaSize} см, {types[pizzaType - 1].name} тесто
 						</p>
 					)}
+					{details && <p className='text-[#a1a1a1] text-[14px]'>{details}</p>}
 					{ingredients.length > 1 && (
 						<p className='text-[#a1a1a1] text-[14px]'>
 							+{' '}
