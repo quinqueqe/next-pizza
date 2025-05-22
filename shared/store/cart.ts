@@ -49,7 +49,7 @@ export const useCart = create<CartType>()(
 				set({ disabled: true })
 				const data = await Api.cart.updateQuantityItem(id, quantity)
 				set(getCartDetails(data))
-				set({ status: Status.SUCCESS, disabled: true })
+				set({disabled: true })
 				// console.log(data)
 			} catch (error) {
 				set({ items: [], status: Status.ERROR, disabled: false })
@@ -63,7 +63,7 @@ export const useCart = create<CartType>()(
 				set({ disabled: true })
 				const data = await Api.cart.removeCartItem(id)
 				set(getCartDetails(data))
-				set({ status: Status.SUCCESS, disabled: true })
+				set({ disabled: true })
 				// console.log(data)
 			} catch (error) {
 				set({ items: [], status: Status.ERROR, disabled: false })

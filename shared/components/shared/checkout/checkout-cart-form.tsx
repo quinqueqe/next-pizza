@@ -25,7 +25,7 @@ export const CheckoutCartForm = () => {
 		<>
 			<CheckoutWhiteBlock
 				title='Корзина'
-				hasClearCartBtn={true}
+				// hasClearCartBtn={true}
 				className={status === 'loading' ? 'opacity-40 pointer-events-none' : ''}
 			>
 				{status === 'success'
