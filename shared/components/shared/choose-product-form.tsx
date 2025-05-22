@@ -20,6 +20,7 @@ type Props = {
 	className?: string
 	variations?: Variation[]
 	rightBlockClassName?: string
+	details: string | null
 }
 
 export const ChooseProductForm = ({
@@ -27,13 +28,12 @@ export const ChooseProductForm = ({
 	name,
 	price,
 	desc,
-	// productItemId,
 	onClickAdd,
 	status,
 	rightBlockClassName,
+	details,
 }: Props) => {
 	const totalPrice = price
-	// const details = `0.4 л, 380 г` // , 380 г
 
 	return (
 		<div>
@@ -55,7 +55,7 @@ export const ChooseProductForm = ({
 						<h4 className='font-extrabold text-[#373737] text-4xl pb-3'>
 							{name}
 						</h4>
-						{/* <p className='text-[#373737] opacity-60 pb-3'>{details}</p> */}
+						<p className='text-[#373737] opacity-60 pb-3'>{details}</p>
 						<p className='pb-6'>{desc}</p>
 					</div>
 					<div>

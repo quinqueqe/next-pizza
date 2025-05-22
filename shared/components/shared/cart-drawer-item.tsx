@@ -21,6 +21,7 @@ type Props = {
 	onClickPlus?: () => void
 	onClickDelete?: () => void
 	disabled: boolean
+	details?: string | null
 }
 
 export const CartDrawerItem = ({

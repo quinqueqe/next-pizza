@@ -8,6 +8,7 @@ type Props = {
 	size: number
 	type: number
 	ingredients: { name: string; price: number }[]
+	details?: string | null
 }
 
 export const CartItemDetailsInfo = ({

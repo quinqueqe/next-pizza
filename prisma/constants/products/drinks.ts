@@ -7,6 +7,7 @@ export const Drinks = [
 		price: 135,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Добрый Кола без сахара',
@@ -15,6 +16,7 @@ export const Drinks = [
 		price: 135,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Добрый Апельсин',
@@ -23,6 +25,7 @@ export const Drinks = [
 		price: 135,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Добрый Манго-Маракуйя ',
@@ -31,6 +34,7 @@ export const Drinks = [
 		price: 135,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Rich Tea Черный с лимоном',
@@ -39,6 +43,7 @@ export const Drinks = [
 		price: 139,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Rich Tea Зеленый',
@@ -47,6 +52,7 @@ export const Drinks = [
 		price: 139,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Напиток сокосодержащий Pulpy Апельсин',
@@ -55,6 +61,7 @@ export const Drinks = [
 		price: 149,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Вода BonaAqua негазированная',
@@ -63,6 +70,7 @@ export const Drinks = [
 		price: 100,
 		desc: '',
 		whProduct: 2,
+		details: '0.5 л',
 	},
 	{
 		name: 'Апельсиновый нектар Rich ',
@@ -71,6 +79,7 @@ export const Drinks = [
 		price: 249,
 		desc: '',
 		whProduct: 2,
+		details: '1 л',
 	},
 	{
 		name: 'Яблочный сок Rich',
@@ -79,6 +88,7 @@ export const Drinks = [
 		price: 249,
 		desc: '',
 		whProduct: 2,
+		details: '1 л',
 	},
 	{
 		name: 'Вишневый нектар Rich',
@@ -87,6 +97,7 @@ export const Drinks = [
 		price: 249,
 		desc: '',
 		whProduct: 2,
+		details: '1 л',
 	},
 	{
 		name: 'Нектар Добрый мультифрукт',
@@ -95,6 +106,7 @@ export const Drinks = [
 		price: 249,
 		desc: '',
 		whProduct: 2,
+		details: '1 л',
 	},
 	{
 		name: 'Нектар Добрый апельсин',
@@ -103,6 +115,7 @@ export const Drinks = [
 		price: 249,
 		desc: '',
 		whProduct: 2,
+		details: '1 л',
 	},
 	{
 		name: 'Морс Клюква 👶',
@@ -111,6 +124,7 @@ export const Drinks = [
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной клюквы с терпким послевкусием Дизайн товара может отличаться',
 		whProduct: 2,
+		details: '0.45 л',
 	},
 	{
 		name: 'Морс Черная смородина 👶',
@@ -119,6 +133,7 @@ export const Drinks = [
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной душистой черной смородины Дизайн товара может отличаться',
 		whProduct: 2,
+		details: '0.45 л',
 	},
 	{
 		name: 'Морс Вишня 👶',
@@ -127,5 +142,6 @@ export const Drinks = [
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной спелой вишни. В меру сладкий и с приятной кислинкой Дизайн товара может отличаться',
 		whProduct: 2,
+		details: '0.45 л',
 	},
 ]

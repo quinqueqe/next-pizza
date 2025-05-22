@@ -12,14 +12,13 @@ import { cn } from '@/shared/lib'
 import { CheckoutSchema, CheckoutSchemaType } from '@/shared/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
-import { redirect } from "next/navigation";
+import { createOrder } from '@/app/actions'
 
 type Props = {
 	className?: string
 }
 
 export default function CheckoutPage({ className }: Props) {
-	// redirect("/")
 	const form = useForm<CheckoutSchemaType>({
 		resolver: zodResolver(CheckoutSchema),
 		defaultValues: {
@@ -33,7 +32,8 @@ export default function CheckoutPage({ className }: Props) {
 	})
 
 	const onSubmit = (data: CheckoutSchemaType) => {
-		console.log(data)
+		// console.log(data)
+		createOrder(data)
 	} // форма будет треггерится каждый раз когда пользователь нажмет на кнопку (34 стр)
 	return (
 		<div className={cn('', className)}>

@@ -59,6 +59,7 @@ export const VariantsProduct = ({
 	} else {
 		return (
 			<ChooseProductForm
+				details={product.details}
 				rightBlockClassName={rightBlockClassName}
 				imageUrl={product.imageUrl}
 				name={product.name}
