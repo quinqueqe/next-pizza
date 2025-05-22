@@ -1,12 +1,16 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import {
+	CartDrawerEmpty,
 	CheckoutProduct,
 	CheckoutProductSkeleton,
 	CheckoutWhiteBlock,
-} from '@/shared/components/shared'
+	Button
+} from '@/shared/components'
 import { useCartInfo, usePromoCodes } from '@/shared/hooks'
+import { cn } from '@/shared/lib'
 
 export const CheckoutCartForm = () => {
 	const discount = usePromoCodes().discount
@@ -26,7 +30,10 @@ export const CheckoutCartForm = () => {
 			<CheckoutWhiteBlock
 				title='Корзина'
 				// hasClearCartBtn={true}
-				className={status === 'loading' ? 'opacity-40 pointer-events-none' : ''}
+				className={cn(
+					status === 'loading' ? 'opacity-40 pointer-events-none' : '',
+					items.length === 0 && 'h-full'
+				)}
 			>
 				{status === 'success'
 					? items.map(item => (
@@ -47,6 +54,20 @@ export const CheckoutCartForm = () => {
 							/>
 					  ))
 					: productSkeleton}
+				{items.length === 0 && (
+					<div className='py-[35px] flex flex-col justify-center items-center'>
+						<CartDrawerEmpty className='pb-3' />
+						<Link href='/'>
+							<Button
+								type='button'
+								variant={'outline'}
+								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[390px]'
+							>
+								Вернуться на главную страницу
+							</Button>
+						</Link>
+					</div>
+				)}
 			</CheckoutWhiteBlock>
 		</>
 	)
