@@ -1,8 +1,12 @@
 'use server'
-import { CheckoutSchemaType } from '@/shared/constants'
-import { OrderStatus } from '@prisma/client'
+
 import prisma from '@/prisma/prisma'
 import { cookies } from 'next/headers'
+
+import { CheckoutSchemaType } from '@/shared/constants'
+import { OrderStatus } from '@prisma/client'
+import { sendEmail } from '@/shared/lib'
+import { PayOrderTemplate } from '@/shared/components'
 
 export async function createOrder(data: CheckoutSchemaType) {
 	// console.log(data)
@@ -74,12 +78,19 @@ export async function createOrder(data: CheckoutSchemaType) {
 			},
 		})
 
-
 		// TODO: сделать создание ссылки оплаты
 
-
-		// отпра
+		// отправка письма на почту
+		await sendEmail(
+			data.email,
+			'Next Pizza | Оплатите заказ #' + order.id,
+			PayOrderTemplate({
+				orderId: order.id,
+				totalAmount: order.totalAmount,
+				paymentUrl: 'https://google.com',
+			})
+		)
 	} catch (err) {
-		console.log('SERVER_ACTION', err)
+		console.log('[CREATE_ORDER_ERROR]', err)
 	}
 }
