@@ -51,7 +51,7 @@ export const CartDrawer = ({ children }: Props) => {
 	// count
 	const onClickCountBtn = (id: number, quantity: number) => {
 		updateItemQuantity(id, quantity)
-		console.log(items)
+		// console.log(items)
 	}
 
 	return (

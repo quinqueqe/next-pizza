@@ -4,7 +4,7 @@ import { OrderStatus } from '@prisma/client'
 import prisma from '@/prisma/prisma'
 
 export async function createOrder (data: CheckoutSchemaType) {
-	console.log(data)
+	// console.log(data)
 	const token = '123'
 
 	const order = await prisma?.order.create({

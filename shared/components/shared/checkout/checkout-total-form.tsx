@@ -28,6 +28,7 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 		deliveryPrice,
 		fullPriceWithDelivery,
 		status,
+		disabled,
 	} = useCartInfo(discount)
 
 	return (
@@ -45,18 +46,21 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 					price={totalAmount}
 					status={status}
 					className='w-[70px]'
+					disabled={disabled}
 				/>
 				<CheckoutTotalDetails
 					icon={<Percent className='text-[#B9B9B9]' />}
 					name='Налоги:'
 					price={totalTax}
 					status={status}
+					disabled={disabled}
 				/>
 				<CheckoutTotalDetails
 					icon={<Truck className='text-[#B9B9B9]' />}
 					name='Доставка:'
 					price={deliveryPrice}
 					status={status}
+					disabled={disabled}
 				/>
 			</div>
 
@@ -91,12 +95,15 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 			{/* // promo-end------------------------------------------- */}
 			<div className='flex justify-between items-center pt-4 pb-5 border-b-[1px] border-solid border-[#a1a1a1]'>
 				<p className='text-[22px] font-bold pb-1'>Итого:</p>
-				{status === 'success' ? (
+				{/* {status === 'loading' || disabled ? ( */}
+				{status === 'loading' ? (
+					<Skeleton className='w-[93px] h-[36px] rounded-[10px]' />
+				) : status === 'success' ? (
 					<h4 className='text-[24px] font-extrabold '>
 						{fullPriceWithDelivery} ₽
 					</h4>
 				) : (
-					<Skeleton className='w-[93px] h-[36px] rounded-[10px]' />
+					<h4 className='text-[24px] font-extrabold '>0 ₽</h4>
 				)}
 			</div>
 
@@ -104,7 +111,7 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 				<Button
 					status={status}
 					loading={loading}
-					// type='submit'
+					type='submit'
 					variant={'outline'}
 					className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
 				>
