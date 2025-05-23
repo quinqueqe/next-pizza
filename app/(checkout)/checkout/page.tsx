@@ -15,6 +15,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { createOrder } from '@/app/actions'
 import toast from 'react-hot-toast'
 import React from 'react'
+import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 
 type Props = {
 	className?: string
@@ -35,10 +36,14 @@ export default function CheckoutPage({ className }: Props) {
 
 	const [submitting, setSubmitting] = React.useState(false)
 
+	const { discount } = usePromoCodes()
+	const { fullPriceWithDelivery } = useCartInfo(discount)
+
+
 	const onSubmit = async (data: CheckoutSchemaType) => {
 		try {
 			setSubmitting(true)
-			const url = await createOrder(data) // передается в виде массива с объектом data, url берется из return функции
+			const url = await createOrder(data, fullPriceWithDelivery) // data передается в виде массива с объектом data, url берется из return функции
 			toast.success('Заказ успешно оформлен! Переходим на оплату...', {
 				icon: '✅',
 			})

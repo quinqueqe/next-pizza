@@ -8,7 +8,7 @@ import { OrderStatus } from '@prisma/client'
 import { createPayment, sendEmail } from '@/shared/lib'
 import { PayOrderTemplate } from '@/shared/components'
 
-export async function createOrder(data: CheckoutSchemaType) {
+export async function createOrder(data: CheckoutSchemaType, totalPrice: number) {
 	// console.log(data)
 	try {
 		const cookiesStore = await cookies()
@@ -56,7 +56,7 @@ export async function createOrder(data: CheckoutSchemaType) {
 				phone: data.phone,
 				address: data.address,
 				comment: data.comment,
-				totalAmount: userCart.totalAmount,
+				totalAmount: totalPrice,
 				status: OrderStatus.PENDING,
 				items: JSON.stringify(userCart.items),
 			},
