@@ -7,7 +7,7 @@ import {
 	CheckoutProduct,
 	CheckoutProductSkeleton,
 	CheckoutWhiteBlock,
-	Button
+	Button,
 } from '@/shared/components'
 import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 import { cn } from '@/shared/lib'
@@ -32,7 +32,7 @@ export const CheckoutCartForm = () => {
 				// hasClearCartBtn={true}
 				className={cn(
 					status === 'loading' ? 'opacity-40 pointer-events-none' : '',
-					items.length === 0 && 'h-full'
+					items.length === 0 && 'h-[full]'
 				)}
 			>
 				{status === 'success'
@@ -59,6 +59,10 @@ export const CheckoutCartForm = () => {
 						<CartDrawerEmpty className='pb-3' />
 						<Link href='/'>
 							<Button
+								onClick={() =>
+									(document.cookie =
+										'cartToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT')
+								}
 								type='button'
 								variant={'outline'}
 								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[390px]'
