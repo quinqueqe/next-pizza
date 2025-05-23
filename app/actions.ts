@@ -5,7 +5,7 @@ import { cookies } from 'next/headers'
 
 import { CheckoutSchemaType } from '@/shared/constants'
 import { OrderStatus } from '@prisma/client'
-import { sendEmail } from '@/shared/lib'
+import { createPayment, sendEmail } from '@/shared/lib'
 import { PayOrderTemplate } from '@/shared/components'
 
 export async function createOrder(data: CheckoutSchemaType) {
@@ -78,7 +78,27 @@ export async function createOrder(data: CheckoutSchemaType) {
 			},
 		})
 
-		// TODO: сделать создание ссылки оплаты
+		// создание ссылки оплаты
+		const paymentData = await createPayment({
+			description: `Оплата заказа #${order.id}`,
+			orderId: order.id,
+			amount: order.totalAmount,
+		})
+
+		if (!paymentData) {
+			throw new Error('Payment data not found')
+		}
+
+		await prisma.order.update({
+			where: {
+				id: order.id,
+			},
+			data: {
+				paymentId: paymentData.id, // добавили для каждого заказа свой уникальный paymentId который береться с yookassa, по нему можно найти order пользователя
+			},
+		})
+
+		const paymentUrl = paymentData.confirmation.confirmation_url // уникальная ссылка на оплату order пользователя
 
 		// отправка письма на почту
 		await sendEmail(
@@ -87,9 +107,11 @@ export async function createOrder(data: CheckoutSchemaType) {
 			PayOrderTemplate({
 				orderId: order.id,
 				totalAmount: order.totalAmount,
-				paymentUrl: 'https://google.com',
+				paymentUrl,
 			})
 		)
+
+		return paymentUrl // возращаем ссылку на оплату для перехода после нажатия на кнопку отправки формы пользователя
 	} catch (err) {
 		console.log('[CREATE_ORDER_ERROR]', err)
 	}

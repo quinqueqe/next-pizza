@@ -1,19 +1,25 @@
 import { PaymentData } from '@/@types/yookassa'
 import axios from 'axios'
 
-export async function createPayment(details: any) {
+type Props = {
+	description: string
+	orderId: number
+	amount: number
+}
+
+export async function createPayment({ description, orderId, amount }: Props) {
 	const { data } = await axios.post<PaymentData>(
 		'https://api.yookassa.ru/v3/payments',
 		{
 			amount: {
-				value: details.amount,
+				value: amount,
 				currency: 'RUB',
 			},
 
 			capture: true,
-			description: details.description,
+			description: description,
 			metadata: {
-				order_id: details.orderId,
+				order_id: orderId,
 			},
 			confirmation: {
 				type: 'redirect',
@@ -23,11 +29,11 @@ export async function createPayment(details: any) {
 		},
 		{
 			auth: {
-				username: process.env.YOOKASSA_API_KEY as string,
-				password: '',
+				username: process.env.YOOKASSA_STORE_ID as string,
+				password: process.env.YOOKASSA_API_KEY as string,
 			},
 			headers: {
-				'Idempotency-Key': Math.random().toString(36).substring(7),
+				'Idempotence-Key': Math.random().toString(36).substring(7),
 			},
 		}
 	)
