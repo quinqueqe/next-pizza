@@ -33,7 +33,7 @@ export const VariantsProduct = ({
 			toast.success(
 				`Добавлено: ${product.name}${
 					firstItem.pizzaType ? `, ${sizes[activeSize].value} см` : ''
-				} `
+				} `, 
 			)
 			onCloseModal?.()
 		} catch (error) {

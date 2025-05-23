@@ -21,4 +21,6 @@ export async function createOrder (data: CheckoutSchemaType) {
 		},
 	})
 	console.log(order)
+
+	return 'https://google.com'
 }

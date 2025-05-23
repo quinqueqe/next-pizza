@@ -13,6 +13,8 @@ import { CheckoutSchema, CheckoutSchemaType } from '@/shared/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { createOrder } from '@/app/actions'
+import toast from 'react-hot-toast'
+import React from 'react'
 
 type Props = {
 	className?: string
@@ -31,9 +33,26 @@ export default function CheckoutPage({ className }: Props) {
 		},
 	})
 
-	const onSubmit = (data: CheckoutSchemaType) => {
-		// console.log(data)
-		createOrder(data)
+	const [submitting, setSubmitting] = React.useState(false)
+
+	const onSubmit = async (data: CheckoutSchemaType) => {
+		try {
+			setSubmitting(true)
+			const url = await createOrder(data) // передается в виде массива с объектом data, url берется из return функции
+			toast.success('Заказ успешно оформлен! Переходим на оплату...', {
+				icon: '✅',
+			})
+
+			if (url) {
+				location.href = url
+			}
+		} catch (err) {
+			toast.error('Произошла ошибка при создании заказа', {
+				icon: '❌',
+			})
+			setSubmitting(false)
+			console.log('ERROR_ORDER', err)
+		}
 	} // форма будет треггерится каждый раз когда пользователь нажмет на кнопку (34 стр)
 	return (
 		<div className={cn('', className)}>
@@ -49,7 +68,7 @@ export default function CheckoutPage({ className }: Props) {
 								<CheckoutPersonalForm />
 								<CheckoutAddressForm />
 							</div>
-							<CheckoutTotalForm />
+							<CheckoutTotalForm loading={submitting} />
 						</div>
 					</Container>
 				</form>

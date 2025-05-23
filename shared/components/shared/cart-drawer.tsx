@@ -28,13 +28,8 @@ type Props = {
 }
 
 export const CartDrawer = ({ children }: Props) => {
-	const {
-		onClickPromoBtn,
-		promoStatus,
-		discount,
-		setInputValue,
-		inputValue,
-	} = usePromoCodes()
+	const { onClickPromoBtn, promoStatus, discount, setInputValue, inputValue } =
+		usePromoCodes()
 
 	const {
 		// states
@@ -128,8 +123,7 @@ export const CartDrawer = ({ children }: Props) => {
 								/>
 								<Link href='/checkout'>
 									<Button
-										status={status}
-										type='submit'
+										type='button'
 										className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
 									>
 										К оформлению заказа

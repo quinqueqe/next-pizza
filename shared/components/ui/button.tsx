@@ -40,6 +40,7 @@ export interface ButtonProps
 		VariantProps<typeof buttonVariants> {
 	asChild?: boolean
 	status?: string | boolean
+	loading?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -52,6 +53,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			children,
 			disabled,
 			status,
+			loading,
 			...props
 		},
 		ref
@@ -59,12 +61,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		const Comp = asChild ? Slot : 'button'
 		return (
 			<Comp
-				disabled={disabled || status === 'loading'}
+				disabled={disabled || loading || status === 'loading'}
 				className={cn(buttonVariants({ variant, size, className }))}
 				ref={ref}
 				{...props}
 			>
-				{status === 'loading' ? (
+				{status === 'loading' || loading ? (
 					<Loader className='w-5 h-5 animate-spin' />
 				) : (
 					children

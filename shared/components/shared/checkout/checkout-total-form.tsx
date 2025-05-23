@@ -4,8 +4,13 @@ import { cn } from '@/shared/lib'
 import { Package, Percent, Truck } from 'lucide-react'
 import { Button, Skeleton, CartDrawerPromo, CheckoutTotalDetails } from '../../'
 import { useCartInfo, usePromoCodes } from '@/shared/hooks'
+import React from 'react'
 
-export const CheckoutTotalForm = () => {
+type Props = {
+	loading: boolean
+}
+
+export const CheckoutTotalForm = ({ loading }: Props) => {
 	const {
 		onClickPromoBtn,
 		promoStatus,
@@ -97,11 +102,13 @@ export const CheckoutTotalForm = () => {
 
 			<div className='pt-7'>
 				<Button
-					type='submit'
+					status={status}
+					loading={loading}
+					// type='submit'
 					variant={'outline'}
 					className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
 				>
-					Перейти к оплате
+					Оформить заказ
 				</Button>
 			</div>
 		</div>
