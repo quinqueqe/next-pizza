@@ -11,6 +11,7 @@ type Props = {
 	required?: boolean
 	placeholder?: string
 	className?: string
+	valueDefault?: string
 }
 
 export const CheckoutFormInput = ({
@@ -19,6 +20,7 @@ export const CheckoutFormInput = ({
 	required,
 	placeholder,
 	className,
+	valueDefault,
 }: Props) => {
 	const {
 		register,
@@ -43,6 +45,7 @@ export const CheckoutFormInput = ({
 
 			<div className='relative'>
 				<input
+					value={valueDefault ? valueDefault : value}
 					placeholder={placeholder}
 					className={cn(
 						'border-2 rounded-2xl pl-[18px] py-3 w-full',
