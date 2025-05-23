@@ -1,7 +1,7 @@
 export const Breakfasts = [
 	{
 		name: 'Омлет с ветчиной и грибами',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/ham_and_mushroom_omelet.avif',
 		categoryId: 2,
 		price: 195,
 		desc: 'Горячий сытный омлет с поджаристой корочкой, ветчина, шампиньоны и моцарелла',
@@ -10,7 +10,7 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Омлет с пепперони',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/pepperoni_omelet.avif',
 		categoryId: 2,
 		price: 195,
 		desc: 'Сытный и сбалансированный завтрак — омлет с поджаристой корочкой, пикантная пепперони, томаты и моцарелла',
@@ -19,7 +19,8 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Сырники со сгущенным молоком',
-		imageUrl: '',
+		imageUrl:
+			'/assets/images/products/breakfasts/cheesecakes_with_condensed_milk.avif',
 		categoryId: 2,
 		price: 199,
 		desc: 'Нежные сырники, приготовленные в печи, с порционным сгущенным молоком',
@@ -28,7 +29,8 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Сырники с малиновым вареньем 👶',
-		imageUrl: '',
+		imageUrl:
+			'/assets/images/products/breakfasts/cheesecakes_with_raspberry_jam.avif',
 		categoryId: 2,
 		price: 199,
 		desc: 'Любимый десерт многих гостей — румяные сырники из печи с малиновым вареньем. Нежные, в меру сладкие и напоминающие детство',
@@ -37,7 +39,7 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Сырники',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/cheesecakes.avif',
 		categoryId: 2,
 		price: 170,
 		desc: 'Любимый десерт многих гостей — румяные сырники из печи. Нежные, в меру сладкие и напоминающие детство',
@@ -46,7 +48,7 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Кофе Американо',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/caffe_americano.avif',
 		categoryId: 2,
 		price: 139,
 		desc: 'Горячий кофе для ценителей чистого вкуса',
@@ -55,7 +57,7 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Кофе Капучино',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/caffe_capuccino.avif',
 		categoryId: 2,
 		price: 179,
 		desc: 'Легендарный рецепт кофе: эспрессо, горячее молоко и плотная молочная пенка',
@@ -64,7 +66,7 @@ export const Breakfasts = [
 	},
 	{
 		name: 'Кофе Латте',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/breakfasts/caffe_latte.avif',
 		categoryId: 2,
 		price: 179,
 		desc: 'Идеально сбалансированное сочетание кофе, увеличенной порции молока и нежнейшей пенки',

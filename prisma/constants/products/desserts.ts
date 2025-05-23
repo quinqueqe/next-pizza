@@ -1,7 +1,7 @@
 export const Desserts = [
 	{
 		name: 'Карамельный чизкейк',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/caramel_cheesecake.avif',
 		categoryId: 7,
 		price: 189,
 		desc: 'Сливочный десерт с очень карамельной начинкой, шоколадным печеньем и орехами',
@@ -10,7 +10,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Черничный маффин',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/blueberry_muffin.avif',
 		categoryId: 7,
 		price: 119,
 		desc: 'Воздушный кекс с ароматной начинкой из натуральной черники',
@@ -19,7 +19,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Тирамису',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/tiramisu.avif',
 		categoryId: 7,
 		price: 199,
 		desc: 'Многослойный десерт в лучших итальянских традициях: легкий аромат какао, пропитанная кофе бисквитная прослойка и нежный крем',
@@ -28,7 +28,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Додобоны',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/dodobones.avif',
 		categoryId: 7,
 		price: 130,
 		desc: 'Когда сливочное встречается с пряным, получаются горячие булочки с корицей в фирменном пломбирном соусе',
@@ -37,7 +37,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Чизкейк Нью-Йорк',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/new_york_cheesecake.avif',
 		categoryId: 7,
 		price: 189,
 		desc: 'Нежнейшая сырная основа, тонкий корж песочного теста и никаких добавок. Классика в мире десертов',
@@ -46,7 +46,8 @@ export const Desserts = [
 	},
 	{
 		name: 'Чизкейк Банановый с шоколадным печеньем',
-		imageUrl: '',
+		imageUrl:
+			'/assets/images/products/desserts/banana_cheesecake_with_chocolate_chip_cookies.avif',
 		categoryId: 7,
 		price: 189,
 		desc: 'Солнечная версия классического рецепта: нежный чизкейк с бананом и шоколадным печеньем',
@@ -55,7 +56,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Макарон с манго и маракуйей',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/mango_maracuja_macaroon.avif',
 		categoryId: 7,
 		price: 169,
 		desc: 'Знаменитый французский десерт со вкусом тропических фруктов. Bon appétit!',
@@ -64,7 +65,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Эклеры-мини с заварным кремом',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/mini_eclairs_with_custard.avif',
 		categoryId: 7,
 		price: 169,
 		desc: 'Три маленьких, но таких милых эклерчика с заварным кремом. Можно поделиться с друзьями',
@@ -73,7 +74,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Шоколадный кукис',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/chocolate_kookies.avif',
 		categoryId: 7,
 		price: 115,
 		desc: 'Мягкое печенье с кусочками темного шоколада. Идеально сочетается с чаем, кофе или какао',
@@ -82,7 +83,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Фондант',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/fondant.avif',
 		categoryId: 7,
 		price: 389,
 		desc: 'Французский шоколадный десерт с хрустящей корочкой и жидкой начинкой',
@@ -91,7 +92,7 @@ export const Desserts = [
 	},
 	{
 		name: 'Сорбет Лимонный фреш ',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/desserts/sorbet_lemon_fresh.avif',
 		categoryId: 7,
 		price: 145,
 		desc: 'Цитрусовая свежесть и сладкий вкус с приятной кислинкой',
@@ -100,7 +101,8 @@ export const Desserts = [
 	},
 	{
 		name: 'Сорбет Клубничный гранат',
-		imageUrl: '',
+		imageUrl:
+			'/assets/images/products/desserts/strawberry_pomegranate_sorbet.avif',
 		categoryId: 7,
 		price: 145,
 		desc: 'Охлаждающий дуэт сочных ягод и спелых фруктов',

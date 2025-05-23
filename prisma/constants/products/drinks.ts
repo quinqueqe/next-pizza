@@ -1,7 +1,7 @@
 export const Drinks = [
 	{
 		name: 'Добрый Кола',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/good_cola.avif',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -10,7 +10,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Кола без сахара',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/good_coke_no_sugar.avif',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -19,7 +19,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Апельсин',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/good_orange.avif',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -28,7 +28,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Манго-Маракуйя ',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/good_mango_maracuja.avif',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -37,7 +37,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Rich Tea Черный с лимоном',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/rich_tea_black_with_lemon.avif',
 		categoryId: 6,
 		price: 139,
 		desc: '',
@@ -46,7 +46,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Rich Tea Зеленый',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/rich_tea_green.avif',
 		categoryId: 6,
 		price: 139,
 		desc: '',
@@ -55,7 +55,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Напиток сокосодержащий Pulpy Апельсин',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/pulpy_orange_juice_drink.avif',
 		categoryId: 6,
 		price: 149,
 		desc: '',
@@ -64,7 +64,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Вода BonaAqua негазированная',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/bonaAqua_still_water.avif',
 		categoryId: 6,
 		price: 100,
 		desc: '',
@@ -73,7 +73,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Апельсиновый нектар Rich ',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/orange_nectar_rich.avif',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -82,7 +82,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Яблочный сок Rich',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/rich_apple_juice.avif',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -91,7 +91,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Вишневый нектар Rich',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/rich_cherry_nectar.avif',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -100,7 +100,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Нектар Добрый мультифрукт',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/nectar_dobryi_multifruit.avif',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -109,7 +109,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Нектар Добрый апельсин',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/dobryi_orange_nectar.avif',
 		categoryId: 6,
 		price: 249,
 		desc: 'Незабываемый бодрящий вкус с освежающей кислинкой - результат искусного сочетания отборных сортов спелых и сочных апельсинов. Вкусный и полезный освежающий напиток.',
@@ -118,7 +118,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Клюква 👶',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/cranberry_morsels.avif',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной клюквы с терпким послевкусием Дизайн товара может отличаться',
@@ -127,7 +127,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Черная смородина 👶',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/blackcurrant_morsels.avif',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной душистой черной смородины Дизайн товара может отличаться',
@@ -136,7 +136,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Вишня 👶',
-		imageUrl: '',
+		imageUrl: '/assets/images/products/drinks/mors_cherry.avif',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной спелой вишни. В меру сладкий и с приятной кислинкой Дизайн товара может отличаться',
