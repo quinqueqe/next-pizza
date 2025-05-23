@@ -103,11 +103,15 @@ export async function createOrder(data: CheckoutSchemaType) {
 		// отправка письма на почту
 		await sendEmail(
 			data.email,
-			'Next Pizza | Оплатите заказ #' + order.id,
+			`Next Pizza | Подтверждение вашего заказа #${order.id}`,
 			PayOrderTemplate({
 				orderId: order.id,
 				totalAmount: order.totalAmount,
 				paymentUrl,
+				product: userCart.items.map(
+					product => product.productItem.product?.name as string
+				),
+				fullName: order.fullName,
 			})
 		)
 
