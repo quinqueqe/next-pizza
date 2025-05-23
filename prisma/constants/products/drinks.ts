@@ -1,8 +1,7 @@
 export const Drinks = [
 	{
 		name: 'Добрый Кола',
-		imageUrl:
-			'https://media.dodostatic.net/image/r:292x292/0194b770052874e5866fb322a5ccd52e.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -11,7 +10,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Кола без сахара',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/0194b7701ab8780aa704c6d469d07b30.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -20,7 +19,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Апельсин',
-		imageUrl: 'https://media.dodostatic.net/image/r:584x584/0194b76f2778790e920584c191edd032.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -29,7 +28,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Добрый Манго-Маракуйя ',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61aaabe3dca1855c97673f6e2a.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 135,
 		desc: '',
@@ -38,7 +37,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Rich Tea Черный с лимоном',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61ad5c2fcfbbbb6aa525e38a04.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 139,
 		desc: '',
@@ -47,7 +46,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Rich Tea Зеленый',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61ab1f976991362a5a42a2613e.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 139,
 		desc: '',
@@ -56,7 +55,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Напиток сокосодержащий Pulpy Апельсин',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/0195924190e4776ab342a901ed398f73.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 149,
 		desc: '',
@@ -65,7 +64,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Вода BonaAqua негазированная',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/0194b771c047788aa0264be187244ea9.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 100,
 		desc: '',
@@ -74,7 +73,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Апельсиновый нектар Rich ',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61b223e75eb71498bcaa0d4a0d.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -83,7 +82,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Яблочный сок Rich',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61b27f1652b9a918bddd753d8d.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -92,7 +91,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Вишневый нектар Rich',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11ee7d61b2e1a3f78b935f10d27fe406.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -101,7 +100,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Нектар Добрый мультифрукт',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/01956b882eac783c878f803e7759c19c.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 249,
 		desc: '',
@@ -110,7 +109,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Нектар Добрый апельсин',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/01956b8708a970de8471f9e3cf23b1f5.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 249,
 		desc: 'Незабываемый бодрящий вкус с освежающей кислинкой - результат искусного сочетания отборных сортов спелых и сочных апельсинов. Вкусный и полезный освежающий напиток.',
@@ -119,7 +118,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Клюква 👶',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11eecf75072bd81390b9c29dd01666c3.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной клюквы с терпким послевкусием Дизайн товара может отличаться',
@@ -128,7 +127,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Черная смородина 👶',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11eecf750fd6b61aac7bf1e2a8935de2.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной душистой черной смородины Дизайн товара может отличаться',
@@ -137,7 +136,7 @@ export const Drinks = [
 	},
 	{
 		name: 'Морс Вишня 👶',
-		imageUrl: 'https://media.dodostatic.net/image/r:292x292/11eecf74fae2444096fb156c2a13d05f.avif',
+		imageUrl: '',
 		categoryId: 6,
 		price: 155,
 		desc: 'Фирменный ягодный морс из натуральной спелой вишни. В меру сладкий и с приятной кислинкой Дизайн товара может отличаться',
