@@ -113,7 +113,7 @@ export const Drinks = [
 		imageUrl: 'https://media.dodostatic.net/image/r:292x292/01956b8708a970de8471f9e3cf23b1f5.avif',
 		categoryId: 6,
 		price: 249,
-		desc: '',
+		desc: 'Незабываемый бодрящий вкус с освежающей кислинкой - результат искусного сочетания отборных сортов спелых и сочных апельсинов. Вкусный и полезный освежающий напиток.',
 		whProduct: 2,
 		details: '1 л',
 	},
