@@ -32,9 +32,7 @@ const HomePage = async () => {
 			<TopBar data={categories.filter(cat => cat.products.length > 0)} />
 
 			<Container>
-				{/* <div className='flex justify-between pt-10'> */}
 				<div className='pt-10'>
-					{/* <Filter /> */}
 					<div className='flex flex-col gap-5'>
 						{categories?.map(
 							(category, i) =>
