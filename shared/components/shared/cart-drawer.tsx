@@ -124,7 +124,7 @@ export const CartDrawer = ({ children }: Props) => {
 								<Link href='/checkout'>
 									<Button
 										type='button'
-										className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative'
+										className='w-[100%] h-[55px] flex justify-center items-center text-[16px] rounded-4xl relative font-bold'
 									>
 										К оформлению заказа
 										<ChevronRight className='absolute right-[10px]' />
