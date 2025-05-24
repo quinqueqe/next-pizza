@@ -8,7 +8,10 @@ import { OrderStatus } from '@prisma/client'
 import { createPayment, sendEmail } from '@/shared/lib'
 import { PayOrderTemplate } from '@/shared/components'
 
-export async function createOrder(data: CheckoutSchemaType, totalPrice: number) {
+export async function createOrder(
+	data: CheckoutSchemaType,
+	totalPrice: number
+) {
 	// console.log(data)
 	try {
 		const cookiesStore = await cookies()
@@ -108,9 +111,7 @@ export async function createOrder(data: CheckoutSchemaType, totalPrice: number) 
 				orderId: order.id,
 				totalAmount: order.totalAmount,
 				paymentUrl,
-				product: userCart.items.map(
-					product => product.productItem.product?.name as string
-				),
+				items: JSON.parse(order.items as string),
 				fullName: order.fullName,
 			})
 		)
