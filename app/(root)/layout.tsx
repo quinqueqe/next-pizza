@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Toaster } from 'react-hot-toast'
 import { Header } from '@/shared/components/shared/header'
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default function RootLayout({
 				{modal}
 				{children}
 			</main>
-			<Toaster />
 		</>
 	)
 }

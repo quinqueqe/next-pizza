@@ -23,20 +23,20 @@ export async function POST(req: NextRequest) {
 			return NextResponse.json({ error: 'Order not found' })
 		}
 
-		const isSucceeded = body.object.status === 'succeeded'
+		// const isSucceeded = body.object.status === 'succeeded'
 
 		await prisma.order.update({
 			where: {
 				id: order.id,
 			},
 			data: {
-				status: isSucceeded ? OrderStatus.SUCCEEDED : OrderStatus.CANCELLED,
+				status: OrderStatus.SUCCEEDED,
 			},
 		})
 
 		const items = JSON.parse(order.items as string) as CartItemDTO[]
 
-		if (isSucceeded) {
+		// if (isSucceeded) {
 			await sendEmail(
 				order.email,
 				'Next Pizza | Ваш заказ успешно оформлен ',
@@ -47,9 +47,9 @@ export async function POST(req: NextRequest) {
 					items,
 				})
 			)
-		} else {
-			// письмо о не оплате
-		}
+		// } else {
+		// 	// письмо о не оплате
+		// }
 	} catch (error) {
 		console.log('[GET_ERROR]', error)
 	}

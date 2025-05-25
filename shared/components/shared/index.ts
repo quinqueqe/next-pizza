@@ -24,6 +24,8 @@ export { CheckoutFormInput } from './checkout-form/checkout-form-input'
 export { CheckoutTotalDetails } from './checkout-total-details'
 export { CheckoutWhiteBlock } from './checkout-white-block'
 
+export { Providers } from './providers'
+
 export * from './cart-item-details'
 export * from './checkout'
 export * from './checkout-form'
