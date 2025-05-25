@@ -1,36 +1,36 @@
 import React from 'react'
 import { Button } from '../ui'
-import { signIn, signOut } from 'next-auth/react'
-import { User } from 'lucide-react'
+import { useSession } from 'next-auth/react'
+import { CircleUser, User } from 'lucide-react'
+import Link from 'next/link'
+import { useCart } from '@/shared/store'
 
 type Props = {
-	session: any
+	onClickLogin?: () => void
 }
 
-export const ProfileBtn = ({ session }: Props) => {
+export const ProfileBtn = ({ onClickLogin }: Props) => {
+	const { data: session } = useSession()
+	const { status } = useCart(state => state)
 	return (
 		<>
 			{session ? (
-				<Button
-					onClick={() =>
-						signOut()
-					}
-					variant={'outline'}
-					className='flex items-center gap-1'
-				>
-					<User size={16} />
-					Выйти
-				</Button>
+				<Link href='/profile'>
+					<Button
+						status={status}
+						variant={'outline'}
+						className='flex items-center gap-1 w-[120px]'
+					>
+						<CircleUser size={18} />
+						Профиль
+					</Button>
+				</Link>
 			) : (
 				<Button
-					onClick={() =>
-						signIn('github', {
-							callbackUrl: '/',
-							redirect: true,
-						})
-					}
+					status={status}
+					onClick={onClickLogin}
 					variant={'outline'}
-					className='flex items-center gap-1'
+					className='flex items-center gap-1 w-[120px]'
 				>
 					<User size={16} />
 					Войти
