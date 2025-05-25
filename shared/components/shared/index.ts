@@ -25,6 +25,7 @@ export { CheckoutTotalDetails } from './checkout-total-details'
 export { CheckoutWhiteBlock } from './checkout-white-block'
 
 export { Providers } from './providers'
+export { ProfileBtn } from './profile-btn'
 
 export * from './cart-item-details'
 export * from './checkout'

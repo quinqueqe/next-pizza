@@ -4,11 +4,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '../ui'
-import { Container, SearchInput, CartButton } from './'
+import { Container, SearchInput, CartButton, ProfileBtn } from './'
 import { User } from 'lucide-react'
 import { cn } from '@/shared/lib'
 import { useSearchParams, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { useSession, signIn } from 'next-auth/react'
 
 type Props = {
 	hasSearch?: boolean
@@ -23,6 +24,8 @@ export const Header = ({
 }: Props) => {
 	const searchParams = useSearchParams()
 	const router = useRouter()
+	const session = useSession()
+	console.log(session.data)
 	React.useEffect(() => {
 		if (searchParams.has('paid')) {
 			setTimeout(() => {
@@ -49,10 +52,7 @@ export const Header = ({
 				{hasSearch && <SearchInput />}
 
 				<div className='flex items-center gap-4'>
-					<Button variant={'outline'} className='flex items-center gap-1'>
-						<User size={16} />
-						Войти
-					</Button>
+					<ProfileBtn session={session.data} />
 
 					{hasCart && <CartButton />}
 				</div>
