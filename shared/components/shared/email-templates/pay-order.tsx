@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const PayOrderTemplate = ({
-	orderId,
 	totalAmount,
 	paymentUrl,
 	items,
@@ -19,7 +18,7 @@ export const PayOrderTemplate = ({
 	<div>
 		<h3>Здравствуйте, {fullName}!</h3>
 		<p>
-			Благодарим вас за оформление заказа #{orderId} на сумму {totalAmount} ₽
+			Благодарим вас за оформление заказа на сумму {totalAmount} ₽
 		</p>
 		<p>Ваш заказ:</p>
 

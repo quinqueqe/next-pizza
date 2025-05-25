@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const OrderSuccessTemplate = ({
-	orderId,
 	totalAmount,
 	fullName,
 	items,
@@ -18,7 +17,7 @@ export const OrderSuccessTemplate = ({
 		<h3>Здравствуйте, {fullName}!</h3>
 		<p>Благодарим вас за покупку!</p>
 		<p>
-			Ваш заказ #{orderId} на сумму {totalAmount} оплачен
+			Ваш заказ на сумму {totalAmount} ₽ оплачен
 		</p>
 		<p>Список товаров:</p>
 
