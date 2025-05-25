@@ -1,8 +1,9 @@
 'use client'
 
-import { User } from 'lucide-react'
 import { Dialog, DialogContent } from '../../../ui/dialog'
 import { AuthModalBtn } from '../../'
+import { GithubIcon } from '@/public/assets/images/auth-modal/github'
+import { GoogleIcon } from '@/public/assets/images/auth-modal/google'
 
 type Props = {
 	open?: boolean
@@ -18,20 +19,22 @@ export const AuthModal = ({ open, onClose }: Props) => {
 			<DialogContent>
 				<div>FORM</div>
 
+				<hr />
+
 				<div className='flex gap-5 items-center'>
 					<AuthModalBtn
 						provider='github'
 						variant='ghost'
-						className='w-full'
+						className='w-full gap-2'
 						text='Войти'
-						image={<User size={16} />}
+						image={<GithubIcon />}
 					/>
 					<AuthModalBtn
 						provider='google'
 						variant='ghost'
-						className='w-full'
+						className='w-full gap-2'
 						text='Войти'
-						image={<User size={16} />}
+						image={<GoogleIcon />}
 					/>
 				</div>
 			</DialogContent>
