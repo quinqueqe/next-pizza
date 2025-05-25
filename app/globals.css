@@ -264,3 +264,25 @@ a {
 .sheet-content-no-close-button [data-radix-collection-item] {
 	display: none !important;
 }
+
+/* top-bar-loading */
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+#nprogress .bar {
+	@apply bg-primary!;
+}
+
+#nprogress .peg {
+	@apply shadow-md shadow-primary!;
+}
+
+#nprogress .spinner-icon {
+	@apply border-t-primary border-l-primary!;
+}
