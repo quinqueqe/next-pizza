@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Container, SearchInput, CartButton, ProfileBtn } from './'
+import { Container, SearchInput, CartButton, ProfileBtn, AuthModal } from './'
 import { cn } from '@/shared/lib'
 import { useSearchParams, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
@@ -31,6 +31,8 @@ export const Header = ({
 			}, 500)
 		}
 	}, [])
+
+	const [openModal, setOpenModal] = React.useState<boolean>(false)
 	return (
 		<header className={cn('border border-b', className)}>
 			<Container className='flex justify-between items-center py-8'>
@@ -47,7 +49,8 @@ export const Header = ({
 				{hasSearch && <SearchInput />}
 
 				<div className='flex items-center gap-4'>
-					<ProfileBtn />
+					<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
+					<ProfileBtn onClickLogin={() => setOpenModal(true)} />
 
 					{hasCart && <CartButton />}
 				</div>
