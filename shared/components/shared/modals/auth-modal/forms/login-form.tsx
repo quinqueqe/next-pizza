@@ -28,50 +28,49 @@ export const LoginForm = ({ onClose }: Props) => {
 		})
 
 		if (!res?.ok) {
-			throw Error()
+			console.log('LOGIN_ERROR', res?.error)
+			toast.error('Не удалось войти в аккаунт')
 		}
 
-		toast.success('Вы успешно вошли в аккаунт')
+		if (res?.ok) {
+			toast.success('Вы успешно вошли в аккаунт')
+		}
 		onClose?.()
 		try {
 		} catch (err) {
 			console.log('LOGIN_ERROR', err)
-			toast.error('Не удалось войти в аккаунт')
 		}
 	}
 	return (
 		<FormProvider {...form}>
-			<div className='flex flex-col gap-5'>
-				<div className='flex justify-between items-center'>
-					<div>
-						<h3 className='text-[26px] font-bold'>Вход в аккаунт</h3>
-						<p className='text-gray-400 w-[300px]'>
-							Введите свою почту, чтобы войти в свой аккаунт
-						</p>
+			<form onSubmit={form.handleSubmit(onSubmit)}>
+				<div className='flex flex-col gap-5'>
+					<div className='flex justify-between items-center'>
+						<div>
+							<h3 className='text-[26px] font-bold'>Вход в аккаунт</h3>
+							<p className='text-gray-400 w-[300px]'>
+								Введите свою почту, чтобы войти в свой аккаунт
+							</p>
+						</div>
+						<Image
+							src='/assets/images/phone-icon.png'
+							width={60}
+							height={60}
+							alt='img'
+						/>
 					</div>
-					<Image
-						src='/assets/images/phone-icon.png'
-						width={60}
-						height={60}
-						alt='img'
+					<CheckoutFormInput name='email' required label='E-Mail' />
+					<CheckoutFormInput
+						name='password'
+						required
+						label='Пароль'
+						type='password'
 					/>
+					<Button variant='default' type='submit' className='w-full'>
+						Войти
+					</Button>
 				</div>
-				<CheckoutFormInput name='email' required label='E-Mail' />
-				<CheckoutFormInput
-					name='password'
-					required
-					label='Пароль'
-					type='password'
-				/>
-				<Button
-					variant='default'
-					type='submit'
-					className='w-full'
-					onClick={() => onSubmit()}
-				>
-					Войти
-				</Button>
-			</div>
+			</form>
 		</FormProvider>
 	)
 }
