@@ -5,8 +5,14 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormLoginSchema, FormLoginSchemaType } from './schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Image from 'next/image'
+import { signIn } from 'next-auth/react'
+import toast from 'react-hot-toast'
 
-export const LoginForm = () => {
+type Props = {
+	onClose?: () => void
+}
+
+export const LoginForm = ({ onClose }: Props) => {
 	const form = useForm<FormLoginSchemaType>({
 		resolver: zodResolver(FormLoginSchema),
 		defaultValues: {
@@ -14,6 +20,25 @@ export const LoginForm = () => {
 			password: '',
 		},
 	})
+
+	const onSubmit = async (data: FormLoginSchemaType) => {
+		const res = await signIn('credentials', {
+			...data,
+			redirect: false,
+		})
+
+		if (!res?.ok) {
+			throw Error()
+		}
+
+		toast.success('Вы успешно вошли в аккаунт')
+		onClose?.()
+		try {
+		} catch (err) {
+			console.log('LOGIN_ERROR', err)
+			toast.error('Не удалось войти в аккаунт')
+		}
+	}
 	return (
 		<FormProvider {...form}>
 			<div className='flex flex-col gap-5'>
@@ -31,9 +56,19 @@ export const LoginForm = () => {
 						alt='img'
 					/>
 				</div>
-				<CheckoutFormInput name='email' required label='E-Mail'/>
-				<CheckoutFormInput name='password' required label='Пароль' type='password' />
-				<Button variant='default' type='submit' className='w-full'>
+				<CheckoutFormInput name='email' required label='E-Mail' />
+				<CheckoutFormInput
+					name='password'
+					required
+					label='Пароль'
+					type='password'
+				/>
+				<Button
+					variant='default'
+					type='submit'
+					className='w-full'
+					onClick={() => onSubmit()}
+				>
 					Войти
 				</Button>
 			</div>

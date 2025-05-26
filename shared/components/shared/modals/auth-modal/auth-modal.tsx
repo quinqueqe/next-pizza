@@ -20,7 +20,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent className='w-[450px] rounded-4xl px-[40px] py-[45px]'>
-				<div>{register ? <RegisterForm /> : <LoginForm />}</div>
+				<div>{register ? <RegisterForm /> : <LoginForm onClose={onClose}/>}</div>
 
 				<div className='flex justify-center items-center'>
 					<hr className='h-[1px] bg-gray-700 w-full' />
