@@ -1,11 +1,10 @@
-import NextAuth from 'next-auth'
+import NextAuth, { AuthOptions } from 'next-auth'
 import GithubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { compare, hashSync } from 'bcrypt'
 import { UserRole } from '@prisma/client'
-import { pid } from 'process'
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
 	providers: [
 		GithubProvider({
 			clientId: process.env.GITHUB_ID || '',
@@ -42,7 +41,7 @@ export const authOptions = {
 
 				const isPasswordValid = await compare(
 					credentials.password,
-					findUser.password
+					findUser.password as string
 				) // сравнения пароля  пользователя и хешированного пароля из prisma
 
 				if (!isPasswordValid) return null
@@ -50,8 +49,7 @@ export const authOptions = {
 				if (!findUser.verified) return null
 
 				return {
-					id: String(findUser.id),
-
+					id: findUser.id,
 					email: findUser.email,
 					name: findUser.fullName,
 					role: findUser.role,
@@ -112,6 +110,7 @@ export const authOptions = {
 						providerId: account?.providerAccountId,
 					},
 				})
+				return true
 			} catch (err) {
 				console.log('[SIGN_IN_ERROR]', err)
 				return false
@@ -121,7 +120,7 @@ export const authOptions = {
 			// credentials
 			const findUser = await prisma?.user.findFirst({
 				where: {
-					email: token.email,
+					email: token.email as string,
 				},
 			})
 
