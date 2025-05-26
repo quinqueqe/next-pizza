@@ -16,11 +16,20 @@ export const AuthModal = ({ open, onClose }: Props) => {
 	const handleClose = () => {
 		onClose()
 	}
-	const [register, setRegister] = React.useState<boolean>(false)
+	const [type, setType] = React.useState<'login' | 'register'>('login')
+	const onSwitchType = () => {
+		setType(type === 'login' ? 'register' : 'login')
+	}
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent className='w-[450px] rounded-4xl px-[40px] py-[45px]'>
-				<div>{register ? <RegisterForm /> : <LoginForm onClose={onClose}/>}</div>
+				<div>
+					{type === 'login' ? (
+						<LoginForm onClose={onClose} />
+					) : (
+						type === 'register' && <RegisterForm />
+					)}
+				</div>
 
 				<div className='flex justify-center items-center'>
 					<hr className='h-[1px] bg-gray-700 w-full' />
@@ -46,8 +55,13 @@ export const AuthModal = ({ open, onClose }: Props) => {
 				</div>
 
 				<div>
-					<Button onClick={() => setRegister(!register)} variant='outline' type='button' className='w-full'>
-						{register ? 'Войти' : 'Регистрация'}
+					<Button
+						onClick={() => onSwitchType()}
+						variant='outline'
+						type='button'
+						className='w-full'
+					>
+						{type === 'login' ? 'Регистрация' : type === 'register' && 'Войти'}
 					</Button>
 				</div>
 			</DialogContent>
