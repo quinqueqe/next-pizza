@@ -12,4 +12,3 @@ export { sendEmail } from './send-email'
 export { createPayment } from './create-payment'
 
 // auth
-export { getUserSession } from './get-user-session'

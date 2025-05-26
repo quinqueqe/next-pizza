@@ -1,20 +1,22 @@
 import React from 'react'
 import { cn } from '@/shared/lib'
 import { redirect } from 'next/navigation'
+import { getUserSession } from '@/shared/lib/get-user-session'
 
 type Props = {
 	className?: string
 }
 
-export default function ProfilePage({ className }: Props) {
-	
+export default async function ProfilePage({ className }: Props) {
+	const session = await getUserSession()
+
+	if (!session) {
+		redirect('/not-auth')
+	}
+
 	return (
 		<>
-			{session ? (
-				<div className={cn('', className)}></div>
-			) : (
-				redirect('/not-auth')
-			)}
+			<div className={cn('', className)}></div>
 		</>
 	)
 }
