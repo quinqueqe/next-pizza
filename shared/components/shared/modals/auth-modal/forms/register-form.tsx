@@ -22,11 +22,12 @@ export const RegisterForm = () => {
 			<div className='flex flex-col gap-5'>
 				<CheckoutFormInput label='E-Mail' required name='email' />
 				<CheckoutFormInput label='Полное имя' required name='fullName' />
-				<CheckoutFormInput label='Пароль' required name='password' />
+				<CheckoutFormInput label='Пароль' required name='password' type='password'/>
 				<CheckoutFormInput
 					label='Подтвердите пароль'
 					required
 					name='confirmPassword'
+					type='password'
 				/>
 				<Button variant='default' type='submit' className='w-full'>
 					Зарегистрироваться

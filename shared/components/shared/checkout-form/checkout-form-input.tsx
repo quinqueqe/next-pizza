@@ -12,6 +12,7 @@ type Props = {
 	placeholder?: string
 	className?: string
 	valueDefault?: string
+	type?: string
 }
 
 export const CheckoutFormInput = ({
@@ -21,6 +22,8 @@ export const CheckoutFormInput = ({
 	placeholder,
 	className,
 	valueDefault,
+	type,
+	...props
 }: Props) => {
 	const {
 		register,
@@ -52,7 +55,9 @@ export const CheckoutFormInput = ({
 						'focus-visible:border-primary focus-visible:ring-ring/50 transiton duration-200 ease-in-out',
 						className
 					)}
+					type={type}
 					{...register(name)}
+					{...props}
 				/>
 				{value && <CheckoutClearFormBtn onClick={onClickClear} />}
 			</div>

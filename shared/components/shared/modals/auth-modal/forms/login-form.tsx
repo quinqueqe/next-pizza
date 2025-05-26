@@ -31,8 +31,8 @@ export const LoginForm = () => {
 						alt='img'
 					/>
 				</div>
-				<CheckoutFormInput name='email' required label='E-Mail' />
-				<CheckoutFormInput name='password' required label='Пароль' />
+				<CheckoutFormInput name='email' required label='E-Mail'/>
+				<CheckoutFormInput name='password' required label='Пароль' type='password' />
 				<Button variant='default' type='submit' className='w-full'>
 					Войти
 				</Button>
