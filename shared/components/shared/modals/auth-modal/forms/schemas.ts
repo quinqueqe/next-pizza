@@ -25,4 +25,22 @@ export const FormRegisterSchema = FormLoginSchema.merge(
 
 export type FormRegisterSchemaType = z.infer<typeof FormRegisterSchema>
 
+// update
+export const passwordOptionalSchema = z.string().optional()
 
+export const FormUpdateInfoSchema = z.object({
+	email: z.string().email('Введите корректную почту'),
+	password: passwordOptionalSchema,
+})
+
+export const FormUpdateSchema = FormUpdateInfoSchema.merge(
+	z.object({
+		fullName: z.string().min(2, 'Введите имя и фамилию'),
+		confirmPassword: passwordOptionalSchema,
+	})
+).refine(data => data.password === data.confirmPassword, {
+	message: 'Пароли не совпадают',
+	path: ['confirmPassword'],
+})
+
+export type FormUpdateSchemaType = z.infer<typeof FormUpdateSchema>

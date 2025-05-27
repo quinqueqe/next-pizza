@@ -50,6 +50,7 @@ export const ProfileForm = ({ user, titleClassName }: Props) => {
 						<CheckoutFormInput
 							name='fullName'
 							// required
+							// required
 							label='Полное имя'
 							type='text'
 						/>
