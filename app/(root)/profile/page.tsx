@@ -1,13 +1,9 @@
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { getUserSession } from '@/shared/lib/get-user-session'
-import { ProfileForm } from '@/shared/components'
+import { Container, ProfileForm } from '@/shared/components'
 
-type Props = {
-	className?: string
-}
-
-export default async function ProfilePage({ className }: Props) {
+export default async function ProfilePage() {
 	const session = await getUserSession()
 
 	if (!session) {
@@ -21,8 +17,8 @@ export default async function ProfilePage({ className }: Props) {
 	})
 
 	return (
-		<>
-			<ProfileForm user={user}/>
-		</>
+		<Container>
+			<ProfileForm user={user!} titleClassName='text-[36px]' />
+		</Container>
 	)
 }

@@ -18,7 +18,7 @@ export const ProfileModal = ({ user, className }: Props) => {
 		<Dialog open={Boolean(user)} onOpenChange={() => router.back()}>
 			<DialogContent
 				className={cn(
-					'p-0 w-[800px] min-w-[800px] h-[480px] min-h-[480px] bg-white overflow-hidden rounded-4xl',
+					'p-0 w-[800px] min-w-[800px] h-[445px] min-h-[445px] bg-white overflow-hidden rounded-4xl',
 					className
 				)}
 			>

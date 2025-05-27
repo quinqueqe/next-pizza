@@ -1,21 +1,24 @@
+'use client'
+
 import React from 'react'
 import { User } from '@prisma/client'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
-	FormLoginSchema,
-	FormLoginSchemaType,
 	FormRegisterSchema,
 	FormRegisterSchemaType,
 } from './modals/auth-modal/forms/schemas'
 import { CheckoutFormInput } from './checkout-form'
 import { Button } from '../ui'
+import { cn } from '@/shared/lib'
+import { signOut } from 'next-auth/react'
 
 type Props = {
 	user: User
+	titleClassName?: string
 }
 
-export const ProfileForm = ({ user }: Props) => {
+export const ProfileForm = ({ user, titleClassName }: Props) => {
 	const form = useForm<FormRegisterSchemaType>({
 		resolver: zodResolver(FormRegisterSchema),
 		defaultValues: {
@@ -33,7 +36,9 @@ export const ProfileForm = ({ user }: Props) => {
 			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<div className='p-[35px]'>
 					<div>
-						<h3 className='text-[26px] font-bold pb-7'>Личные данные</h3>
+						<h3 className={cn('text-[26px] font-bold pb-7', titleClassName)}>
+							Личные данные
+						</h3>
 					</div>
 					<div className='grid grid-cols-2 gap-5 pb-5'>
 						<CheckoutFormInput
@@ -70,6 +75,11 @@ export const ProfileForm = ({ user }: Props) => {
 							Сохранить
 						</Button>
 						<Button
+							onClick={() =>
+								signOut({
+									callbackUrl: '/',
+								})
+							}
 							type='button'
 							variant='outline'
 							className='font-bold text-center text-[16px] py-[13px]  text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'

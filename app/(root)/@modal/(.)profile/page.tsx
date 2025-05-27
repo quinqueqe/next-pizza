@@ -1,13 +1,9 @@
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { getUserSession } from '@/shared/lib/get-user-session'
-import { ProfileForm, ProfileModal } from '@/shared/components'
+import { ProfileModal } from '@/shared/components'
 
-type Props = {
-	className?: string
-}
-
-export default async function ProfilePage({ className }: Props) {
+export default async function ProfilePage() {
 	const session = await getUserSession()
 
 	if (!session) {
@@ -22,7 +18,7 @@ export default async function ProfilePage({ className }: Props) {
 
 	return (
 		<>
-			<ProfileModal user={user}/>
+			<ProfileModal user={user!} />
 		</>
 	)
 }
