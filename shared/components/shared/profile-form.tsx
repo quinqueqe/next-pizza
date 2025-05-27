@@ -37,7 +37,7 @@ export const ProfileForm = ({ user, titleClassName }: Props) => {
 				<div className='p-[35px]'>
 					<div>
 						<h3 className={cn('text-[26px] font-bold pb-7', titleClassName)}>
-							Личные данные
+							Личные данные | #{user.id}
 						</h3>
 					</div>
 					<div className='grid grid-cols-2 gap-5 pb-5'>
