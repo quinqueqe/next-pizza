@@ -26,7 +26,7 @@ export const PayOrderTemplate = ({
 			{items.map(item => (
 				<li key={item.id}>
 					{item.productItem.product.name} | {item.productItem.price} ₽ x{' '}
-					{item.quantity} шт. ={' '}
+					{item.quantity} шт ={' '}
 					{(item.productItem.price as number) * item.quantity}
 				</li>
 			))}
