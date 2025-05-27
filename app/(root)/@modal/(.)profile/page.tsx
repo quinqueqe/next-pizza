@@ -16,9 +16,13 @@ export default async function ProfilePage() {
 		},
 	})
 
+	if (!user) {
+		redirect('/not-auth')
+	}
+
 	return (
 		<>
-			<ProfileModal user={user!} />
+			<ProfileModal user={user} />
 		</>
 	)
 }

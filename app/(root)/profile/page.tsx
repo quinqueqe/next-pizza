@@ -16,9 +16,13 @@ export default async function ProfilePage() {
 		},
 	})
 
+	if (!user) {
+		redirect('/not-auth')
+	}
+
 	return (
 		<Container>
-			<ProfileForm user={user!} titleClassName='text-[36px]' />
+			<ProfileForm user={user} titleClassName='text-[36px]' />
 		</Container>
 	)
 }
