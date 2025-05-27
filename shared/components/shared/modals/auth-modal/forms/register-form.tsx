@@ -6,6 +6,8 @@ import { FormRegisterSchema, FormRegisterSchemaType } from './schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CheckoutFormInput } from '../../../checkout-form'
 import { Button } from '@/shared/components/ui'
+import toast from 'react-hot-toast'
+import { registerUser } from '@/app/actions'
 
 export const RegisterForm = () => {
 	const form = useForm<FormRegisterSchemaType>({
@@ -17,8 +19,19 @@ export const RegisterForm = () => {
 			confirmPassword: '',
 		},
 	})
-	const onSubmit = () => {
-		console.log('submit')
+	const onSubmit = async (data: FormRegisterSchemaType) => {
+		try {
+			await registerUser({
+				email: data.email,
+				fullName: data.fullName,
+				password: data.password,
+			})
+
+			toast.success('Регистрация прошла успешно, подтвердите свою почту')
+		} catch (err) {
+			toast.error('Произошла ошибка при регистрации')
+			console.log('REGISTER_ERROR', err)
+		}
 	}
 	return (
 		<FormProvider {...form}>

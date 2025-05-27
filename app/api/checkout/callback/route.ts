@@ -37,16 +37,16 @@ export async function POST(req: NextRequest) {
 		const items = JSON.parse(order.items as string) as CartItemDTO[]
 
 		// if (isSucceeded) {
-			await sendEmail(
-				order.email,
-				'Next Pizza | Ваш заказ успешно оформлен ',
-				OrderSuccessTemplate({
-					orderId: order.id,
-					totalAmount: order.totalAmount,
-					fullName: order.fullName,
-					items,
-				})
-			)
+		await sendEmail(
+			order.email,
+			'Next Pizza | Ваш заказ успешно оформлен 🍕',
+			OrderSuccessTemplate({
+				orderId: order.id,
+				totalAmount: order.totalAmount,
+				fullName: order.fullName,
+				items,
+			})
+		)
 		// } else {
 		// 	// письмо о не оплате
 		// }
