@@ -27,7 +27,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 					{type === 'login' ? (
 						<LoginForm onClose={onClose} />
 					) : (
-						type === 'register' && <RegisterForm />
+						type === 'register' && <RegisterForm onClose={onClose}/>
 					)}
 				</div>
 

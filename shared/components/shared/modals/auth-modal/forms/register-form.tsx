@@ -9,7 +9,11 @@ import { Button } from '@/shared/components/ui'
 import toast from 'react-hot-toast'
 import { registerUser } from '@/app/actions'
 
-export const RegisterForm = () => {
+type Props = {
+	onClose?: () => void
+}
+
+export const RegisterForm = ({ onClose }: Props) => {
 	const form = useForm<FormRegisterSchemaType>({
 		resolver: zodResolver(FormRegisterSchema),
 		defaultValues: {
@@ -28,6 +32,7 @@ export const RegisterForm = () => {
 			})
 
 			toast.success('Регистрация прошла успешно, подтвердите свою почту')
+			onClose?.()
 		} catch (err) {
 			toast.error('Произошла ошибка при регистрации')
 			console.log('REGISTER_ERROR', err)
