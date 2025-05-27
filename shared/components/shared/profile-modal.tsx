@@ -14,15 +14,18 @@ type Props = {
 
 export const ProfileModal = ({ user, className }: Props) => {
 	const router = useRouter()
+	const onCloseModal = () => {
+		router.back()
+	}
 	return (
-		<Dialog open={Boolean(user)} onOpenChange={() => router.back()}>
+		<Dialog open={Boolean(user)} onOpenChange={() => onCloseModal()}>
 			<DialogContent
 				className={cn(
 					'p-0 w-[800px] min-w-[800px] h-[445px] min-h-[445px] bg-white overflow-hidden rounded-4xl',
 					className
 				)}
 			>
-				<ProfileForm user={user} />
+				<ProfileForm user={user} onCloseModal={onCloseModal}/>
 			</DialogContent>
 		</Dialog>
 	)

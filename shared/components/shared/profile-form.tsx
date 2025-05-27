@@ -18,9 +18,10 @@ import { updateUserInfo } from '@/app/actions'
 type Props = {
 	user: User
 	titleClassName?: string
+	onCloseModal?: () => void
 }
 
-export const ProfileForm = ({ user, titleClassName }: Props) => {
+export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 	const form = useForm<FormUpdateSchemaType>({
 		resolver: zodResolver(FormUpdateSchema),
 		defaultValues: {
@@ -39,9 +40,11 @@ export const ProfileForm = ({ user, titleClassName }: Props) => {
 			})
 
 			toast.success('Данные успешно обновлены')
+			onCloseModal?.()
 		} catch (err) {
 			toast.error('Не удалось обновить информацию')
 			console.log('[UPDATE_USER_INFO_ERROR]', 'profile', err)
+			onCloseModal?.()
 		}
 	}
 	return (
