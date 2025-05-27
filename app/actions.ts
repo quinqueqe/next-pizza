@@ -172,7 +172,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			throw new Error('Пользователь уже существует')
 		}
 
-		await prisma.user.create({
+		const createdUser = await prisma.user.create({
 			data: {
 				email: body.email,
 				fullName: body.fullName,
@@ -181,7 +181,14 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			},
 		})
 
-		
+		const code = Math.floor(100000 + Math.random() * 900000).toString() // генерация кода
+
+		await prisma.verifiсationCode.create({
+			data: {
+				code,
+				userId: createdUser.id,
+			},
+		})
 	} catch (err) {
 		console.log('[REGISTER_USER_ERROR]', err)
 	}
