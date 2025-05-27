@@ -22,21 +22,21 @@ export const LoginForm = ({ onClose }: Props) => {
 	})
 
 	const onSubmit = async (data: FormLoginSchemaType) => {
-		const res = await signIn('credentials', {
-			...data,
-			redirect: false,
-		})
-
-		if (!res?.ok) {
-			console.log('LOGIN_ERROR', res?.error)
-			toast.error('Не удалось войти в аккаунт')
-		}
-
-		if (res?.ok) {
-			toast.success('Вы успешно вошли в аккаунт')
-		}
-		onClose?.()
 		try {
+			const res = await signIn('credentials', {
+				...data,
+				redirect: false,
+			})
+
+			if (!res?.ok) {
+				console.log('LOGIN_ERROR', res?.error)
+				toast.error('Не удалось войти в аккаунт')
+			}
+
+			if (res?.ok) {
+				toast.success('Вы успешно вошли в аккаунт')
+			}
+			onClose?.()
 		} catch (err) {
 			console.log('LOGIN_ERROR', err)
 		}

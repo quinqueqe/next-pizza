@@ -1,7 +1,7 @@
 import React from 'react'
-import { cn } from '@/shared/lib'
 import { redirect } from 'next/navigation'
 import { getUserSession } from '@/shared/lib/get-user-session'
+import { ProfileForm } from '@/shared/components'
 
 type Props = {
 	className?: string
@@ -14,9 +14,15 @@ export default async function ProfilePage({ className }: Props) {
 		redirect('/not-auth')
 	}
 
+	const user = await prisma?.user.findFirst({
+		where: {
+			id: Number(session.id),
+		},
+	})
+
 	return (
 		<>
-			<div className={cn('', className)}></div>
+			<ProfileForm user={user}/>
 		</>
 	)
 }

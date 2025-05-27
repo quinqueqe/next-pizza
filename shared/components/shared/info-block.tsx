@@ -41,7 +41,7 @@ export const InfoBlock: React.FC<Props> = ({
 					<Link href=''>
 						<Button
 							variant='outline'
-							className='text-gray-500 border-gray-400 hover:bg-gray-50'
+							className='text-gray-500 border-gray-400 hover:bg-gray-50 hover:text-gray-600'
 						>
 							Обновить
 						</Button>
