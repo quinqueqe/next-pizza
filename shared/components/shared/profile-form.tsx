@@ -5,8 +5,8 @@ import { User } from '@prisma/client'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
-	FormRegisterSchema,
-	FormRegisterSchemaType,
+	FormUpdateSchema,
+	FormUpdateSchemaType,
 } from './modals/auth-modal/forms/schemas'
 import { CheckoutFormInput } from './checkout-form'
 import { Button } from '../ui'
@@ -19,8 +19,8 @@ type Props = {
 }
 
 export const ProfileForm = ({ user, titleClassName }: Props) => {
-	const form = useForm<FormRegisterSchemaType>({
-		resolver: zodResolver(FormRegisterSchema),
+	const form = useForm<FormUpdateSchemaType>({
+		resolver: zodResolver(FormUpdateSchema),
 		defaultValues: {
 			fullName: user.fullName,
 			email: user.email,
@@ -43,25 +43,25 @@ export const ProfileForm = ({ user, titleClassName }: Props) => {
 					<div className='grid grid-cols-2 gap-5 pb-5'>
 						<CheckoutFormInput
 							name='email'
-							required
+							// required
 							label='E-Mail'
 							type='text'
 						/>
 						<CheckoutFormInput
 							name='fullName'
-							required
+							// required
 							label='Полное имя'
 							type='text'
 						/>
 						<CheckoutFormInput
 							name='password'
-							required
+							// required
 							label='Новый пароль'
 							type='password'
 						/>
 						<CheckoutFormInput
 							name='confirmPassword'
-							required
+							// required
 							label='Повторите пароль'
 							type='password'
 						/>

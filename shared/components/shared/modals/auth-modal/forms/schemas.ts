@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+// login
 export const passwordSchema = z
 	.string()
 	.min(6, 'Пароль должен быть не менее 6 символов')
@@ -11,6 +12,7 @@ export const FormLoginSchema = z.object({
 
 export type FormLoginSchemaType = z.infer<typeof FormLoginSchema>
 
+// register
 export const FormRegisterSchema = FormLoginSchema.merge(
 	z.object({
 		fullName: z.string().min(2, 'Введите имя и фамилию'),
@@ -22,3 +24,5 @@ export const FormRegisterSchema = FormLoginSchema.merge(
 })
 
 export type FormRegisterSchemaType = z.infer<typeof FormRegisterSchema>
+
+
