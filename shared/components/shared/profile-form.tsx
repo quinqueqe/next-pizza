@@ -12,6 +12,8 @@ import { CheckoutFormInput } from './checkout-form'
 import { Button } from '../ui'
 import { cn } from '@/shared/lib'
 import { signOut } from 'next-auth/react'
+import toast from 'react-hot-toast'
+import { updateUserInfo } from '@/app/actions'
 
 type Props = {
 	user: User
@@ -28,8 +30,19 @@ export const ProfileForm = ({ user, titleClassName }: Props) => {
 			confirmPassword: '',
 		},
 	})
-	const onSubmit = () => {
-		console.log('submit')
+	const onSubmit = async (data: FormUpdateSchemaType) => {
+		try {
+			await updateUserInfo({
+				email: data.email,
+				fullName: data.fullName,
+				password: data.password,
+			})
+
+			toast.success('Данные успешно обновлены')
+		} catch (err) {
+			toast.error('Не удалось обновить информацию')
+			console.log('[UPDATE_USER_INFO_ERROR]', 'profile', err)
+		}
 	}
 	return (
 		<FormProvider {...form}>

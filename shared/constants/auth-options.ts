@@ -104,7 +104,8 @@ export const authOptions: AuthOptions = {
 					data: {
 						email: user.email,
 						fullName: user.name || `User #${user.id}`,
-						password: hashSync(user.id.toString(), 10), // не желательно делать в виде айди
+						// password: hashSync(user.id.toString(), 10), // не желательно делать в виде айди
+						password: user.id.toString(), // не желательно делать в виде айди
 						verified: new Date(),
 						provider: account?.provider,
 						providerId: account?.providerAccountId,
