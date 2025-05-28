@@ -25,6 +25,7 @@ import {
 	generateProduct,
 	promoCodes,
 	stories,
+	storyItems,
 } from './constants'
 import prisma from './prisma'
 
@@ -165,6 +166,9 @@ async function up() {
 
 	await prisma.story.createMany({
 		data: stories,
+	})
+	await prisma.storyItem.createMany({
+		data: storyItems
 	})
 }
 async function down() {

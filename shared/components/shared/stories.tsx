@@ -38,23 +38,24 @@ export const Stories = () => {
 						: status === 'error' && <div>Error</div>}
 
 				{open && (
-					<div className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-20'>
+					<div className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-40'>
 						<div className='relative w-[520px]'>
-							<button
-								className='absolute -right-10 -top-5 z-30 '
-								onClick={() => setOpen(false)}
-							>
-								<X className='absolute top-0 right-0 w-8 h-8 text-white/50' />
-							</button>
+								<button
+									className='absolute right-3 top-5 z-1000 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer'
+									onClick={() => setOpen(false)}
+								>
+									<X className='w-6 h-6 text-black' />
+								</button>
 
 							<InstaStories
 								onAllStoriesEnd={() => setOpen(false)}
 								stories={
-									selectedStory?.items.map((item) => ({ url: item.sourceUrl })) || []
+									selectedStory?.items.map(item => ({ url: item.sourceUrl })) ||
+									[]
 								}
-								defaultInterval={3000}
-								width={432}
-								height={768}
+								defaultInterval={10000}
+								width={520}
+								height={800}
 							/>
 						</div>
 					</div>

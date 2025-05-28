@@ -19,6 +19,10 @@ const HomePage = async () => {
 		},
 	})
 
+	if(!categories) {
+		throw new Error('Не удалось запустить базу данных')
+	}
+
 	return (
 		<>
 			<div className='bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]'>
