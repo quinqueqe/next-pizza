@@ -11,7 +11,7 @@ type StoriesType = {
 	selectedStory: Story | null
 	setItems: () => void
 	setOpen: (value: boolean) => void
-	setSelectedStory: (value: IStory) => void	
+	setSelectedStory: (value: Story) => void	
 }
 
 export const useStories = create<StoriesType>()(

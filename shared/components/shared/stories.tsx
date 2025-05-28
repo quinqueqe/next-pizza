@@ -1,34 +1,13 @@
 'use client'
 
 import React from 'react'
-import { useStories } from '@/shared/store'
 import Image from 'next/image'
 import { Container } from './container'
 import { Skeleton } from '../ui'
-import { IStory } from '@/@types/stories'
+import { useStoriesInfo } from '@/shared/hooks'
 
 export const Stories = () => {
-	const {
-		items,
-		setItems,
-		status,
-		open,
-		selectedStory,
-		setOpen,
-		setSelectedStory,
-	} = useStories()
-
-	React.useEffect(() => {
-		setItems()
-	}, [])
-
-	const onClickStory = (story: IStory) => {
-		setSelectedStory(story)
-
-		if (story.items.length > 0) {
-			setOpen(true)
-		}
-	}
+	const { items, status, onClickStory } = useStoriesInfo()
 	const skeleton = Array.from({ length: 6 }, () => (
 		<Skeleton
 			className='w-[190px] h-[240px] rounded-2xl '
