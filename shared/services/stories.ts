@@ -1,9 +1,9 @@
+import { IStory } from '@/@types/stories'
 import { ApiRoutes } from './constants'
 import { axiosInstance } from './instance'
-import { Story } from '@prisma/client'
 
-export const getStories = async (): Promise<Story[]> => {
+export const getStories = async (): Promise<IStory[]> => {
 	return (
-		await axiosInstance.get<Story[]>(ApiRoutes.STORIES)
+		await axiosInstance.get<IStory[]>(ApiRoutes.STORIES)
 	).data
 }

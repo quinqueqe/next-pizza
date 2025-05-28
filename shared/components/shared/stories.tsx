@@ -5,9 +5,12 @@ import Image from 'next/image'
 import { Container } from './container'
 import { Skeleton } from '../ui'
 import { useStoriesInfo } from '@/shared/hooks'
+import InstaStories from 'react-insta-stories'
+import { X } from 'lucide-react'
 
 export const Stories = () => {
-	const { items, status, onClickStory } = useStoriesInfo()
+	const { stories, status, open, setOpen, onClickStory, selectedStory } =
+		useStoriesInfo()
 	const skeleton = Array.from({ length: 6 }, () => (
 		<Skeleton
 			className='w-[190px] h-[240px] rounded-2xl '
@@ -18,12 +21,12 @@ export const Stories = () => {
 		<Container>
 			<ul className='flex justify-between pt-10'>
 				{status === 'success'
-					? items.map(item => (
-							<li key={item.id} className='cursor-pointer'>
+					? stories.map(story => (
+							<li key={story.id} className='cursor-pointer relative'>
 								<Image
-									onClick={() => onClickStory(item)}
+									onClick={() => onClickStory(story)}
 									className='rounded-2xl'
-									src={item.previewImageUrl}
+									src={story.previewImageUrl}
 									alt='img'
 									width={190}
 									height={190}
@@ -33,6 +36,29 @@ export const Stories = () => {
 					: status === 'loading'
 						? skeleton
 						: status === 'error' && <div>Error</div>}
+
+				{open && (
+					<div className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-20'>
+						<div className='relative w-[520px]'>
+							<button
+								className='absolute -right-10 -top-5 z-30 '
+								onClick={() => setOpen(false)}
+							>
+								<X className='absolute top-0 right-0 w-8 h-8 text-white/50' />
+							</button>
+
+							<InstaStories
+								onAllStoriesEnd={() => setOpen(false)}
+								stories={
+									selectedStory?.items.map((item) => ({ url: item.sourceUrl })) || []
+								}
+								defaultInterval={3000}
+								width={432}
+								height={768}
+							/>
+						</div>
+					</div>
+				)}
 			</ul>
 		</Container>
 	)

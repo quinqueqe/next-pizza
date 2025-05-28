@@ -1,11 +1,11 @@
 import React from 'react'
 import { useStories } from '../store'
-import { Story } from '@prisma/client'
+import { IStory } from '@/@types/stories'
 
 export const useStoriesInfo = () => {
 	const {
-		items,
-		setItems,
+		stories,
+		setStories,
 		status,
 		open,
 		selectedStory,
@@ -14,15 +14,20 @@ export const useStoriesInfo = () => {
 	} = useStories()
 
 	React.useEffect(() => {
-		setItems()
+		setStories()
 	}, [])
 
-	const onClickStory = (story: Story) => {
+	const onClickStory = (story: IStory) => {
 		setSelectedStory(story)
 		setOpen(true)
 	}
 
 	return {
-		items, onClickStory, status
+		stories,
+		status,
+		open,
+		setOpen,
+		onClickStory,
+		selectedStory
 	}
 }
