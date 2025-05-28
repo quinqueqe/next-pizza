@@ -24,6 +24,7 @@ import {
 	chorizeFreshVariations,
 	generateProduct,
 	promoCodes,
+	stories,
 } from './constants'
 import prisma from './prisma'
 
@@ -161,6 +162,10 @@ async function up() {
 	await prisma.promo.createMany({
 		data: promoCodes,
 	})
+
+	await prisma.story.createMany({
+		data: stories,
+	})
 }
 async function down() {
 	// await prisma.$executeRaw`TRUNCATE "User" RESTART IDENTITY CASCADE;` // SQL
@@ -171,6 +176,8 @@ async function down() {
 	await prisma.product.deleteMany() // вместо raw-запроса
 	await prisma.variation.deleteMany() // вместо raw-запроса
 	await prisma.category.deleteMany() // вместо raw-запроса
+	await prisma.story.deleteMany() // вместо raw-запроса
+	await prisma.storyItem.deleteMany() // вместо raw-запроса
 }
 
 async function main() {
