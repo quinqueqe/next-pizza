@@ -19,11 +19,7 @@ export const CheckoutPersonalForm = () => {
 				<div className='grid grid-cols-2 gap-6 pb-10 pt-[30px]'>
 					<CheckoutFormInput placeholder='Имя' name='firstName' />
 					<CheckoutFormInput placeholder='Фамилия' name='lastName' />
-					<CheckoutFormInput
-						placeholder='E-Mail'
-						name='email'
-						valueDefault='vrsxdcrown@gmail.com'
-					/>
+					<CheckoutFormInput placeholder='E-Mail' name='email' />
 					<CheckoutFormInput placeholder='Телефон' name='phone' />
 				</div>
 			</CheckoutWhiteBlock>
