@@ -32,6 +32,8 @@ export { InfoBlock } from './info-block'
 export { ProfileModal } from './profile-modal'
 export { ProfileForm } from './profile-form'
 
+export { Stories } from './stories'
+
 export * from './cart-item-details'
 export * from './checkout'
 export * from './checkout-form'

@@ -4,6 +4,7 @@ import {
 	// Filter,
 	Title,
 	TopBar,
+	Stories,
 } from '@/shared/components/shared'
 import prisma from '@/prisma/prisma'
 
@@ -30,6 +31,8 @@ const HomePage = async () => {
 				</Container>
 			</div>
 			<TopBar data={categories.filter(cat => cat.products.length > 0)} />
+
+			<Stories />
 
 			<Container>
 				<div className='pt-10'>
