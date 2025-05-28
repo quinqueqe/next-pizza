@@ -1,9 +1,14 @@
 'use server'
 
 import { compare } from 'bcrypt'
-import prisma from '@/prisma/prisma' // исправьте путь под ваш проект
-import { Account, User } from 'next-auth' // импортируйте нужные типы из next-auth
+import prisma from '@/prisma/prisma'
+import { Account, User } from 'next-auth'
 
+/**
+ * Функция авторизации пользователя по учетным данным.
+ * @param credentials - учетные данные пользователя.
+ * @returns объект пользователя или null, если авторизация не удалась.
+ */
 export async function authorize(
 	credentials: Record<string, string> | undefined
 ) {
@@ -34,6 +39,12 @@ export async function authorize(
 	}
 }
 
+/**
+ * Функция входа пользователя.
+ * @param user - объект пользователя.
+ * @param account - объект аккаунта (может быть null).
+ * @returns true, если вход успешен, иначе false.
+ */
 export async function signIn({
 	user,
 	account,
@@ -91,8 +102,12 @@ export async function signIn({
 	}
 }
 
-export async function jwt({ token } : { token: User }) {
-	// credentials
+/**
+ * Функция обновления JWT токена пользователя.
+ * @param token - объект токена пользователя.
+ * @returns обновленный токен.
+ */
+export async function jwt({ token }: { token: User }) {
 	const findUser = await prisma?.user.findFirst({
 		where: {
 			email: token.email as string,
@@ -108,3 +123,4 @@ export async function jwt({ token } : { token: User }) {
 
 	return token
 }
+
