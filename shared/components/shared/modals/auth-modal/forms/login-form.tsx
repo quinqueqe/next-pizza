@@ -28,15 +28,15 @@ export const LoginForm = ({ onClose }: Props) => {
 				redirect: false,
 			})
 
-			if (!res?.ok) {
-				console.log('LOGIN_ERROR', res?.error)
-				toast.error('Не удалось войти в аккаунт')
-			}
+			
 
 			if (res?.ok) {
 				toast.success('Вы успешно вошли в аккаунт')
+				onClose?.()
+			} else {
+				console.log('FIND_LOGIN_ERROR', res?.error)
+				toast.error('Неверный логин или пароль')
 			}
-			onClose?.()
 		} catch (err) {
 			console.log('LOGIN_ERROR', err)
 		}

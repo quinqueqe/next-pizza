@@ -22,12 +22,21 @@ export const Header = ({
 	const searchParams = useSearchParams()
 	const router = useRouter()
 	React.useEffect(() => {
+		let toastMessage = ''
 		if (searchParams.has('paid')) {
+			toastMessage =
+				'Ваш заказ был успешно оплачен, чек об оплате отправлен вам на почту. Приятного аппетита!'
+		}
+		if (searchParams.has('verified')) {
+			toastMessage = 'Почта успешно подтверждена'
+		}
+
+		if (toastMessage) {
 			setTimeout(() => {
-				toast.success(
-					`Ваш заказ был успешно оплачен, чек об оплате отправлен вам на почту Приятного аппетита!`
-				)
-				router.push('/')
+				toast.success(toastMessage, {
+					duration: 3000,
+				})
+				router.replace('/')
 			}, 500)
 		}
 	}, [])
