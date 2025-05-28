@@ -6,9 +6,7 @@ interface Props {
 
 export const VerificationUserTemplate = ({ code }: Props) => (
 	<div>
-		<p>
-			Код подтверждения: <h1>{code}</h1>
-		</p>
+		<p>Ваш код подтверждения: {code}</p>
 
 		<a href={`${process.env.NEXT_URL}/api/auth/verify?code=${code}`}>
 			Подтвердить регистрацию

@@ -12,7 +12,11 @@ import { getUserSession } from '@/shared/lib/get-user-session'
 
 export async function createOrder(
 	data: CheckoutSchemaType,
-	totalPrice: number
+	totalAmountCart: number,
+	totalPrice: number,
+	deliveryPrice: number,
+	discount: number,
+	promoCheckout: string
 ) {
 	// console.log(data)
 	try {
@@ -61,7 +65,7 @@ export async function createOrder(
 				phone: data.phone,
 				address: data.address,
 				comment: data.comment,
-				totalAmount: totalPrice,
+				totalAmount: totalAmountCart,
 				status: OrderStatus.PENDING,
 				items: JSON.stringify(userCart.items),
 			},
@@ -108,13 +112,16 @@ export async function createOrder(
 		// отправка письма на почту
 		await sendEmail(
 			data.email,
-			`Next Pizza | Подтверждение вашего заказа #${order.id} 🍕`,
+			`Next Pizza | Подтверждение вашего заказа 🍕`,
 			PayOrderTemplate({
-				orderId: order.id,
-				totalAmount: order.totalAmount,
 				paymentUrl,
 				items: JSON.parse(order.items as string),
 				fullName: order.fullName,
+				totalAmount: order.totalAmount,
+				totalPrice,
+				deliveryPrice,
+				discount,
+				promoCheckout,
 			})
 		)
 
@@ -195,8 +202,6 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			'Next Pizza | Подтверждение почты 🍕',
 			VerificationUserTemplate({ code })
 		)
-
-		
 	} catch (err) {
 		console.log('[REGISTER_USER_ERROR]', err)
 	}
