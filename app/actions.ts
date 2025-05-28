@@ -8,7 +8,7 @@ import { OrderStatus, Prisma } from '@prisma/client'
 import { createPayment, sendEmail } from '@/shared/lib'
 import { PayOrderTemplate, VerificationUserTemplate } from '@/shared/components'
 import { getUserSession } from '@/shared/lib/get-user-session'
-import { hashSync } from 'bcrypt'
+// import { hashSync } from 'bcrypt'
 
 export async function createOrder(
 	data: CheckoutSchemaType,
@@ -132,11 +132,11 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
 			throw new Error('Пользователь не найден')
 		}
 
-		const findUser = await prisma.user.findFirst({
-			where: {
-				id: Number(currentUser.id),
-			},
-		})
+		// const findUser = await prisma.user.findFirst({
+		// 	where: {
+		// 		id: Number(currentUser.id),
+		// 	},
+		// })
 
 		await prisma.user.update({
 			where: {

@@ -1,0 +1,110 @@
+'use server'
+
+import { compare } from 'bcrypt'
+import prisma from '@/prisma/prisma' // исправьте путь под ваш проект
+import { Account, User } from 'next-auth' // импортируйте нужные типы из next-auth
+
+export async function authorize(
+	credentials: Record<string, string> | undefined
+) {
+	if (!credentials) return null
+
+	const values = { email: credentials.email }
+
+	const findUser = await prisma.user.findFirst({
+		where: values,
+	})
+
+	if (!findUser) return null
+
+	const isPasswordValid = await compare(
+		credentials.password,
+		findUser.password as string
+	)
+
+	if (!isPasswordValid) return null
+
+	if (!findUser.verified) return null
+
+	return {
+		id: findUser.id,
+		email: findUser.email,
+		name: findUser.fullName,
+		role: findUser.role,
+	}
+}
+
+export async function signIn({
+	user,
+	account,
+}: {
+	user: User
+	account: Account | null
+}) {
+	try {
+		if (account?.provider === 'credentials') {
+			return true
+		}
+
+		if (!user.email) return false
+
+		const findUser = await prisma.user.findFirst({
+			where: {
+				OR: [
+					{
+						provider: account?.provider,
+						providerId: account?.providerAccountId,
+					},
+					{
+						email: user.email,
+					},
+				],
+			},
+		})
+
+		if (findUser) {
+			await prisma.user.update({
+				where: { id: findUser.id },
+				data: {
+					provider: account?.provider,
+					providerId: account?.providerAccountId,
+				},
+			})
+			return true
+		}
+
+		await prisma.user.create({
+			data: {
+				email: user.email,
+				fullName: user.name || `User #${user.id}`,
+				password: user.id.toString(),
+				verified: new Date(),
+				provider: account?.provider,
+				providerId: account?.providerAccountId,
+			},
+		})
+
+		return true
+	} catch (err) {
+		console.log('[SIGN_IN_ERROR]', err)
+		return false
+	}
+}
+
+export async function jwt({ token } : { token: User }) {
+	// credentials
+	const findUser = await prisma?.user.findFirst({
+		where: {
+			email: token.email as string,
+		},
+	})
+
+	if (findUser) {
+		token.id = findUser.id
+		token.email = findUser.email
+		token.name = findUser.fullName
+		token.role = findUser.role
+	}
+
+	return token
+}
