@@ -56,7 +56,12 @@ export const RegisterForm = ({ onClose }: Props) => {
 						name='confirmPassword'
 						type='password'
 					/>
-					<Button variant='default' type='submit' className='w-full'>
+					<Button
+						status={form.formState.isSubmitting && 'loading'}
+						variant='default'
+						type='submit'
+						className='w-full'
+					>
 						Зарегистрироваться
 					</Button>
 				</div>

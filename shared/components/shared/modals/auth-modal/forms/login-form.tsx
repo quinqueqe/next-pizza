@@ -28,8 +28,6 @@ export const LoginForm = ({ onClose }: Props) => {
 				redirect: false,
 			})
 
-			
-
 			if (res?.ok) {
 				toast.success('Вы успешно вошли в аккаунт')
 				onClose?.()
@@ -41,6 +39,7 @@ export const LoginForm = ({ onClose }: Props) => {
 			console.log('LOGIN_ERROR', err)
 		}
 	}
+
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
@@ -66,7 +65,12 @@ export const LoginForm = ({ onClose }: Props) => {
 						label='Пароль'
 						type='password'
 					/>
-					<Button variant='default' type='submit' className='w-full'>
+					<Button
+						status={form.formState.isSubmitting && 'loading'}
+						variant='default'
+						type='submit'
+						className='w-full'
+					>
 						Войти
 					</Button>
 				</div>

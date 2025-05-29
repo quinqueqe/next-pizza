@@ -14,6 +14,7 @@ import { cn } from '@/shared/lib'
 import { signOut } from 'next-auth/react'
 import toast from 'react-hot-toast'
 import { updateUserInfo } from '@/app/actions'
+import { useAuth } from '@/shared/store/auth'
 
 type Props = {
 	user: User
@@ -47,6 +48,8 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 			onCloseModal?.()
 		}
 	}
+
+	const { loadingBtn, setLoadingBtn } = useAuth()
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
@@ -85,6 +88,7 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 					</div>
 					<div className='flex flex-col gap-3'>
 						<Button
+							status={form.formState.isSubmitting ? 'loading' : 'success'}
 							type='submit'
 							variant='outline'
 							className='font-bold text-center text-[16px] py-[13px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
@@ -92,11 +96,13 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 							Сохранить
 						</Button>
 						<Button
-							onClick={() =>
+							onClick={() => {
 								signOut({
 									callbackUrl: '/',
 								})
-							}
+								setLoadingBtn('loading')
+							}}
+							status={loadingBtn}
 							type='button'
 							variant='outline'
 							className='font-bold text-center text-[16px] py-[13px]  text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[100%]'
