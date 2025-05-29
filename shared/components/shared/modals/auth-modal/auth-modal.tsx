@@ -6,6 +6,7 @@ import { AuthModalBtn, LoginForm, RegisterForm } from '../../'
 import { GithubIcon } from '@/public/assets/images/auth-modal/github'
 import { GoogleIcon } from '@/public/assets/images/auth-modal/google'
 import { Button } from '@/shared/components/ui'
+import { useAuth } from '@/shared/store'
 
 type Props = {
 	open?: boolean
@@ -16,7 +17,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 	const handleClose = () => {
 		onClose()
 	}
-	const [type, setType] = React.useState<'login' | 'register'>('login')
+	const { type, setType } = useAuth()
 	const onSwitchType = () => {
 		setType(type === 'login' ? 'register' : 'login')
 	}

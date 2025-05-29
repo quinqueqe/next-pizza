@@ -5,9 +5,8 @@ import { Button } from '../ui'
 import { signOut, useSession } from 'next-auth/react'
 import { CircleUser, User } from 'lucide-react'
 import Link from 'next/link'
-import { useCart } from '@/shared/store'
+import { useCart, useAuth } from '@/shared/store'
 import { usePathname } from 'next/navigation'
-import { useAuth } from '@/shared/store/auth'
 
 type Props = {
 	onClickLogin?: () => void
@@ -16,7 +15,7 @@ type Props = {
 export const ProfileBtn = ({ onClickLogin }: Props) => {
 	const pathname = usePathname().replace('/', '')
 	const { data: session } = useSession()
-	const { status } = useCart(state => state)
+	const { status } = useCart()
 	const { loadingLoginOrRegisterBtn, setLoadingLoginOrRegisterBtn } = useAuth()
 
 	console.log(session)

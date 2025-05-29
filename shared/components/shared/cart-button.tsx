@@ -13,7 +13,7 @@ export const CartButton = () => {
 	const { items } = useCartInfo(discount)
 	const quantityProducts = items.length
 
-	const { status } = useCart(state => state)
+	const { status } = useCart()
 	return (
 		<CartDrawer>
 			<Button

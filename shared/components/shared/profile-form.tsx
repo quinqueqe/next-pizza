@@ -14,7 +14,7 @@ import { cn } from '@/shared/lib'
 import { signOut } from 'next-auth/react'
 import toast from 'react-hot-toast'
 import { updateUserInfo } from '@/app/actions'
-import { useAuth } from '@/shared/store/auth'
+import { useAuth } from '@/shared/store'
 
 type Props = {
 	user: User

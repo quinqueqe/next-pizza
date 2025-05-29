@@ -18,6 +18,7 @@ import React from 'react'
 import { useCartInfo, usePromoCodes } from '@/shared/hooks'
 import { useSession } from 'next-auth/react'
 import { Api } from '@/shared/services/api-client'
+import { useCheckout } from '@/shared/store'
 
 type Props = {
 	className?: string
@@ -52,7 +53,7 @@ export default function CheckoutPage({ className }: Props) {
 		}
 	}, [session])
 
-	const [submitting, setSubmitting] = React.useState(false)
+	const { submitting, setSubmitting } = useCheckout()
 
 	const { discount, promoCheckout } = usePromoCodes()
 	const { totalPrice, deliveryPrice, fullPriceWithDelivery } =
@@ -67,7 +68,7 @@ export default function CheckoutPage({ className }: Props) {
 				totalPrice,
 				deliveryPrice,
 				discount,
-				promoCheckout,
+				promoCheckout
 			) // data передается в виде массива с объектом data, url берется из return функции
 			toast.success('Заказ успешно оформлен! Переходим на оплату...', {
 				icon: '✅',

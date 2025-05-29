@@ -32,7 +32,7 @@ export const usePromoCodes = () => {
 		setIHavePromo,
 		setPromoCheckout,
 		fetchGetPromoCodes,
-	} = usePromo(state => state)
+	} = usePromo()
 
 	React.useEffect(() => {
 		fetchGetPromoCodes()

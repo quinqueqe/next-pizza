@@ -7,6 +7,7 @@ import { Container, SearchInput, CartButton, ProfileBtn, AuthModal } from './'
 import { cn } from '@/shared/lib'
 import { useSearchParams, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { useAuth } from '@/shared/store'
 
 type Props = {
 	hasSearch?: boolean
@@ -41,7 +42,7 @@ export const Header = ({
 		}
 	}, [])
 
-	const [openModal, setOpenModal] = React.useState<boolean>(false)
+	const { openModal, setOpenModal } = useAuth()
 	return (
 		<header className={cn('border border-b', className)}>
 			<Container className='flex justify-between items-center py-8'>

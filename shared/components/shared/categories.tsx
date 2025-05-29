@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Categories = ({ categories }: Props) => {
-	const { activeId, setAcitveId } = useCategory(state => state)
+	const { activeId, setAcitveId } = useCategory()
 	return (
 		<div className='categories'>
 			<ul className='flex gap-1.5'>

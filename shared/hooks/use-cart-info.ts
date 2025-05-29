@@ -15,13 +15,15 @@ import { useCart } from '../store'
  */
 export const useCartInfo = (discount: number) => {
 	// states
-	const fetchCartItems = useCart(state => state.fetchCartItems)
-	const status = useCart(state => state.status)
-	const items = useCart(state => state.items)
-	const totalAmount = useCart(state => state.totalAmount)
-	const updateItemQuantity = useCart(state => state.updateItemQuantity)
-	const deleteItemCart = useCart(state => state.deleteItemCart)
-	const disabled = useCart(state => state.disabled)
+	const {
+		fetchCartItems,
+		status,
+		items,
+		totalAmount,
+		updateItemQuantity,
+		deleteItemCart,
+		disabled,
+	} = useCart()
 
 	// price
 	const { totalTax, totalPrice } = calcCartTotalPriceToTax(
@@ -38,12 +40,12 @@ export const useCartInfo = (discount: number) => {
 		items.length === 1
 			? 'товар'
 			: items.length === 2
-			? 'товара'
-			: items.length === 3
-			? 'товара'
-			: items.length === 4
-			? 'товара'
-			: 'товаров'
+				? 'товара'
+				: items.length === 3
+					? 'товара'
+					: items.length === 4
+						? 'товара'
+						: 'товаров'
 
 	const deliveryPrice = Math.round(totalPrice / 30)
 

@@ -11,7 +11,7 @@ import { useSearch } from '../../store'
 
 export const SearchInput = () => {
 	const { focus, setFocus, searchQ, setSearchQ, products, setProducts } =
-		useSearch(state => state)
+		useSearch()
 	// закрытие окна по клику в пустую область
 	const ref = React.useRef<null>(null)
 	useClickAway(ref, () => {

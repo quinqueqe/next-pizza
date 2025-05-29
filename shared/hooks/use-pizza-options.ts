@@ -11,12 +11,12 @@ import { Variation } from '@prisma/client'
  * @returns Объект, содержащий активные выбранные значения, обработчики и вычисленные детали.
  * /** */
 export const usePizzaOptions = (variations: Variation[]) => {
-	const { activeSize, activeType, setActiveSize, setActiveType } = useModal(
-		state => state
-	)
+	const { activeSize, activeType, setActiveSize, setActiveType } = useModal()
 	const [selectedIds, { add, remove }] = useSet(new Set<number>())
 	const size = sizes[activeSize].value
-	const productItemId = variations.find((item) => item.pizzaType === activeType && item.size === size)?.id ?? 0
+	const productItemId =
+		variations.find(item => item.pizzaType === activeType && item.size === size)
+			?.id ?? 0
 	filteredPizzasByType(variations!, types, activeType)
 
 	return {
@@ -30,6 +30,6 @@ export const usePizzaOptions = (variations: Variation[]) => {
 		size,
 		sizes,
 		types,
-		productItemId
+		productItemId,
 	}
 }

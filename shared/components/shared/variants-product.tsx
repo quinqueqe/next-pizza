@@ -20,7 +20,7 @@ export const VariantsProduct = ({
 	const firstItem = product.variations[0]
 	const isPizzaForm = Boolean(firstItem.pizzaType) // если у продукта есть pizzaType значит это пицца, если нет, то что-то другое
 
-	const { addCartItem, status } = useCart(state => state)
+	const { addCartItem, status } = useCart()
 	const activeSize = useModal(state => state.activeSize)
 
 	const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
