@@ -1,6 +1,7 @@
 import { ChooseProductModal } from '@/shared/components/shared'
 import { notFound } from 'next/navigation'
 import React from 'react'
+import prisma from '@/prisma/prisma'
 
 type Props = {
 	params: {
