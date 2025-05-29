@@ -42,6 +42,12 @@ export const RegisterForm = ({ onClose }: Props) => {
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<div className='flex flex-col gap-5'>
+					<div>
+						<h3 className='text-[26px] font-bold'>Регистрация аккаунта</h3>
+						<p className='text-gray-400'>
+							Введите свои данные, чтобы зарегистривароваться и войти в свой аккаунт
+						</p>
+					</div>
 					<CheckoutFormInput label='E-Mail' required name='email' />
 					<CheckoutFormInput label='Полное имя' required name='fullName' />
 					<CheckoutFormInput
