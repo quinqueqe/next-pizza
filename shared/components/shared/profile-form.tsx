@@ -54,39 +54,50 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<div className='p-[35px]'>
-					<div>
-						<h3 className={cn('text-[26px] font-bold pb-7', titleClassName)}>
-							Личные данные | #{user.id}
-						</h3>
-					</div>
+					<h3 className={cn('text-[26px] font-bold pb-5', titleClassName)}>
+						Личные данные | #{user.id}
+					</h3>
 					<div className='grid grid-cols-2 gap-5 pb-5'>
-						<CheckoutFormInput
-							name='email'
-							// required
-							label='E-Mail'
-							type='text'
-						/>
-						<CheckoutFormInput
-							name='fullName'
-							// required
-							// required
-							label='Полное имя'
-							type='text'
-						/>
-						<CheckoutFormInput
-							name='password'
-							// required
-							label='Новый пароль'
-							type='password'
-						/>
-						<CheckoutFormInput
-							name='confirmPassword'
-							// required
-							label='Повторите пароль'
-							type='password'
-						/>
+						{user.provider === 'credentials' || null ? (
+							
+							<>
+								<CheckoutFormInput
+									name='email'
+									// required
+									label='E-Mail'
+									type='text'
+								/>
+								<CheckoutFormInput
+									name='fullName'
+									// required
+									// required
+									label='Полное имя'
+									type='text'
+								/>
+								<CheckoutFormInput
+									name='password'
+									// required
+									label='Новый пароль'
+									type='password'
+								/>
+								<CheckoutFormInput
+									name='confirmPassword'
+									// required
+									label='Повторите пароль'
+									type='password'
+								/>
+							</>
+						) : (
+							<CheckoutFormInput
+								name='fullName'
+								// required
+								// required
+								label='Полное имя'
+								type='text'
+							/>
+						)}
 					</div>
-					<div className='flex flex-col gap-3'>
+					<div className='flex gap-3'>
 						<Button
 							status={form.formState.isSubmitting ? 'loading' : 'success'}
 							type='submit'

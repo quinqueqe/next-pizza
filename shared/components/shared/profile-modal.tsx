@@ -21,11 +21,14 @@ export const ProfileModal = ({ user, className }: Props) => {
 		<Dialog open={Boolean(user)} onOpenChange={() => onCloseModal()}>
 			<DialogContent
 				className={cn(
-					'p-0 w-[800px] min-w-[800px] h-[445px] min-h-[445px] bg-white overflow-hidden rounded-4xl',
+					'p-0 w-[800px] min-w-[800px] h-[379px] min-h-[379px] bg-white overflow-hidden rounded-4xl',
+					user.provider !== 'credentials' || null
+						? 'h-[275px] min-h-[275px]'
+						: '',
 					className
 				)}
 			>
-				<ProfileForm user={user} onCloseModal={onCloseModal}/>
+				<ProfileForm user={user} onCloseModal={onCloseModal} />
 			</DialogContent>
 		</Dialog>
 	)
