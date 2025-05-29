@@ -13,11 +13,13 @@ type Props = {
 	hasSearch?: boolean
 	hasCart?: boolean
 	className?: string
+	hasProfile?: boolean
 }
 
 export const Header = ({
 	hasSearch = true,
 	hasCart = true,
+	hasProfile = true,
 	className,
 }: Props) => {
 	const searchParams = useSearchParams()
@@ -60,7 +62,7 @@ export const Header = ({
 
 				<div className='flex items-center gap-4'>
 					<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
-					<ProfileBtn onClickLogin={() => setOpenModal(true)} />
+					{hasProfile && <ProfileBtn onClickLogin={() => setOpenModal(true)} />}
 
 					{hasCart && <CartButton />}
 				</div>

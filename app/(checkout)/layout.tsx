@@ -17,6 +17,7 @@ export default function CheckoutLayout({
 					className='border-[#dedede]'
 					hasSearch={false}
 					hasCart={false}
+					hasProfile={false}
 				/>
 				{children}
 			</main>
