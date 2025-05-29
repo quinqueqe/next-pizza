@@ -17,6 +17,8 @@ export const Stories = () => {
 			key={Math.random()}
 		/>
 	))
+
+	
 	return (
 		<Container>
 			<ul className='flex justify-between pt-10'>
@@ -24,12 +26,16 @@ export const Stories = () => {
 					? stories.map(story => (
 							<li key={story.id} className='cursor-pointer relative'>
 								<Image
-									onClick={() => story.items.length > 0 && onClickStory(story)}
+									onClick={() => {
+										if (story.items.length > 0) {
+											onClickStory(story)
+										}
+									}}
 									className='rounded-2xl'
 									src={story.previewImageUrl}
 									alt='img'
-									width={190}
-									height={190}
+									width={200}
+									height={200}
 								/>
 							</li>
 						))
@@ -38,7 +44,10 @@ export const Stories = () => {
 						: status === 'error' && <div>Error</div>}
 
 				{open && (
-					<div className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-40'>
+					<div
+						className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-40'
+						onClick={() => setOpen(false)}
+					>
 						<div className='relative w-[520px]'>
 							<button
 								className='absolute right-3 top-5 z-1000 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer'
@@ -53,7 +62,7 @@ export const Stories = () => {
 									selectedStory?.items.map(item => ({ url: item.sourceUrl })) ||
 									[]
 								}
-								defaultInterval={10000}
+								defaultInterval={5000}
 								width={520}
 								height={800}
 							/>
