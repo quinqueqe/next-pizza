@@ -18,7 +18,13 @@ export const Stories = () => {
 		/>
 	))
 
-	
+	React.useEffect(() => {
+		if (open) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+	}, [open])
 	return (
 		<Container>
 			<ul className='flex justify-between pt-10'>
@@ -29,6 +35,7 @@ export const Stories = () => {
 									onClick={() => {
 										if (story.items.length > 0) {
 											onClickStory(story)
+											window.scrollTo(0, 0)
 										}
 									}}
 									className='rounded-2xl'
