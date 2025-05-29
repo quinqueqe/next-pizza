@@ -44,7 +44,7 @@ export const Header = ({
 
 	const { openModal, setOpenModal } = useAuth()
 	return (
-		<header className={cn('border border-b', className)}>
+		<header className={cn('', className)}>
 			<Container className='flex justify-between items-center py-8'>
 				<Link href='/' className='flex gap-4 items-center'>
 					<Image src={'/logo.png'} alt='img' width={35} height={35} />

@@ -1,8 +1,6 @@
 import {
 	Container,
 	ProductsGroupList,
-	// Filter,
-	Title,
 	TopBar,
 	Stories,
 } from '@/shared/components/shared'
@@ -19,28 +17,19 @@ const HomePage = async () => {
 		},
 	})
 
-	if(!categories) {
+	if (!categories) {
 		throw new Error('Не удалось запустить базу данных')
 	}
 
 	return (
 		<>
-			<div className='bg-white shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]'>
-				<Container>
-					<Title
-						text='Все пиццы'
-						size='xl'
-						className='font-extrabold pt-10 pb-4'
-					/>
-				</Container>
-			</div>
 			<TopBar data={categories.filter(cat => cat.products.length > 0)} />
 
 			<Stories />
 
 			<Container>
 				<div className='pt-10'>
-					<div className='flex flex-col gap-5'>
+					<div className='flex flex-col gap-8'>
 						{categories?.map(
 							(category, i) =>
 								category.products.length > 0 && (

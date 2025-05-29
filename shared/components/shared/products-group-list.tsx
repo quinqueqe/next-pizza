@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { ProductCard } from './product-card'
-import { Title } from './title'
 import { useIntersection } from 'react-use'
 import { useCategory } from '../../store'
 import { Product } from '@prisma/client'
@@ -33,7 +32,7 @@ export const ProductsGroupList = ({
 	}, [intersection?.isIntersecting, categoryId, title])
 	return (
 		<div className={className} id={title} ref={intersectionRef}>
-			<Title text={title} size='md' className='font-extrabold pb-8' />
+			<h2 className='font-extrabold pb-8 text-[36px]'>{title}</h2>
 			<div className='grid grid-cols-4 gap-[50px] pb-10'>
 				{products?.map((product: Product, i: number) => (
 					<ProductCard
