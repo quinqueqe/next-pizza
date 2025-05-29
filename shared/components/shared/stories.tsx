@@ -27,7 +27,7 @@ export const Stories = () => {
 	}, [open])
 	return (
 		<Container>
-			<ul className='flex justify-between pt-10'>
+			<ul className='flex justify-between pt-4'>
 				{status === 'success'
 					? stories.map(story => (
 							<li key={story.id} className='cursor-pointer relative'>

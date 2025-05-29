@@ -18,7 +18,7 @@ export const ProfileBtn = ({ onClickLogin }: Props) => {
 	const { status } = useCart()
 	const { loadingLoginOrRegisterBtn, setLoadingLoginOrRegisterBtn } = useAuth()
 
-	console.log(session)
+	// console.log(session)
 
 	React.useEffect(() => {
 		if (session) {
