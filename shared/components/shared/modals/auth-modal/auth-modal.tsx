@@ -1,11 +1,11 @@
 'use client'
 
+import React from 'react'
 import { Dialog, DialogContent } from '../../../ui/dialog'
 import { AuthModalBtn, LoginForm, RegisterForm } from '../../'
 import { GithubIcon } from '@/public/assets/images/auth-modal/github'
 import { GoogleIcon } from '@/public/assets/images/auth-modal/google'
 import { Button } from '@/shared/components/ui'
-import React from 'react'
 
 type Props = {
 	open?: boolean
@@ -20,6 +20,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 	const onSwitchType = () => {
 		setType(type === 'login' ? 'register' : 'login')
 	}
+
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent className='w-[450px] rounded-4xl px-[40px] py-[45px]'>
@@ -27,7 +28,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 					{type === 'login' ? (
 						<LoginForm onClose={onClose} />
 					) : (
-						type === 'register' && <RegisterForm onClose={onClose}/>
+						type === 'register' && <RegisterForm onClose={onClose} />
 					)}
 				</div>
 
