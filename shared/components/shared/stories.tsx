@@ -24,7 +24,7 @@ export const Stories = () => {
 					? stories.map(story => (
 							<li key={story.id} className='cursor-pointer relative'>
 								<Image
-									onClick={() => onClickStory(story)}
+									onClick={() => story.items.length > 0 && onClickStory(story)}
 									className='rounded-2xl'
 									src={story.previewImageUrl}
 									alt='img'
@@ -40,12 +40,12 @@ export const Stories = () => {
 				{open && (
 					<div className='absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-40'>
 						<div className='relative w-[520px]'>
-								<button
-									className='absolute right-3 top-5 z-1000 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer'
-									onClick={() => setOpen(false)}
-								>
-									<X className='w-6 h-6 text-black' />
-								</button>
+							<button
+								className='absolute right-3 top-5 z-1000 bg-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer'
+								onClick={() => setOpen(false)}
+							>
+								<X className='w-6 h-6 text-black' />
+							</button>
 
 							<InstaStories
 								onAllStoriesEnd={() => setOpen(false)}
