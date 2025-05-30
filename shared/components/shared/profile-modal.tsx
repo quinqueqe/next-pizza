@@ -14,6 +14,7 @@ type Props = {
 
 export const ProfileModal = ({ user, className }: Props) => {
 	const router = useRouter()
+
 	const onCloseModal = () => {
 		router.back()
 	}
