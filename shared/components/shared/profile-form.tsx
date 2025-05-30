@@ -58,8 +58,7 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 						Личные данные | #{user.id}
 					</h3>
 					<div className='grid grid-cols-2 gap-5 pb-5'>
-						{user.provider === 'credentials' || null ? (
-							
+						{user.provider === null || 'credentials' ? (
 							<>
 								<CheckoutFormInput
 									name='email'

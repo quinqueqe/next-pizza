@@ -22,6 +22,15 @@ export async function authorize(
 
 	if (!findUser) return null
 
+	await prisma.user.update({
+		where: {
+			email: credentials.email,
+		},
+		data: {
+			provider: 'credentials',
+		},
+	}) // при входе через credentials, обновляем провайдер на credentials
+
 	const isPasswordValid = await compare(
 		credentials.password,
 		findUser.password as string
@@ -123,4 +132,3 @@ export async function jwt({ token }: { token: User }) {
 
 	return token
 }
-
