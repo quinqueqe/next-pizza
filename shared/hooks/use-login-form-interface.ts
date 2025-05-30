@@ -36,7 +36,7 @@ export const useLoginFormInterface = ({ onClose }: Props) => {
 
 			if (res?.error) {
 				console.log('FIND_LOGIN_ERROR', res?.error)
-				toast.error('Неверный логин или пароль')
+				toast.error('Проверьте логин и пароль, а также подтвердите email по ссылке из письма при регистрации')
 				
 			}
 		} catch (err) {
