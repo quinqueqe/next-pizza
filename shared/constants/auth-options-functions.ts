@@ -97,7 +97,6 @@ export async function signIn({
 			data: {
 				email: user.email,
 				fullName: user.name || `User #${user.id}`,
-				password: user.id.toString(),
 				verified: new Date(),
 				provider: account?.provider,
 				providerId: account?.providerAccountId,
