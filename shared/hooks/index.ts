@@ -7,6 +7,7 @@ export { useStoriesInfo } from './use-stories-info'
 
 // auth
 export { useLoginFormInterface } from './use-login-form-interface'
+export { useRegisterFormInterface } from './use-register-form-interface'
 
 // checkout
 export { useCheckoutInterface } from './use-checkout-interface'
