@@ -96,14 +96,16 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 			<div className='flex justify-between items-center pt-4 pb-5 border-b-[1px] border-solid border-[#a1a1a1]'>
 				<p className='text-[22px] font-bold pb-1'>Итого:</p>
 				{/* {status === 'loading' || disabled ? ( */}
-				{status === 'loading' ? (
+				{status === 'loading' || fullPriceWithDelivery === 0 ? (
 					<Skeleton className='w-[93px] h-[36px] rounded-[10px]' />
 				) : status === 'success' ? (
 					<h4 className='text-[24px] font-extrabold '>
 						{fullPriceWithDelivery} ₽
 					</h4>
 				) : (
-					<h4 className='text-[24px] font-extrabold '>0 ₽</h4>
+					status === 'error' && (
+						<Skeleton className={cn('w-[50px] h-[27px] rounded-[10px]')} />
+					)
 				)}
 			</div>
 

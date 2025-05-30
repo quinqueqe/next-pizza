@@ -74,6 +74,9 @@ export const useCheckoutInterface = () => {
 	}
 
 	return {
-		form, onSubmit, submitting
+		session,
+		form,
+		onSubmit,
+		submitting,
 	}
 }

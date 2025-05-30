@@ -24,14 +24,18 @@ export const CheckoutTotalDetails = ({
 			<div className='flex items-center'>
 				{icon} <p className='text-[18px] pl-[14px]'>{name}</p>
 			</div>
-			{status === 'loading' || disabled ? (
+			{status === 'loading' || disabled || price === 0 ? (
 				<Skeleton
 					className={cn('w-[50px] h-[27px] rounded-[10px]', className)}
 				/>
 			) : status === 'success' ? (
 				<h4 className='text-[18px] font-bold'>{price} ₽</h4>
 			) : (
-				<h4 className='text-[18px] font-bold'>0 ₽</h4>
+				status === 'error' && (
+					<Skeleton
+						className={cn('w-[50px] h-[27px] rounded-[10px]', className)}
+					/>
+				)
 			)}
 		</div>
 	)
