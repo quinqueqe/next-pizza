@@ -1,4 +1,3 @@
-import { hashSync } from 'bcrypt'
 import {
 	categories,
 	ingredients,
@@ -26,29 +25,15 @@ import {
 	promoCodes,
 	stories,
 	storyItems,
+	users,
+	cartItem,
+	cart,
 } from './constants'
 import prisma from './prisma'
 
 async function up() {
 	await prisma.user.createMany({
-		data: [
-			{
-				fullName: 'User',
-				email: 'user@test.ru',
-				password: hashSync('111111', 10),
-				// password: '111111',
-				verified: new Date(),
-				role: 'USER',
-			},
-			{
-				fullName: 'Admin',
-				email: 'admin@test.ru',
-				password: hashSync('111111', 10),
-				// password: '111111',
-				verified: new Date(),
-				role: 'ADMIN',
-			},
-		],
+		data: users,
 	})
 
 	await prisma.category.createMany({
@@ -135,29 +120,11 @@ async function up() {
 	})
 
 	await prisma.cart.createMany({
-		data: [
-			{
-				userId: 1,
-				totalAmount: 999,
-				token: '111',
-			},
-			{
-				userId: 2,
-				totalAmount: 0,
-				token: '222',
-			},
-		],
+		data: cart,
 	})
 
 	await prisma.cartItem.create({
-		data: {
-			cartId: 1, // к корзине 1 будет привязан этот товар
-			quantity: 2, // кол-во (count)
-			productItemId: 1, // вариация продукта
-			ingredients: {
-				connect: [{ id: 1 }, { id: 2 }, { id: 3 }], // обрщается уже к сохраненным данным в ingredients и добавляет их сюда по id
-			},
-		},
+		data: cartItem,
 	})
 
 	await prisma.promo.createMany({
@@ -168,7 +135,7 @@ async function up() {
 		data: stories,
 	})
 	await prisma.storyItem.createMany({
-		data: storyItems
+		data: storyItems,
 	})
 }
 async function down() {
