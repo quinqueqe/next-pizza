@@ -16,6 +16,7 @@ type Props = {
 export const AuthModal = ({ open, onClose }: Props) => {
 	const handleClose = () => {
 		onClose()
+		setType('login')
 	}
 	const { type, setType } = useAuth()
 	const onSwitchType = () => {
