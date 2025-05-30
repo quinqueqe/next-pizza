@@ -31,9 +31,14 @@ export const useRegisterFormInterface = ({ onClose }: Props) => {
 
 			toast.success('Регистрация прошла успешно, подтвердите свою почту')
 			onClose?.()
-		} catch (err) {
-			toast.error('Произошла ошибка при регистрации')
-			console.log('REGISTER_ERROR', err)
+		} catch (err: any) {
+			const errMessage = err.message
+			if (errMessage === 'Пользователь уже существует') {
+				toast.error(errMessage)
+			} else {
+				toast.error('Произошла ошибка при регистрации')
+				console.log('REGISTER_ERROR', err)
+			}
 		}
 	}
 
