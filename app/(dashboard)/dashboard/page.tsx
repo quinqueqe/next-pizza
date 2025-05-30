@@ -1,14 +1,11 @@
-import React from 'react'
+import { notFound } from 'next/navigation'
 
-type Props = {
-	className?: string
-}
-
-export default function DashboardPage({ className }: Props) {
+export default function DashboardPage() {
 	return (
-		<div className={className}>
-			Dashboard
-			<p></p>
-		</div>
+		// <div className={className}>
+		// 	Dashboard
+		// 	<p></p>
+		// </div>
+		notFound()
 	)
 }

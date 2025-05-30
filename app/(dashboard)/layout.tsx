@@ -1,3 +1,4 @@
+import { Header } from '@/shared/components'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -11,8 +12,15 @@ export default function DashboardLayout({
 }>) {
 	return (
 		<>
-			<div>Dashboard Header</div>
-			<main className='min-h-screen'>{children}</main>
+			<main className='min-h-screen bg-[#f4f1ee]'>
+				<Header
+					className='border-[#dedede]'
+					hasSearch={false}
+					hasCart={false}
+					hasProfile={false}
+				/>
+				{children}
+			</main>
 		</>
 	)
 }
