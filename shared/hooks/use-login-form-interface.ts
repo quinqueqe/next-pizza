@@ -2,7 +2,10 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
 import toast from 'react-hot-toast'
-import { FormLoginSchema, FormLoginSchemaType } from '../components/shared/modals/auth-modal/forms/schemas'
+import {
+	FormLoginSchema,
+	FormLoginSchemaType,
+} from '../components/shared/modals/auth-modal/forms/schemas'
 
 type Props = {
 	onClose?: () => void
@@ -28,9 +31,13 @@ export const useLoginFormInterface = ({ onClose }: Props) => {
 			if (res?.ok) {
 				toast.success('Вы успешно вошли в аккаунт')
 				onClose?.()
-			} else {
+			}
+
+
+			if (res?.error) {
 				console.log('FIND_LOGIN_ERROR', res?.error)
 				toast.error('Неверный логин или пароль')
+				
 			}
 		} catch (err) {
 			console.log('LOGIN_ERROR', err)

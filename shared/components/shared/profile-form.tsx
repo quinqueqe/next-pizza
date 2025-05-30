@@ -27,7 +27,7 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 						Личные данные | #{user.id}
 					</h3>
 					<div className='grid grid-cols-2 gap-5 pb-5'>
-						{user.provider === null || 'credentials' ? (
+						{user.provider === 'credentials' ? (
 							<>
 								<CheckoutFormInput
 									name='email'
@@ -58,7 +58,6 @@ export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
 						) : (
 							<CheckoutFormInput
 								name='fullName'
-								// required
 								// required
 								label='Полное имя'
 								type='text'
