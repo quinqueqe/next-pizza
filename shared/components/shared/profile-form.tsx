@@ -2,19 +2,12 @@
 
 import React from 'react'
 import { User } from '@prisma/client'
-import { FormProvider, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import {
-	FormUpdateSchema,
-	FormUpdateSchemaType,
-} from './modals/auth-modal/forms/schemas'
+import { FormProvider } from 'react-hook-form'
 import { CheckoutFormInput } from './checkout-form'
 import { Button } from '../ui'
 import { cn } from '@/shared/lib'
 import { signOut } from 'next-auth/react'
-import toast from 'react-hot-toast'
-import { updateUserInfo } from '@/app/actions'
-import { useAuth } from '@/shared/store'
+import { useProfileFormInterface } from '@/shared/hooks'
 
 type Props = {
 	user: User
@@ -23,33 +16,9 @@ type Props = {
 }
 
 export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
-	const form = useForm<FormUpdateSchemaType>({
-		resolver: zodResolver(FormUpdateSchema),
-		defaultValues: {
-			fullName: user.fullName,
-			email: user.email,
-			password: '',
-			confirmPassword: '',
-		},
-	})
-	const onSubmit = async (data: FormUpdateSchemaType) => {
-		try {
-			await updateUserInfo({
-				email: data.email,
-				fullName: data.fullName,
-				password: data.password,
-			})
-
-			toast.success('Данные успешно обновлены')
-			onCloseModal?.()
-		} catch (err) {
-			toast.error('Не удалось обновить информацию')
-			console.log('[UPDATE_USER_INFO_ERROR]', 'profile', err)
-			onCloseModal?.()
-		}
-	}
-
-	const { loadingBtn, setLoadingBtn } = useAuth()
+	const { loadingBtn, setLoadingBtn, form, onSubmit } = useProfileFormInterface(
+		{ user, onCloseModal }
+	)
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
