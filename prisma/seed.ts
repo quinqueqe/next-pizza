@@ -1,4 +1,4 @@
-// import { hashSync } from 'bcrypt'
+import { hashSync } from 'bcrypt'
 import {
 	categories,
 	ingredients,
@@ -35,16 +35,16 @@ async function up() {
 			{
 				fullName: 'User',
 				email: 'user@test.ru',
-				// password: hashSync('111111', 10),
-				password: '111111',
+				password: hashSync('111111', 10),
+				// password: '111111',
 				verified: new Date(),
 				role: 'USER',
 			},
 			{
 				fullName: 'Admin',
 				email: 'admin@test.ru',
-				// password: hashSync('111111', 10),
-				password: '111111',
+				password: hashSync('111111', 10),
+				// password: '111111',
 				verified: new Date(),
 				role: 'ADMIN',
 			},

@@ -24,7 +24,8 @@ export const LoginForm = ({ onClose }: Props) => {
 	const onSubmit = async (data: FormLoginSchemaType) => {
 		try {
 			const res = await signIn('credentials', {
-				...data,
+				email: data.email,
+				password: data.password,
 				redirect: false,
 			})
 
