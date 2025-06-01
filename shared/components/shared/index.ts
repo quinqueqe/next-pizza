@@ -26,6 +26,7 @@ export { CheckoutWhiteBlock } from './checkout-white-block'
 export { AuthModalBtn } from './auth-modal-btn'
 export { ProfileBtn } from './profile-btn'
 export { Providers } from './providers'
+export { HeaderProvider} from './header-provider'
 export { InfoBlock } from './info-block'
 
 export { ProfileModal } from './profile-modal'
