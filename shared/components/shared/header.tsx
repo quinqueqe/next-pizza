@@ -17,9 +17,9 @@ type Props = {
 }
 
 export const Header = ({
-	hasSearch = true,
-	hasCart = true,
-	hasProfile = true,
+	hasSearch = false,
+	hasCart = false,
+	hasProfile = false,
 	className,
 }: Props) => {
 	const searchParams = useSearchParams()
