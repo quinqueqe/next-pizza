@@ -1,17 +1,17 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { Container } from './container'
 import { Skeleton } from '../ui'
 import { useStoriesInfo } from '@/shared/hooks'
 import InstaStories from 'react-insta-stories'
 import { X } from 'lucide-react'
+import { cn } from '@/shared/lib'
 
 export const Stories = () => {
 	const { stories, status, open, setOpen, onClickStory, selectedStory } =
 		useStoriesInfo()
-	const skeleton = Array.from({ length: 6 }, () => (
+	const skeleton = Array.from({ length: stories.length }, () => (
 		<Skeleton
 			className='w-[190px] h-[240px] rounded-2xl '
 			key={Math.random()}
@@ -22,27 +22,28 @@ export const Stories = () => {
 		if (open) {
 			document.body.style.overflow = 'hidden'
 		} else {
-			document.body.style.overflow = 'auto';
+			document.body.style.overflow = 'auto'
 		}
 	}, [open])
 	return (
 		<Container>
-			<ul className='flex justify-between pt-4'>
+			<ul className='flex gap-5 pt-4'>
 				{status === 'success'
 					? stories.map(story => (
 							<li key={story.id} className='cursor-pointer relative'>
-								<Image
+								<img
 									onClick={() => {
 										if (story.items.length > 0) {
 											onClickStory(story)
 											window.scrollTo(0, 0)
 										}
 									}}
-									className='rounded-2xl'
+									className={cn(
+										'rounded-2xl',
+										'w-full h-full'
+									)}
 									src={story.previewImageUrl}
 									alt='img'
-									width={200}
-									height={200}
 								/>
 							</li>
 						))
