@@ -4,15 +4,16 @@ import React from 'react'
 import prisma from '@/prisma/prisma'
 
 type Props = {
-	params: {
+	params: Promise<{
 		id: string
-	}
+	}>
 }
 
 export default async function Modal({ params }: Props) {
+	const { id } = await params
 	const product = await prisma?.product.findFirst({
 		where: {
-			id: Number(params.id),
+			id: Number(id),
 		},
 		include: {
 			ingredients: true, // включил в product все его ингредиенты

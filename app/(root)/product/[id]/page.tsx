@@ -5,12 +5,19 @@ import { notFound } from 'next/navigation'
 import { Container } from '../../../../shared/components/shared'
 import Link from 'next/link'
 
+type Props = {
+	params: Promise<{
+		id: string
+	}>
+}
+
 export const generateMetadata = async ({ params }: Props) => {
-	const id = Number(params.id)
+	const { id } = await params
+	const productId = Number(id)
 
 	const product = await prisma.product.findFirst({
 		where: {
-			id,
+			id: productId,
 		},
 	})
 
@@ -33,17 +40,12 @@ export const generateMetadata = async ({ params }: Props) => {
 	}
 }
 
-type Props = {
-	params: {
-		id: string
-	}
-}
-
 export default async function ProductId({ params }: Props) {
-	const id = Number(params.id)
+	const { id } = await params
+	const productId = Number(id)
 	const product = await prisma?.product.findFirst({
 		where: {
-			id,
+			id: productId,
 		},
 		include: {
 			ingredients: true,

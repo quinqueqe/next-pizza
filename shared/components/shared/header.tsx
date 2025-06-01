@@ -49,7 +49,7 @@ export const Header = ({
 		<header className={cn('', className)}>
 			<Container className='flex justify-between items-center py-8'>
 				<Link href='/' className='flex gap-4 items-center'>
-					<Image src={'/logo.png'} alt='img' width={35} height={35} />
+					<Image src='/favicon.ico' alt='img' width={35} height={35} />
 					<div>
 						<h1 className='text-2xl uppercae font-black'>Next Pizza</h1>
 						<p className='text-sm text-gray-400 leading-3'>

@@ -57,7 +57,10 @@ export const CartDrawer = ({ children }: Props) => {
 	return (
 		<>
 			<Sheet>
-				<SheetTrigger className={status === 'loading' && 'pointer-events-none'}>
+				<SheetTrigger
+					className={status === 'loading' ? 'pointer-events-none' : ''}
+				>
+					{/* // fix type boolean up */}
 					{children}
 				</SheetTrigger>
 				{items.length > 0 ? (

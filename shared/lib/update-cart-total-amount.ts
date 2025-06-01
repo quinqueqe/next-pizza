@@ -1,5 +1,6 @@
 import prisma from '@/prisma/prisma'
 import { calcCartItemTotalPrice } from './calc-cart-item-total-price'
+import { CartItemDTO } from '../services/dto/cart.dto'
 
 /**
  * Функция обновляет общую сумму корзины, используя переданный токен.
@@ -30,8 +31,12 @@ export const updateCartTotalAmount = async (token: string) => {
 
 	if (!userCart) return 0
 
-	const totalAmount = userCart.items.reduce((acc, item) => {
-		return acc + calcCartItemTotalPrice(item)
+	const validItems = userCart.items.filter(
+		item => item.productItem.product !== null
+	)
+
+	const totalAmount = validItems.reduce((acc, item) => {
+		return acc + calcCartItemTotalPrice(item as CartItemDTO)
 	}, 0)
 
 	return await prisma.cart.update({

@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 
 export const metadata: Metadata = {
-	title: 'Dashboard | Next Pizza',
+	title: 'Админ панель | Next Pizza',
 }
 
-export default function DashboardLayout({
+export default function CheckoutLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode

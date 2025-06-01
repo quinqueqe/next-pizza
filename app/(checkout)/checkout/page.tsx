@@ -8,19 +8,16 @@ import {
 	CheckoutPersonalForm,
 	CheckoutTotalForm,
 } from '@/shared/components'
-import { cn } from '@/shared/lib'
 
 import { FormProvider } from 'react-hook-form'
 import { useCheckoutInterface } from '@/shared/hooks'
 
-type Props = {
-	className?: string
-}
 
-export default function CheckoutPage({ className }: Props) {
+
+export default function CheckoutPage() {
 	const { form, onSubmit, submitting } = useCheckoutInterface()
 	return (
-		<div className={cn('', className)}>
+		<div>
 			<FormProvider {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<Container>

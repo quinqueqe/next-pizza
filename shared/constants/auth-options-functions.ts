@@ -2,7 +2,9 @@
 
 import { compare } from 'bcrypt'
 import prisma from '@/prisma/prisma'
-import { Account, User } from 'next-auth'
+import { Account, Profile, User } from 'next-auth'
+import { AdapterUser } from 'next-auth/adapters'
+import { JWT } from 'next-auth/jwt'
 
 /**
  * Функция авторизации пользователя по учетным данным.
@@ -58,7 +60,7 @@ export async function signIn({
 	user,
 	account,
 }: {
-	user: User
+	user: User | AdapterUser
 	account: Account | null
 }) {
 	try {
@@ -115,7 +117,14 @@ export async function signIn({
  * @param token - объект токена пользователя.
  * @returns обновленный токен.
  */
-export async function jwt({ token }: { token: User }) {
+export async function jwt(params: {
+	token: JWT
+	user?: User | AdapterUser
+	account?: Account | null
+	profile?: Profile
+	isNewUser?: boolean
+}) {
+	const { token } = params
 	const findUser = await prisma?.user.findFirst({
 		where: {
 			email: token.email as string,
@@ -123,7 +132,7 @@ export async function jwt({ token }: { token: User }) {
 	})
 
 	if (findUser) {
-		token.id = findUser.id
+		token.id = String(findUser.id)
 		token.email = findUser.email
 		token.name = findUser.fullName
 		token.role = findUser.role

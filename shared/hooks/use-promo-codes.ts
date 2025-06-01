@@ -64,5 +64,6 @@ export const usePromoCodes = () => {
 		setInputValue,
 		inputValue,
 		setIHavePromo,
+		promoCodes,
 	}
 }

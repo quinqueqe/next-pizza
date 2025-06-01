@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Api } from '../services/api-client'
 import { useSession } from 'next-auth/react'

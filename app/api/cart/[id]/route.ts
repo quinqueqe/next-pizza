@@ -4,9 +4,10 @@ import { updateCartTotalAmount } from '@/shared/lib'
 
 export async function GET(
 	req: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
-	const userId = Number(params.id)
+	const { id } = await params
+	const userId = Number(id)
 
 	const userCart = await prisma?.cart.findFirst({
 		where: {
@@ -44,10 +45,11 @@ export async function GET(
  */
 export async function PATCH(
 	req: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
-		const id = Number(params.id)
+		const { id } = await params
+		const cartItemId = Number(id)
 		const data = (await req.json()) as { quantity: number }
 		const token = req.cookies.get('cartToken')?.value
 
@@ -57,7 +59,7 @@ export async function PATCH(
 
 		const cartItem = await prisma.cartItem.findFirst({
 			where: {
-				id,
+				id: cartItemId,
 			},
 		})
 
@@ -67,7 +69,7 @@ export async function PATCH(
 
 		await prisma.cartItem.update({
 			where: {
-				id,
+				id: cartItemId,
 			},
 			data: {
 				quantity: data.quantity,
@@ -88,9 +90,10 @@ export async function PATCH(
 
 export async function DELETE(
 	req: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
+		const { id } = await params
 		const token = req.cookies.get('cartToken')?.value
 
 		if (!token) {
@@ -99,7 +102,7 @@ export async function DELETE(
 
 		const cartItem = await prisma.cartItem.findFirst({
 			where: {
-				id: Number(params.id),
+				id: Number(id),
 			},
 		})
 
@@ -109,7 +112,7 @@ export async function DELETE(
 
 		await prisma.cartItem.delete({
 			where: {
-				id: Number(params.id),
+				id: Number(id),
 			},
 		})
 

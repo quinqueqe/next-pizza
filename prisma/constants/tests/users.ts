@@ -5,7 +5,7 @@ export const users = [
 	{
 		fullName: 'User',
 		email: 'user@test.ru',
-		password: hashSync('R9VXB3', 10),
+		password: hashSync('111111', 10),
 		// password: '111111',
 		verified: new Date(),
 		role: UserRole.USER,
