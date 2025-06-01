@@ -44,14 +44,14 @@ export const SearchInput = () => {
 				<div className='fixed top-0 left-0 bottom-0 right-0 bg-black/50 z-30' />
 			)}
 			<div ref={ref}>
-				<div className='flex relative z-31 items-center pl-5 py-4 rounded-2xl bg-[#f9f9f9] w-[764px] max-w-[764px] '>
+				<div className='flex relative z-31 items-center pl-5 py-4 rounded-2xl bg-[#f9f9f9] w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[950px]:w-[350px]'>
 					<div className='border-r-2 pr-3'>
 						<Search size={18} className='text-[#c0c0c0] ' />
 					</div>
 					<input
 						type='text'
 						placeholder='Поиск...'
-						className='placeholder:text-[#c0c0c0] pl-3 w-[764px] max-w-[764px]'
+						className='placeholder:text-[#c0c0c0] pl-3 w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[950px]:w-[350px]'
 						onFocus={() => setFocus(true)}
 						value={searchQ}
 						onChange={e => setSearchQ(e.target.value)}
@@ -60,7 +60,8 @@ export const SearchInput = () => {
 				{products.length > 0 && (
 					<div
 						className={cn(
-							'absolute w-[764px] max-w-[764px] bg-white rounded-xl py=2 shadow-md transition-all duration-200 invisible opacity-0 z-31 py-2',
+							'absolute bg-white rounded-xl py=2 shadow-md transition-all duration-200 invisible opacity-0 z-31 py-2',
+							'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[950px]:w-[350px]',
 							focus && 'visible opacity-100 mt-2'
 						)}
 					>
