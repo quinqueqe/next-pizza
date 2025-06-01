@@ -8,7 +8,7 @@ type AdminType = {
 
 export const useAdmin = create<AdminType>()(
 	devtools(set => ({
-		role: '',
+		role: 'USER',
 		setRole: value => set({ role: value }),
 	}))
 )
