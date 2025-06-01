@@ -65,7 +65,7 @@ export default function AdminPanelPage() {
 				<div className='flex flex-col items-center justify-center pt-40'>
 					<InfoBlock
 						title='Доступ запрещён'
-						text='Данную страницу могут просматривать только авторизованные пользователи'
+						text='Данную страницу могут просматривать только администраторы проекта'
 						imageUrl='/assets/images/lock.png'
 					/>
 				</div>
