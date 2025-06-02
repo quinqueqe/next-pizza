@@ -58,38 +58,14 @@ export const Header = ({
 					{hasCart && <CartButton />}
 				</div>
 
-				<Burger setIsOpen={setIsOpen} isOpen={isOpen} />
-				{isOpen && (
-					<div className='absolute top-0 left-0 z-999 flex flex-col items-center justify-center gap-4 w-full h-full bg-black overflow-hidden'>
-						<div>
-							<div className='absolute top-6 left-4 flex border-b-[1px] border-white/20 border-solid w-full -ml-4 pl-4 pb-4'>
-								<Link href='/' className='flex gap-4 items-center'>
-									<Image src='/favicon.ico' alt='img' width={35} height={35} />
-									<div>
-										<h1 className='text-2xl uppercae text-white font-black'>
-											Next Pizza
-										</h1>
-										<p className='text-sm text-gray-400 leading-3'>
-											вкусней уже некуда
-										</p>
-									</div>
-								</Link>
-							</div>
-						</div>
-						<div className='absolute w-full top-25 left-[6%] flex gap-4 flex-col'>
-							{hasSearch && (
-								<SearchInput classNameInput='max-[915px]:w-[100%]-important' />
-							)}
-
-							<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
-							{hasProfile && (
-								<div onClick={() => setIsOpen(false)}>
-									<ProfileBtn onClickLogin={() => setOpenModal(true)} />
-								</div>
-							)}
-						</div>
-					</div>
-				)}
+				<Burger
+					setIsOpen={setIsOpen}
+					isOpen={isOpen}
+					hasSearch
+					hasProfile
+					openModal={openModal}
+					setOpenModal={setOpenModal}
+				/>
 			</Container>
 		</header>
 	)
