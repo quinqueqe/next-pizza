@@ -1,6 +1,5 @@
-import { Header } from '@/shared/components'
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
+import { HeaderProvider } from '@/shared/components'
 
 export const metadata: Metadata = {
 	title: 'Dashboard | Next Pizza',
@@ -14,9 +13,7 @@ export default function DashboardLayout({
 	return (
 		<>
 			<main className='min-h-screen bg-[#f4f1ee]'>
-				<Suspense>
-					<Header />
-				</Suspense>
+				<HeaderProvider />
 				{children}
 			</main>
 		</>

@@ -11,7 +11,6 @@ import {
 	AuthModal,
 	// Burger,
 } from './'
-import { useSearchParams } from 'next/navigation'
 import { useHeaderInterface } from '@/shared/hooks/use-header-interface'
 
 type Props = {
@@ -25,10 +24,7 @@ export const Header = ({
 	hasCart = false,
 	hasProfile = false,
 }: Props) => {
-	const searchParams = useSearchParams()
-	const { openModal, setOpenModal } = useHeaderInterface({
-		searchParams,
-	})
+	const { openModal, setOpenModal } = useHeaderInterface()
 
 	return (
 		<header>

@@ -1,13 +1,11 @@
-import { ReadonlyURLSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useAuth, useHeader } from '../store'
+import { useSearchParams } from 'next/navigation'
 
-type Props = {
-	searchParams: ReadonlyURLSearchParams
-}
-
-export const useHeaderInterface = ({ searchParams }: Props) => {
+export const useHeaderInterface = () => {
+	const searchParams = useSearchParams()
 	const router = useRouter()
 	const { openModal, setOpenModal } = useAuth()
 	const { isOpen, setIsOpen } = useHeader()
