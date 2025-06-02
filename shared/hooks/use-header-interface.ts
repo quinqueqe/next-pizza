@@ -1,7 +1,7 @@
 import { ReadonlyURLSearchParams, useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
-import { useAuth } from '../store'
+import { useAuth, useHeader } from '../store'
 
 type Props = {
 	searchParams: ReadonlyURLSearchParams
@@ -10,7 +10,7 @@ type Props = {
 export const useHeaderInterface = ({ searchParams }: Props) => {
 	const router = useRouter()
 	const { openModal, setOpenModal } = useAuth()
-	const [isOpen, setIsOpen] = React.useState(false)
+	const { isOpen, setIsOpen } = useHeader()
 
 	React.useEffect(() => {
 		let toastMessage = ''
