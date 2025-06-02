@@ -5,6 +5,7 @@ import { ProductCard } from './product-card'
 import { useIntersection } from 'react-use'
 import { useCategory } from '../../store'
 import { Product } from '@prisma/client'
+import { cn } from '@/shared/lib'
 
 type Props = {
 	products: Product[]
@@ -32,8 +33,17 @@ export const ProductsGroupList = ({
 	}, [intersection?.isIntersecting, categoryId, title])
 	return (
 		<div className={className} id={title} ref={intersectionRef}>
-			<h2 className='font-extrabold pb-8 text-[36px]'>{title}</h2>
-			<div className='grid grid-cols-4 gap-[50px] pb-10'>
+			<h2 className='font-extrabold pb-8 text-[36px] max-[765px]:text-[30px] max-[765px]:pb-6'>
+				{title}
+			</h2>
+			<div
+				className={cn(
+					'grid grid-cols-4 gap-[50px] pb-10',
+					'max-[1250px]:grid-cols-3 max-[1250px]:gap-[40px]',
+					'max-[765px]:grid-cols-2 max-[765px]:gap-[30px] max-[765px]:pb-3',
+					'max-[565px]:grid-cols-1 max-[565px]:pb-6'
+				)}
+			>
 				{products?.map((product: Product, i: number) => (
 					<ProductCard
 						product={product}
