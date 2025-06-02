@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Header } from './header'
 
 type Props = {
@@ -13,6 +13,8 @@ export const HeaderProvider = ({
 	hasProfile = false,
 }: Props) => {
 	return (
-		<Header hasSearch={hasSearch} hasCart={hasCart} hasProfile={hasProfile} />
+		<Suspense>
+			<Header hasSearch={hasSearch} hasCart={hasCart} hasProfile={hasProfile} />
+		</Suspense>
 	)
 }
