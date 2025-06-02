@@ -64,7 +64,14 @@ export const CartDrawer = ({ children }: Props) => {
 					{children}
 				</SheetTrigger>
 				{items.length > 0 ? (
-					<SheetContent className='ml-0 pl-0 mr-0 pr-0 w-[450px]'>
+					<SheetContent
+						className={cn(
+							'ml-0 pl-0 mr-0 pr-0',
+							'w-[450px] max-[500px]:w-[400px]',
+							'max-[450px]:w-[370px]',
+							'max-[436px]:w-[350px]'
+						)}
+					>
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
 							<SheetTitle className='flex'>
 								<p className='text-[22px] font-normal'>
@@ -73,14 +80,6 @@ export const CartDrawer = ({ children }: Props) => {
 								</p>
 							</SheetTitle>
 						</SheetHeader>
-						{/* <SheetClose
-							className={cn(
-								'absolute h-10 w-10 left-[-70px] top-[47%] rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 disabled:pointer-events-none data-[state=open]:bg-secondary',
-								'text-white'
-							)}
-						>
-							<X className='h-12 w-12 text-white' />
-						</SheetClose> */}
 
 						<ul className={cn('flex flex-col gap-[10px] overflow-auto')}>
 							{items.map(item => (

@@ -9,7 +9,7 @@ import {
 	CartButton,
 	ProfileBtn,
 	AuthModal,
-	Burger,
+	// Burger,
 } from './'
 import { useSearchParams } from 'next/navigation'
 import { useHeaderInterface } from '@/shared/hooks/use-header-interface'
@@ -26,7 +26,7 @@ export const Header = ({
 	hasProfile = false,
 }: Props) => {
 	const searchParams = useSearchParams()
-	const { openModal, setOpenModal, isOpen, setIsOpen } = useHeaderInterface({
+	const { openModal, setOpenModal } = useHeaderInterface({
 		searchParams,
 	})
 
