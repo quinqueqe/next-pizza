@@ -12,7 +12,6 @@ export const useHeaderInterface = ({ searchParams }: Props) => {
 	const { openModal, setOpenModal } = useAuth()
 	const [isOpen, setIsOpen] = React.useState(false)
 
-
 	React.useEffect(() => {
 		let toastMessage = ''
 		if (searchParams.has('paid')) {
@@ -32,6 +31,14 @@ export const useHeaderInterface = ({ searchParams }: Props) => {
 			}, 500)
 		}
 	}, [])
+
+	React.useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'auto'
+		}
+	}, [isOpen])
 
 	return {
 		openModal,

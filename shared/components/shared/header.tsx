@@ -30,14 +30,6 @@ export const Header = ({
 		searchParams,
 	})
 
-	// React.useEffect(() => {
-	// 	if (isOpen) {
-	// 		document.body.style.overflow = 'hidden'
-	// 	} else {
-	// 		document.body.style.overflow = 'auto'
-	// 	}
-	// }, [isOpen])
-
 	return (
 		<header>
 			<Container className='flex justify-between items-center py-8 max-[915px]:pt-6 max-[915px]:pb-7'>
