@@ -9,7 +9,7 @@ export const Coffee = [
 		details: '0.3 л, 280 г',
 	},
 	{
-		name: 'Кофе Карамельный капучино',
+		name: 'Карамельный капучино',
 		imageUrl: '/assets/images/products/coffee/сoffee_сaramel_сappuccino.avif',
 		categoryId: 5,
 		price: 179,
