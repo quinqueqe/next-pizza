@@ -1,6 +1,7 @@
 import { ReadonlyURLSearchParams, useRouter } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
+import { useAuth } from '../store'
 
 type Props = {
 	searchParams: ReadonlyURLSearchParams
@@ -8,6 +9,10 @@ type Props = {
 
 export const useHeaderInterface = ({ searchParams }: Props) => {
 	const router = useRouter()
+	const { openModal, setOpenModal } = useAuth()
+	const [isOpen, setIsOpen] = React.useState(false)
+
+
 	React.useEffect(() => {
 		let toastMessage = ''
 		if (searchParams.has('paid')) {
@@ -27,4 +32,11 @@ export const useHeaderInterface = ({ searchParams }: Props) => {
 			}, 500)
 		}
 	}, [])
+
+	return {
+		openModal,
+		setOpenModal,
+		isOpen,
+		setIsOpen,
+	}
 }

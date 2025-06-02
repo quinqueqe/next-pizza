@@ -34,6 +34,8 @@ export { ProfileForm } from './profile-form'
 
 export { Stories } from './stories'
 
+export { Burger } from './burger'
+
 export * from './cart-item-details'
 export * from './checkout'
 export * from './checkout-form'

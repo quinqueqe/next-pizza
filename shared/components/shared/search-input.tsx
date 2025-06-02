@@ -9,7 +9,12 @@ import Image from 'next/image'
 import { Api } from '../../services/api-client'
 import { useSearch } from '../../store'
 
-export const SearchInput = () => {
+type Props = {
+	className?: string
+	classNameInput?: string
+}
+
+export const SearchInput = ({ className, classNameInput }: Props) => {
 	const { focus, setFocus, searchQ, setSearchQ, products, setProducts } =
 		useSearch()
 	// закрытие окна по клику в пустую область
@@ -43,15 +48,25 @@ export const SearchInput = () => {
 			{focus && (
 				<div className='fixed top-0 left-0 bottom-0 right-0 bg-black/50 z-30' />
 			)}
-			<div ref={ref}>
-				<div className='flex relative z-31 items-center pl-5 py-4 rounded-2xl bg-[#f9f9f9] w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[950px]:w-[350px]'>
+			<div ref={ref} className={className}>
+				<div
+					className={cn(
+						'flex relative z-31 items-center pl-5 py-4 rounded-2xl bg-[#f9f9f9]',
+						'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[915px]:w-[800px]',
+						classNameInput
+					)}
+				>
 					<div className='border-r-2 pr-3'>
 						<Search size={18} className='text-[#c0c0c0] ' />
 					</div>
 					<input
 						type='text'
 						placeholder='Поиск...'
-						className='placeholder:text-[#c0c0c0] pl-3 w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[950px]:w-[350px]'
+						className={cn(
+							'placeholder:text-[#c0c0c0] pl-3',
+							'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[915px]:w-[800px]',
+							classNameInput
+						)}
 						onFocus={() => setFocus(true)}
 						value={searchQ}
 						onChange={e => setSearchQ(e.target.value)}
