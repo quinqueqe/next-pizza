@@ -5,9 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container, SearchInput, CartButton, ProfileBtn, AuthModal } from './'
 import { cn } from '@/shared/lib'
-import { useSearchParams, useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
+import { useSearchParams } from 'next/navigation'
 import { useAuth } from '@/shared/store'
+import { useHeaderInterface } from '@/shared/hooks/use-header-interface'
 
 type Props = {
 	hasSearch?: boolean
@@ -23,26 +23,8 @@ export const Header = ({
 	className,
 }: Props) => {
 	const searchParams = useSearchParams()
-	const router = useRouter()
-	React.useEffect(() => {
-		let toastMessage = ''
-		if (searchParams.has('paid')) {
-			toastMessage =
-				'Ваш заказ был успешно оплачен, чек об оплате отправлен вам на почту. Приятного аппетита!'
-		}
-		if (searchParams.has('verified')) {
-			toastMessage = 'Почта успешно подтверждена'
-		}
 
-		if (toastMessage) {
-			setTimeout(() => {
-				toast.success(toastMessage, {
-					duration: 3000,
-				})
-				router.replace('/')
-			}, 500)
-		}
-	}, [])
+	useHeaderInterface({ searchParams })
 
 	const { openModal, setOpenModal } = useAuth()
 	return (
