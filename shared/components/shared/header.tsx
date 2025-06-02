@@ -39,11 +39,13 @@ export const Header = ({
 					</div>
 				</Link>
 				{hasSearch && <SearchInput className='max-[915px]:hidden' />}
-				<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
-				{hasProfile && <ProfileBtn onClickLogin={() => setOpenModal(true)} />}
+				<div className='flex gap-3 items-center'>
+					<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
+					{hasProfile && <ProfileBtn onClickLogin={() => setOpenModal(true)} />}
 
-				<div className='flex items-center gap-4 max-[915px]:hidden'>
+					<div className='flex items-center gap-4 max-[915px]:hidden'>
 					{hasCart && <CartButton />}
+					</div>
 				</div>
 
 				{/* <Burger

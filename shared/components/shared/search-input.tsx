@@ -53,7 +53,7 @@ export const SearchInput = ({ className, classNameInput }: Props) => {
 				<div
 					className={cn(
 						'flex relative z-31 items-center pl-5 py-4 rounded-2xl bg-[#f9f9f9]',
-						'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px]',
+						'w-[700px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px]',
 						'max-[915px]:w-full',
 						classNameInput
 					)}
@@ -66,7 +66,7 @@ export const SearchInput = ({ className, classNameInput }: Props) => {
 						placeholder='Поиск...'
 						className={cn(
 							'placeholder:text-[#c0c0c0] pl-3',
-							'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[915px]:w-[800px]',
+							'w-[700px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px] max-[915px]:w-[800px]',
 							'max-[915px]:w-full',
 							classNameInput
 						)}

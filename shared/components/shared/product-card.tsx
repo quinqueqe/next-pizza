@@ -24,7 +24,7 @@ export const ProductCard = ({
 	return (
 		// <div className='max-w-[250px]'>
 		<Link href={`/product/${id}`}>
-			<div className={cn('flex flex-col justify-between h-full')}>
+			<div className={cn('flex flex-col h-full')}>
 				<div
 					className={cn(
 						'bg-[#fff7ee] py-6 px-[37px] rounded-2xl',
