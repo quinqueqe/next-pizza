@@ -73,7 +73,9 @@ export const Burger = ({
 					</div>
 					<div className='w-full absolute top-27 px-4 flex gap-4 flex-col'>
 						{hasSearch && (
-							<SearchInput onClick={() => setIsOpen(false)} />
+							<SearchInput
+							// onClick={() => setIsOpen(false)}
+							/>
 						)}
 
 						<AuthModal open={openModal} onClose={() => setOpenModal(false)} />
