@@ -3,16 +3,18 @@
 import { Category } from '@prisma/client'
 import { useCategory } from '../../store'
 import { cn } from '@/shared/lib'
+import { CartButton } from './cart-button'
 
 interface Props {
 	categories: Category[]
+	scrollPos: number
 }
 
-export const Categories = ({ categories }: Props) => {
+export const Categories = ({ categories, scrollPos }: Props) => {
 	const { activeId, setAcitveId } = useCategory()
 	return (
-		<div className='categories'>
-			<ul className='flex gap-1.5'>
+		<div className='categories flex justify-between items-center py-3 overflow-x-auto h-[68px]'>
+			<ul className='flex gap-1.5 pr-3'>
 				{categories.map(({ name, id }, i) => (
 					<li key={i}>
 						<a
@@ -28,6 +30,7 @@ export const Categories = ({ categories }: Props) => {
 					</li>
 				))}
 			</ul>
+			{scrollPos > 170 && <CartButton />}
 		</div>
 	)
 }

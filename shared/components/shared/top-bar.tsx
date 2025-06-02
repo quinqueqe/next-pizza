@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Category } from '@prisma/client'
-import { Categories, Container, CartButton } from '.'
+import { Categories, Container } from '.'
 import { cn } from '@/shared/lib'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const TopBar = ({ data }: Props) => {
-	const [scrollPos, setScrollPos] = React.useState(0)
+	const [scrollPos, setScrollPos] = React.useState<number>(0)
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -28,10 +28,10 @@ export const TopBar = ({ data }: Props) => {
 			)}
 		>
 			<Container
-				className={cn('flex justify-between items-center py-3', 'h-[68px]')}
+				// className={cn('flex justify-between items-center py-3', 'h-[68px]')}
+				// className='py-3'
 			>
-				<Categories categories={data} />
-				{scrollPos > 170 && <CartButton />}
+				<Categories categories={data} scrollPos={scrollPos}/>
 			</Container>
 		</div>
 	)
