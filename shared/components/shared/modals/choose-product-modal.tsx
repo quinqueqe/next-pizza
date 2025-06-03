@@ -18,12 +18,14 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 			<Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
 				<DialogContent
 					className={cn(
-						'p-0 w-[1060px] min-w-[1060px] h-[610px] min-h-[610px] bg-white overflow-hidden rounded-4xl',
+						'p-0 h-[610px] min-h-[610px] bg-white overflow-hidden rounded-4xl',
+						'w-full min-w-[1060px] max-w-[1060px]',
+						'max-[1100px]:w-full max-[1100px]:min-w-full max-[1100px]:max-w-full max-[1100px]:h-full max-[1100px]:min-h-full max-[1100px]:rounded-none',
 						className
 					)}
 				>
 					<VariantsProduct
-						rightBlockClassName='w-[500px]'
+						rightBlockClassName='w-[500px] max-[535px]:w-full'
 						product={product}
 						onCloseModal={() => router.back()}
 					/>

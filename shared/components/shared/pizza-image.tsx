@@ -21,7 +21,9 @@ export const PizzaImage = ({ className, imageUrl, size }: Props) => {
 				alt='img'
 				width={size === 25 ? 300 : size === 30 ? 400 : size === 35 ? 500 : 500}
 				height={size === 25 ? 300 : size === 30 ? 400 : size === 35 ? 500 : 500}
-				className={cn('relative left-2 top-2 transition-all z-10 duration-300 pl-6')}
+				className={cn(
+					'relative left-2 top-2 transition-all z-10 duration-300 pl-6 max-[1100px]:pl-0 max-[1100px]:h-[300px] max-[1100px]:w-[300px]'
+				)}
 			/>
 			{/* <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dashed border-2 rounded-full border-gray-200 w-[450px] h-[450px]' />
 			<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-dotted border-2 rounded-full border-gray-100 w-[370px] h-[370px]' /> */}

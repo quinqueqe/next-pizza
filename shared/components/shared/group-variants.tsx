@@ -11,8 +11,9 @@ type Props = {
 	disabled?: boolean
 	onClick: (i: number) => void
 	active: number
-	classNameBtn: string
+	classNameBtn?: string
 }
+
 export const GroupVariants = ({
 	items,
 	onClick,
@@ -20,9 +21,9 @@ export const GroupVariants = ({
 	classNameBtn,
 }: Props) => {
 	return (
-		<div className='rounded-[30px] bg-[#ececec] pb-5 w-[420px] h-[42px] flex'>
+		<div className='rounded-[30px] bg-[#ececec] pb-5 w-[420px] h-[42px] flex max-[1100px]:w-full'>
 			{items.map((item: Item, i: number) => (
-				<div key={i} className='p-1'>
+				<div key={i} className={cn('p-1', '')}>
 					<button
 						className={cn(
 							'text-[#000] text-center py-[5px] rounded-4xl select-none transition-all duration-400',

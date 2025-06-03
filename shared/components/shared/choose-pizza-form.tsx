@@ -63,15 +63,22 @@ export const ChoosePizzaForm = ({
 	}
 	return (
 		<div>
-			<div className='flex justify-between items-center'>
+			<div className='flex justify-between items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-18 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px]'>
 				<div>
 					<PizzaImage
-						className='w-[550px] h-[500px] flex justify-center items-center'
+						className='w-[550px] h-[500px] flex justify-center items-center max-[1100px]:w-full max-[1100px]:h-full'
 						imageUrl={imageUrl}
 						size={size}
 					/>
 				</div>
-				<div className={cn('bg-[#F4F1EE] h-[610px] p-10 flex flex-col justify-center', rightBlockClassName)}>
+				<div
+					className={cn(
+						'bg-[#F4F1EE] h-[610px] p-10 flex flex-col justify-center',
+						'max-[1100px]:p-0 bg-white',
+
+						rightBlockClassName
+					)}
+				>
 					<div>
 						<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
 							{name}
@@ -93,7 +100,7 @@ export const ChoosePizzaForm = ({
 							Добавить по вкусу
 						</h5>
 
-						<ul className='grid grid-cols-3 gap-2 h-[245px] overflow-auto scroll-auto  mb-[20px]'>
+						<ul className='grid grid-cols-3 gap-2 h-[245px] overflow-auto scroll-auto mb-[20px] p-2'>
 							{ingredients.map((ing, i) => (
 								<ProductIngredient
 									key={i}
@@ -108,10 +115,11 @@ export const ChoosePizzaForm = ({
 											add(ing.id)
 										}
 									}} // Используем add, remove вместо toggle
+									className='max-[1100px]:h-[220px]'
 								/>
 							))}
 						</ul>
-						<div>
+						<div className='max-[1100px]:pb-5'>
 							<Button
 								status={status}
 								onClick={() => handleClickAdd()}
