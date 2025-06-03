@@ -68,7 +68,7 @@ export const CartDrawer = ({ children }: Props) => {
 						className={cn(
 							'ml-0 pl-0 mr-0 pr-0',
 							'w-[450px]',
-							'max-[500px]:w-full max-[500px]:h-full',
+							'max-[500px]:w-full max-[500px]:h-full'
 						)}
 					>
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
@@ -135,7 +135,7 @@ export const CartDrawer = ({ children }: Props) => {
 						</SheetFooter>
 					</SheetContent>
 				) : (
-					<SheetContent>
+					<SheetContent className='max-[500px]:w-full max-[500px]:h-full'>
 						<CartDrawerEmpty />
 					</SheetContent>
 				)}
