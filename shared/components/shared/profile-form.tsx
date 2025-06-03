@@ -11,22 +11,28 @@ import { useProfileFormInterface } from '@/shared/hooks'
 
 type Props = {
 	user: User
+	className?: string
 	titleClassName?: string
 	onCloseModal?: () => void
 }
 
-export const ProfileForm = ({ user, titleClassName, onCloseModal }: Props) => {
+export const ProfileForm = ({
+	user,
+	className,
+	titleClassName,
+	onCloseModal,
+}: Props) => {
 	const { loadingBtn, setLoadingBtn, form, onSubmit } = useProfileFormInterface(
 		{ user, onCloseModal }
 	)
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className='p-[35px]'>
+				<div className={cn('p-[35px]', 'max-[820px]:pt-6', className)}>
 					<h3 className={cn('text-[26px] font-bold pb-5', titleClassName)}>
 						Личные данные | #{user.id}
 					</h3>
-					<div className='grid grid-cols-2 gap-5 pb-5'>
+					<div className='grid grid-cols-2 gap-5 pb-5 max-[650px]:grid-cols-1'>
 						{user.provider === 'credentials' ? (
 							<>
 								<CheckoutFormInput
