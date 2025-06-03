@@ -20,7 +20,7 @@ export const CheckoutAddressForm = () => {
 				title='Адрес доставки'
 				className={status === 'loading' ? 'opacity-40 pointer-events-none' : ''}
 			>
-				<div className='flex flex-col gap-6 pb-10'>
+				<div className='flex flex-col gap-6 pb-10 max-[686px]:pb-[30px] max-[584px]:pb-[25px]'>
 					<div>
 						<Controller
 							control={control}

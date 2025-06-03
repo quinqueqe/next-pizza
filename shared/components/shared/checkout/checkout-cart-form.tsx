@@ -52,7 +52,7 @@ export const CheckoutCartForm = () => {
 								disabled={disabled}
 								details={item.details}
 							/>
-					  ))
+						))
 					: productSkeleton}
 				{items.length === 0 && (
 					<div className='py-[35px] flex flex-col justify-center items-center'>

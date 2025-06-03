@@ -13,7 +13,7 @@ export const CheckoutProductSkeleton = () => {
 			<Skeleton className='h-[65px] w-[65px] rounded-4xl' />
 
 			{/* Details section */}
-			<div className='flex flex-col gap-1 w-[350px] rounded-[10px]'>
+			<div className='flex flex-col gap-1 w-[350px] rounded-[10px] max-[786px]:w-[200px]'>
 				{/* Title placeholder */}
 				<Skeleton className='h-[21px] w-[110px] rounded-[10px]' />
 
