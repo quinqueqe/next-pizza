@@ -63,7 +63,7 @@ export const ChoosePizzaForm = ({
 	}
 	return (
 		<div>
-			<div className='flex justify-between items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-18 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px]'>
+			<div className='flex justify-between items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-26 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px]'>
 				<div>
 					<PizzaImage
 						className='w-[550px] h-[500px] flex justify-center items-center max-[1100px]:w-full max-[1100px]:h-full'
@@ -119,7 +119,7 @@ export const ChoosePizzaForm = ({
 								/>
 							))}
 						</ul>
-						<div className='max-[1100px]:pb-5'>
+						<div className='max-[1100px]:pb-14'>
 							<Button
 								status={status}
 								onClick={() => handleClickAdd()}
