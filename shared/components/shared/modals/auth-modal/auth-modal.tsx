@@ -7,6 +7,7 @@ import { GithubIcon } from '@/public/assets/images/auth-modal/github'
 import { GoogleIcon } from '@/public/assets/images/auth-modal/google'
 import { Button } from '@/shared/components/ui'
 import { useAuth } from '@/shared/store'
+import { cn } from '@/shared/lib'
 
 type Props = {
 	open?: boolean
@@ -25,7 +26,15 @@ export const AuthModal = ({ open, onClose }: Props) => {
 
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
-			<DialogContent className='w-[450px] rounded-4xl px-[40px] py-[45px]'>
+			<DialogContent
+				className={cn(
+					'w-[450px] rounded-4xl px-[40px] py-[45px]',
+					'max-[495px]:w-[400px]',
+					'max-[415px]:px-[30px] max-[415px]:py-[35px]',
+					'max-[397px]:px-[25px] max-[397px]:py-[30px]',
+					'max-[385px]:px-[20px] max-[385px]:py-[25px]',
+				)}
+			>
 				<div>
 					{type === 'login' ? (
 						<LoginForm onClose={onClose} />

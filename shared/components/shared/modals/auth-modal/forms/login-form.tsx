@@ -25,12 +25,14 @@ export const LoginForm = ({ onClose }: Props) => {
 								Введите свою почту, чтобы войти в свой аккаунт
 							</p>
 						</div>
-						<Image
-							src='/assets/images/phone-icon.png'
-							width={60}
-							height={60}
-							alt='img'
-						/>
+						<div className='max-[495px]:hidden'>
+							<Image
+								src='/assets/images/phone-icon.png'
+								width={60}
+								height={60}
+								alt='img'
+							/>
+						</div>
 					</div>
 					<CheckoutFormInput name='email' required label='E-Mail' />
 					<CheckoutFormInput
