@@ -17,13 +17,13 @@ export const LoginForm = ({ onClose }: Props) => {
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className='flex flex-col gap-5'>
+				<div className='flex flex-col gap-3'>
 					<div className='flex justify-between items-center'>
 						<div>
 							<h3 className='text-[26px] font-bold'>Вход в аккаунт</h3>
-							<p className='text-gray-400 w-[300px]'>
+							{/* <p className='text-gray-400 w-[300px]'>
 								Введите свою почту, чтобы войти в свой аккаунт
-							</p>
+							</p> */}
 						</div>
 						<div className='max-[495px]:hidden'>
 							<Image
