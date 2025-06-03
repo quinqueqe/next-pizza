@@ -3,6 +3,7 @@ import {
 	ProductsGroupList,
 	TopBar,
 	Stories,
+	CartButtonMobile,
 } from '@/shared/components/shared'
 import prisma from '@/prisma/prisma'
 
@@ -28,7 +29,7 @@ const HomePage = async () => {
 			<Stories />
 
 			<Container>
-				<div className='pt-10'>
+				<div className='pt-10 relative'>
 					<div className='flex flex-col gap-8'>
 						{categories?.map(
 							(category, i) =>
@@ -43,6 +44,7 @@ const HomePage = async () => {
 								)
 						)}
 					</div>
+					<CartButtonMobile />
 				</div>
 			</Container>
 		</>

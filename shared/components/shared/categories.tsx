@@ -14,7 +14,7 @@ export const Categories = ({ categories, scrollPos }: Props) => {
 	const { activeId, setAcitveId } = useCategory()
 	return (
 		<div className='categories flex justify-between items-center py-3 overflow-x-auto h-[68px]'>
-			<ul className='flex gap-1.5 pr-3'>
+			<ul className='flex gap-1.5 pr-3 max-[915px]:pr-0'>
 				{categories.map(({ name, id }, i) => (
 					<li key={i}>
 						<a
@@ -30,7 +30,11 @@ export const Categories = ({ categories, scrollPos }: Props) => {
 					</li>
 				))}
 			</ul>
-			{scrollPos > 170 && <CartButton />}
+			{scrollPos > 170 && (
+				<div className='max-[915px]:hidden'>
+					<CartButton />
+				</div>
+			)}
 		</div>
 	)
 }
