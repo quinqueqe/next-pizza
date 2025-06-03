@@ -67,9 +67,8 @@ export const CartDrawer = ({ children }: Props) => {
 					<SheetContent
 						className={cn(
 							'ml-0 pl-0 mr-0 pr-0',
-							'w-[450px] max-[500px]:w-[400px]',
-							'max-[450px]:w-[370px]',
-							'max-[436px]:w-[350px]'
+							'w-[450px]',
+							'max-[500px]:w-full max-[500px]:h-full',
 						)}
 					>
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
