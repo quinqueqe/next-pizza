@@ -75,11 +75,13 @@ export const ChoosePizzaForm = ({
 					className={cn(
 						'bg-[#F4F1EE] h-[610px] p-10 flex flex-col justify-center',
 						'max-[1100px]:p-0 bg-white',
+						'max-[1100px]:w-[420px]',
+						'max-[470px]:w-full',
 
 						rightBlockClassName
 					)}
 				>
-					<div className='max-[1100px]:w-[420px]'>
+					<div className=''>
 						<h4 className='font-extrabold text-[#373737] text-4xl pb-2'>
 							{name}
 						</h4>
@@ -95,7 +97,7 @@ export const ChoosePizzaForm = ({
 							/>
 						</div>
 					</div>
-					<div className='max-[1100px]:w-[420px]'>
+					<div className=''>
 						<h5 className='text-[#000] text-[18px] font-semibold pb-2'>
 							Добавить по вкусу
 						</h5>
