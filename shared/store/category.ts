@@ -6,6 +6,6 @@ interface CategoryType {
 }
 
 export const useCategory = create<CategoryType>()(set => ({
-	activeId: 1,
+	activeId: 0,
 	setAcitveId: value => set({ activeId: value + 1 }),
 }))

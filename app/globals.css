@@ -58,6 +58,67 @@ a {
 	text-decoration: none;
 }
 
+/* анимации для top-bar */
+@keyframes slideInFromLeft {
+	0% {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideOutToLeft {
+	0% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+}
+
+@keyframes slideInFromRight {
+	0% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideOutToRight {
+	0% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+}
+
+.animate-slide-in-left {
+	animation: slideInFromLeft 0.5s ease forwards;
+}
+
+.animate-slide-out-left {
+	animation: slideOutToLeft 0.5s ease forwards;
+}
+
+.animate-slide-in-right {
+	animation: slideInFromRight 0.5s ease forwards;
+}
+
+.animate-slide-out-right {
+	animation: slideOutToRight 0.5s ease forwards;
+}
+
 @mixin noselect {
 	-webkit-touch-callout: none;
 	/* iOS Safari */

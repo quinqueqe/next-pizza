@@ -1,6 +1,5 @@
 export * from './category'
 export * from './search'
-export * from './filter'
 export * from './modal'
 export * from './cart'
 export * from './promo'

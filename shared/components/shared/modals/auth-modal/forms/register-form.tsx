@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
-import { FormProvider } from 'react-hook-form'
-import { CheckoutFormInput } from '../../../checkout-form'
 import { Button } from '@/shared/components/ui'
 import { useRegisterFormInterface } from '@/shared/hooks'
+import { FormProvider } from 'react-hook-form'
+import { CheckoutFormInput } from '../../../checkout-form'
 
 type Props = {
 	onClose?: () => void
