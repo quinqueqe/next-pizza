@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Categories = ({ categories, scrollPos }: Props) => {
-	const { activeId, setAcitveId } = useCategory()
+	const { activeId, setActiveId } = useCategory()
 	return (
 		<div className='categories flex justify-between items-center py-3 overflow-x-auto h-[68px]'>
 			<div className='flex items-center gap-3 '>
@@ -26,7 +26,7 @@ export const Categories = ({ categories, scrollPos }: Props) => {
 						<li key={i}>
 							<a
 								href={`/#${name}`}
-								onClick={() => setAcitveId(i)}
+								onClick={() => setActiveId(i)}
 								className={cn(
 									'py-[10px] px-4 font-medium text-[16px] text-center text-[#202020] font-bold shadow-[0_4px_4px_0_rgba(139,139,139,0.096)] rounded-[15px] opacity-0.8 cursor-pointer',
 									activeId === id && 'text-[#fe5f00]'
