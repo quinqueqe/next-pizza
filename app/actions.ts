@@ -68,6 +68,10 @@ export async function createOrder(
 				totalAmount: totalAmountCart,
 				status: OrderStatus.PENDING,
 				items: JSON.stringify(userCart.items),
+				totalPrice,
+				deliveryPrice,
+				promo: promoCheckout,
+				discount,
 			},
 		})
 
@@ -116,12 +120,13 @@ export async function createOrder(
 			PayOrderTemplate({
 				paymentUrl,
 				items: JSON.parse(order.items as string),
-				fullName: order.fullName,
-				totalAmount: order.totalAmount,
-				totalPrice,
-				deliveryPrice,
-				discount,
-				promoCheckout,
+				order,
+				// fullName: order.fullName,
+				// totalAmount: order.totalAmount,
+				// totalPrice,
+				// deliveryPrice,
+				// discount,
+				// promoCheckout,
 			})
 		)
 

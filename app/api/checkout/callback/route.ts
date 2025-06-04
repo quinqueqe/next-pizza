@@ -17,7 +17,6 @@ export async function POST(req: NextRequest) {
 			},
 		})
 
-
 		if (!order) {
 			return NextResponse.json({ error: 'Order not found' })
 		}
@@ -40,10 +39,8 @@ export async function POST(req: NextRequest) {
 				order.email,
 				'Next Pizza | Ваш заказ успешно оформлен 🍕',
 				OrderSuccessTemplate({
-					orderId: order.id,
-					totalAmount: order.totalAmount,
-					fullName: order.fullName,
 					items,
+					order,
 				})
 			)
 		} else {

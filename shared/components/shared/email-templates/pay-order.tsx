@@ -1,37 +1,40 @@
 import { CartItemDTO } from '@/shared/services/dto/cart.dto'
+import { Order } from '@prisma/client'
 import React from 'react'
 
 interface Props {
 	paymentUrl: string
 	items: CartItemDTO[]
-	fullName: string
-	totalAmount: number
-	totalPrice: number
-	deliveryPrice: number
-	discount: number
-	promoCheckout: string
+	order: Order
+	// 	fullName: string
+	// 	totalAmount: number
+	// 	totalPrice: number
+	// 	deliveryPrice: number
+	// 	discount: number
+	// 	promoCheckout: string
 }
 
 export const PayOrderTemplate = ({
 	paymentUrl,
 	items,
-	fullName,
-	totalAmount,
-	totalPrice,
-	deliveryPrice,
-	discount,
-	promoCheckout,
+	order,
+	// fullName,
+	// totalAmount,
+	// totalPrice,
+	// deliveryPrice,
+	// discount,
+	// promoCheckout,
 }: Props) => (
-	<div>
-		<h3>Здравствуйте, {fullName}!</h3>
-		<p>
-			Благодарим вас за оформление заказа на сумму {totalPrice} ₽ +{' '}
-			{deliveryPrice} ₽ = {totalAmount} ₽
-		</p>
-		{discount > 0 ? (
+	<div style={{color: '#333'}}>
+		{order.discount !== null && order.discount > 0 ? (
 			<>
+				<h3>Здравствуйте, {order.fullName}!</h3>
 				<p>
-					Применен промокод: {promoCheckout} (-{discount}%)
+					Благодарим вас за оформление заказа на сумму {order.totalPrice} ₽ +{' '}
+					{order.deliveryPrice} ₽ = {order.totalAmount} ₽
+				</p>
+				<p>
+					Применен промокод: {order.promo} (-{order.discount}%)
 				</p>
 
 				<p>Ваш заказ:</p>
@@ -52,6 +55,11 @@ export const PayOrderTemplate = ({
 			</>
 		) : (
 			<div>
+				<h3>Здравствуйте, {order.fullName}!</h3>
+				<p>
+					Благодарим вас за оформление заказа на сумму {order.totalPrice} ₽ +{' '}
+					{order.deliveryPrice} ₽ = {order.totalAmount} ₽
+				</p>
 				<p>Ваш заказ:</p>
 
 				{items.map(item => (
