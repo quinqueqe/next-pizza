@@ -121,12 +121,6 @@ export async function createOrder(
 				paymentUrl,
 				items: JSON.parse(order.items as string),
 				order,
-				// fullName: order.fullName,
-				// totalAmount: order.totalAmount,
-				// totalPrice,
-				// deliveryPrice,
-				// discount,
-				// promoCheckout,
 			})
 		)
 

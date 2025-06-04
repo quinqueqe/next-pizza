@@ -6,24 +6,12 @@ interface Props {
 	paymentUrl: string
 	items: CartItemDTO[]
 	order: Order
-	// 	fullName: string
-	// 	totalAmount: number
-	// 	totalPrice: number
-	// 	deliveryPrice: number
-	// 	discount: number
-	// 	promoCheckout: string
 }
 
 export const PayOrderTemplate = ({
 	paymentUrl,
 	items,
 	order,
-	// fullName,
-	// totalAmount,
-	// totalPrice,
-	// deliveryPrice,
-	// discount,
-	// promoCheckout,
 }: Props) => (
 	<div style={{color: '#333'}}>
 		{order.discount !== null && order.discount > 0 ? (

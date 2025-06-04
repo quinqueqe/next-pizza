@@ -7,16 +7,14 @@ interface Props {
 	order: Order
 }
 
-export const OrderSuccessTemplate = ({
-	items,
-	order,
-}: Props) => (
+export const OrderSuccessTemplate = ({ items, order }: Props) => (
 	<div>
 		{order.discount !== null && order.discount > 0 ? (
 			<>
 				<h3>Здравствуйте, {order.fullName}!</h3>
 				<p>Благодарим вас за покупку!</p>
 				<p>Ваш заказ на сумму {order.totalAmount} ₽ оплачен</p>
+				<p>Доставим его по адресу: {order.address}</p>
 				<p>
 					Применен промокод: {order.promo} (-{order.discount}%)
 				</p>
@@ -38,6 +36,7 @@ export const OrderSuccessTemplate = ({
 				<h3>Здравствуйте, {order.fullName}!</h3>
 				<p>Благодарим вас за покупку!</p>
 				<p>Ваш заказ на сумму {order.totalAmount} ₽ оплачен</p>
+				<p>Доставим его по адресу: {order.address}</p>
 				<p>Список товаров:</p>
 
 				<ul>
