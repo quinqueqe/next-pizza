@@ -28,7 +28,7 @@ export const ProductCard = ({
 				<div
 					className={cn(
 						'bg-[#fff7ee] py-6 px-[37px] rounded-2xl',
-						'max-[565px]:flex max-[565px]:items-center max-[565px]:justify-center max-[565px]:pb-3'
+						'max-[1000px]:flex max-[1000px]:items-center max-[1000px]:justify-center max-[1000px]:pb-3'
 					)}
 				>
 					<Image src={imageUrl} alt={name} width={292} height={292} />

@@ -20,7 +20,7 @@ export const ProductsGroupList = ({
 	className,
 	categoryId,
 }: Props) => {
-	const setCategoryId = useCategory(state => state.setAcitveId)
+	const setCategoryId = useCategory(state => state.setActiveId)
 	const intersectionRef = React.useRef<HTMLDivElement>(null!)
 	const intersection = useIntersection(intersectionRef, {
 		threshold: 0.4,
@@ -41,8 +41,8 @@ export const ProductsGroupList = ({
 					'grid grid-cols-4 pb-10',
 					'gap-[50px] max-[1250px]:gap-[40px] max-[765px]:gap-[30px] ',
 					'max-[1250px]:grid-cols-3 ',
-					'max-[765px]:grid-cols-2 max-[765px]:pb-3',
-					'max-[565px]:grid-cols-1 max-[565px]:pb-6'
+					'max-[1000px]:grid-cols-2 max-[1000px]:pb-3',
+					'max-[600px]:grid-cols-1 max-[600px]:pb-6'
 				)}
 			>
 				{products?.map((product: Product, i: number) => (

@@ -2,10 +2,10 @@ import { create } from 'zustand'
 
 interface CategoryType {
 	activeId: number
-	setAcitveId: (value: number) => void
+	setActiveId: (value: number) => void
 }
 
 export const useCategory = create<CategoryType>()(set => ({
-	activeId: 0,
-	setAcitveId: value => set({ activeId: value + 1 }),
+	activeId: 1,
+	setActiveId: value => set({ activeId: value + 1 }),
 }))

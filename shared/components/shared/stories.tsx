@@ -11,12 +11,12 @@ import { cn } from '@/shared/lib'
 export const Stories = () => {
 	const { stories, status, open, setOpen, onClickStory, selectedStory } =
 		useStoriesInfo()
-	const skeleton = Array.from({ length: stories.length }, () => (
-		<Skeleton
-			className='w-[190px] h-[240px] rounded-2xl '
-			key={Math.random()}
-		/>
-	))
+	// const skeleton = Array.from({ length: 6 }, () => (
+	// 	<Skeleton
+	// 		className='w-[200px] h-[240px] rounded-2xl '
+	// 		key={Math.random()}
+	// 	/>
+	// ))
 
 	React.useEffect(() => {
 		if (open) {
@@ -27,29 +27,31 @@ export const Stories = () => {
 	}, [open])
 	return (
 		<Container>
-			<ul className='flex gap-5 pt-4'>
-				{status === 'success'
-					? stories.map(story => (
-							<li key={story.id} className='cursor-pointer relative'>
-								<img
-									onClick={() => {
-										if (story.items.length > 0) {
-											onClickStory(story)
-											window.scrollTo(0, 0)
-										}
-									}}
-									className={cn(
-										'rounded-2xl',
-										'w-full h-full'
-									)}
-									src={story.previewImageUrl}
-									alt='img'
-								/>
-							</li>
-						))
-					: status === 'loading'
-						? skeleton
-						: status === 'error' && <div>Error</div>}
+			<ul className='flex gap-4 overflow-x-auto overflow-y-hidden h-[260px] w-full pt-4'>
+				{status === 'success' ? (
+					stories.map(story => (
+						<li
+							key={story.id}
+							className='cursor-pointer relative flex-shrink-0 w-[200px] h-[240px]'
+						>
+							<img
+								onClick={() => {
+									if (story.items.length > 0) {
+										onClickStory(story)
+										window.scrollTo(0, 0)
+									}
+								}}
+								className={cn('rounded-2xl object-cover w-full h-full')}
+								src={story.previewImageUrl}
+								alt='img'
+							/>
+						</li>
+					))
+				) : status === 'loading' ? (
+					<Skeleton className='w-full rounded-2xl' />
+				) : (
+					status === 'error' && <div>Error</div>
+				)}
 
 				{open && (
 					<div
