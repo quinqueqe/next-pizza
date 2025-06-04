@@ -25,7 +25,7 @@ export const ProductIngredient = ({
 	return (
 		<li
 			className={cn(
-				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-100% border-2 border-solid border-white cursor-pointer relative',
+				'p-2.5 rounded-2xl bg-[#fff] flex items-center justify-between flex-col w-[130px] border-2 border-solid border-white cursor-pointer relative',
 				'rounded-2xl shadow-[0_0_15px_5px_rgba(0,0,0,0.1)]',
 				active && 'border-primary',
 				className

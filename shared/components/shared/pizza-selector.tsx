@@ -26,13 +26,15 @@ export const PizzaSelector = ({
 				items={pizzaSizes}
 				onClick={setActiveSize}
 				active={activeSize}
-				classNameBtn='w-[132px] max-[1100px]:w-[159px]'
+				classNameBtn='w-[132px]'
+				// classNameBtn='w-[132px] max-[1100px]:w-[159px]'
 			/>
 			<GroupVariants
 				items={pizzaTypes}
 				onClick={setActiveType}
 				active={activeType - 1}
-				classNameBtn='w-[202px] max-[1100px]:w-[242px]'
+				classNameBtn='w-[202px]'
+				// classNameBtn='w-[202px] max-[1100px]:w-[242px]'
 			/>
 		</>
 	)

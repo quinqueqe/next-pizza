@@ -25,7 +25,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 					)}
 				>
 					<VariantsProduct
-						rightBlockClassName='w-[500px] max-[535px]:w-full'
+						rightBlockClassName={cn(product.whProduct === 2 ? 'w-[500px] max-[535px]:w-full' : '')}
 						product={product}
 						onCloseModal={() => router.back()}
 					/>
