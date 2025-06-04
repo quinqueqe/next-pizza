@@ -14,6 +14,7 @@ export const useHeaderInterface = () => {
 		let toastMessage = ''
 		if (searchParams.has('paid')) {
 			toastMessage =
+				// 'Ваш заказ был успешно оплачен'
 				'Ваш заказ был успешно оплачен, чек об оплате отправлен вам на почту. Приятного аппетита!'
 		}
 		if (searchParams.has('verified')) {
