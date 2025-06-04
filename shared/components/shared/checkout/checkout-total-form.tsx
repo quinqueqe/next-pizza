@@ -36,10 +36,7 @@ export const CheckoutTotalForm = ({ loading }: Props) => {
 			className={cn(
 				'w-[450px] rounded-4xl bg-white p-[40px] sticky top-4 z-10',
 				'max-[1300px]:w-screen max-[1300px]:max-w-[752px]',
-				'max-[787px]:w-screen max-[787px]:max-w-[650px]',
-				'max-[686px]:w-screen max-[686px]:max-w-[550px] max-[686px]:p-[30px]',
-				'max-[584px]:w-screen max-[584px]:max-w-[450px] max-[584px]:p-[25px]',
-				'max-[482px]:w-full max-[482px]:max-w-full',
+				'max-[787px]:w-screen max-[787px]:rounded-none',
 				status === 'loading' ? 'opacity-40 pointer-events-none' : ''
 			)}
 		>

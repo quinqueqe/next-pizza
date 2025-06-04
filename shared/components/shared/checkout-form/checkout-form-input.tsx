@@ -39,7 +39,7 @@ export const CheckoutFormInput = ({
 		setValue(name, '')
 	}
 	return (
-		<div className={cn('')}>
+		<div className={cn('w-full')}>
 			{label && (
 				<p>
 					{label} {required && <span className='text-red-500'>*</span>}

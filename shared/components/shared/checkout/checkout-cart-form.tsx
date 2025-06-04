@@ -67,7 +67,7 @@ export const CheckoutCartForm = () => {
 								}
 								type='button'
 								variant={'outline'}
-								className='font-bold text-center text-[16px] py-[16px] px-[35px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-[390px]'
+								className='font-bold text-center text-[16px] py-[16px] px-[35px] max-[480px]:px-[20px] text-white rounded-[18px] bg-[#fe5f00] h-[50px] w-full max-w-[390px]'
 							>
 								Вернуться на главную страницу
 							</Button>

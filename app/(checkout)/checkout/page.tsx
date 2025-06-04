@@ -22,8 +22,8 @@ export default function CheckoutPage() {
 						<h3 className='py-13 font-extrabold text-[36px] max-[786px]:py-8 max-[786px]:pt-6 max-[450px]:text-[30px]'>
 							Оформление заказа
 						</h3>
-						<div className='flex justify-between items-start pb-[100px] max-[1300px]:flex-col max-[1300px]:justify-none max-[1300px]:gap-13 max-[1300px]:justify-center max-[1300px]:items-center max-[786px]:gap-8 max-[482px]:pb-[32px]'>
-							<div className='flex flex-col gap-13 max-[786px]:gap-8'>
+						<div className='flex justify-between items-start pb-[100px] max-[1300px]:flex-col max-[1300px]:justify-none max-[1300px]:gap-13 max-[1300px]:justify-center max-[1300px]:items-center max-[786px]:gap-6 max-[786px]:pb-0 max-[786px]:-mx-4'>
+							<div className='flex flex-col gap-13 max-[786px]:gap-8 '>
 								<CheckoutCartForm />
 								<CheckoutPersonalForm />
 								<CheckoutAddressForm />

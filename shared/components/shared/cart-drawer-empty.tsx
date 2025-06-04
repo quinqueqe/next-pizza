@@ -14,9 +14,7 @@ export const CartDrawerEmpty = ({ className }: Props) => {
 			)}
 		>
 			<Image
-				src={
-					'https://cdn.dodostatic.net/pizza-site/dist/assets/5aa5dac99a832c62f3ef..svg'
-				}
+				src={'/assets/images/dog-with-box.svg'}
 				alt='img'
 				width={315}
 				height={200}

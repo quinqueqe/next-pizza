@@ -21,11 +21,8 @@ export const CheckoutWhiteBlock = ({
 		<div
 			className={cn(
 				'rounded-4xl bg-white p-[35px] pb-0',
-				'w-screen max-w-[752px]',
-				'max-[787px]:w-screen max-[787px]:max-w-[650px]',
-				'max-[686px]:w-screen max-[686px]:max-w-[550px] max-[686px]:p-[30px] max-[686px]:pb-0',
-				'max-[584px]:w-screen max-[584px]:max-w-[450px] max-[584px]:p-[25px] max-[584px]:pb-0',
-				'max-[482px]:w-full max-[482px]:max-w-full',
+				'w-[752px] max-w-[752px]',
+				'max-[787px]:w-screen max-[787px]:rounded-none',
 				className
 			)}
 		>
