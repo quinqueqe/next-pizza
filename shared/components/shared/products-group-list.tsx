@@ -38,9 +38,10 @@ export const ProductsGroupList = ({
 			</h2>
 			<div
 				className={cn(
-					'grid grid-cols-4 gap-[50px] pb-10',
-					'max-[1250px]:grid-cols-3 max-[1250px]:gap-[40px]',
-					'max-[765px]:grid-cols-2 max-[765px]:gap-[30px] max-[765px]:pb-3',
+					'grid grid-cols-4 pb-10',
+					'gap-[50px] max-[1250px]:gap-[40px] max-[765px]:gap-[30px] ',
+					'max-[1250px]:grid-cols-3 ',
+					'max-[765px]:grid-cols-2 max-[765px]:pb-3',
 					'max-[565px]:grid-cols-1 max-[565px]:pb-6'
 				)}
 			>

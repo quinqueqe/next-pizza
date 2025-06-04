@@ -24,7 +24,7 @@ export const ProductCard = ({
 	return (
 		// <div className='max-w-[250px]'>
 		<Link href={`/product/${id}`}>
-			<div className={cn('flex flex-col h-full')}>
+			<div className={cn('flex flex-col h-full justify-between')}>
 				<div
 					className={cn(
 						'bg-[#fff7ee] py-6 px-[37px] rounded-2xl',
@@ -35,7 +35,7 @@ export const ProductCard = ({
 				</div>
 				<h4 className='pt-[15px] pb-2 text-[20px] font-bold '>{name}</h4>
 				{desc && (
-					<p className='text-[14px] text-[#b1b1b1] pb-5 h-[100px]'>{desc}</p>
+					<p className='text-[14px] text-[#b1b1b1] pb-5 '>{desc}</p>
 				)}
 				<div className='flex justify-between items-center'>
 					<p className='text-[20px]'>
