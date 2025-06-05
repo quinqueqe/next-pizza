@@ -38,8 +38,6 @@ export const ConfirmForm = ({ onClose }: Props) => {
 	]
 
 	const onSubmit = async () => {
-		// console.log('submit')
-		// const code =
 		try {
 			const code = inputRefs.map(ref => ref.current?.value).join('')
 			const email = await confirmUserCode(code)
@@ -47,9 +45,15 @@ export const ConfirmForm = ({ onClose }: Props) => {
 			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
 			setType('confirm')
 			onClose?.()
-		} catch (err) {
-			toast.error('Произошла ошибка при подтверждении кода')
-			console.log('VERIFICATION_CODE_ERROR', err)
+		} catch (err: unknown) {
+			if (err instanceof Error) {
+				if (err.message === 'Неверный код') {
+					toast.error(err.message)
+				} else {
+					toast.error('Произошла ошибка при подтверждении кода')
+					console.log('VERIFICATION_CODE_ERROR', err)
+				}
+			}
 		}
 	}
 	return (
