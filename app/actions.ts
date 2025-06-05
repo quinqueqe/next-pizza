@@ -167,7 +167,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 		const user = await prisma.user.findFirst({
 			where: {
 				email: body.email,
-			},
+			}
 		})
 
 		if (user) {

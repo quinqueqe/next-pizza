@@ -41,7 +41,7 @@ export const useRegisterFormInterface = () => {
 			// onClose?.()
 		} catch (err: unknown) {
 			if (err instanceof Error) {
-				if (err.message === 'Пользователь уже существует, выполните вход') {
+				if (err.message === 'Пользователь уже существует') {
 					toast.error(err.message)
 				}
 			} else {
