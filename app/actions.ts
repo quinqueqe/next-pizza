@@ -167,7 +167,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 		const user = await prisma.user.findFirst({
 			where: {
 				email: body.email,
-			}
+			},
 		})
 
 		if (user) {
@@ -221,7 +221,7 @@ export const confirmUserCode = async (code: string) => {
 		})
 
 		if (!findUser) {
-			throw new Error('Неверный код')
+			return { error: 'Неверный код' }
 		}
 
 		await prisma.user.update({
@@ -238,8 +238,10 @@ export const confirmUserCode = async (code: string) => {
 				id: findUser.id,
 			},
 		})
+
+		return { success: true }
 	} catch (err) {
+		return { error: 'Произошла ошибка' }
 		console.log('[CONFIRM_USER_CODE_ERRROR]', err)
-		throw err // пробрасываем ошибку дальше
 	}
 }

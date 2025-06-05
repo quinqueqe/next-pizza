@@ -36,21 +36,24 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 	const onSubmit = async (data: FormConfirmSchemaType) => {
 		try {
 			const code = Object.values(data).join('')
-			await confirmUserCode(code)
+			const result = await confirmUserCode(code)
+
+			if (result.error) {
+				if (result.error === 'Неверный код') {
+					toast.error(result.error)
+					setErrorConfirmEmail(true)
+				} else {
+					toast.error('Произошла ошибка при подтверждении кода')
+					console.log('VERIFICATION_CODE_ERROR', result.error)
+				}
+			}
 
 			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
 			setType('login')
 			onClose?.()
 		} catch (err: unknown) {
-			if (err instanceof Error) {
-				if (err.message === 'Неверный код') {
-					toast.error(err.message)
-					setErrorConfirmEmail(true)
-				} else {
-					toast.error('Произошла ошибка при подтверждении кода')
-					console.log('VERIFICATION_CODE_ERROR', err)
-				}
-			}
+			toast.error('Произошла ошибка при подтверждении кода')
+			console.log('VERIFICATION_CODE_ERROR', err)
 		}
 	}
 
