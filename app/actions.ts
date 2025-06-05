@@ -236,9 +236,6 @@ export const confirmUserCode = async (code: string) => {
 				id: findUser.id,
 			},
 		})
-
-		const email = findUser.user.email
-		return email
 	} catch (err) {
 		console.log('[CONFIRM_USER_CODE_ERRROR]', err)
 		throw err // пробрасываем ошибку дальше

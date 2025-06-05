@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const ConfirmForm = ({ onClose }: Props) => {
-	const { setType } = useAuth()
+	const { setType, confirmEmail } = useAuth()
 	const form = useForm<FormConfirmSchemaType>({
 		resolver: zodResolver(FormConfirmSchema),
 		defaultValues: {
@@ -37,10 +37,10 @@ export const ConfirmForm = ({ onClose }: Props) => {
 		React.useRef<HTMLInputElement>(null),
 	]
 
-	const onSubmit = async () => {
+	const onSubmit = async (data: FormConfirmSchemaType) => {
 		try {
-			const code = inputRefs.map(ref => ref.current?.value).join('')
-			const email = await confirmUserCode(code)
+			const code = Object.values(data).join('')
+			await confirmUserCode(code)
 
 			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
 			setType('confirm')
@@ -62,7 +62,7 @@ export const ConfirmForm = ({ onClose }: Props) => {
 				<h4 className='text-[24px] pb-3 font-bold text-center'>Введите код</h4>
 
 				<p className='text-[#5C6370] text-[16px] pb-6 text-center'>
-					Ваш код подтверджения отправлен на почту ниже: vrsxdcrown@gmail.com
+					Ваш код подтверджения отправлен на почту ниже: {confirmEmail}
 				</p>
 				<div className='grid grid-cols-6 gap-3 pb-7'>
 					{inputRefs.map((ref, i) => (

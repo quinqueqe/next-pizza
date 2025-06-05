@@ -15,6 +15,7 @@ import { useAuth } from '../store'
 
 export const useRegisterFormInterface = () => {
 	// { onClose }: Props
+	const { setType, setConfirmEmail } = useAuth()
 	const form = useForm<FormRegisterSchemaType>({
 		resolver: zodResolver(FormRegisterSchema),
 		defaultValues: {
@@ -24,7 +25,6 @@ export const useRegisterFormInterface = () => {
 			confirmPassword: '',
 		},
 	})
-	const { setType } = useAuth()
 	const onSubmit = async (data: FormRegisterSchemaType) => {
 		try {
 			await registerUser({
@@ -37,6 +37,7 @@ export const useRegisterFormInterface = () => {
 				'Регистрация прошла успешно, подтвердите свой аккаунт, код отправили на почту'
 			)
 			setType('confirm')
+			setConfirmEmail(data.email)
 			// onClose?.()
 		} catch (err: unknown) {
 			if (err instanceof Error) {
