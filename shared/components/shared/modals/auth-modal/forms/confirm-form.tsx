@@ -6,12 +6,16 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormConfirmSchema, FormConfirmSchemaType } from './schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ConfirmFormInput } from '.'
+import { confirmUserCode } from '@/app/actions'
+import toast from 'react-hot-toast'
+import { useAuth } from '@/shared/store'
 
 type Props = {
 	onClose?: () => void
 }
 
 export const ConfirmForm = ({ onClose }: Props) => {
+	const { setType } = useAuth()
 	const form = useForm<FormConfirmSchemaType>({
 		resolver: zodResolver(FormConfirmSchema),
 		defaultValues: {
@@ -34,7 +38,19 @@ export const ConfirmForm = ({ onClose }: Props) => {
 	]
 
 	const onSubmit = async () => {
-		console.log('submit')
+		// console.log('submit')
+		// const code =
+		try {
+			const code = inputRefs.map(ref => ref.current?.value).join('')
+			const email = await confirmUserCode(code)
+
+			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
+			setType('confirm')
+			onClose?.()
+		} catch (err) {
+			toast.error('Произошла ошибка при подтверждении кода')
+			console.log('VERIFICATION_CODE_ERROR', err)
+		}
 	}
 	return (
 		<FormProvider {...form}>

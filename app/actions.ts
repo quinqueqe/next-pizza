@@ -206,3 +206,41 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 		throw err // пробрасываем ошибку дальше
 	}
 }
+
+export const confirmUserCode = async (code: string) => {
+	try {
+		const findUser = await prisma.verifiсationCode.findFirst({
+			where: {
+				code,
+			},
+			include: {
+				user: true,
+			},
+		})
+
+		if (!findUser) {
+			throw new Error('Неверный код')
+		}
+
+		await prisma.user.update({
+			where: {
+				id: findUser.userId,
+			},
+			data: {
+				verified: new Date(),
+			},
+		})
+
+		await prisma.verifiсationCode.delete({
+			where: {
+				id: findUser.id,
+			},
+		})
+
+		const email = findUser.user.email
+		return email
+	} catch (err) {
+		console.log('[CONFIRM_USER_CODE_ERRROR]', err)
+		throw err // пробрасываем ошибку дальше
+	}
+}
