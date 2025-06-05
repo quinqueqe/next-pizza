@@ -46,6 +46,7 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 					toast.error('Произошла ошибка при подтверждении кода')
 					console.log('VERIFICATION_CODE_ERROR', result.error)
 				}
+				return
 			}
 
 			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
