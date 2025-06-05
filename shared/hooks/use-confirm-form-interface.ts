@@ -42,7 +42,7 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 			await confirmUserCode(code)
 
 			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
-			setType('confirm')
+			setType('login')
 			onClose?.()
 		} catch (err: unknown) {
 			if (err instanceof Error) {
