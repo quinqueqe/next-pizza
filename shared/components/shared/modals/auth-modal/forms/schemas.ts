@@ -44,3 +44,15 @@ export const FormUpdateSchema = FormUpdateInfoSchema.merge(
 })
 
 export type FormUpdateSchemaType = z.infer<typeof FormUpdateSchema>
+
+//confirm
+export const FormConfirmSchema = z.object({
+	code_1: z.string().min(1),
+	code_2: z.string().min(1),
+	code_3: z.string().min(1),
+	code_4: z.string().min(1),
+	code_5: z.string().min(1),
+	code_6: z.string().min(1),
+})
+
+export type FormConfirmSchemaType = z.infer<typeof FormConfirmSchema>

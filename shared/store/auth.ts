@@ -2,11 +2,11 @@ import { create } from 'zustand'
 
 type AuthType = {
 	openModal: boolean
-	type: 'login' | 'register'
+	type: 'login' | 'register' | 'confirm'
 	loadingBtn: string
 	loadingLoginOrRegisterBtn: string
 	setOpenModal: (value: boolean) => void
-	setType: (value: 'login' | 'register') => void
+	setType: (value: 'login' | 'register' | 'confirm') => void
 	setLoadingBtn: (value: string) => void
 	setLoadingLoginOrRegisterBtn: (value: string) => void
 }

@@ -7,12 +7,14 @@ import {
 	FormRegisterSchema,
 	FormRegisterSchemaType,
 } from '../components/shared/modals/auth-modal/forms/schemas'
+import { useAuth } from '../store'
 
-type Props = {
-	onClose?: () => void
-}
+// type Props = {
+// 	onClose?: () => void
+// }
 
-export const useRegisterFormInterface = ({ onClose }: Props) => {
+export const useRegisterFormInterface = () => {
+	// { onClose }: Props
 	const form = useForm<FormRegisterSchemaType>({
 		resolver: zodResolver(FormRegisterSchema),
 		defaultValues: {
@@ -22,6 +24,7 @@ export const useRegisterFormInterface = ({ onClose }: Props) => {
 			confirmPassword: '',
 		},
 	})
+	const { setType } = useAuth()
 	const onSubmit = async (data: FormRegisterSchemaType) => {
 		try {
 			await registerUser({
@@ -30,11 +33,14 @@ export const useRegisterFormInterface = ({ onClose }: Props) => {
 				password: data.password,
 			})
 
-			toast.success('Регистрация прошла успешно, подтвердите свою почту')
-			onClose?.()
+			toast.success(
+				'Регистрация прошла успешно, подтвердите свой аккаунт, код отправили на почту'
+			)
+			setType('confirm')
+			// onClose?.()
 		} catch (err: unknown) {
 			if (err instanceof Error) {
-				if (err.message === 'Пользователь уже существует') {
+				if (err.message === 'Пользователь уже существует, выполните вход') {
 					toast.error(err.message)
 				}
 			} else {
@@ -47,5 +53,6 @@ export const useRegisterFormInterface = ({ onClose }: Props) => {
 	return {
 		form,
 		onSubmit,
+		setType,
 	}
 }

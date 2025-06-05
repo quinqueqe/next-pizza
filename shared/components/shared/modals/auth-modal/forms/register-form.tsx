@@ -5,12 +5,14 @@ import { useRegisterFormInterface } from '@/shared/hooks'
 import { FormProvider } from 'react-hook-form'
 import { CheckoutFormInput } from '../../../checkout-form'
 
-type Props = {
-	onClose?: () => void
-}
+// type Props = {
+// 	onClose?: () => void
+// }
 
-export const RegisterForm = ({ onClose }: Props) => {
-	const { form, onSubmit } = useRegisterFormInterface({ onClose })
+export const RegisterForm = () => {
+	// { onClose }: Props
+	const { form, onSubmit } = useRegisterFormInterface()
+	// { onClose }
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>

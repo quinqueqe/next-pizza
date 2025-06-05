@@ -13,6 +13,7 @@ type Props = {
 	className?: string
 	valueDefault?: string
 	type?: string
+	classNameClearBtn?: string
 }
 
 export const CheckoutFormInput = ({
@@ -23,6 +24,7 @@ export const CheckoutFormInput = ({
 	className,
 	valueDefault,
 	type,
+	classNameClearBtn,
 	...props
 }: Props) => {
 	const {
@@ -59,7 +61,7 @@ export const CheckoutFormInput = ({
 					{...register(name)}
 					{...props}
 				/>
-				{value && <CheckoutClearFormBtn onClick={onClickClear} />}
+				{value && <CheckoutClearFormBtn onClick={onClickClear} className={classNameClearBtn}/>}
 			</div>
 
 			{errorText && (

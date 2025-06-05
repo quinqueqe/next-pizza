@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Dialog, DialogContent } from '../../../ui/dialog'
-import { AuthModalBtn, LoginForm, RegisterForm } from '../../'
+import { AuthModalBtn, LoginForm, RegisterForm, ConfirmForm } from '../../'
 import { GithubIcon } from '@/public/assets/images/auth-modal/github'
 import { GoogleIcon } from '@/public/assets/images/auth-modal/google'
 import { Button } from '@/shared/components/ui'
@@ -32,50 +32,59 @@ export const AuthModal = ({ open, onClose }: Props) => {
 					'max-[495px]:w-[400px]',
 					'max-[415px]:px-[30px] max-[415px]:py-[35px]',
 					'max-[397px]:px-[25px] max-[397px]:py-[30px]',
-					'max-[385px]:px-[20px] max-[385px]:py-[25px]',
+					'max-[385px]:px-[20px] max-[385px]:py-[25px]'
 				)}
 			>
 				<div>
 					{type === 'login' ? (
 						<LoginForm onClose={onClose} />
+					) : type === 'register' ? (
+						<RegisterForm />
 					) : (
-						type === 'register' && <RegisterForm onClose={onClose} />
+						// onClose={onClose}
+						type === 'confirm' && <ConfirmForm onClose={onClose} />
 					)}
 				</div>
 
-				<div className='flex justify-center items-center'>
-					<hr className='h-[1px] bg-gray-700 w-full' />
-					<span className='bg-white px-2 text-gray-700'>или</span>
-					<hr className='h-[1px] bg-gray-700 w-full' />
-				</div>
+				{type !== 'confirm' && (
+					<>
+						<div className='flex justify-center items-center'>
+							<hr className='h-[1px] bg-gray-700 w-full' />
+							<span className='bg-white px-2 text-gray-700'>или</span>
+							<hr className='h-[1px] bg-gray-700 w-full' />
+						</div>
 
-				<div className='flex gap-5 items-center'>
-					<AuthModalBtn
-						provider='github'
-						variant='ghost'
-						className='w-full gap-2'
-						text='GitHub'
-						image={<GithubIcon />}
-					/>
-					<AuthModalBtn
-						provider='google'
-						variant='ghost'
-						className='w-full gap-2'
-						text='Google'
-						image={<GoogleIcon />}
-					/>
-				</div>
+						<div className='flex gap-5 items-center'>
+							<AuthModalBtn
+								provider='github'
+								variant='ghost'
+								className='w-full gap-2'
+								text='GitHub'
+								image={<GithubIcon />}
+							/>
+							<AuthModalBtn
+								provider='google'
+								variant='ghost'
+								className='w-full gap-2'
+								text='Google'
+								image={<GoogleIcon />}
+							/>
+						</div>
 
-				<div>
-					<Button
-						onClick={() => onSwitchType()}
-						variant='outline'
-						type='button'
-						className='w-full'
-					>
-						{type === 'login' ? 'Регистрация' : type === 'register' && 'Войти'}
-					</Button>
-				</div>
+						<div>
+							<Button
+								onClick={() => onSwitchType()}
+								variant='outline'
+								type='button'
+								className='w-full'
+							>
+								{type === 'login'
+									? 'Регистрация'
+									: type === 'register' && 'Войти'}
+							</Button>
+						</div>
+					</>
+				)}
 			</DialogContent>
 		</Dialog>
 	)
