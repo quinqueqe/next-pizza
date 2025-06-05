@@ -5,15 +5,17 @@ import { Button } from '@/shared/components/ui'
 import { FormProvider } from 'react-hook-form'
 import { ConfirmFormInput } from '.'
 import { useConfirmFormInterface } from '@/shared/hooks/use-confirm-form-interface'
+import { cn } from '@/shared/lib'
 
 type Props = {
 	onClose?: () => void
 }
 
 export const ConfirmForm = ({ onClose }: Props) => {
-	const { form, onSubmit, confirmEmail, inputRefs } = useConfirmFormInterface({
-		onClose,
-	})
+	const { form, onSubmit, confirmEmail, inputRefs, errorConfirmEmail } =
+		useConfirmFormInterface({
+			onClose,
+		})
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
@@ -26,6 +28,9 @@ export const ConfirmForm = ({ onClose }: Props) => {
 					<div className='grid grid-cols-4 gap-3'>
 						{inputRefs.map((ref, i) => (
 							<ConfirmFormInput
+								className={cn(
+									errorConfirmEmail && 'text-red-500 border-red-500'
+								)}
 								key={i}
 								name={`code_${i + 1}`}
 								ref={ref}

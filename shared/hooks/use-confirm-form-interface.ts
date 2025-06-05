@@ -14,7 +14,8 @@ type Props = {
 }
 
 export const useConfirmFormInterface = ({ onClose }: Props) => {
-	const { setType, confirmEmail } = useAuth()
+	const { setType, confirmEmail, errorConfirmEmail, setErrorConfirmEmail } =
+		useAuth()
 	const form = useForm<FormConfirmSchemaType>({
 		resolver: zodResolver(FormConfirmSchema),
 		defaultValues: {
@@ -44,6 +45,7 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 			if (err instanceof Error) {
 				if (err.message === 'Неверный код') {
 					toast.error(err.message)
+					setErrorConfirmEmail(true)
 				} else {
 					toast.error('Произошла ошибка при подтверждении кода')
 					console.log('VERIFICATION_CODE_ERROR', err)
@@ -57,5 +59,6 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 		onSubmit,
 		confirmEmail,
 		inputRefs,
+		errorConfirmEmail,
 	}
 }
