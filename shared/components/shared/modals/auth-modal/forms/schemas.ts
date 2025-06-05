@@ -51,8 +51,6 @@ export const FormConfirmSchema = z.object({
 	code_2: z.string().min(1),
 	code_3: z.string().min(1),
 	code_4: z.string().min(1),
-	code_5: z.string().min(1),
-	code_6: z.string().min(1),
 })
 
 export type FormConfirmSchemaType = z.infer<typeof FormConfirmSchema>

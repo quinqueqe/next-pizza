@@ -62,8 +62,8 @@ export const ConfirmFormInput = React.forwardRef<HTMLInputElement, Props>(
 				type='text'
 				maxLength={1}
 				className={cn(
-					'w-[50px] h-[60px] text-center text-xl border rounded',
-					'border-2 rounded-2xl w-full',
+					'w-[55px] h-[60px] text-center text-xl border rounded',
+					'border-2 rounded-2xl',
 					'focus-visible:border-primary focus-visible:ring-ring/50 transition duration-200 ease-in-out',
 					'flex items-center justify-center text-center'
 				)}

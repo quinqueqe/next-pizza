@@ -187,7 +187,9 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			},
 		})
 
-		const code = Math.floor(100000 + Math.random() * 900000).toString() // генерация кода
+		const code = Math.floor(1000 + Math.random() * 9000).toString() // генерация кода
+
+		// const code = Math.floor(100000 + Math.random() * 900000).toString() // 6
 
 		await prisma.verifiсationCode.create({
 			data: {

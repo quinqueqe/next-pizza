@@ -22,14 +22,10 @@ export const useConfirmFormInterface = ({ onClose }: Props) => {
 			code_2: '',
 			code_3: '',
 			code_4: '',
-			code_5: '',
-			code_6: '',
 		},
 	})
 
 	const inputRefs = [
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
 		React.useRef<HTMLInputElement>(null),
 		React.useRef<HTMLInputElement>(null),
 		React.useRef<HTMLInputElement>(null),
