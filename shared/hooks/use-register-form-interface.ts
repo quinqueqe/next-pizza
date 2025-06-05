@@ -27,11 +27,21 @@ export const useRegisterFormInterface = () => {
 	})
 	const onSubmit = async (data: FormRegisterSchemaType) => {
 		try {
-			await registerUser({
+			const result = await registerUser({
 				email: data.email,
 				fullName: data.fullName,
 				password: data.password,
 			})
+
+			if (result.error) {
+				if (result.error === 'Пользователь уже существует') {
+					toast.error(result.error)
+				} else {
+					toast.error('Произошла ошибка при регистрации')
+					console.log('REGISTER_ERROR', result.error)
+				}
+				return
+			}
 
 			toast.success(
 				'Регистрация прошла успешно, подтвердите свой аккаунт, код отправили на почту'
@@ -40,14 +50,8 @@ export const useRegisterFormInterface = () => {
 			setConfirmEmail(data.email)
 			// onClose?.()
 		} catch (err: unknown) {
-			if (err instanceof Error) {
-				if (err.message === 'Пользователь уже существует') {
-					toast.error(err.message)
-				}
-			} else {
-				toast.error('Произошла ошибка при регистрации')
-				console.log('REGISTER_ERROR', err)
-			}
+			toast.error('Произошла ошибка при регистрации')
+			console.log('REGISTER_ERROR', err)
 		}
 	}
 

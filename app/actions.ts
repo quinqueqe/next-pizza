@@ -175,7 +175,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			// 	throw new Error('Почта не подтверждена')
 			// }
 
-			throw new Error('Пользователь уже существует')
+			return { error: 'Пользователь уже существует' }
 		}
 
 		const createdUser = await prisma.user.create({
@@ -203,9 +203,10 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 			'Next Pizza | Подтверждение почты 🍕',
 			VerificationUserTemplate({ code })
 		)
+		return { success: true }
 	} catch (err) {
+		return { error: 'Произошла ошибка' }
 		console.log('[REGISTER_USER_ERROR]', err)
-		throw err // пробрасываем ошибку дальше
 	}
 }
 
