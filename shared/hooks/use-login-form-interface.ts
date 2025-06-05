@@ -35,11 +35,11 @@ export const useLoginFormInterface = ({ onClose }: Props) => {
 				onClose?.()
 			}
 
-
 			if (res?.error) {
 				console.log('FIND_LOGIN_ERROR', res?.error)
-				toast.error('Проверьте логин и пароль, а также подтвердите email по ссылке из письма при регистрации')
-				
+				toast.error(
+					'Проверьте логин и пароль, а также подтвердите email по ссылке из письма при регистрации, если не сделали этого ранее'
+				)
 			}
 		} catch (err) {
 			console.log('LOGIN_ERROR', err)
