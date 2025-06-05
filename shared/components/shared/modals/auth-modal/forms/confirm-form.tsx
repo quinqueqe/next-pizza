@@ -2,60 +2,18 @@
 
 import React from 'react'
 import { Button } from '@/shared/components/ui'
-import { FormProvider, useForm } from 'react-hook-form'
-import { FormConfirmSchema, FormConfirmSchemaType } from './schemas'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { FormProvider } from 'react-hook-form'
 import { ConfirmFormInput } from '.'
-import { confirmUserCode } from '@/app/actions'
-import toast from 'react-hot-toast'
-import { useAuth } from '@/shared/store'
+import { useConfirmFormInterface } from '@/shared/hooks/use-confirm-form-interface'
 
 type Props = {
 	onClose?: () => void
 }
 
 export const ConfirmForm = ({ onClose }: Props) => {
-	const { setType, confirmEmail } = useAuth()
-	const form = useForm<FormConfirmSchemaType>({
-		resolver: zodResolver(FormConfirmSchema),
-		defaultValues: {
-			code_1: '',
-			code_2: '',
-			code_3: '',
-			code_4: '',
-			code_5: '',
-			code_6: '',
-		},
+	const { form, onSubmit, confirmEmail, inputRefs } = useConfirmFormInterface({
+		onClose,
 	})
-
-	const inputRefs = [
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
-		React.useRef<HTMLInputElement>(null),
-	]
-
-	const onSubmit = async (data: FormConfirmSchemaType) => {
-		try {
-			const code = Object.values(data).join('')
-			await confirmUserCode(code)
-
-			toast.success('Подтверждение прошло успешно, выполните вход в аккаунт')
-			setType('confirm')
-			onClose?.()
-		} catch (err: unknown) {
-			if (err instanceof Error) {
-				if (err.message === 'Неверный код') {
-					toast.error(err.message)
-				} else {
-					toast.error('Произошла ошибка при подтверждении кода')
-					console.log('VERIFICATION_CODE_ERROR', err)
-				}
-			}
-		}
-	}
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
