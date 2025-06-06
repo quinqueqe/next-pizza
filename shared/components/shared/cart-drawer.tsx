@@ -138,8 +138,10 @@ export const CartDrawer = ({ children }: Props) => {
 						</SheetFooter>
 					</SheetContent>
 				) : (
-					<SheetContent className='max-[500px]:w-full max-[500px]:h-full'>
-						<CartDrawerEmpty />
+					<SheetContent className='max-[500px]:w-full max-[500px]:h-full [&>button:last-child]:hidden'>
+						<CartDrawerEmpty>
+							<CloseCartDrawerBtn />
+						</CartDrawerEmpty>
 					</SheetContent>
 				)}
 			</Sheet>
