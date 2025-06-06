@@ -29,10 +29,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
 			<DialogContent
 				className={cn(
 					'w-[450px] rounded-4xl px-[40px] py-[45px]',
-					'max-[495px]:w-[400px]',
-					'max-[415px]:px-[30px] max-[415px]:py-[35px]',
-					'max-[397px]:px-[25px] max-[397px]:py-[30px]',
-					'max-[385px]:px-[20px] max-[385px]:py-[25px]',
+					'max-[495px]:w-full',
 					'[&>button:last-child]:hidden' // скрыл дефолтный крестик для закрытия окна
 				)}
 			>

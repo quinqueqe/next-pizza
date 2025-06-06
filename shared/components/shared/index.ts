@@ -36,6 +36,7 @@ export { Stories } from './stories'
 
 export { Burger } from './burger'
 export { CartButtonMobile } from './cart-button-mobile'
+export { NotFound } from './not-found'
 
 export * from './cart-item-details'
 export * from './checkout'
