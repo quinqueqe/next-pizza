@@ -33,7 +33,7 @@ export const ChooseProductForm = ({
 	status,
 	rightBlockClassName,
 	details,
-	onCloseModal
+	onCloseModal,
 }: Props) => {
 	const totalPrice = price
 
@@ -61,7 +61,8 @@ export const ChooseProductForm = ({
 					<p className='pb-6'>{desc}</p>
 				</div>
 				<div>
-					<div className='max-[1100px]:pb-4 max-[1100px]:sticky max-[1100px]:bottom-0 max-[1100px]:left-0 max-[1100px]:py-3 max-[1100px]:px-4 max-[1100px]:bg-white max-[1100px]:z-8 max-[1100px]:-mx-4 max-[1100px]:shadow-[0_4px_30px_rgba(6,5,50,0.1)]'>
+					<div className='max-[1100px]:pb-10 max-[1100px]:sticky max-[1100px]:bottom-0 max-[1100px]:left-0 max-[1100px]:py-3 max-[1100px]:px-4 max-[1100px]:bg-white max-[1100px]:z-8 max-[1100px]:-mx-4 max-[470px]:shadow-[0_4px_30px_rgba(6,5,50,0.1)]'>
+						{' '}
 						<Button
 							status={status}
 							onClick={() => onClickAdd()}
@@ -73,7 +74,7 @@ export const ChooseProductForm = ({
 					</div>
 				</div>
 			</div>
-			<CloseProductModalBtn onClick={onCloseModal}/>
+			<CloseProductModalBtn onClick={onCloseModal} />
 		</div>
 	)
 }
