@@ -7,12 +7,14 @@ import { signOut } from 'next-auth/react'
 import { FormProvider } from 'react-hook-form'
 import { Button } from '../ui'
 import { CheckoutFormInput } from './checkout-form'
+import { CloseProfileModalBtn } from './buttons'
 
 type Props = {
 	user: User
 	className?: string
 	titleClassName?: string
 	onCloseModal?: () => void
+	type?: 'mobile' | 'dekstop'
 }
 
 export const ProfileForm = ({
@@ -20,6 +22,7 @@ export const ProfileForm = ({
 	className,
 	titleClassName,
 	onCloseModal,
+	type,
 }: Props) => {
 	const { loadingBtn, setLoadingBtn, form, onSubmit } = useProfileFormInterface(
 		{ user, onCloseModal }
@@ -28,9 +31,20 @@ export const ProfileForm = ({
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<div className={cn('p-[35px] relative', 'max-[820px]:pt-6', className)}>
-					<h3 className={cn('text-[26px] font-bold pb-5', titleClassName)}>
-						Личные данные | #{user.id}
-					</h3>
+					<div
+						className={cn(
+							type === 'mobile' &&
+								'max-[820px]:flex max-[820px]:items-center max-[820px]:gap-3 max-[820px]:-mt-4 max-[820px]:-ml-4',
+							'pb-5'
+						)}
+					>
+						{type === 'mobile' && (
+							<CloseProfileModalBtn onClick={onCloseModal} />
+						)}
+						<h3 className={cn('text-[26px] font-bold', titleClassName)}>
+							Личные данные | #{user.id}
+						</h3>
+					</div>
 					<div className='grid grid-cols-2 gap-5 pb-5 max-[650px]:grid-cols-1'>
 						{user.provider === 'credentials' ? (
 							<>

@@ -23,7 +23,7 @@ export default async function ProfilePage() {
 
 	return (
 		<Container>
-			<ProfileForm user={user} titleClassName='text-[36px]' className='p-0 pt-6'/>
+			<ProfileForm user={user} titleClassName='text-[36px]' className='p-0 pt-6' type='dekstop'/>
 		</Container>
 	)
 }

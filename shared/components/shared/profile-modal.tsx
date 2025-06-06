@@ -32,6 +32,7 @@ export const ProfileModal = ({ user, className }: Props) => {
 				)}
 			>
 				<ProfileForm
+					type='mobile'
 					user={user}
 					onCloseModal={onCloseModal}
 					className='max-[820px]:p-4'
