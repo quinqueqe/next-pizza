@@ -10,6 +10,7 @@ import {
 	CartDrawerItem,
 	// CartDrawerEmpty,
 	CartDrawerPromo,
+	CloseCartDrawerBtn,
 } from './'
 import {
 	Sheet,
@@ -68,11 +69,13 @@ export const CartDrawer = ({ children }: Props) => {
 						className={cn(
 							'ml-0 pl-0 mr-0 pr-0',
 							'w-[450px]',
-							'max-[500px]:w-full max-[500px]:h-full'
+							'max-[500px]:w-full max-[500px]:h-full',
+							'[&>button:last-child]:hidden' // скрыл дефолтный крестик для закрытия окна
 						)}
 					>
 						<SheetHeader className='ml-0 pl-0 mr-0 pr-0 pt-0 mt-0 pl-4 pt-4 pb-0'>
-							<SheetTitle className='flex'>
+							<SheetTitle className='flex max-[500px]:items-center max-[500px]:-mt-4 max-[500px]:-ml-4 max-[500px]:gap-4'>
+								<CloseCartDrawerBtn />
 								<p className='text-[22px] font-normal'>
 									{items.length} {goods} на{' '}
 									<span className='font-bold text-[22px]'>{totalAmount} ₽</span>

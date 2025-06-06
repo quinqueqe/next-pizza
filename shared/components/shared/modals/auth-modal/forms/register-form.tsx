@@ -3,8 +3,8 @@
 import { Button } from '@/shared/components/ui'
 import { useRegisterFormInterface } from '@/shared/hooks'
 import { FormProvider } from 'react-hook-form'
+import { CloseModalBtn } from '../../../buttons/close-modal-btn'
 import { CheckoutFormInput } from '../../../checkout-form'
-import { CloseModalBtn } from '../../../close-modal-btn'
 
 type Props = {
 	onClose?: () => void

@@ -1,12 +1,11 @@
 'use client'
 
-import React from 'react'
 import { Button } from '@/shared/components/ui'
-import { FormProvider } from 'react-hook-form'
-import { ConfirmFormInput } from '.'
 import { useConfirmFormInterface } from '@/shared/hooks/use-confirm-form-interface'
 import { cn } from '@/shared/lib'
-import { CloseModalBtn } from '../../../close-modal-btn'
+import { FormProvider } from 'react-hook-form'
+import { ConfirmFormInput } from '.'
+import { CloseModalBtn } from '../../../buttons/close-modal-btn'
 
 type Props = {
 	onClose?: () => void
@@ -50,10 +49,7 @@ export const ConfirmForm = ({ onClose }: Props) => {
 						Подтвердить почту
 					</Button>
 
-					<CloseModalBtn
-						className='-right-17 top-7'
-						onClick={onClose}
-					/>
+					<CloseModalBtn className='-right-17 top-7' onClick={onClose} />
 				</div>
 			</form>
 		</FormProvider>

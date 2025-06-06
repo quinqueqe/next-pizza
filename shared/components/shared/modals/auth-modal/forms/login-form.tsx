@@ -1,12 +1,11 @@
 'use client'
 
-import React from 'react'
 import { Button } from '@/shared/components/ui'
-import { CheckoutFormInput } from '../../../checkout-form'
-import { FormProvider } from 'react-hook-form'
-import Image from 'next/image'
 import { useLoginFormInterface } from '@/shared/hooks'
-import { CloseModalBtn } from '../../../close-modal-btn'
+import Image from 'next/image'
+import { FormProvider } from 'react-hook-form'
+import { CloseModalBtn } from '../../../buttons/close-modal-btn'
+import { CheckoutFormInput } from '../../../checkout-form'
 
 type Props = {
 	onClose?: () => void
