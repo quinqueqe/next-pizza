@@ -13,6 +13,7 @@ import {
 	DrawerContent,
 	DrawerTrigger,
 } from '../../ui'
+import { useModal } from '@/shared/store'
 
 type Props = {
 	className?: string
@@ -20,9 +21,20 @@ type Props = {
 }
 
 export const ChooseProductModal = ({ className, product }: Props) => {
-	const isMobile = useMedia('(max-width: 1100px)')
-
 	const router = useRouter()
+	const isMobile = useMedia('(max-width: 1100px)')
+	const { openDrawer, setOpenDrawer } = useModal()
+
+	React.useEffect(() => {
+		setOpenDrawer(Boolean(product))
+	}, [product])
+
+	const handleOpenChange = (open: boolean) => {
+		setOpenDrawer(open)
+		if (!open) {
+			router.back()
+		}
+	}
 
 	const content = (
 		<VariantsProduct
@@ -36,7 +48,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 	return (
 		<>
 			{isMobile ? (
-				<Drawer open={Boolean(product)}>
+				<Drawer open={openDrawer} onOpenChange={handleOpenChange}>
 					<DrawerTrigger asChild></DrawerTrigger>
 					<DrawerContent
 						className={cn(
