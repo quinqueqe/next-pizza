@@ -37,6 +37,7 @@ export { Stories } from './stories'
 export { Burger } from './burger'
 export { CartButtonMobile } from './cart-button-mobile'
 export { CloseModalBtn } from './close-modal-btn'
+export { CloseProductModalBtn } from './close-product-modal-btn'
 
 export * from './cart-item-details'
 export * from './checkout'

@@ -3,6 +3,7 @@
 import { usePizzaOptions } from '@/shared/hooks'
 import { Ingredients, Variation } from '@prisma/client'
 import {
+	CloseProductModalBtn,
 	PizzaImage,
 	PizzaSelector,
 	ProductIngredient,
@@ -21,6 +22,7 @@ type Props = {
 	onClickAdd: (productItemId: number, ingredients: number[]) => void
 	status: string | boolean
 	rightBlockClassName?: string
+	onCloseModal?: () => void
 }
 
 export const ChoosePizzaForm = ({
@@ -32,6 +34,7 @@ export const ChoosePizzaForm = ({
 	onClickAdd,
 	status,
 	rightBlockClassName,
+	onCloseModal,
 }: Props) => {
 	const {
 		activeSize,
@@ -64,7 +67,7 @@ export const ChoosePizzaForm = ({
 	return (
 		<div>
 			<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-52 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px] max-[1100px]:relative'>
-				<div className='max-[1100px]:pb-26'>
+				<div className='max-[1100px]:pb-26 max-[1100px]:bg-[rgb(255,255,255)]'>
 					<PizzaImage
 						className='w-[550px] h-[500px] flex justify-center items-center max-[1100px]:w-full max-[1100px]:h-full'
 						imageUrl={imageUrl}
@@ -133,6 +136,7 @@ export const ChoosePizzaForm = ({
 						</div>
 					</div>
 				</div>
+				<CloseProductModalBtn onClick={onCloseModal}/>
 			</div>
 		</div>
 	)

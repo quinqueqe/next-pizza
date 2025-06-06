@@ -54,6 +54,7 @@ export const VariantsProduct = ({
 				variations={product.variations}
 				onClickAdd={onSubmit}
 				status={status}
+				onCloseModal={onCloseModal}
 			/>
 		)
 	} else {
@@ -69,6 +70,7 @@ export const VariantsProduct = ({
 				variations={product.variations}
 				onClickAdd={onSubmit}
 				status={status}
+				onCloseModal={onCloseModal}
 			/>
 		)
 	}
