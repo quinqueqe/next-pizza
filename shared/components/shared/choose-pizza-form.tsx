@@ -66,8 +66,8 @@ export const ChoosePizzaForm = ({
 	}
 	return (
 		<div>
-			<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-52 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px] max-[1100px]:relative'>
-				<div className='max-[1100px]:pb-26 max-[1100px]:bg-[rgb(255,255,255)]'>
+			<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-13 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px] max-[1100px]:relative'>
+				<div className=' max-[1100px]:bg-[rgb(255,255,255)]'>
 					<PizzaImage
 						className='w-[550px] h-[500px] flex justify-center items-center max-[1100px]:w-full max-[1100px]:h-full'
 						imageUrl={imageUrl}
@@ -89,7 +89,7 @@ export const ChoosePizzaForm = ({
 							{name}
 						</h4>
 						<p className='text-[#373737] opacity-60 pb-3'>{details}</p>
-						<div className='flex flex-col gap-1 mb-5'>
+						<div className='flex flex-col gap-1 mb-5 max-[470px]:justify-center max-[470px]:items-center'>
 							<PizzaSelector
 								pizzaSizes={sizes}
 								pizzaTypes={types}
@@ -105,7 +105,7 @@ export const ChoosePizzaForm = ({
 							Добавить по вкусу
 						</h5>
 
-						<ul className='grid grid-cols-3 gap-2 h-[245px] overflow-auto scroll-auto mb-[20px] p-2 max-[1100px]:h-[470px]'>
+						<ul className='grid grid-cols-3 gap-2 h-[245px] overflow-auto scroll-auto mb-[20px] p-2 max-[460px]:grid-cols-2'>
 							{ingredients.map((ing, i) => (
 								<ProductIngredient
 									key={i}
@@ -120,11 +120,11 @@ export const ChoosePizzaForm = ({
 											add(ing.id)
 										}
 									}} // Используем add, remove вместо toggle
-									className='max-[1100px]:h-[220px]'
+									className='max-[1100px]:h-[220px] max-[460px]:w-full'
 								/>
 							))}
 						</ul>
-						<div className='max-[1100px]:pb-10 max-[1100px]:sticky max-[1100px]:bottom-0 max-[1100px]:left-0 max-[1100px]:py-3 max-[1100px]:px-4 max-[1100px]:bg-white max-[1100px]:z-8 max-[1100px]:-mx-4 max-[470px]:shadow-[0_4px_30px_rgba(6,5,50,0.1)]'>
+						<div className='max-[1100px]:pb-4 max-[1100px]:sticky max-[1100px]:bottom-4 max-[1100px]:left-0 max-[1100px]:py-3 max-[1100px]:px-4 max-[1100px]:bg-white max-[1100px]:z-8 max-[1100px]:-mx-4 max-[470px]:shadow-[0_4px_30px_rgba(6,5,50,0.1)]'>
 							<Button
 								status={status}
 								onClick={() => handleClickAdd()}
@@ -136,7 +136,7 @@ export const ChoosePizzaForm = ({
 						</div>
 					</div>
 				</div>
-				<CloseProductModalBtn onClick={onCloseModal}/>
+				<CloseProductModalBtn onClick={onCloseModal} />
 			</div>
 		</div>
 	)
