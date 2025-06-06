@@ -1,13 +1,12 @@
 'use client'
 
-import React from 'react'
-import { User } from '@prisma/client'
-import { FormProvider } from 'react-hook-form'
-import { CheckoutFormInput } from './checkout-form'
-import { Button } from '../ui'
-import { cn } from '@/shared/lib'
-import { signOut } from 'next-auth/react'
 import { useProfileFormInterface } from '@/shared/hooks'
+import { cn } from '@/shared/lib'
+import { User } from '@prisma/client'
+import { signOut } from 'next-auth/react'
+import { FormProvider } from 'react-hook-form'
+import { Button } from '../ui'
+import { CheckoutFormInput } from './checkout-form'
 
 type Props = {
 	user: User
@@ -28,7 +27,7 @@ export const ProfileForm = ({
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className={cn('p-[35px]', 'max-[820px]:pt-6', className)}>
+				<div className={cn('p-[35px] relative', 'max-[820px]:pt-6', className)}>
 					<h3 className={cn('text-[26px] font-bold pb-5', titleClassName)}>
 						Личные данные | #{user.id}
 					</h3>

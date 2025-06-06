@@ -9,7 +9,6 @@ import {
 } from '../../components/shared'
 import { Button } from '../ui'
 import { cn, getPizzaDetails } from '@/shared/lib'
-import { X } from 'lucide-react'
 
 type Props = {
 	imageUrl: string
@@ -134,11 +133,6 @@ export const ChoosePizzaForm = ({
 						</div>
 					</div>
 				</div>
-
-				{/* кастомный крест закрытия */}
-				<button className='absolute top-[30px] rightMinus4 w-11 h-11 rounded-4xl  bg-white max-[1100px]:hidden flex items-center justify-center'>
-					<X />
-				</button>
 			</div>
 		</div>
 	)
