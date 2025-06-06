@@ -79,7 +79,8 @@ export const SearchInput = ({ className, classNameInput }: Props) => {
 					<div
 						className={cn(
 							'absolute bg-white rounded-xl py=2 shadow-md transition-all duration-200 invisible opacity-0 z-31 py-2',
-							'w-[764px] max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px]',
+							'w-[700px]',
+							'max-[1280px]:w-[600px] max-[1140px]:w-[500px] max-[1025px]:w-[400px]',
 							'max-[915px]:w-[96%] max-[915px]:mr-4',
 							'max-[730px]:w-[95%]',
 							'max-[585px]:w-[93%]',

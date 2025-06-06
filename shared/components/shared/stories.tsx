@@ -75,6 +75,7 @@ export const Stories = () => {
 								defaultInterval={5000}
 								width={520}
 								height={800}
+								
 							/>
 						</div>
 					</div>

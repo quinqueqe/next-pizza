@@ -32,7 +32,8 @@ export const AuthModal = ({ open, onClose }: Props) => {
 					'max-[495px]:w-[400px]',
 					'max-[415px]:px-[30px] max-[415px]:py-[35px]',
 					'max-[397px]:px-[25px] max-[397px]:py-[30px]',
-					'max-[385px]:px-[20px] max-[385px]:py-[25px]'
+					'max-[385px]:px-[20px] max-[385px]:py-[25px]',
+					'[&>button:last-child]:hidden', // скрыл дефолтный крестик для закрытия окна
 				)}
 			>
 				<div>

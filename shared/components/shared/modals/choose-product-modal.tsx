@@ -21,6 +21,7 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 						'p-0 h-[610px] min-h-[610px] bg-white overflow-hidden rounded-4xl',
 						'w-full min-w-[1060px] max-w-[1060px]',
 						'max-[1100px]:w-full max-[1100px]:min-w-full max-[1100px]:max-w-full max-[1100px]:h-full max-[1100px]:min-h-full max-[1100px]:rounded-none',
+						'[&>button:last-child]:hidden', // скрыл дефолтный крестик для закрытия окна
 						className
 					)}
 				>
