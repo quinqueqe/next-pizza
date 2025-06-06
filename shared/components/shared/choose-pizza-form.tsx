@@ -9,6 +9,7 @@ import {
 } from '../../components/shared'
 import { Button } from '../ui'
 import { cn, getPizzaDetails } from '@/shared/lib'
+import { X } from 'lucide-react'
 
 type Props = {
 	imageUrl: string
@@ -63,7 +64,7 @@ export const ChoosePizzaForm = ({
 	}
 	return (
 		<div>
-			<div className='flex justify-between items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-52 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px] max-[1100px]:relative'>
+			<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-52 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px] max-[1100px]:relative'>
 				<div className='max-[1100px]:pb-26'>
 					<PizzaImage
 						className='w-[550px] h-[500px] flex justify-center items-center max-[1100px]:w-full max-[1100px]:h-full'
@@ -133,6 +134,11 @@ export const ChoosePizzaForm = ({
 						</div>
 					</div>
 				</div>
+
+				{/* кастомный крест закрытия */}
+				<button className='absolute top-[30px] rightMinus4 w-11 h-11 rounded-4xl  bg-white max-[1100px]:hidden flex items-center justify-center'>
+					<X />
+				</button>
 			</div>
 		</div>
 	)

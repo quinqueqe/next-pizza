@@ -33,14 +33,14 @@ export const AuthModal = ({ open, onClose }: Props) => {
 					'max-[415px]:px-[30px] max-[415px]:py-[35px]',
 					'max-[397px]:px-[25px] max-[397px]:py-[30px]',
 					'max-[385px]:px-[20px] max-[385px]:py-[25px]',
-					'[&>button:last-child]:hidden', // скрыл дефолтный крестик для закрытия окна
+					'[&>button:last-child]:hidden' // скрыл дефолтный крестик для закрытия окна
 				)}
 			>
 				<div>
 					{type === 'login' ? (
 						<LoginForm onClose={onClose} />
 					) : type === 'register' ? (
-						<RegisterForm />
+						<RegisterForm onClose={onClose} />
 					) : (
 						// onClose={onClose}
 						type === 'confirm' && <ConfirmForm onClose={onClose} />

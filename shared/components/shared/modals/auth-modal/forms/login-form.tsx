@@ -6,6 +6,7 @@ import { CheckoutFormInput } from '../../../checkout-form'
 import { FormProvider } from 'react-hook-form'
 import Image from 'next/image'
 import { useLoginFormInterface } from '@/shared/hooks'
+import { CloseModalBtn } from '../../../close-modal-btn'
 
 type Props = {
 	onClose?: () => void
@@ -17,7 +18,7 @@ export const LoginForm = ({ onClose }: Props) => {
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className='flex flex-col gap-3'>
+				<div className='flex flex-col gap-3 relative'>
 					<div className='flex justify-between items-center'>
 						<div>
 							<h3 className='text-[26px] font-bold'>Вход в аккаунт</h3>
@@ -49,6 +50,8 @@ export const LoginForm = ({ onClose }: Props) => {
 					>
 						Войти
 					</Button>
+
+					<CloseModalBtn className='-right-25 top-0' onClick={onClose} />
 				</div>
 			</form>
 		</FormProvider>
