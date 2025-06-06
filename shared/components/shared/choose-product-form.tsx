@@ -38,7 +38,7 @@ export const ChooseProductForm = ({
 	const totalPrice = price
 
 	return (
-		<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-13 max-[1100px]:overflow-auto max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px]'>
+		<div className='flex justify-between relative items-center max-[1100px]:flex-col max-[1100px]:px-4 max-[1100px]:pt-13 max-[1100px]:h-[100vh] max-[1100px]:justify-center max-[1100px]:scroll-auto max-[1100px]:relative max-[1100px]:gap-[20px]'>
 			<div className='max-[1100px]:bg-[rgb(255,255,255)]'>
 				<PizzaImage
 					className='w-[550px] h-[500px] max-[1100px]:w-[300px] max-[1100px]:h-[300px] max-[1100px]:w-full max-[1100px]:h-full flex justify-center items-center'
