@@ -42,7 +42,10 @@ export const ChooseProductModal = ({ className, product }: Props) => {
 				product.whProduct === 2 ? 'w-[500px] max-[535px]:w-full' : ''
 			)}
 			product={product}
-			onCloseModal={() => router.back()}
+			onCloseModal={() => {
+				setOpenDrawer(false)
+				router.back()
+			}}
 		/>
 	)
 	return (
