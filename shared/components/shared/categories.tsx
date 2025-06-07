@@ -5,6 +5,7 @@ import { useCategory } from '../../store'
 import { cn } from '@/shared/lib'
 import { CartButton } from './cart-button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Props {
 	categories: Category[]
@@ -24,8 +25,9 @@ export const Categories = ({ categories, scrollPos }: Props) => {
 				<ul className='flex gap-1.5 pr-3 max-[915px]:pr-0'>
 					{categories.map(({ name, id }, i) => (
 						<li key={i}>
-							<a
+							<Link
 								href={`/#${name}`}
+								replace
 								onClick={() => setActiveId(i)}
 								className={cn(
 									'py-[10px] px-4 font-medium text-[16px] text-center text-[#202020] font-bold shadow-[0_4px_4px_0_rgba(139,139,139,0.096)] rounded-[15px] opacity-0.8 cursor-pointer',
@@ -33,7 +35,7 @@ export const Categories = ({ categories, scrollPos }: Props) => {
 								)}
 							>
 								{name}
-							</a>
+							</Link>
 						</li>
 					))}
 				</ul>
