@@ -2,7 +2,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { registerUser } from '@/app/actions'
+import { registerUser } from '@/shared/server/user/regitster-user'
 import {
 	FormRegisterSchema,
 	FormRegisterSchemaType,

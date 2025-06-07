@@ -6,7 +6,7 @@ import {
 } from '../components/shared/modals/auth-modal/forms/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuth } from '../store'
-import { confirmUserCode } from '@/app/actions'
+import { confirmUserCode } from '@/shared/server/user/confirm-user-code'
 import toast from 'react-hot-toast'
 
 type Props = {

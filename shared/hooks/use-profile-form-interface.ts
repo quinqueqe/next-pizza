@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 import { User } from '@prisma/client'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { updateUserInfo } from '@/app/actions'
+import { updateUserInfo } from '@/shared/server/user/update-user-info'
 import { useAuth } from '@/shared/store'
 import {
 	FormUpdateSchema,
