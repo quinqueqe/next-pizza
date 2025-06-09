@@ -33,9 +33,9 @@ export const Header = ({
 					<Image src='/favicon.ico' alt='img' width={35} height={35} />
 					<div>
 						<h1 className='text-2xl uppercae font-black'>Next Pizza</h1>
-						<p className='text-sm text-gray-400 leading-3'>
+						{/* <p className='text-sm text-gray-400 leading-3'>
 							вкусней уже некуда
-						</p>
+						</p> */}
 					</div>
 				</Link>
 				{hasSearch && <SearchInput className='max-[915px]:hidden' />}

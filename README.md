@@ -143,7 +143,7 @@ next-pizza/
 ---
 
 <div align="center">
-  Сделано с ❤️ <a href="https://github.com/quinqueqe">quinqueqe</a>
+  Made with ❤️ <a href="https://github.com/quinqueqe">quinqueqe</a>
 </div>
 
 ## 📄 License
